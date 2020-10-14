@@ -2,3 +2,4 @@ dask
 dask-job-queue
 click
 submitit
+scikit-learn
