@@ -45,6 +45,7 @@ eval_results = train_eval_grid(
     timeout_eval=10,
     n_gpus_eval=1,
     to_grid=False,
+    noise_std=30,  # just for eval
 )
 
 df_results = pd.DataFrame(columns='model_name model_size psnr ssim'.split())

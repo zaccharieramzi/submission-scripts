@@ -40,6 +40,7 @@ def train_eval_grid(
         n_gpus_train=4,
         timeout_eval=10,
         n_gpus_eval=4,
+        **specific_eval_params,
     ):
     if to_grid:
         parameters = list(ParameterGrid(parameter_grid))
@@ -62,6 +63,7 @@ def train_eval_grid(
         to_grid=to_grid,
         timeout=timeout_eval,
         n_gpus=n_gpus_eval,
+        **specific_eval_params,
     )
 
 def eval_grid(
@@ -73,6 +75,7 @@ def eval_grid(
         to_grid=True,
         timeout=10,
         n_gpus=4,
+        **specific_eval_params,
     ):
     if to_grid:
         parameters = list(ParameterGrid(parameter_grid))
@@ -88,6 +91,8 @@ def eval_grid(
     jobs = []
     with executor.batch():
         for run_id, param in zip(run_ids, parameters):
+            kwargs = param
+            kwargs.update(**specific_eval_params)
             job = executor.submit(eval_function, run_id=run_id, n_samples=n_samples, **param)
             jobs.append(job)
     eval_results = []
