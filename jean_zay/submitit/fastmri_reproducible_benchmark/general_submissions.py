@@ -23,8 +23,8 @@ def get_executor(job_name, timeout_hour=60, n_gpus=1):
             'hint': 'nomultithread',
         },
         slurm_setup=[
-            'cd $WORK/fastmri-reproducible-benchmark',
-            '. ./submission_scripts_jean_zay/env_config.sh',
+            'cd $WORK/submission-scripts/jean_zay/env_configs',
+            '. fastmri.sh',
         ],
     )
     return executor
