@@ -13,7 +13,7 @@ def get_executor(job_name, timeout_hour=60, n_gpus=1):
     executor.update_parameters(
         job_name=job_name,
         timeout_min=timeout_hour * 60,
-        slurm_gres=n_gpus,
+        slurm_gres=f'gpu:{n_gpus}',
         slurm_additional_parameters={
             'ntasks': 1,
             'cpus-per-task':  20 * n_gpus,
