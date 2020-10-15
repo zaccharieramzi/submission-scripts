@@ -3,3 +3,4 @@ dask-jobqueue
 click
 submitit
 scikit-learn
+pandas
