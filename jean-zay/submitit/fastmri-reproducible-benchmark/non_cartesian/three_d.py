@@ -17,4 +17,4 @@ params = [
   dict(dcomp=[False], normalize_image=[True], model=['pdnet'], **base_params),
 ]
 
-train_eval_grid('nc_pdnet', train_ncnet_multinet, evaluate_nc_multinet, params, n_samples_eval=30)
+train_eval_grid('3d_nc', train_ncnet_multinet, evaluate_nc_multinet, params, n_samples_eval=30)
