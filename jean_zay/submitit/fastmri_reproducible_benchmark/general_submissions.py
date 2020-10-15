@@ -15,9 +15,9 @@ def get_executor(job_name, timeout_hour=60, n_gpus=1):
         timeout_min=timeout_hour * 60,
         slurm_gres=n_gpus,
         slurm_additional_parameters={
-            'cores': 1,
-            'job_cpu': n_gpus * 10,
-            'memory': f'{n_gpus * 20}GB',
+            'ntasks': 1,
+            'cpus-per-task':  20 * n_gpus,
+            'account': 'hih@gpu',
             'qos': f'qos_gpu-{qos}',
             'distribution': 'block:block',
             'hint': 'nomultithread',
