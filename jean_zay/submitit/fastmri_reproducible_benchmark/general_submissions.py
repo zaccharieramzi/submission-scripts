@@ -12,7 +12,7 @@ def get_executor(job_name, timeout_hour=60, n_gpus=1):
         qos = 'dev'
     executor.update_parameters(
         job_name=job_name,
-        time=f'{timeout_hour * 60}:00:00',
+        time=f'{timeout_hour}:00:00',
         slurm_gres=f'gpu:{n_gpus}',
         slurm_additional_parameters={
             'ntasks': 1,
