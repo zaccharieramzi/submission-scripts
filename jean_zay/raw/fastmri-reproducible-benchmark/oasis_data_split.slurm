@@ -14,7 +14,7 @@
 #SBATCH --error=%x_%j.out  # nom du fichier d'erreur (ici commun avec la sortie)
 
 set -x
-cd $WORK/submission_scripts/jean_zay/env_configs/
+cd $WORK/submission-scripts/jean_zay/env_configs/
 
 . fastmri.sh
 
