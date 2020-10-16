@@ -54,7 +54,7 @@ def train_eval_grid(
             jobs.append(job)
     run_ids = [job.result() for job in jobs]
     print(run_ids)
-    eval_grid(
+    return eval_grid(
         run_ids,
         job_name,
         eval_function,
