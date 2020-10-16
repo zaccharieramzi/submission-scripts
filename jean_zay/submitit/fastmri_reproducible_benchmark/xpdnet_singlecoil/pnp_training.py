@@ -12,8 +12,9 @@ model_size = None
 loss = 'compound_mssim'
 n_samples = None
 n_epochs = 600
+n_primal = 1
 contrast = 'CORPD_FBK'
-model_specs = list(get_model_specs(force_res=True))
+model_specs = list(get_model_specs(force_res=False, n_primal=n_primal))
 if model_name is not None:
     model_specs = [ms for ms in model_specs if ms[0] == model_name]
 if model_size is not None:
@@ -27,7 +28,7 @@ parameter_grid = [
         multicoil=False,
         n_scales=n_scales,
         res=res,
-        n_primal=1,
+        n_primal=n_primal,
         contrast=contrast,
         n_epochs=n_epochs,
         n_samples=n_samples,
