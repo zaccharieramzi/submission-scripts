@@ -52,7 +52,7 @@ eval_results = train_eval_grid(
 #     'U-net_small_1602777323',
 # ]
 # eval_results = eval_grid(
-    run_ids,
+    # run_ids,
     'denoise',
     train_denoiser,
     evaluate_xpdnet_denoising,
