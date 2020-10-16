@@ -11,6 +11,7 @@ def get_executor(job_name, timeout_hour=60, n_gpus=1):
     else:
         qos = 'dev'
     executor.update_parameters(
+        timeout_min=60,
         slurm_job_name=job_name,
         slurm_time=f'{timeout_hour}:00:00',
         slurm_gres=f'gpu:{n_gpus}',
@@ -88,6 +89,7 @@ def eval_grid(
         original_params['loss'] = params.pop('loss', 'mae')
         original_params['n_samples'] = params.pop('n_samples', None)
         original_params['run_id'] = params.pop('run_id', None)
+        original_params['model_size'] = params.pop('model_size', None)
         original_parameters.append(original_params)
     jobs = []
     with executor.batch():
