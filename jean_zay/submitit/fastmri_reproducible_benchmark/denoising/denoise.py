@@ -14,7 +14,7 @@ model_size = None
 loss = 'compound_mssim'
 n_samples = None
 n_epochs = 800
-contrast = None
+contrast = 'CORPD_FBK'
 model_specs = list(get_model_specs(force_res=True))
 if model_name is not None:
     model_specs = [ms for ms in model_specs if ms[0] == model_name]
