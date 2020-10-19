@@ -4,7 +4,7 @@ from fastmri_recon.training_scripts.xpdnet_train import train_xpdnet
 
 from jean_zay.submitit.fastmri_reproducible_benchmark.general_submissions import train_eval_grid, eval_grid
 
-
+# TODO: before that: need to change the mask setting in xpdnet train
 job_name = 'fastmri_recon_equidistant_mc'
 model_name = 'MWCNN'
 model_size = 'medium'
