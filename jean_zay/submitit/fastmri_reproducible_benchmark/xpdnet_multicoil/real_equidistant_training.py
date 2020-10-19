@@ -33,6 +33,7 @@ parameter_grid = [
         n_samples=n_samples,
         af=8,
         loss=loss,
+        mask_type='equidistant',
     ) for _, model_size, model_fun, kwargs, _, n_scales, res in model_specs
 ] + [
     dict(
@@ -48,6 +49,7 @@ parameter_grid = [
         n_samples=n_samples,
         af=4,
         loss=loss,
+        mask_type='equidistant',
     ) for _, model_size, model_fun, kwargs, _, n_scales, res in model_specs
 ]
 
