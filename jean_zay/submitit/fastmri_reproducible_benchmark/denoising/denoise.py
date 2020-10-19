@@ -30,41 +30,41 @@ parameter_grid = [
         n_epochs=n_epochs,
         n_samples=n_samples,
         loss=loss,
-        noise_std=80,
+        noise_std=4,
     ) for model_name, model_size, model_fun, kwargs, n_inputs, _, _ in model_specs
 ]
 
-# eval_results = train_eval_grid(
-run_ids = [
-    'DIDN_medium_1602844801',
-    'DIDN_small_1602844801',
-    'DnCNN_big_1602844801',
-    'DnCNN_medium_1602844801',
-    'DnCNN_small_1602844801',
-    'FocNet_medium_1602844801',
-    'FocNet_small_1602844801',
-    'MWCNN_big_1602844801',
-    'MWCNN_medium_1602844801',
-    'MWCNN_small_1602844801',
-    'U-net_big_1602844801',
-    'U-net_medium_1602844801',
-    'U-net_medium-ca_1602844801',
-    'U-net_small_1602844801',
-]
-eval_results = eval_grid(
-    run_ids,
+eval_results = train_eval_grid(
+# run_ids = [
+#     'DIDN_medium_1602844801',
+#     'DIDN_small_1602844801',
+#     'DnCNN_big_1602844801',
+#     'DnCNN_medium_1602844801',
+#     'DnCNN_small_1602844801',
+#     'FocNet_medium_1602844801',
+#     'FocNet_small_1602844801',
+#     'MWCNN_big_1602844801',
+#     'MWCNN_medium_1602844801',
+#     'MWCNN_small_1602844801',
+#     'U-net_big_1602844801',
+#     'U-net_medium_1602844801',
+#     'U-net_medium-ca_1602844801',
+#     'U-net_small_1602844801',
+# ]
+# eval_results = eval_grid(
+    # run_ids,
     'denoise',
-    # train_denoiser,
+    train_denoiser,
     evaluate_xpdnet_denoising,
     parameter_grid,
-    # n_samples_eval=500,
-    # timeout_train=20,
-    # n_gpus_train=1,
-    # timeout_eval=4,
-    # n_gpus_eval=1,
-    n_samples=200,
-    timeout=10,
-    n_gpus=1,
+    n_samples_eval=500,
+    timeout_train=20,
+    n_gpus_train=1,
+    timeout_eval=4,
+    n_gpus_eval=1,
+    # n_samples=200,
+    # timeout=10,
+    # n_gpus=1,
     to_grid=False,
     noise_std=30,  # just for eval
 )
