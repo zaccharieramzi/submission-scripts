@@ -34,6 +34,21 @@ parameter_grid = [
         af=8,
         loss=loss,
     ) for _, model_size, model_fun, kwargs, _, n_scales, res in model_specs
+] + [
+    dict(
+        model_fun=model_fun,
+        model_kwargs=kwargs,
+        model_size=model_size,
+        multicoil=True,
+        n_scales=n_scales,
+        res=res,
+        n_primal=n_primal,
+        contrast=contrast,
+        n_epochs=n_epochs,
+        n_samples=n_samples,
+        af=4,
+        loss=loss,
+    ) for _, model_size, model_fun, kwargs, _, n_scales, res in model_specs
 ]
 
 eval_results = train_eval_grid(
