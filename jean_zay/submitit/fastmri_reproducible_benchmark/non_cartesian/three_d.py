@@ -8,6 +8,8 @@ base_params = {
     'three_d': [True],
     'n_epochs': [70],
     'af': [4],
+    'n_filters': [4],
+    'n_iter': [8],
     'acq_type': ['stacks_of_radial', 'stacks_of_spiral'],
     'loss': ['compound_mssim'],
 }
