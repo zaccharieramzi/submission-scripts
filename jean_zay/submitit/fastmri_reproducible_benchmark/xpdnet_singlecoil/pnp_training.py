@@ -11,7 +11,7 @@ model_name = None
 model_size = None
 loss = 'compound_mssim'
 n_samples = None
-n_epochs = 600
+n_epochs = 300
 n_primal = 1
 contrast = 'CORPD_FBK'
 model_specs = list(get_model_specs(force_res=False, n_primal=n_primal))
@@ -56,8 +56,10 @@ for (name, model_size, _, _, _, _, _), eval_res in zip(model_specs, eval_results
     df_results = df_results.append(dict(
         model_name=name,
         model_size=model_size,
-        psnr=eval_res[0],
-        ssim=eval_res[1],
+        psnr=eval_res[0][0],
+        psnr_std=eval_res[1][0],
+        ssim=eval_res[0][1],
+        ssim_std=eval_res[1][1],
     ), ignore_index=True)
 
 print(df_results)
