@@ -34,37 +34,37 @@ parameter_grid = [
     ) for model_name, model_size, model_fun, kwargs, n_inputs, _, _ in model_specs
 ]
 
-eval_results = train_eval_grid(
-# run_ids = [
-#     'DIDN_medium_1602777323',
-#     'DIDN_small_1602777323',
-#     'DnCNN_big_1602777323',
-#     'DnCNN_medium_1602777323',
-#     'DnCNN_small_1602777323',
-#     'FocNet_medium_1602777323',
-#     'FocNet_small_1602777323',
-#     'MWCNN_big_1602777323',
-#     'MWCNN_medium_1602777323',
-#     'MWCNN_small_1602777323',
-#     'U-net_big_1602777323',
-#     'U-net_medium_1602777323',
-#     'U-net_medium-ca_1602777323',
-#     'U-net_small_1602777323',
-# ]
-# eval_results = eval_grid(
-    # run_ids,
+# eval_results = train_eval_grid(
+run_ids = [
+    'DIDN_medium_1602844801',
+    'DIDN_small_1602844801',
+    'DnCNN_big_1602844801',
+    'DnCNN_medium_1602844801',
+    'DnCNN_small_1602844801',
+    'FocNet_medium_1602844801',
+    'FocNet_small_1602844801',
+    'MWCNN_big_1602844801',
+    'MWCNN_medium_1602844801',
+    'MWCNN_small_1602844801',
+    'U-net_big_1602844801',
+    'U-net_medium_1602844801',
+    'U-net_medium-ca_1602844801',
+    'U-net_small_1602844801',
+]
+eval_results = eval_grid(
+    run_ids,
     'denoise',
-    train_denoiser,
+    # train_denoiser,
     evaluate_xpdnet_denoising,
     parameter_grid,
-    n_samples_eval=500,
-    timeout_train=20,
-    n_gpus_train=1,
-    timeout_eval=4,
-    n_gpus_eval=1,
-    # n_samples=200,
-    # timeout=10,
-    # n_gpus=1,
+    # n_samples_eval=500,
+    # timeout_train=20,
+    # n_gpus_train=1,
+    # timeout_eval=4,
+    # n_gpus_eval=1,
+    n_samples=200,
+    timeout=10,
+    n_gpus=1,
     to_grid=False,
     noise_std=30,  # just for eval
 )
@@ -75,8 +75,10 @@ for (name, model_size, _, _, _, _, _), eval_res in zip(model_specs, eval_results
     df_results = df_results.append(dict(
         model_name=name,
         model_size=model_size,
-        psnr=eval_res[0],
-        ssim=eval_res[1],
+        psnr=eval_res[0][0],
+        psnr_std=eval_res[1][0],
+        ssim=eval_res[0][1],
+        ssim_std=eval_res[1][1],
     ), ignore_index=True)
 
 print(df_results)
