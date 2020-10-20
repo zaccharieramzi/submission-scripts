@@ -10,7 +10,7 @@ base_params = {
     'af': [4],
     'n_filters': [4],
     'n_iter': [8],
-    'acq_type': ['stacks_of_radial', 'stacks_of_spiral'],
+    'acq_type': ['radial_stacks', 'spiral_stacks'],
     'loss': ['compound_mssim'],
 }
 
