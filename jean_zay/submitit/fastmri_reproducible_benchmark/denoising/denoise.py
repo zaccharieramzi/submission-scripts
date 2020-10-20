@@ -30,7 +30,7 @@ parameter_grid = [
         n_epochs=n_epochs,
         n_samples=n_samples,
         loss=loss,
-        noise_std=4,
+        noise_std=3,
     ) for model_name, model_size, model_fun, kwargs, n_inputs, _, _ in model_specs
 ]
 
