@@ -59,7 +59,7 @@ eval_results = train_eval_grid(
     evaluate_xpdnet,
     parameter_grid,
     n_samples_eval=100,
-    timeout_train=60,
+    timeout_train=80,
     n_gpus_train=1,
     timeout_eval=10,
     n_gpus_eval=1,
