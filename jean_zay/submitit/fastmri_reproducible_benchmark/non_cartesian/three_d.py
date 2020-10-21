@@ -11,7 +11,7 @@ base_params = {
     'n_filters': [4],
     'n_iter': [4],
     'acq_type': ['radial_stacks', 'spiral_stacks'],
-    'loss': ['compound_mssim'],
+    'loss': ['mse'],
 }
 
 params = [
