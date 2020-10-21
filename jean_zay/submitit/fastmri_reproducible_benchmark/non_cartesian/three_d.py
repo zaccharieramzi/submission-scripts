@@ -9,7 +9,7 @@ base_params = {
     'n_epochs': [70],
     'af': [4],
     'n_filters': [4],
-    'n_iter': [8],
+    'n_iter': [4],
     'acq_type': ['radial_stacks', 'spiral_stacks'],
     'loss': ['compound_mssim'],
 }
