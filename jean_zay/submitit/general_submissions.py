@@ -2,7 +2,7 @@ from sklearn.model_selection import ParameterGrid
 import submitit
 
 
-def get_executor(job_name, timeout_hour=60, n_gpus=1):
+def get_executor(job_name, timeout_hour=60, n_gpus=1, project='fastmri'):
     executor = submitit.AutoExecutor(folder=job_name)
     if timeout_hour > 20:
         qos = 't4'
@@ -25,7 +25,7 @@ def get_executor(job_name, timeout_hour=60, n_gpus=1):
         },
         slurm_setup=[
             'cd $WORK/submission-scripts/jean_zay/env_configs',
-            '. fastmri.sh',
+            f'. {project}.sh',
         ],
     )
     return executor
@@ -41,13 +41,19 @@ def train_eval_grid(
         n_gpus_train=4,
         timeout_eval=10,
         n_gpus_eval=4,
+        project='fastmri',
         **specific_eval_params,
     ):
     if to_grid:
         parameters = list(ParameterGrid(parameter_grid))
     else:
         parameters = parameter_grid
-    executor = get_executor(job_name, timeout_hour=timeout_train, n_gpus=n_gpus_train)
+    executor = get_executor(
+        job_name,
+        timeout_hour=timeout_train,
+        n_gpus=n_gpus_train,
+        project=project,
+    )
     jobs = []
     with executor.batch():
         for param in parameters:
@@ -76,13 +82,19 @@ def eval_grid(
         to_grid=True,
         timeout=10,
         n_gpus=4,
+        project='fastmri',
         **specific_eval_params,
     ):
     if to_grid:
         parameters = list(ParameterGrid(parameter_grid))
     else:
         parameters = parameter_grid
-    executor = get_executor(job_name, timeout_hour=timeout, n_gpus=n_gpus)
+    executor = get_executor(
+        job_name,
+        timeout_hour=timeout,
+        n_gpus=n_gpus,
+        project=project,
+    )
     original_parameters = []
     for params in parameters:
         original_params = {}
