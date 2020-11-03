@@ -132,6 +132,6 @@ dmypy.json
 *.out
 *.err
 *.csv
-*.pickle
+*.pkl
 **/logs/**
 **/checkpoints/**
