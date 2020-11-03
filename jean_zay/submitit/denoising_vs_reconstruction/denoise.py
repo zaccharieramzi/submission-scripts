@@ -49,7 +49,7 @@ eval_results = train_eval_grid(
     train,
     evaluate,
     parameter_grid,
-    n_samples_eval=5,
+    n_samples_eval=500,
     timeout_train=20,
     n_gpus_train=1,
     timeout_eval=4,
