@@ -101,6 +101,7 @@ def eval_grid(
         original_params['loss'] = params.pop('loss', 'mae')
         original_params['n_samples'] = params.pop('n_samples', None)
         original_params['run_id'] = params.pop('run_id', None)
+        original_params['n_steps_per_epoch'] = params.pop('n_steps_per_epoch', None)
         original_params['model_size'] = params.pop('model_size', None)
         original_parameters.append(original_params)
     jobs = []
