@@ -16,11 +16,14 @@ n_samples = None
 n_epochs = 2
 grey = True
 noise_std = 4
+noise_conditionning = True
 additional_info = f'_ns{noise_std}'
 if not grey:
     additional_info += '_color'
 if loss != 'mse':
     additional_info += f'_{loss}'
+if noise_conditionning:
+    additional_info += '_noisecon'
 model_specs = list(get_model_specs(grey=grey))
 if model_name is not None:
     model_specs = [ms for ms in model_specs if ms[0] == model_name]
@@ -33,6 +36,7 @@ parameter_grid = [
         is_denoising=True,
         model_fun=model_fun,
         model_kwargs=kwargs,
+        noise_conditionning=noise_conditionning,
         grey=grey,
         run_id=f'{model_name}_{model_size}_denoising{additional_info}_{int(time.time())}',
         n_epochs=n_epochs,

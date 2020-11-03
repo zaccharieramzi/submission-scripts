@@ -16,11 +16,14 @@ n_samples = None
 n_epochs = 2
 grey = True
 missing_data_perc = (80, 95)
+denoiser_conditionning = True
 additional_info = f'_mdp{missing_data_perc}'
 if not grey:
     additional_info += '_color'
 if loss != 'mse':
     additional_info += f'_{loss}'
+if denoiser_conditionning:
+    additional_info += '_denoisecon'
 model_specs = list(get_model_specs(grey=grey))
 if model_name is not None:
     model_specs = [ms for ms in model_specs if ms[0] == model_name]
@@ -33,6 +36,7 @@ parameter_grid = [
         is_denoising=False,
         model_fun=model_fun,
         model_kwargs=kwargs,
+        noise_conditionning=denoiser_conditionning,
         grey=grey,
         run_id=f'{model_name}_{model_size}_inpainting{additional_info}_{int(time.time())}',
         n_epochs=n_epochs,
