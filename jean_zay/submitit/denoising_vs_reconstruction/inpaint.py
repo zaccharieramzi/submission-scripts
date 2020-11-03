@@ -5,7 +5,7 @@ from denoising_recon.models.denoisers.proposed_params import get_model_specs
 from denoising_recon.training.train import train
 import pandas as pd
 
-from jean_zay.submitit.fastmri_reproducible_benchmark.general_submissions import train_eval_grid, eval_grid
+from jean_zay.submitit.general_submissions import train_eval_grid, eval_grid
 
 
 job_name = 'inpainting_celeba'
@@ -21,7 +21,7 @@ if not grey:
     additional_info += '_color'
 if loss != 'mse':
     additional_info += f'_{loss}'
-model_specs = list(get_model_specs(force_res=True))
+model_specs = list(get_model_specs(grey=grey))
 if model_name is not None:
     model_specs = [ms for ms in model_specs if ms[0] == model_name]
 if model_size is not None:
@@ -39,7 +39,8 @@ parameter_grid = [
         n_samples=n_samples,
         loss=loss,
         missing_data_perc_spec=missing_data_perc,
-    ) for model_name, model_size, model_fun, kwargs in model_specs
+        target_size=(128, 128),
+    ) for model_name, model_size, model_fun, kwargs, _ in model_specs
 ]
 
 eval_results = train_eval_grid(
@@ -55,14 +56,14 @@ eval_results = train_eval_grid(
     n_gpus_eval=1,
     # n_samples=200,
     # timeout=10,
-    n_gpus=1,
+    # n_gpus=1,
     to_grid=False,
     missing_data_perc_spec=(85, 86),  # just for eval
 )
 
 df_results = pd.DataFrame(columns='model_name model_size psnr ssim'.split())
 
-for (name, model_size, _, _, _, _, _), eval_res in zip(model_specs, eval_results):
+for (name, model_size, _, _, _), eval_res in zip(model_specs, eval_results):
     df_results = df_results.append(dict(
         model_name=name,
         model_size=model_size,
