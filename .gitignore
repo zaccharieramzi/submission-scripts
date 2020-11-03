@@ -128,4 +128,9 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# SLURM output *.out
+# SLURM and jobs output
+*.out
+*.err
+*.csv
+logs/**
+checkpoints/**
