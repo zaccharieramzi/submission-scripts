@@ -31,6 +31,9 @@ if model_name is not None:
     model_specs = [ms for ms in model_specs if ms[0] == model_name]
 if model_size is not None:
     model_specs = [ms for ms in model_specs if ms[1] == model_size]
+if denoiser_conditionning:
+    # FocNet doesn't support noise conditionning
+    model_specs = [ms for ms in model_specs if not 'FocNet' in ms[0]]
 
 
 parameter_grid = [
