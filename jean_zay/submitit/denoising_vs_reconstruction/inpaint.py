@@ -12,6 +12,8 @@ job_name = 'inpainting_celeba'
 model_name = None
 model_size = 'small'
 loss = 'mse'
+bn = True
+non_linearity = 'relu'
 n_samples = None
 n_epochs = 2
 grey = True
@@ -24,7 +26,7 @@ if loss != 'mse':
     additional_info += f'_{loss}'
 if denoiser_conditionning:
     additional_info += '_denoisecon'
-model_specs = list(get_model_specs(grey=grey))
+model_specs = list(get_model_specs(grey=grey, mod_kwargs=dict(bn=bn, non_linearity=non_linearity)))
 if model_name is not None:
     model_specs = [ms for ms in model_specs if ms[0] == model_name]
 if model_size is not None:
