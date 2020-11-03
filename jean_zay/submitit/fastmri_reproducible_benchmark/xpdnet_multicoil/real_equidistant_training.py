@@ -2,7 +2,7 @@ from fastmri_recon.evaluate.scripts.xpdnet_eval import evaluate_xpdnet
 from fastmri_recon.models.subclassed_models.denoisers.proposed_params import get_model_specs
 from fastmri_recon.training_scripts.xpdnet_train import train_xpdnet
 
-from jean_zay.submitit.fastmri_reproducible_benchmark.general_submissions import train_eval_grid, eval_grid
+from jean_zay.submitit.general_submissions import train_eval_grid, eval_grid
 
 # TODO: before that: need to change the mask setting in xpdnet train
 job_name = 'fastmri_recon_equidistant_mc'

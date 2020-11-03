@@ -3,7 +3,7 @@ from fastmri_recon.models.subclassed_models.denoisers.proposed_params import get
 from fastmri_recon.training_scripts.xpdnet_train import train_xpdnet
 import pandas as pd
 
-from jean_zay.submitit.fastmri_reproducible_benchmark.general_submissions import train_eval_grid, eval_grid
+from jean_zay.submitit.general_submissions import train_eval_grid, eval_grid
 
 
 job_name = 'recon_fastmri'

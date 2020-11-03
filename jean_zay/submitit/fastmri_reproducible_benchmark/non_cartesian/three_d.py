@@ -1,7 +1,7 @@
 from fastmri_recon.evaluate.scripts.nc_eval import evaluate_nc_multinet
 from fastmri_recon.training_scripts.nc_train import train_ncnet_multinet
 
-from jean_zay.submitit.fastmri_reproducible_benchmark.general_submissions import train_eval_grid, eval_grid
+from jean_zay.submitit.general_submissions import train_eval_grid, eval_grid
 
 
 base_params = {
