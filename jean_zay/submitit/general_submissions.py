@@ -62,10 +62,10 @@ def train_eval_grid(
     run_ids = [job.result() for job in jobs]
     print(run_ids)
     return eval_grid(
-        run_ids,
         job_name,
         eval_function,
         parameter_grid,
+        run_ids=run_ids,
         n_samples=n_samples_eval,
         to_grid=to_grid,
         timeout=timeout_eval,
@@ -74,10 +74,10 @@ def train_eval_grid(
     )
 
 def eval_grid(
-        run_ids,
         job_name,
         eval_function,
         parameter_grid,
+        run_ids=None,
         n_samples=50,
         to_grid=True,
         timeout=10,
@@ -106,10 +106,14 @@ def eval_grid(
         original_parameters.append(original_params)
     jobs = []
     with executor.batch():
+        if run_ids is None:
+            run_ids = [None]*len(parameters)
         for run_id, param in zip(run_ids, parameters):
             kwargs = param
             kwargs.update(**specific_eval_params)
-            job = executor.submit(eval_function, run_id=run_id, n_samples=n_samples, **param)
+            if run_id is not None:
+                kwargs.update(run_id=run_id)
+            job = executor.submit(eval_function, n_samples=n_samples, **kwargs)
             jobs.append(job)
     eval_results = []
     for param, original_param, job in zip(parameters, original_parameters, jobs):
