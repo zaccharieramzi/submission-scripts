@@ -68,6 +68,7 @@ eval_results = train_eval_grid(
     # n_gpus=1,
     to_grid=False,
     noise_power_spec=1,  # just for eval
+    project='denoise_vs_recon',
 )
 
 df_results = pd.DataFrame(columns='model_name model_size psnr ssim'.split())
