@@ -19,7 +19,7 @@ eval_grid(
     job_name,
     test_model,
     param_grid,
-    n_samples=1,
-    timeout=20,
+    n_samples=2,
+    timeout=2,
     n_gpus=1,
 )
