@@ -17,7 +17,7 @@ non_linearity = 'relu'
 n_samples = None
 n_epochs = 5
 grey = True
-noise_std = 4
+noise_std = 3
 noise_conditionning = True
 additional_info = f'_ns{noise_std}'
 if not grey:
