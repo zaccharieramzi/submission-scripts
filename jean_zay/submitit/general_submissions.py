@@ -70,6 +70,7 @@ def train_eval_grid(
         to_grid=to_grid,
         timeout=timeout_eval,
         n_gpus=n_gpus_eval,
+        project=project,
         **specific_eval_params,
     )
 
