@@ -5,4 +5,5 @@ conda activate denoise-vs-recon
 
 export FASTMRI_DATA_DIR=$SCRATCH/
 export LOGS_DIR=$SCRATCH/
+export CHECKPOINTS_DIR=$SCRATCH
 export TFDS_DATA_DIR=$SCRATCH/tensorflow_datasets/
