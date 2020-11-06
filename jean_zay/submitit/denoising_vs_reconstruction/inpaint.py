@@ -15,7 +15,7 @@ loss = 'mse'
 bn = True
 non_linearity = 'relu'
 n_samples = None
-n_epochs = 2
+n_epochs = 5
 grey = True
 missing_data_perc = (80, 95)
 denoiser_conditionning = True
@@ -59,7 +59,7 @@ eval_results = train_eval_grid(
     evaluate,
     parameter_grid,
     n_samples_eval=500,
-    timeout_train=20,
+    timeout_train=80,
     n_gpus_train=1,
     timeout_eval=4,
     n_gpus_eval=1,
