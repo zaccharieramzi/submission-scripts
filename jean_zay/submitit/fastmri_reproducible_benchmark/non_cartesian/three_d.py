@@ -10,6 +10,7 @@ base_params = {
     'af': [4],
     'n_filters': [4],
     'n_iter': [4],
+    'n_primal': [2],
     'acq_type': ['radial_stacks', 'spiral_stacks'],
     'loss': ['mse'],
 }
