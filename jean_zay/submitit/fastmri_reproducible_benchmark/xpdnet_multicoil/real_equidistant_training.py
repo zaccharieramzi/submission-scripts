@@ -65,11 +65,11 @@ run_ids = [
     'xpdnet_sense__af4_CORPD_FBK_compound_mssim_rf_smb_MWCNNmedium_1604901311',
 ]
 eval_results = eval_grid(
-    run_ids,
     job_name,
     # train_xpdnet,
     evaluate_xpdnet,
     parameter_grid,
+    run_ids=run_ids,
     # n_samples_eval=100,
     # timeout_train=100,
     # n_gpus_train=1,
