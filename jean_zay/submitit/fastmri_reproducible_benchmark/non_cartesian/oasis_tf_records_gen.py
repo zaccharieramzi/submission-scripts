@@ -1,0 +1,10 @@
+from fastmri_recon.data.scripts.oasis_tf_records_generation import generate_oasis_tf_records
+
+from jean_zay.submitit.general_submissions import get_executor
+
+
+executor = get_executor('oasis_tfrecords', timeout_hour=100, n_gpus=1, project='fastmri')
+with executor.batch():
+    for mode in ['train', 'val']:
+        for acq_type in ['radial_stacks', 'spiral_stacks']:
+            executor.submit(generate_oasis_tf_records, acq_type=acq_type, af=4, mode=mode)
