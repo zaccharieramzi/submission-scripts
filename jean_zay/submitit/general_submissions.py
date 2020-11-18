@@ -42,6 +42,7 @@ def train_eval_grid(
         timeout_eval=10,
         n_gpus_eval=4,
         project='fastmri',
+        return_run_ids=True,
         **specific_eval_params,
     ):
     if to_grid:
@@ -61,18 +62,32 @@ def train_eval_grid(
             jobs.append(job)
     run_ids = [job.result() for job in jobs]
     print(run_ids)
-    return eval_grid(
-        job_name,
-        eval_function,
-        parameter_grid,
-        run_ids=run_ids,
-        n_samples=n_samples_eval,
-        to_grid=to_grid,
-        timeout=timeout_eval,
-        n_gpus=n_gpus_eval,
-        project=project,
-        **specific_eval_params,
-    )
+    if return_run_ids:
+        return eval_grid(
+            job_name,
+            eval_function,
+            parameter_grid,
+            run_ids=run_ids,
+            n_samples=n_samples_eval,
+            to_grid=to_grid,
+            timeout=timeout_eval,
+            n_gpus=n_gpus_eval,
+            project=project,
+            **specific_eval_params,
+        ), run_ids
+    else:
+        return eval_grid(
+            job_name,
+            eval_function,
+            parameter_grid,
+            run_ids=run_ids,
+            n_samples=n_samples_eval,
+            to_grid=to_grid,
+            timeout=timeout_eval,
+            n_gpus=n_gpus_eval,
+            project=project,
+            **specific_eval_params,
+        )
 
 def eval_grid(
         job_name,
