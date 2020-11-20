@@ -42,7 +42,7 @@ def train_eval_grid(
         timeout_eval=10,
         n_gpus_eval=4,
         project='fastmri',
-        return_run_ids=True,
+        return_run_ids=False,
         **specific_eval_params,
     ):
     if to_grid:
