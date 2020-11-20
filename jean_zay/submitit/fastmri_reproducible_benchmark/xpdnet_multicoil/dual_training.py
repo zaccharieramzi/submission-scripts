@@ -1,11 +1,12 @@
 from fastmri_recon.evaluate.scripts.xpdnet_eval import evaluate_xpdnet
+from fastmri_recon.evaluate.scripts.xpdnet_inference import xpdnet_inference
 from fastmri_recon.models.subclassed_models.denoisers.proposed_params import get_model_specs
 from fastmri_recon.training_scripts.xpdnet_train import train_xpdnet
 
-from jean_zay.submitit.general_submissions import train_eval_grid, eval_grid
+from jean_zay.submitit.general_submissions import train_eval_grid, eval_grid, infer_grid
 
 
-job_name = 'fastmri_recon_dual_xpdnet'
+job_name = 'dual_xpdnet'
 model_name = 'MWCNN'
 model_size = 'medium'
 loss = 'compound_mssim'
@@ -65,7 +66,7 @@ parameter_grid = [
     ) for _, model_size, model_fun, kwargs, _, n_scales, res in model_specs
 ]
 
-eval_results = train_eval_grid(
+eval_results, run_ids = train_eval_grid(
 # run_ids = [
 #     'xpdnet_sense__af4_CORPD_FBK_compound_mssim_MWCNNmedium_1603186070',
 #     'xpdnet_sense__af8_CORPD_FBK_compound_mssim_MWCNNmedium_1603186057',
@@ -85,6 +86,17 @@ eval_results = train_eval_grid(
     # timeout=10,
     # n_gpus=1,
     to_grid=False,
+    return_run_ids=True,
 )
 
 print(eval_results)
+
+infer_grid(
+    job_name,
+    xpdnet_inference,
+    parameter_grid,
+    run_ids=run_ids,
+    timeout=10,
+    n_gpus=1,
+    to_grid=False,
+)
