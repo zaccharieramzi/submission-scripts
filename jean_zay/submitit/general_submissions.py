@@ -140,3 +140,47 @@ def eval_grid(
         print(eval_res)
         eval_results.append(eval_res)
     return eval_results
+
+def infer_grid(
+        job_name,
+        infer_function,
+        parameter_grid,
+        run_ids=None,
+        to_grid=True,
+        timeout=10,
+        n_gpus=4,
+        project='fastmri',
+        **specific_infer_params,
+    ):
+    if to_grid:
+        parameters = list(ParameterGrid(parameter_grid))
+    else:
+        parameters = parameter_grid
+    executor = get_executor(
+        job_name,
+        timeout_hour=timeout,
+        n_gpus=n_gpus,
+        project=project,
+    )
+    original_parameters = []
+    for params in parameters:
+        original_params = {}
+        original_params['loss'] = params.pop('loss', 'mae')
+        original_params['n_samples'] = params.pop('n_samples', None)
+        original_params['run_id'] = params.pop('run_id', None)
+        original_params['n_steps_per_epoch'] = params.pop('n_steps_per_epoch', None)
+        original_params['model_size'] = params.pop('model_size', None)
+        original_parameters.append(original_params)
+    jobs = []
+    with executor.batch():
+        if run_ids is None:
+            run_ids = [None]*len(parameters)
+        for run_id, param in zip(run_ids, parameters):
+            kwargs = param
+            kwargs.update(**specific_infer_params)
+            if run_id is not None:
+                kwargs.update(run_id=run_id)
+            job = executor.submit(infer_function, exp_id=job_name, **kwargs)
+            jobs.append(job)
+    for job in jobs:
+        job.result()
