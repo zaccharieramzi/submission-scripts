@@ -12,6 +12,7 @@ base_params = {
     'n_primal': [3],
     'acq_type': ['radial_stacks', 'spiral_stacks'],
     'loss': ['mse'],
+    'dcomp': [True],
 }
 
 train_eval_grid(
