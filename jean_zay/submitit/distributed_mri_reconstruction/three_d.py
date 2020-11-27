@@ -14,4 +14,11 @@ base_params = {
     'loss': ['mse'],
 }
 
-train_eval_grid('3d_nc_mesh', train, evaluate, base_params, n_samples_eval=30)
+train_eval_grid(
+    '3d_nc_mesh',
+    train,
+    evaluate,
+    base_params,
+    n_samples_eval=30,
+    project='dismri_recon',
+)
