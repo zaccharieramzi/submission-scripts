@@ -13,6 +13,7 @@ base_params = {
     'acq_type': ['radial_stacks', 'spiral_stacks'],
     'loss': ['mse'],
     'dcomp': [True],
+    'split': ['features', 'spatial'],
 }
 
 train_eval_grid(
@@ -22,4 +23,5 @@ train_eval_grid(
     base_params,
     n_samples_eval=30,
     project='dismri_recon',
+    timeout_train=100,
 )
