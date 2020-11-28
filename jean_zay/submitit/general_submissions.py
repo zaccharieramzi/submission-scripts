@@ -119,6 +119,7 @@ def eval_grid(
         original_params['run_id'] = params.pop('run_id', None)
         original_params['n_steps_per_epoch'] = params.pop('n_steps_per_epoch', None)
         original_params['model_size'] = params.pop('model_size', None)
+        original_params['model_name'] = params.pop('model_name', None)
         original_parameters.append(original_params)
     jobs = []
     with executor.batch():
