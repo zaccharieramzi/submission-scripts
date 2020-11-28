@@ -112,7 +112,7 @@ for noise_level in noise_levels[:-1]:
 eval_res.append(eval_results_50)
 df_results = pd.DataFrame(columns='model_name noise_level psnr ssim'.split())
 for eval_results, noise_level in zip(eval_res, noise_levels):
-    for (_, metrics), model_name in zip(eval_results, model.keys()):
+    for (_, metrics), model_name in zip(eval_results, models.keys()):
         df_results = df_results.append(dict(
             model_name=model_name,
             noise_level=noise_level,
