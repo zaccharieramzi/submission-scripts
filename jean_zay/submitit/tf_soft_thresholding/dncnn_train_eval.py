@@ -107,7 +107,7 @@ for noise_level in noise_levels[:-1]:
         noise_config=noise_config_eval,  # just for eval
         project='soft_thresholding',
     )
-    eval_res.append(eval_res)
+    eval_res.append(eval_results)
 
 eval_res.append(eval_results_50)
 data_for_df = []
