@@ -105,7 +105,7 @@ for noise_level in noise_levels[:-1]:
         patch_size=patch_size_eval,  # just for eval
         batch_size=batch_size_eval,  # just for eval
         noise_config=noise_config_eval,  # just for eval
-        project='soft_threholding',
+        project='soft_thresholding',
     )
     eval_res.append(eval_res)
 
