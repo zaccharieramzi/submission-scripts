@@ -110,16 +110,16 @@ for noise_level in noise_levels[:-1]:
     eval_res.append(eval_res)
 
 eval_res.append(eval_results_50)
-df_results = pd.DataFrame(columns='model_name noise_level psnr ssim'.split())
+data_for_df = []
 for eval_results, noise_level in zip(eval_res, noise_levels):
     for metrics, model_name in zip(eval_results, models.keys()):
-        df_results = df_results.append(dict(
-            model_name=model_name,
-            noise_level=noise_level,
-            psnr=metrics[0],
-            ssim=metrics[1],
-        ), ignore_index=True)
-
+        data_for_df.append([
+            model_name,
+            noise_level,
+            metrics[0],
+            metrics[1],
+        ])
+df_results = pd.DataFrame(data_for_df, columns='model_name noise_level psnr ssim'.split())
 
 print(df_results)
 outputs_file = 'denoising_results_dncnn.csv'
