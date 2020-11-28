@@ -22,6 +22,7 @@ def get_executor(job_name, timeout_hour=60, n_gpus=1, project='fastmri'):
             'qos': f'qos_gpu-{qos}',
             'distribution': 'block:block',
             'hint': 'nomultithread',
+            'partition': 'gpu_p2',
         },
         slurm_setup=[
             'cd $WORK/submission-scripts/jean_zay/env_configs',
