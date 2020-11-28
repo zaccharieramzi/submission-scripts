@@ -76,7 +76,7 @@ eval_results_50, run_ids = train_eval_grid(
     patch_size=patch_size_eval,  # just for eval
     batch_size=batch_size_eval,  # just for eval
     noise_config=noise_config_eval,  # just for eval
-    project='soft_threholding',
+    project='soft_thresholding',
     return_run_ids=True,
 )
 
