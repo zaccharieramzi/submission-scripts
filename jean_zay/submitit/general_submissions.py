@@ -17,7 +17,7 @@ def get_executor(job_name, timeout_hour=60, n_gpus=1, project='fastmri'):
         slurm_gres=f'gpu:{n_gpus}',
         slurm_additional_parameters={
             'ntasks': 1,
-            'cpus-per-task':  10 * n_gpus,
+            'cpus-per-task':  3 * n_gpus,  # on the gpu_p2 permission you have 3 CPUs per GPU
             'account': 'hih@gpu',
             'qos': f'qos_gpu-{qos}',
             'distribution': 'block:block',
