@@ -6,7 +6,7 @@ from jean_zay.submitit.general_submissions import train_eval_grid, eval_grid
 
 
 job_name = 'st_denoising'
-n_epochs = 1
+n_epochs = 100
 to_grey = True
 patch_size = 64
 patch_size_eval = None
