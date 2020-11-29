@@ -17,7 +17,7 @@
 #SBATCH --partition=gpu_p2
 #SBATCH --qos=qos_gpu-t4
 #SBATCH --signal=USR1@90
-#SBATCH --time=100:00:00
+#SBATCH --time=10:00:00
 #SBATCH --wckey=submitit
 
 
