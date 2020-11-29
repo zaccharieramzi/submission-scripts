@@ -23,6 +23,8 @@ noise_config_eval = dict(
     noise_power_spec=noise_levels[-1]/255,
 )
 n_samples_eval = 20
+n_filters = 64
+n_convs = 17
 models = {
     'dncnn-relu': {},
     'dncnn-prelu': {'activation': 'prelu'},
@@ -47,7 +49,7 @@ models = {
 }
 parameter_grid = [
     dict(
-        model_config=dict(**model_config),
+        model_config=dict(n_filters=n_filters, n_convs=n_convs, **model_config),
         model_name=model_name,
         n_epochs=n_epochs,
         to_grey=to_grey,
