@@ -6,7 +6,7 @@ from jean_zay.submitit.general_submissions import train_eval_grid, eval_grid
 
 
 job_name = 'st_denoising'
-n_epochs = 100
+n_epochs = 1000
 to_grey = True
 patch_size = 64
 patch_size_eval = None
@@ -22,7 +22,7 @@ noise_config_eval = dict(
     fixed_noise=True,
     noise_power_spec=noise_levels[-1]/255,
 )
-n_samples_eval = 20
+n_samples_eval = 50
 n_filters = 64
 n_convs = 17
 models = {
