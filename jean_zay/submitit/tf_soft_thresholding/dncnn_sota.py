@@ -5,7 +5,7 @@ from jean_zay.submitit.general_submissions import train_eval_grid, eval_grid
 
 
 job_name = 'dncnn_sota'
-n_epochs = 1000
+n_epochs = 200
 to_grey = True
 patch_size = 50
 patch_size_eval = None
