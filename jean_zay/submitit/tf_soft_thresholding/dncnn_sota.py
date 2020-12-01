@@ -5,11 +5,12 @@ from jean_zay.submitit.general_submissions import train_eval_grid, eval_grid
 
 
 job_name = 'dncnn_sota'
-n_epochs = 200
+n_epochs = 50
 to_grey = True
 patch_size = 50
 patch_size_eval = None
 batch_size = 128
+n_steps_per_epoch = 3000
 batch_size_eval = 1
 noise_config = dict(
     noise_input=True,
@@ -36,6 +37,7 @@ parameter_grid = [
         to_grey=to_grey,
         patch_size=patch_size,
         batch_size=batch_size,
+        n_steps_per_epoch=n_steps_per_epoch,
         noise_config=noise_config,
     )
     for model_name, model_config in models.items()
