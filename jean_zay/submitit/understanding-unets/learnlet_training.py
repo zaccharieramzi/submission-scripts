@@ -1,4 +1,4 @@
-from learning_wavelets.training_scripts.train_learnlets import train_learnlets as train
+from learning_wavelets.training_scripts.learnlet_training import train_learnlets as train
 from learning_wavelets.evaluate_scripts.evaluate_learnlets import evaluate_learnlets as evaluate
 
 from jean_zay.submitit.general_submissions import train_eval_grid, eval_grid
