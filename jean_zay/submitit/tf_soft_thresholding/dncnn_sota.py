@@ -4,12 +4,12 @@ from tf_soft_thresholding.evaluate.evaluate_denoisers import evaluate_dncnn as e
 from jean_zay.submitit.general_submissions import train_eval_grid, eval_grid
 
 
-job_name = 'dncnn_sota_decay'
-n_epochs = 400
+job_name = 'dncnn_sota'
+n_epochs = 50
 to_grey = True
-patch_size = 64
+patch_size = 256
 patch_size_eval = None
-batch_size = 128
+batch_size = 32
 n_steps_per_epoch = 3000
 batch_size_eval = 1
 noise_config = dict(
@@ -24,7 +24,7 @@ noise_config_eval = dict(
 )
 n_samples_eval = 100
 n_filters = 64
-n_convs = 17
+n_convs = 20
 models = {
     'dncnn-relu': {},
     'dcnnn-relu-bn': {'bn': True},
