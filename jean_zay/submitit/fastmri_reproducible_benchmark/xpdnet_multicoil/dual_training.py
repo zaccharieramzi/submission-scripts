@@ -87,7 +87,7 @@ eval_results = eval_grid(
     timeout=10,
     n_gpus=1,
     to_grid=False,
-    return_run_ids=True,
+    # return_run_ids=True,
 )
 
 print(eval_results)
