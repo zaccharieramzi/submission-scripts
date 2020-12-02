@@ -73,11 +73,11 @@ run_ids = [
 ]
 
 eval_results = eval_grid(
-    run_ids,
     job_name,
     # train_xpdnet,
     evaluate_xpdnet,
     parameter_grid,
+    run_ids=run_ids,
     # n_samples_eval=100,
     # timeout_train=100,
     # n_gpus_train=1,
