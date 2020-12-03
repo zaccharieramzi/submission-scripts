@@ -165,6 +165,7 @@ def infer_grid(
         timeout=10,
         n_gpus=4,
         project='fastmri',
+        params_to_ignore=None,
         **specific_infer_params,
     ):
     if to_grid:
@@ -178,13 +179,23 @@ def infer_grid(
         project=project,
     )
     original_parameters = []
+    if params_to_ignore is None:
+        params_to_ignore = []
+    params_to_ignore += [
+        'loss',
+        'n_samples',
+        'run_id',
+        'n_steps_per_epoch',
+        'model_size',
+        'model_name',
+        'lr',
+    ]
     for params in parameters:
         original_params = {}
-        original_params['loss'] = params.pop('loss', 'mae')
-        original_params['n_samples'] = params.pop('n_samples', None)
-        original_params['run_id'] = params.pop('run_id', None)
-        original_params['n_steps_per_epoch'] = params.pop('n_steps_per_epoch', None)
-        original_params['model_size'] = params.pop('model_size', None)
+        params_keys = list(params.keys())
+        for param in params_keys:
+            if param in params_to_ignore:
+                original_params[param] = params.pop(param, None)
         original_parameters.append(original_params)
     jobs = []
     with executor.batch():
