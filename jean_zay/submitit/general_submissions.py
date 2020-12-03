@@ -132,7 +132,8 @@ def eval_grid(
         original_params = {}
         params_keys = list(params.keys())
         for param in params_keys:
-            original_params[param] = params.pop(param, None)
+            if param in params_to_ignore:
+                original_params[param] = params.pop(param, None)
         original_parameters.append(original_params)
     jobs = []
     with executor.batch():
