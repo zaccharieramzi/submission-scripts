@@ -26,6 +26,7 @@ eval_results = train_eval_grid(
     # n_gpus=1,
     to_grid=True,
     noise_stds=[0.00001, 5, 15, 20, 25, 30, 50, 55, 60, 75],
+    params_to_ignore=['random_analysis'],
     project='learnlets',
 )
 
