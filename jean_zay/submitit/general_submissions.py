@@ -44,6 +44,7 @@ def train_eval_grid(
         n_gpus_eval=4,
         project='fastmri',
         return_run_ids=False,
+        params_to_ignore=None,
         **specific_eval_params,
     ):
     if to_grid:
@@ -74,6 +75,7 @@ def train_eval_grid(
             timeout=timeout_eval,
             n_gpus=n_gpus_eval,
             project=project,
+            params_to_ignore=params_to_ignore,
             **specific_eval_params,
         ), run_ids
     else:
@@ -87,6 +89,7 @@ def train_eval_grid(
             timeout=timeout_eval,
             n_gpus=n_gpus_eval,
             project=project,
+            params_to_ignore=params_to_ignore,
             **specific_eval_params,
         )
 
@@ -100,6 +103,7 @@ def eval_grid(
         timeout=10,
         n_gpus=4,
         project='fastmri',
+        params_to_ignore=None,
         **specific_eval_params,
     ):
     if to_grid:
@@ -113,15 +117,21 @@ def eval_grid(
         project=project,
     )
     original_parameters = []
+    if params_to_ignore is None:
+        params_to_ignore = []
+    params_to_ignore += [
+        'loss',
+        'n_samples',
+        'run_id',
+        'n_steps_per_epoch',
+        'model_size',
+        'model_name',
+        'lr',
+    ]
     for params in parameters:
         original_params = {}
-        original_params['loss'] = params.pop('loss', 'mae')
-        original_params['n_samples'] = params.pop('n_samples', None)
-        original_params['run_id'] = params.pop('run_id', None)
-        original_params['n_steps_per_epoch'] = params.pop('n_steps_per_epoch', None)
-        original_params['model_size'] = params.pop('model_size', None)
-        original_params['model_name'] = params.pop('model_name', None)
-        original_params['lr'] = params.pop('lr', None)
+        for param in params:
+            original_params[param] = params.pop(param, None)
         original_parameters.append(original_params)
     jobs = []
     with executor.batch():
