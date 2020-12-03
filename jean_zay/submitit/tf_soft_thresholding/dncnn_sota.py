@@ -22,7 +22,7 @@ noise_config_eval = dict(
     fixed_noise=True,
     noise_power_spec=25/255,
 )
-n_samples_eval = 100
+n_samples_eval = 68
 n_filters = 64
 n_convs = 20
 models = {
@@ -44,26 +44,29 @@ parameter_grid = [
     for model_name, model_config in models.items()
 ]
 
-eval_results, run_ids = train_eval_grid(
-# eval_results = eval_grid(
+# eval_results, run_ids = train_eval_grid(
+run_ids = ['dncnn-relu_1606927954', 'dcnnn-relu-bn_1606927955']
+eval_results = eval_grid(
     job_name,
-    train,
+    # train,
     evaluate,
     parameter_grid,
-    n_samples_eval=n_samples_eval,
-    timeout_train=20,
-    n_gpus_train=4,
-    timeout_eval=4,
-    n_gpus_eval=1,
-    # n_samples=200,
-    # timeout=10,
-    # n_gpus=1,
+    run_ids=run_ids,
+    # n_samples_eval=n_samples_eval,
+    # timeout_train=20,
+    # n_gpus_train=4,
+    # timeout_eval=4,
+    # n_gpus_eval=1,
+    n_samples=n_samples_eval,
+    timeout=10,
+    n_gpus=1,
     to_grid=False,
     patch_size=patch_size_eval,  # just for eval
     batch_size=batch_size_eval,  # just for eval
     noise_config=noise_config_eval,  # just for eval
+    mode='bsd68',  # just for eval
     project='soft_thresholding',
-    return_run_ids=True,
+    # return_run_ids=False,
 )
 
 print(eval_results)
