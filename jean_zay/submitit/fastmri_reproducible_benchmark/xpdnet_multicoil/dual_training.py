@@ -72,25 +72,25 @@ run_ids = [
     'xpdnet_sense__af4_compound_mssim_rf_smb_MWCNNmedium_1606491318',
 ]
 
-eval_results = eval_grid(
-    job_name,
-    # train_xpdnet,
-    evaluate_xpdnet,
-    parameter_grid,
-    run_ids=run_ids,
-    # n_samples_eval=100,
-    # timeout_train=100,
-    # n_gpus_train=1,
-    # timeout_eval=10,
-    # n_gpus_eval=1,
-    n_samples=100,
-    timeout=10,
-    n_gpus=1,
-    to_grid=False,
-    # return_run_ids=True,
-)
+# eval_results = eval_grid(
+#     job_name,
+#     # train_xpdnet,
+#     evaluate_xpdnet,
+#     parameter_grid,
+#     run_ids=run_ids,
+#     # n_samples_eval=100,
+#     # timeout_train=100,
+#     # n_gpus_train=1,
+#     # timeout_eval=10,
+#     # n_gpus_eval=1,
+#     n_samples=100,
+#     timeout=10,
+#     n_gpus=1,
+#     to_grid=False,
+#     # return_run_ids=True,
+# )
 
-print(eval_results)
+# print(eval_results)
 
 infer_grid(
     job_name,
@@ -100,4 +100,5 @@ infer_grid(
     timeout=10,
     n_gpus=1,
     to_grid=False,
+    params_to_ignore=['mask_type', 'multicoil'],
 )
