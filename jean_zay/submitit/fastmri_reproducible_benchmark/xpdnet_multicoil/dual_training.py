@@ -98,7 +98,7 @@ infer_grid(
     parameter_grid,
     run_ids=run_ids,
     timeout=10,
-    n_gpus=1,
+    n_gpus=4,
     to_grid=False,
     params_to_ignore=['mask_type', 'multicoil'],
 )
