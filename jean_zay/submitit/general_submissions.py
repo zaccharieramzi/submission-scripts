@@ -130,7 +130,8 @@ def eval_grid(
     ]
     for params in parameters:
         original_params = {}
-        for param in params:
+        params_keys = params.keys()
+        for param in params_keys:
             original_params[param] = params.pop(param, None)
         original_parameters.append(original_params)
     jobs = []
