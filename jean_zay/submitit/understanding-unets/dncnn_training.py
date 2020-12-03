@@ -9,6 +9,7 @@ parameter_grid = {
     'bn': [True, False],
     'n_epochs': [100],
     'steps_per_epoch': [3000],
+    'lr': [1e-4],
 }
 
 eval_results = train_eval_grid(
