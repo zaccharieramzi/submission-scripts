@@ -130,7 +130,7 @@ def eval_grid(
     ]
     for params in parameters:
         original_params = {}
-        params_keys = params.keys()
+        params_keys = list(params.keys())
         for param in params_keys:
             original_params[param] = params.pop(param, None)
         original_parameters.append(original_params)
