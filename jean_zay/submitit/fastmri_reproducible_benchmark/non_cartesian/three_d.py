@@ -17,7 +17,7 @@ base_params = {
 }
 
 params = [
-  dict(dcomp=[True], normalize_image=[False], model=['pdnet'], **base_params),
+  dict(dcomp=[True], normalize_image=[False], model=['unet', 'pdnet'], **base_params),
   dict(dcomp=[False], normalize_image=[True], model=['pdnet'], **base_params),
 ]
 
