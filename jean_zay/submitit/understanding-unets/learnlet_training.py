@@ -10,20 +10,22 @@ parameter_grid = {
     'exact_reconstruction': [True]
 }
 
-eval_results = train_eval_grid(
-# eval_results = eval_grid(
+# eval_results = train_eval_grid(
+run_ids = ['learnlet_dynamicra_1607011067', 'learnlet_dynamic1607011067']
+eval_results = eval_grid(
     job_name,
-    train,
+    # train,
     evaluate,
     parameter_grid,
-    n_samples_eval=None,
-    timeout_train=20,
-    n_gpus_train=4,
-    timeout_eval=4,
-    n_gpus_eval=1,
-    # n_samples=200,
-    # timeout=10,
-    # n_gpus=1,
+    run_ids=run_ids,
+    # n_samples_eval=None,
+    # timeout_train=20,
+    # n_gpus_train=4,
+    # timeout_eval=4,
+    # n_gpus_eval=1,
+    n_samples=None,
+    timeout=10,
+    n_gpus=1,
     to_grid=True,
     noise_stds=[0.00001, 5, 15, 20, 25, 30, 50, 55, 60, 75],
     params_to_ignore=['random_analysis'],
