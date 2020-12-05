@@ -20,6 +20,7 @@ refine_smaps = True
 refine_big = True
 n_dual = 5
 primal_only = False
+use_mixed_precision = True
 model_specs = list(get_model_specs(force_res=False, n_primal=n_primal))
 if model_name is not None:
     model_specs = [ms for ms in model_specs if ms[0] == model_name]
@@ -47,6 +48,7 @@ parameter_grid = [
         mask_type='random',
         n_dual=n_dual,
         primal_only=primal_only,
+        use_mixed_precision=use_mixed_precision,
     ) for _, model_size, model_fun, kwargs, _, n_scales, res in model_specs
 ] + [
     dict(
@@ -69,6 +71,7 @@ parameter_grid = [
         mask_type='random',
         n_dual=n_dual,
         primal_only=primal_only,
+        use_mixed_precision=use_mixed_precision,
     ) for _, model_size, model_fun, kwargs, _, n_scales, res in model_specs
 ]
 
