@@ -95,8 +95,8 @@ eval_results, run_ids = train_eval_grid(
     # n_samples=100,
     # timeout=10,
     # n_gpus=1,
-    # to_grid=False,
-    # return_run_ids=True,
+    to_grid=False,
+    return_run_ids=True,
 )
 
 print(eval_results)
