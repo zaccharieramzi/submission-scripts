@@ -40,6 +40,7 @@ parameter_grid = [
         n_steps_per_epoch=n_steps_per_epoch,
         noise_config=noise_config,
         lr=1e-4,
+        loss='mae',
     )
     for model_name, model_config in models.items()
 ]
