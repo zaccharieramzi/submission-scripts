@@ -6,11 +6,12 @@ from jean_zay.submitit.general_submissions import train_eval_grid, eval_grid
 
 
 job_name = 'st_denoising'
-n_epochs = 1000
+n_epochs = 200
 to_grey = True
-patch_size = 64
+patch_size = 256
 patch_size_eval = None
-batch_size = 32
+batch_size = 8
+n_steps_per_epoch = 3000
 batch_size_eval = 1
 noise_levels = [0, 5, 15, 25, 30, 45, 50]
 noise_config = dict(
@@ -22,9 +23,9 @@ noise_config_eval = dict(
     fixed_noise=True,
     noise_power_spec=noise_levels[-1]/255,
 )
-n_samples_eval = 50
+n_samples_eval = 68
 n_filters = 64
-n_convs = 17
+n_convs = 20
 models = {
     'dncnn-relu': {},
     'dncnn-prelu': {'activation': 'prelu'},
@@ -56,6 +57,8 @@ parameter_grid = [
         patch_size=patch_size,
         batch_size=batch_size,
         noise_config=noise_config,
+        lr=1e-4,
+        loss='mae',
     )
     for model_name, model_config in models.items()
 ]
@@ -68,7 +71,7 @@ eval_results_50, run_ids = train_eval_grid(
     parameter_grid,
     n_samples_eval=n_samples_eval,
     timeout_train=20,
-    n_gpus_train=1,
+    n_gpus_train=4,
     timeout_eval=4,
     n_gpus_eval=1,
     # n_samples=200,
@@ -78,6 +81,7 @@ eval_results_50, run_ids = train_eval_grid(
     patch_size=patch_size_eval,  # just for eval
     batch_size=batch_size_eval,  # just for eval
     noise_config=noise_config_eval,  # just for eval
+    mode='bsd68',  # just for eval
     project='soft_thresholding',
     return_run_ids=True,
 )
@@ -107,6 +111,7 @@ for noise_level in noise_levels[:-1]:
         patch_size=patch_size_eval,  # just for eval
         batch_size=batch_size_eval,  # just for eval
         noise_config=noise_config_eval,  # just for eval
+        mode='bsd68',  # just for eval
         project='soft_thresholding',
     )
     eval_res.append(eval_results)
