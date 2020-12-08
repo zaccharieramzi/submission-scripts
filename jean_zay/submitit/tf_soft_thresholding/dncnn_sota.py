@@ -45,22 +45,22 @@ parameter_grid = [
     for model_name, model_config in models.items()
 ]
 
-eval_results, run_ids = train_eval_grid(
-# run_ids = ['dncnn-relu_1606927954', 'dcnnn-relu-bn_1606927955']
-# eval_results = eval_grid(
+# eval_results, run_ids = train_eval_grid(
+run_ids = ['dncnn-relu_1607341394', 'dcnnn-relu-bn_1607346862']
+eval_results = eval_grid(
     job_name,
-    train,
+    # train,
     evaluate,
     parameter_grid,
-    # run_ids=run_ids,
-    n_samples_eval=n_samples_eval,
-    timeout_train=20,
-    n_gpus_train=4,
-    timeout_eval=4,
-    n_gpus_eval=1,
-    # n_samples=n_samples_eval,
-    # timeout=10,
-    # n_gpus=1,
+    run_ids=run_ids,
+    # n_samples_eval=n_samples_eval,
+    # timeout_train=20,
+    # n_gpus_train=4,
+    # timeout_eval=4,
+    # n_gpus_eval=1,
+    n_samples=n_samples_eval,
+    timeout=10,
+    n_gpus=1,
     to_grid=False,
     patch_size=patch_size_eval,  # just for eval
     batch_size=batch_size_eval,  # just for eval
