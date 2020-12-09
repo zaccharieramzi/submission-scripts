@@ -56,6 +56,7 @@ parameter_grid = [
         to_grey=to_grey,
         patch_size=patch_size,
         batch_size=batch_size,
+        n_steps_per_epoch=n_steps_per_epoch,
         noise_config=noise_config,
         lr=1e-4,
         loss='mae',
