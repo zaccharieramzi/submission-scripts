@@ -11,13 +11,13 @@ from jean_zay.submitit.general_submissions import train_eval_grid, eval_grid
 job_name = 'denoising_celeba'
 model_name = None
 model_size = 'small'
-loss = 'mse'
-bn = True
+loss = 'mae'
+bn = False
 non_linearity = 'relu'
 n_samples = None
 n_epochs = 5
 grey = True
-noise_std = 3
+noise_std = 1
 noise_conditionning = True
 additional_info = f'_ns{noise_std}'
 if not grey:
