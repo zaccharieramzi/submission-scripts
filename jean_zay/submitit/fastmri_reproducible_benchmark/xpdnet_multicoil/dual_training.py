@@ -20,7 +20,7 @@ refine_smaps = True
 refine_big = True
 n_dual = 5
 primal_only = False
-use_mixed_precision = True
+use_mixed_precision = False
 model_specs = list(get_model_specs(force_res=False, n_primal=n_primal))
 if model_name is not None:
     model_specs = [ms for ms in model_specs if ms[0] == model_name]
