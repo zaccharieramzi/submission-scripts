@@ -1,4 +1,4 @@
-from fastmri_recon.evaluate.scripts.postprocess_eval import eval_vnet_postproc
+from fastmri_recon.evaluate.scripts.postprocess_eval import evaluate_vnet_postproc
 # from fastmri_recon.evaluate.scripts.xpdnet_inference import xpdnet_inference
 from fastmri_recon.models.subclassed_models.denoisers.proposed_params import get_model_specs
 from fastmri_recon.training_scripts.postprocess_train import train_vnet_postproc
@@ -89,7 +89,7 @@ eval_results, run_ids = train_eval_grid(
 # eval_results = eval_grid(
     job_name,
     train_vnet_postproc,
-    eval_vnet_postproc,
+    evaluate_vnet_postproc,
     parameter_grid,
     # run_ids=run_ids,
     n_samples_eval=50,
