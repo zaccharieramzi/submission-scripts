@@ -10,16 +10,18 @@ job_name = 'post_process'
 model_name = 'MWCNN'
 model_size = 'medium'
 loss = 'compound_mssim'
+equidistant_fake = True
+brain = True
 lr = 1e-4
 n_samples = None
 n_epochs = 250
-n_epochs_original = 300
+n_epochs_original = 100
 n_primal = 5
 contrast = None
 refine_smaps = True
 refine_big = True
 n_dual = 1
-n_iter = 10
+n_iter = 25
 primal_only = True
 multiscale_kspace_learning = False
 use_mixed_precision = False
@@ -33,8 +35,9 @@ parameter_grid = [
     dict(
         orig_model_fun=model_fun,
         orig_model_kwargs=kwargs,
-        original_run_id='xpdnet_sense__af8_compound_mssim_rf_smb_MWCNNmedium_1606491318',
+        original_run_id='xpdnet_sense_brain__af8_i25_compound_mssim_rf_sm_MWCNNmedium_1601203547',
         multicoil=True,
+        brain=brain,
         n_scales=n_scales,
         res=res,
         n_primal=n_primal,
@@ -46,20 +49,21 @@ parameter_grid = [
         af=8,
         loss=loss,
         lr=lr,
-        mask_type='random',
         n_dual=n_dual,
         n_iter=n_iter,
         primal_only=primal_only,
         multiscale_kspace_learning=multiscale_kspace_learning,
         use_mixed_precision=use_mixed_precision,
         n_epochs_original=n_epochs_original,
+        equidistant_fake=equidistant_fake,
     ) for _, model_size, model_fun, kwargs, _, n_scales, res in model_specs
 ] + [
     dict(
         orig_model_fun=model_fun,
         orig_model_kwargs=kwargs,
-        original_run_id='xpdnet_sense__af4_compound_mssim_rf_smb_MWCNNmedium_1606491318',
+        original_run_id='xpdnet_sense_brain__af4_i25_compound_mssim_rf_smb_MWCNNmedium_1601987069',
         multicoil=True,
+        brain=brain,
         n_scales=n_scales,
         res=res,
         n_primal=n_primal,
@@ -71,13 +75,13 @@ parameter_grid = [
         af=4,
         loss=loss,
         lr=lr,
-        mask_type='random',
         n_dual=n_dual,
         n_iter=n_iter,
         primal_only=primal_only,
         multiscale_kspace_learning=multiscale_kspace_learning,
         use_mixed_precision=use_mixed_precision,
         n_epochs_original=n_epochs_original,
+        equidistant_fake=equidistant_fake,
     ) for _, model_size, model_fun, kwargs, _, n_scales, res in model_specs
 ]
 
