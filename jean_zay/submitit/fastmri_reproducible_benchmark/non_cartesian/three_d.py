@@ -14,6 +14,7 @@ base_params = {
     'acq_type': ['radial_stacks', 'spiral_stacks'],
     'loss': ['mse'],
     'use_mixed_precision': [True],
+    'scale_factor': [1e-2],
 }
 
 params = [
