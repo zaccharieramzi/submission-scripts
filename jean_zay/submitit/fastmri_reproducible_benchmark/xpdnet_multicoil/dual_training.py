@@ -20,7 +20,8 @@ refine_smaps = True
 refine_big = True
 n_dual = 5
 primal_only = False
-multiscale_kspace_learning = True
+multiscale_kspace_learning = False
+n_dual_filters = 8
 use_mixed_precision = False
 model_specs = list(get_model_specs(force_res=False, n_primal=n_primal))
 if model_name is not None:
@@ -49,6 +50,7 @@ parameter_grid = [
         mask_type='random',
         n_dual=n_dual,
         primal_only=primal_only,
+        n_dual_filters=n_dual_filters,
         multiscale_kspace_learning=multiscale_kspace_learning,
         use_mixed_precision=use_mixed_precision,
     ) for _, model_size, model_fun, kwargs, _, n_scales, res in model_specs
@@ -73,6 +75,7 @@ parameter_grid = [
         mask_type='random',
         n_dual=n_dual,
         primal_only=primal_only,
+        n_dual_filters=n_dual_filters,
         multiscale_kspace_learning=multiscale_kspace_learning,
         use_mixed_precision=use_mixed_precision,
     ) for _, model_size, model_fun, kwargs, _, n_scales, res in model_specs
