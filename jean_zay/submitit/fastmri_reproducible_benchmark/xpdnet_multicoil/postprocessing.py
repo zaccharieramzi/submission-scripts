@@ -13,6 +13,7 @@ loss = 'compound_mssim'
 lr = 1e-4
 n_samples = None
 n_epochs = 250
+n_epochs_original = 300
 n_primal = 5
 contrast = None
 refine_smaps = True
@@ -31,7 +32,7 @@ parameter_grid = [
     dict(
         orig_model_fun=model_fun,
         orig_model_kwargs=kwargs,
-        original_run_id='',
+        original_run_id='xpdnet_sense__af8_compound_mssim_rf_smb_MWCNNmedium_1606491318',
         model_size=model_size,
         multicoil=True,
         n_scales=n_scales,
@@ -50,12 +51,13 @@ parameter_grid = [
         primal_only=primal_only,
         multiscale_kspace_learning=multiscale_kspace_learning,
         use_mixed_precision=use_mixed_precision,
+        n_epochs_original=n_epochs_original,
     ) for _, model_size, model_fun, kwargs, _, n_scales, res in model_specs
 ] + [
     dict(
         orig_model_fun=model_fun,
         orig_model_kwargs=kwargs,
-        original_run_id='',
+        original_run_id='xpdnet_sense__af4_compound_mssim_rf_smb_MWCNNmedium_1606491318',
         model_size=model_size,
         multicoil=True,
         n_scales=n_scales,
@@ -74,6 +76,7 @@ parameter_grid = [
         primal_only=primal_only,
         multiscale_kspace_learning=multiscale_kspace_learning,
         use_mixed_precision=use_mixed_precision,
+        n_epochs_original=n_epochs_original,
     ) for _, model_size, model_fun, kwargs, _, n_scales, res in model_specs
 ]
 
@@ -99,6 +102,7 @@ eval_results, run_ids = train_eval_grid(
     # n_gpus=1,
     to_grid=False,
     return_run_ids=True,
+    params_to_ignore=['n_epochs_original', 'use_mixed_precision', 'original_run_id']
 )
 
 print(eval_results)
