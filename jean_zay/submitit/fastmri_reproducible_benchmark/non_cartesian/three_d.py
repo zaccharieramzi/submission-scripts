@@ -7,7 +7,7 @@ from jean_zay.submitit.general_submissions import train_eval_grid, eval_grid
 base_params = {
     'three_d': [True],
     'n_epochs': [8],
-    'af': [5],
+    'af': [4],
     'n_filters': [16],
     'n_iter': [6],
     'n_primal': [2],
