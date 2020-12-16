@@ -61,7 +61,7 @@ parameter_grid = [
     dict(
         orig_model_fun=model_fun,
         orig_model_kwargs=kwargs,
-        original_run_id='xpdnet_sense_brain__af4_i25_compound_mssim_rf_smb_MWCNNmedium_1601987069',
+        original_run_id='xpdnet_sense_brain__af4_i25_compound_mssim_rf_sm_MWCNNmedium_1601203593',
         multicoil=True,
         brain=brain,
         n_scales=n_scales,
