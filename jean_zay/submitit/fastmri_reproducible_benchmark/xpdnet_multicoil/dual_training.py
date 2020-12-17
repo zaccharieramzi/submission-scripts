@@ -10,8 +10,8 @@ job_name = 'dual_xpdnet'
 model_name = 'MWCNN'
 model_size = 'medium'
 loss = 'compound_mssim'
-lr = 1e-4
-batch_size = 1
+lr = 1e-3
+batch_size = 8
 n_samples = None
 n_epochs = 250
 n_primal = 5
@@ -22,7 +22,7 @@ n_dual = 5
 primal_only = False
 multiscale_kspace_learning = False
 n_dual_filters = 8
-n_iter = 20
+n_iter = 10
 use_mixed_precision = False
 model_specs = list(get_model_specs(force_res=False, n_primal=n_primal))
 if model_name is not None:
