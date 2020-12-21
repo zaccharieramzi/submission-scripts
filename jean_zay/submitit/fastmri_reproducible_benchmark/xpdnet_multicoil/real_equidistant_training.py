@@ -59,25 +59,25 @@ parameter_grid = [
     ) for _, model_size, model_fun, kwargs, _, n_scales, res in model_specs
 ]
 
-# eval_results = train_eval_grid(
-run_ids = [
-    'xpdnet_sense__af8_CORPD_FBK_compound_mssim_rf_smb_MWCNNmedium_1604901311',
-    'xpdnet_sense__af4_CORPD_FBK_compound_mssim_rf_smb_MWCNNmedium_1604901311',
-]
-eval_results = eval_grid(
+eval_results = train_eval_grid(
+# run_ids = [
+#     'xpdnet_sense__af8_CORPD_FBK_compound_mssim_rf_smb_MWCNNmedium_1604901311',
+#     'xpdnet_sense__af4_CORPD_FBK_compound_mssim_rf_smb_MWCNNmedium_1604901311',
+# ]
+# eval_results = eval_grid(
     job_name,
-    # train_xpdnet,
+    train_xpdnet,
     evaluate_xpdnet,
     parameter_grid,
-    run_ids=run_ids,
-    # n_samples_eval=100,
-    # timeout_train=100,
-    # n_gpus_train=1,
-    # timeout_eval=10,
-    # n_gpus_eval=1,
-    n_samples=100,
-    timeout=10,
-    n_gpus=1,
+    # run_ids=run_ids,
+    n_samples_eval=100,
+    timeout_train=100,
+    n_gpus_train=1,
+    timeout_eval=10,
+    n_gpus_eval=1,
+    # n_samples=100,
+    # timeout=10,
+    # n_gpus=1,
     to_grid=False,
 )
 
