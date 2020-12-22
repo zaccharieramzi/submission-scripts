@@ -14,12 +14,14 @@ base_params = {
     'acq_type': ['radial_stacks', 'spiral_stacks'],
     'loss': ['mse'],
     'use_mixed_precision': [True],
+    'dcomp': [True],
+    'normalize_image': [False],
     'scale_factor': [1e-2],
 }
 
 params = [
-  dict(dcomp=[True], normalize_image=[False], model=['unet', 'pdnet'], **base_params),
-  dict(dcomp=[False], normalize_image=[True], model=['pdnet'], **base_params),
+  dict(use_mixed_precision=[True], model=['pdnet'], **base_params),
+  dict(use_mixed_precision=[False], model=['unet'], **base_params),
 ]
 
 eval_results = train_eval_grid(
