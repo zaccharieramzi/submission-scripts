@@ -22,9 +22,9 @@ def get_executor(job_name, timeout_hour=60, n_gpus=1, project='fastmri'):
             'qos': f'qos_gpu-{qos}',
             'distribution': 'block:block',
             'hint': 'nomultithread',
-            'C': 'v100-32g',
         },
         slurm_setup=[
+            '#SBATCH -C v100-32g',
             'cd $WORK/submission-scripts/jean_zay/env_configs',
             f'. {project}.sh',
         ],
