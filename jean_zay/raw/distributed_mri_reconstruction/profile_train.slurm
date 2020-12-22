@@ -21,4 +21,4 @@ cd $WORK/submission-scripts/jean_zay/env_configs/
 
 cd $WORK/distributed-mri-reconstruction
 
-srun nvprof --print-gpu-trace python ./distributed_mri_reconstruction/efficiency/train.py -nf 8 -ni 1 -ns 1 -sp spatial
+srun nvprof --print-gpu-trace python ./distributed_mri_reconstruction/efficiency/train.py -nf 8 -ni 2 -ns 3 -sp spatial
