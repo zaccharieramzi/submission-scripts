@@ -13,7 +13,6 @@ base_params = {
     'n_primal': [2],
     'acq_type': ['radial_stacks', 'spiral_stacks'],
     'loss': ['mse'],
-    'use_mixed_precision': [True],
     'dcomp': [True],
     'normalize_image': [False],
     'scale_factor': [1e-2],
