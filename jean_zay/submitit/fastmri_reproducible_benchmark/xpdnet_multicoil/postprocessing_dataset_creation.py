@@ -18,7 +18,7 @@ if model_name is not None:
 if model_size is not None:
     model_specs = [ms for ms in model_specs if ms[1] == model_size]
 _, model_size, model_fun, kwargs, _, n_scales, res = model_specs[0]
-executor = get_executor('postproc_tfrecords', timeout_hour=20, n_gpus=1, project='fastmri')
+executor = get_executor('postproc_tfrecords', timeout_hour=20, n_gpus=4, project='fastmri')
 with executor.batch():
     for mode in ['train', 'val']:
         for af in [4, 8]:
