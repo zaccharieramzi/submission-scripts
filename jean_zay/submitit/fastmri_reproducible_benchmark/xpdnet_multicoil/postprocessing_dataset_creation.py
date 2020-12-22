@@ -38,6 +38,6 @@ with executor.batch():
                 refine_smaps=True,
                 refine_big=True,
                 primal_only=False,
-                n_dual=1,
+                n_dual=5,
                 n_dual_filters=16,
             )
