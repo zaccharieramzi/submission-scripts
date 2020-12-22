@@ -13,7 +13,7 @@ loss = 'compound_mssim'
 lr = 1e-4
 batch_size = None
 n_samples = None
-n_epochs = 250
+n_epochs = 200
 n_primal = 5
 contrast = None
 refine_smaps = True
@@ -22,7 +22,7 @@ n_dual = 2
 primal_only = False
 multiscale_kspace_learning = False
 n_dual_filters = 8
-n_iter = 20
+n_iter = 18
 use_mixed_precision = False
 model_specs = list(get_model_specs(force_res=False, n_primal=n_primal))
 if model_name is not None:
