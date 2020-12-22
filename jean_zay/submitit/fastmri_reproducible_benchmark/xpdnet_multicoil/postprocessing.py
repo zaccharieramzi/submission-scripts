@@ -7,82 +7,41 @@ from jean_zay.submitit.general_submissions import train_eval_grid, eval_grid, in
 
 
 job_name = 'post_process'
-model_name = 'MWCNN'
-model_size = 'medium'
+run_ids = {
+    4: 'xpdnet_sense__af4_compound_mssim_rf_smb_MWCNNmedium_1606491318',
+    8: 'xpdnet_sense__af8_compound_mssim_rf_smb_MWCNNmedium_1606491318',
+}
 loss = 'compound_mssim'
-equidistant_fake = True
 brain = True
 lr = 1e-4
 n_samples = None
 n_epochs = 250
-n_epochs_original = 100
-n_primal = 5
-contrast = None
-refine_smaps = True
-refine_big = False
-n_dual = 1
-n_iter = 25
-primal_only = True
-multiscale_kspace_learning = False
 use_mixed_precision = False
-model_specs = list(get_model_specs(force_res=False, n_primal=n_primal))
-if model_name is not None:
-    model_specs = [ms for ms in model_specs if ms[0] == model_name]
-if model_size is not None:
-    model_specs = [ms for ms in model_specs if ms[1] == model_size]
 
 parameter_grid = [
     dict(
-        orig_model_fun=model_fun,
-        orig_model_kwargs=kwargs,
-        original_run_id='xpdnet_sense_brain__af8_i25_compound_mssim_rf_sm_MWCNNmedium_1601203547',
+        original_run_id=run_ids[8],
         multicoil=True,
         brain=brain,
-        n_scales=n_scales,
-        res=res,
-        n_primal=n_primal,
-        contrast=contrast,
         n_epochs=n_epochs,
         n_samples=n_samples,
-        refine_smaps=refine_smaps,
-        refine_big=refine_big,
         af=8,
         loss=loss,
         lr=lr,
-        n_dual=n_dual,
-        n_iter=n_iter,
-        primal_only=primal_only,
-        multiscale_kspace_learning=multiscale_kspace_learning,
         use_mixed_precision=use_mixed_precision,
-        n_epochs_original=n_epochs_original,
-        equidistant_fake=equidistant_fake,
-    ) for _, model_size, model_fun, kwargs, _, n_scales, res in model_specs
+    )
 ] + [
     dict(
-        orig_model_fun=model_fun,
-        orig_model_kwargs=kwargs,
-        original_run_id='xpdnet_sense_brain__af4_i25_compound_mssim_rf_sm_MWCNNmedium_1601203593',
+        original_run_id=run_ids[4],
         multicoil=True,
         brain=brain,
-        n_scales=n_scales,
-        res=res,
-        n_primal=n_primal,
-        contrast=contrast,
         n_epochs=n_epochs,
         n_samples=n_samples,
-        refine_smaps=refine_smaps,
-        refine_big=refine_big,
         af=4,
         loss=loss,
         lr=lr,
-        n_dual=n_dual,
-        n_iter=n_iter,
-        primal_only=primal_only,
-        multiscale_kspace_learning=multiscale_kspace_learning,
         use_mixed_precision=use_mixed_precision,
-        n_epochs_original=n_epochs_original,
-        equidistant_fake=equidistant_fake,
-    ) for _, model_size, model_fun, kwargs, _, n_scales, res in model_specs
+    )
 ]
 
 eval_results, run_ids = train_eval_grid(
@@ -107,7 +66,7 @@ eval_results, run_ids = train_eval_grid(
     # n_gpus=1,
     to_grid=False,
     return_run_ids=True,
-    params_to_ignore=['n_epochs_original', 'use_mixed_precision', 'original_run_id']
+    params_to_ignore=['use_mixed_precision']
 )
 
 print(eval_results)
