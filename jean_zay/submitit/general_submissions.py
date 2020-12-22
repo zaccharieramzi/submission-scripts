@@ -17,12 +17,13 @@ def get_executor(job_name, timeout_hour=60, n_gpus=1, project='fastmri'):
         slurm_gres=f'gpu:{n_gpus}',
         slurm_additional_parameters={
             'ntasks': 1,
-            'cpus-per-task':  3 * n_gpus,  # on the gpu_p2 permission you have 3 CPUs per GPU
+            'cpus-per-task':  10 * n_gpus,
             'account': 'hih@gpu',
             'qos': f'qos_gpu-{qos}',
             'distribution': 'block:block',
             'hint': 'nomultithread',
-            'partition': 'gpu_p2',
+            'partition': 'gpu_p1',
+            'C': 'v100-32g',
         },
         slurm_setup=[
             'cd $WORK/submission-scripts/jean_zay/env_configs',
