@@ -22,7 +22,6 @@ def get_executor(job_name, timeout_hour=60, n_gpus=1, project='fastmri'):
             'qos': f'qos_gpu-{qos}',
             'distribution': 'block:block',
             'hint': 'nomultithread',
-            'partition': 'gpu_p1',
             'C': 'v100-32g',
         },
         slurm_setup=[
