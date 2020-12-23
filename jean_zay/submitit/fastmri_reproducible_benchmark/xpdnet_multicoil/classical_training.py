@@ -97,7 +97,7 @@ eval_results, run_ids = train_eval_grid(
     parameter_grid,
     # run_ids=run_ids,
     n_samples_eval=50,
-    timeout_train=100,
+    timeout_train=70,
     n_gpus_train=batch_size if batch_size else 1,
     timeout_eval=10,
     n_gpus_eval=1,
@@ -106,6 +106,7 @@ eval_results, run_ids = train_eval_grid(
     # n_gpus=1,
     to_grid=False,
     return_run_ids=True,
+    checkpoints_train=4,
 )
 
 print(eval_results)

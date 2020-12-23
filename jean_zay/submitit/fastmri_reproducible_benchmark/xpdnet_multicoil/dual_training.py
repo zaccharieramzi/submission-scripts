@@ -106,7 +106,7 @@ eval_results, run_ids = train_eval_grid(
     # n_gpus=1,
     to_grid=False,
     return_run_ids=True,
-    checkpoints_train=4
+    checkpoints_train=4,
 )
 
 print(eval_results)
