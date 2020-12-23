@@ -21,7 +21,6 @@ use_mixed_precision = False
 parameter_grid = [
     dict(
         original_run_id=run_ids[8],
-        multicoil=True,
         brain=brain,
         n_epochs=n_epochs,
         n_samples=n_samples,
@@ -33,7 +32,6 @@ parameter_grid = [
 ] + [
     dict(
         original_run_id=run_ids[4],
-        multicoil=True,
         brain=brain,
         n_epochs=n_epochs,
         n_samples=n_samples,
