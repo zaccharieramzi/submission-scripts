@@ -33,5 +33,6 @@ eval_results = train_eval_grid(
     n_gpus_eval=1,
     n_samples_eval=30,
     params_to_ignore=['use_mixed_precision'],
+    checkpoints_train=4,
 )
 print(eval_results)
