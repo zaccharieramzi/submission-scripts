@@ -45,6 +45,7 @@ def train_eval_grid(
         project='fastmri',
         return_run_ids=False,
         params_to_ignore=None,
+        checkpoints_train=0,
         **specific_eval_params,
     ):
     if to_grid:
@@ -60,10 +61,29 @@ def train_eval_grid(
     jobs = []
     with executor.batch():
         for param in parameters:
-            job = executor.submit(train_function, **param)
+            if checkpoints_train:
+                new_param = dict(**param)
+                new_param['n_epochs'] /= checkpoints_train
+                new_param['save_state'] = True
+            else:
+                new_param = param
+            job = executor.submit(train_function, **new_param)
             jobs.append(job)
     run_ids = [job.result() for job in jobs]
     print(run_ids)
+    # extra-loop for checkpointing
+    if checkpoints_train:
+        for i_checkpoint in range(1, checkpoints_train+1):
+            with executor.batch():
+                for orig_run_id, param in zip(run_ids, parameters):
+                    new_param = dict(**param)
+                    new_param['n_epochs'] /= checkpoints_train
+                    new_param['save_state'] = i_checkpoint < checkpoints_train
+                    new_param['checkpoint_epoch'] = new_param['n_epochs'] * i_checkpoint
+                    new_param['original_run_id'] = orig_run_id
+                    job = executor.submit(train_function, **new_param)
+                    jobs.append(job)
+            run_ids = [job.result() for job in jobs]
     if return_run_ids:
         return eval_grid(
             job_name,
