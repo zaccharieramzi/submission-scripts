@@ -63,7 +63,7 @@ def train_eval_grid(
         for param in parameters:
             if checkpoints_train:
                 new_param = dict(**param)
-                new_param['n_epochs'] /= checkpoints_train
+                new_param['n_epochs'] //= checkpoints_train
                 new_param['save_state'] = True
             else:
                 new_param = param
@@ -77,7 +77,7 @@ def train_eval_grid(
             with executor.batch():
                 for orig_run_id, param in zip(run_ids, parameters):
                     new_param = dict(**param)
-                    new_param['n_epochs'] /= checkpoints_train
+                    new_param['n_epochs'] //= checkpoints_train
                     new_param['save_state'] = i_checkpoint < checkpoints_train
                     new_param['checkpoint_epoch'] = new_param['n_epochs'] * i_checkpoint
                     new_param['original_run_id'] = orig_run_id
