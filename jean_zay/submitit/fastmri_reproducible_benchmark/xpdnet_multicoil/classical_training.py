@@ -94,7 +94,7 @@ eval_results, run_ids = train_eval_grid(
     train_xpdnet,
     evaluate_xpdnet,
     parameter_grid,
-    run_ids=run_ids,
+    # run_ids=run_ids,
     n_samples_eval=50,
     timeout_train=70,
     n_gpus_train=batch_size if batch_size else 1,
@@ -106,7 +106,7 @@ eval_results, run_ids = train_eval_grid(
     to_grid=False,
     return_run_ids=True,
     checkpoints_train=4,
-    resume_checkpoint=4,
+    resume_checkpoint=1,
     resume_run_run_ids=run_ids,
     params_to_ignore=['batch_size', 'use_mixed_precision'],
 )
