@@ -107,7 +107,7 @@ eval_results = eval_grid(
     to_grid=False,
     # return_run_ids=True,
     # checkpoints_train=4,
-    params_to_ignore=['batch_size'],
+    params_to_ignore=['batch_size', 'use_mixed_precision'],
 )
 
 print(eval_results)
@@ -120,5 +120,5 @@ infer_grid(
     timeout=10,
     n_gpus=4,
     to_grid=False,
-    params_to_ignore=['mask_type', 'multicoil', 'batch_size'],
+    params_to_ignore=['mask_type', 'multicoil', 'batch_size', 'use_mixed_precision'],
 )
