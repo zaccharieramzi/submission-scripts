@@ -13,7 +13,7 @@ loss = 'compound_mssim'
 lr = 1e-4
 batch_size = None
 n_samples = None
-n_epochs = 500
+n_epochs = 5
 n_primal = 5
 contrast = None
 refine_smaps = True
@@ -84,17 +84,17 @@ parameter_grid = [
     ) for _, model_size, model_fun, kwargs, _, n_scales, res in model_specs
 ]
 
-run_ids = [
-    'xpdnet_sense__af8_i18_compound_mssim_rf_smb_MWCNNmedium_1608723108',
-    'xpdnet_sense__af4_i18_compound_mssim_rf_smb_MWCNNmedium_1608723126',
-]
+# run_ids = [
+#     'xpdnet_sense__af8_i18_compound_mssim_rf_smb_MWCNNmedium_1608723108',
+#     'xpdnet_sense__af4_i18_compound_mssim_rf_smb_MWCNNmedium_1608723126',
+# ]
 eval_results, run_ids = train_eval_grid(
 # eval_results = eval_grid(
     job_name,
     train_xpdnet,
     evaluate_xpdnet,
     parameter_grid,
-    run_ids=run_ids,
+    # run_ids=run_ids,
     n_samples_eval=50,
     timeout_train=70,
     n_gpus_train=batch_size if batch_size else 1,
@@ -106,20 +106,20 @@ eval_results, run_ids = train_eval_grid(
     to_grid=False,
     return_run_ids=True,
     checkpoints_train=4,
-    resume_checkpoint=4,
-    resume_run_run_ids=run_ids,
+    # resume_checkpoint=4,
+    # resume_run_run_ids=run_ids,
     params_to_ignore=['batch_size', 'use_mixed_precision'],
 )
 
 print(eval_results)
 
-infer_grid(
-    job_name,
-    xpdnet_inference,
-    parameter_grid,
-    run_ids=run_ids,
-    timeout=10,
-    n_gpus=4,
-    to_grid=False,
-    params_to_ignore=['mask_type', 'multicoil', 'batch_size', 'use_mixed_precision'],
-)
+# infer_grid(
+#     job_name,
+#     xpdnet_inference,
+#     parameter_grid,
+#     run_ids=run_ids,
+#     timeout=10,
+#     n_gpus=4,
+#     to_grid=False,
+#     params_to_ignore=['mask_type', 'multicoil', 'batch_size', 'use_mixed_precision'],
+# )
