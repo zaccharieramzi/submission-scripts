@@ -84,10 +84,10 @@ parameter_grid = [
     ) for _, model_size, model_fun, kwargs, _, n_scales, res in model_specs
 ]
 
-run_ids = [
-    'xpdnet_sense__af8_i18_compound_mssim_rf_smb_MWCNNmedium_1608723108',
-    'xpdnet_sense__af4_i18_compound_mssim_rf_smb_MWCNNmedium_1608723126',
-]
+# run_ids = [
+#     'xpdnet_sense__af8_i18_compound_mssim_rf_smb_MWCNNmedium_1608723108',
+#     'xpdnet_sense__af4_i18_compound_mssim_rf_smb_MWCNNmedium_1608723126',
+# ]
 eval_results, run_ids = train_eval_grid(
 # eval_results = eval_grid(
     job_name,
@@ -106,8 +106,8 @@ eval_results, run_ids = train_eval_grid(
     to_grid=False,
     return_run_ids=True,
     checkpoints_train=4,
-    resume_checkpoint=1,
-    resume_run_run_ids=run_ids,
+    # resume_checkpoint=1,
+    # resume_run_run_ids=run_ids,
     params_to_ignore=['batch_size', 'use_mixed_precision'],
 )
 
