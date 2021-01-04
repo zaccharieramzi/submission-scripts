@@ -46,6 +46,8 @@ def train_eval_grid(
         return_run_ids=False,
         params_to_ignore=None,
         checkpoints_train=0,
+        resume_checkpoint=None,
+        resume_run_run_ids=None,
         **specific_eval_params,
     ):
     if to_grid:
@@ -59,31 +61,35 @@ def train_eval_grid(
         project=project,
     )
     jobs = []
-    with executor.batch():
-        for param in parameters:
-            if checkpoints_train:
-                new_param = dict(**param)
-                new_param['n_epochs'] //= (checkpoints_train+1)
-                new_param['save_state'] = True
-            else:
-                new_param = param
-            job = executor.submit(train_function, **new_param)
-            jobs.append(job)
-    run_ids = [job.result() for job in jobs]
+    if resume_checkpoint is None:
+        with executor.batch():
+            for param in parameters:
+                if checkpoints_train:
+                    new_param = dict(**param)
+                    new_param['n_epochs'] //= (checkpoints_train+1)
+                    new_param['save_state'] = True
+                else:
+                    new_param = param
+                job = executor.submit(train_function, **new_param)
+                jobs.append(job)
+        run_ids = [job.result() for job in jobs]
+    else:
+        run_ids = resume_run_run_ids
     print(run_ids)
     # extra-loop for checkpointing
     if checkpoints_train:
         for i_checkpoint in range(1, checkpoints_train+1):
-            with executor.batch():
-                for orig_run_id, param in zip(run_ids, parameters):
-                    new_param = dict(**param)
-                    new_param['n_epochs'] //= (checkpoints_train+1)
-                    new_param['save_state'] = i_checkpoint < checkpoints_train
-                    new_param['checkpoint_epoch'] = new_param['n_epochs'] * i_checkpoint
-                    new_param['original_run_id'] = orig_run_id
-                    job = executor.submit(train_function, **new_param)
-                    jobs.append(job)
-            run_ids = [job.result() for job in jobs]
+            if resume_checkpoint is None or i_checkpoint >= resume_checkpoint:
+                with executor.batch():
+                    for orig_run_id, param in zip(run_ids, parameters):
+                        new_param = dict(**param)
+                        new_param['n_epochs'] //= (checkpoints_train+1)
+                        new_param['save_state'] = i_checkpoint < checkpoints_train
+                        new_param['checkpoint_epoch'] = new_param['n_epochs'] * i_checkpoint
+                        new_param['original_run_id'] = orig_run_id
+                        job = executor.submit(train_function, **new_param)
+                        jobs.append(job)
+                run_ids = [job.result() for job in jobs]
     if return_run_ids:
         return eval_grid(
             job_name,
