@@ -84,29 +84,30 @@ parameter_grid = [
     ) for _, model_size, model_fun, kwargs, _, n_scales, res in model_specs
 ]
 
-eval_results, run_ids = train_eval_grid(
-# run_ids = [
-#     'xpdnet_sense__af8_compound_mssim_rf_smb_MWCNNmedium_1606491318',
-#     'xpdnet_sense__af4_compound_mssim_rf_smb_MWCNNmedium_1606491318',
-# ]
+# eval_results, run_ids = train_eval_grid(
+run_ids = [
+    'xpdnet_sense__af8_i25_compound_mssim_rf_smb_MWCNNmedium_1608723151',
+    'xpdnet_sense__af4_i25_compound_mssim_rf_smb_MWCNNmedium_1608723151',
+]
 
-# eval_results = eval_grid(
+eval_results = eval_grid(
     job_name,
-    train_xpdnet,
+    # train_xpdnet,
     evaluate_xpdnet,
     parameter_grid,
-    # run_ids=run_ids,
-    n_samples_eval=50,
-    timeout_train=70,
-    n_gpus_train=batch_size if batch_size else 1,
-    timeout_eval=10,
-    n_gpus_eval=1,
-    # n_samples=100,
-    # timeout=10,
-    # n_gpus=1,
+    run_ids=run_ids,
+    # n_samples_eval=50,
+    # timeout_train=70,
+    # n_gpus_train=batch_size if batch_size else 1,
+    # timeout_eval=10,
+    # n_gpus_eval=1,
+    n_samples=50,
+    timeout=10,
+    n_gpus=1,
     to_grid=False,
-    return_run_ids=True,
-    checkpoints_train=4,
+    # return_run_ids=True,
+    # checkpoints_train=4,
+    params_to_ignore=['batch_size'],
 )
 
 print(eval_results)
@@ -119,5 +120,5 @@ infer_grid(
     timeout=10,
     n_gpus=4,
     to_grid=False,
-    params_to_ignore=['mask_type', 'multicoil'],
+    params_to_ignore=['mask_type', 'multicoil', 'batch_size'],
 )
