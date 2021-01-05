@@ -12,10 +12,10 @@ run_ids = {
     8: 'xpdnet_sense__af8_compound_mssim_rf_smb_MWCNNmedium_1606491318',
 }
 loss = 'compound_mssim'
-brain = True
+brain = False
 lr = 1e-4
 n_samples = None
-n_epochs = 250
+n_epochs = 190
 use_mixed_precision = False
 
 parameter_grid = [
