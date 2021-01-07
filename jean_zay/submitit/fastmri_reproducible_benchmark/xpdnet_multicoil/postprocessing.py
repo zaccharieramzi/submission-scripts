@@ -17,6 +17,9 @@ lr = 1e-4
 n_samples = None
 n_epochs = 190
 use_mixed_precision = False
+base_n_filters = 4
+n_scales = 3
+non_linearity = 'lrelu'
 
 parameter_grid = [
     dict(
@@ -28,6 +31,9 @@ parameter_grid = [
         loss=loss,
         lr=lr,
         use_mixed_precision=use_mixed_precision,
+        base_n_filters=base_n_filters,
+        n_scales=n_scales,
+        non_linearity=non_linearity,
     )
 ] + [
     dict(
@@ -39,6 +45,9 @@ parameter_grid = [
         loss=loss,
         lr=lr,
         use_mixed_precision=use_mixed_precision,
+        base_n_filters=base_n_filters,
+        n_scales=n_scales,
+        non_linearity=non_linearity,
     )
 ]
 
