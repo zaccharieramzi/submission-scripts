@@ -3,7 +3,7 @@ from mdeq_lib.training_scripts.denoise_train import train_mdeq_denoising
 from jean_zay.submitit.general_submissions import get_executor
 
 
-job_name = 'mdeq_denoise'
+job_name = 'mdeq_denoise_large'
 executor = get_executor(job_name, timeout_hour=60, n_gpus=1, project='mdeq')
 
 with executor.batch():
