@@ -16,7 +16,7 @@ n_scales = 3
 non_linearity = 'lrelu'
 
 parameter_grid = dict(
-    recon_path=['xpdnet_v4'],
+    recon_path=['fake_dual_xpdnet_knee'],
     brain=[brain],
     n_epochs=[n_epochs],
     af=[4, 8],
