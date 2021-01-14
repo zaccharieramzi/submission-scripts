@@ -10,5 +10,4 @@ with executor.batch():
             acq_type=acq_type,
             af=4,
             n_samples=100,
-            dcomp=True,
         )
