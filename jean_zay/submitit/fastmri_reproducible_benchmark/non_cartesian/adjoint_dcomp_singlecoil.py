@@ -4,7 +4,7 @@ from jean_zay.submitit.general_submissions import get_executor
 
 executor = get_executor('adjoint_dc', timeout_hour=20, n_gpus=1, project='fastmri')
 with executor.batch():
-    for acq_type in ['radial_stacks', 'spiral_stacks']:
+    for acq_type in ['radial', 'spiral']:
         executor.submit(
             evaluate_dcomp,
             acq_type=acq_type,
