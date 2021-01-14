@@ -31,7 +31,7 @@ with executor.batch():
                     res=res,
                     n_iter=n_iter,
                 )
-                results[(model_name, model_size)] = results.get((model_name, model_size), []).append(job)
+                results[(model_name, model_size)] = results.get((model_name, model_size), default=[]).append(job)
 
 
 for k, jobs in results.items():
