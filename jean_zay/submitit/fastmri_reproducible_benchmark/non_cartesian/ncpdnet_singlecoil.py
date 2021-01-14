@@ -24,8 +24,5 @@ eval_results = train_eval_grid(
     timeout_train=100,
     n_gpus_eval=1,
     n_samples_eval=100,
-    checkpoints_train=0,
-    resume_checkpoint=0,
-    resume_run_run_ids=None,
 )
 print(eval_results)
