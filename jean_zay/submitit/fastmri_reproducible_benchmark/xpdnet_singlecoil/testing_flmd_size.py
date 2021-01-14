@@ -31,3 +31,8 @@ with executor.batch():
                     res=res,
                     n_iter=n_iter,
                 )
+                results[(model_name, model_size)] = results.get((model_name, model_size), []).append(job)
+
+
+for k, jobs in results.items():
+    print(k, [j.result() for j in jobs])
