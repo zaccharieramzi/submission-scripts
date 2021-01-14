@@ -20,7 +20,7 @@ n_dual = 3
 primal_only = True
 multiscale_kspace_learning = False
 n_dual_filters = 8
-n_iter = 15
+n_iter = 10
 use_mixed_precision = False
 model_specs = list(get_model_specs(n_primal=n_primal))
 
