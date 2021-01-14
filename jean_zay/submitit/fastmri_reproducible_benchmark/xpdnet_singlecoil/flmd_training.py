@@ -20,7 +20,12 @@ n_dual = 3
 primal_only = True
 multiscale_kspace_learning = False
 n_dual_filters = 8
-n_iter = 10
+n_iter_per_model_size = {
+    'small': 20,
+    'medium': 10,
+    'big': 5,
+    'XL': 2,
+}
 use_mixed_precision = False
 model_specs = list(get_model_specs(n_primal=n_primal))
 
@@ -44,7 +49,7 @@ parameter_grid = [
         lr=lr,
         mask_type='random',
         n_dual=n_dual,
-        n_iter=n_iter,
+        n_iter=n_iter_per_model_size[model_size],
         primal_only=primal_only,
         n_dual_filters=n_dual_filters,
         multiscale_kspace_learning=multiscale_kspace_learning,
@@ -70,7 +75,7 @@ parameter_grid = [
         lr=lr,
         mask_type='random',
         n_dual=n_dual,
-        n_iter=n_iter,
+        n_iter=n_iter_per_model_size[model_size],
         primal_only=primal_only,
         n_dual_filters=n_dual_filters,
         multiscale_kspace_learning=multiscale_kspace_learning,
