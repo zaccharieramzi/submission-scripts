@@ -4,10 +4,10 @@ from jean_zay.submitit.general_submissions import get_executor
 from jean_zay.submitit.fastmri_reproducible_benchmark.mem_fitting_test import test_works_in_xpdnet_train
 
 n_iter_to_try_for_size = {
-    'small': list(range(20, 25)),
-    'medium': list(range(15, 20)),
-    'big': list(range(5, 15)),
-    'XL': list(range(1, 5))
+    # 'small': list(range(20, 25)),
+    # 'medium': list(range(15, 20)),
+    # 'big': list(range(5, 15)),
+    'XL': list(range(1, 5)),
 }
 n_primal = 5
 
