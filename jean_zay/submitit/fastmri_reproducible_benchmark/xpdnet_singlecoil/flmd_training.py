@@ -24,7 +24,7 @@ n_iter_per_model_size = {
     'small': 24,
     'medium': 19,
     'big': 7,
-    # 'XL': 2,
+    'XL': 2,
 }
 use_mixed_precision = False
 model_specs = list(get_model_specs(n_primal=n_primal))
