@@ -21,10 +21,10 @@ primal_only = True
 multiscale_kspace_learning = False
 n_dual_filters = 8
 n_iter_per_model_size = {
-    'small': 20,
-    'medium': 10,
-    'big': 5,
-    'XL': 2,
+    'small': 25,
+    'medium': 20,
+    'big': 8,
+    # 'XL': 2,
 }
 use_mixed_precision = False
 model_specs = list(get_model_specs(n_primal=n_primal))
