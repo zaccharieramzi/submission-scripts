@@ -27,7 +27,7 @@ def test_works_in_xpdnet_train(model_fun, model_kwargs, n_scales, res, n_iter=10
             y=tf.ones([1, 320, 320, 1]),
             epochs=1,
         )
-    except tf.errors.ResourceExhaustedError:
+    except (tf.errors.ResourceExhaustedError, tf.errors.InternalError):
         return False
     else:
         return True
