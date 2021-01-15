@@ -54,7 +54,7 @@ parameter_grid = [
         n_dual_filters=n_dual_filters,
         multiscale_kspace_learning=multiscale_kspace_learning,
         use_mixed_precision=use_mixed_precision,
-    ) for _, model_size, model_fun, kwargs, _, n_scales, res in model_specs
+    ) for _, model_size, model_fun, kwargs, _, n_scales, res in model_specs if model_size != 'XL'
 ] + [
     dict(
         model_fun=model_fun,
@@ -80,7 +80,7 @@ parameter_grid = [
         n_dual_filters=n_dual_filters,
         multiscale_kspace_learning=multiscale_kspace_learning,
         use_mixed_precision=use_mixed_precision,
-    ) for _, model_size, model_fun, kwargs, _, n_scales, res in model_specs
+    ) for _, model_size, model_fun, kwargs, _, n_scales, res in model_specs if model_size != 'XL'
 ]
 
 # run_ids = [
