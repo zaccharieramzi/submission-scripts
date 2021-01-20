@@ -54,7 +54,8 @@ parameter_grid = [
         n_dual_filters=n_dual_filters,
         multiscale_kspace_learning=multiscale_kspace_learning,
         use_mixed_precision=use_mixed_precision,
-    ) for _, model_size, model_fun, kwargs, _, n_scales, res in model_specs if model_size != 'XL'
+    ) for model_name, model_size, model_fun, kwargs, _, n_scales, res in model_specs
+    if model_size != 'XL' and 'MWCNN' not in model_name
 ] + [
     dict(
         model_fun=model_fun,
@@ -80,13 +81,18 @@ parameter_grid = [
         n_dual_filters=n_dual_filters,
         multiscale_kspace_learning=multiscale_kspace_learning,
         use_mixed_precision=use_mixed_precision,
-    ) for _, model_size, model_fun, kwargs, _, n_scales, res in model_specs if model_size != 'XL'
+    ) for model_name, model_size, model_fun, kwargs, _, n_scales, res in model_specs
+    if model_size != 'XL' and 'MWCNN' not in model_name
 ]
 
-# run_ids = [
-#     'xpdnet_sense__af8_i25_compound_mssim_rf_smb_MWCNNmedium_1608723151',
-#     'xpdnet_sense__af4_i25_compound_mssim_rf_smb_MWCNNmedium_1608723151',
-# ]
+run_ids = [
+    'xpdnet_singlecoil__af8_i7_compound_mssim_rf_sm_UnetMultiDomainbig_1610912245',
+    'xpdnet_singlecoil__af8_i19_compound_mssim_rf_sm_UnetMultiDomainmedium_1610912245',
+    'xpdnet_singlecoil__af8_i24_compound_mssim_rf_sm_UnetMultiDomainsmall_1610922641',
+    'xpdnet_singlecoil__af4_i7_compound_mssim_rf_sm_UnetMultiDomainbig_1610912352',
+    'xpdnet_singlecoil__af4_i19_compound_mssim_rf_sm_UnetMultiDomainmedium_1610931952',
+    'xpdnet_singlecoil__af4_i24_compound_mssim_rf_sm_UnetMultiDomainsmall_1610931952',
+]
 eval_results, run_ids = train_eval_grid(
 # eval_results = eval_grid(
     job_name,
@@ -105,8 +111,8 @@ eval_results, run_ids = train_eval_grid(
     to_grid=False,
     return_run_ids=True,
     checkpoints_train=3,
-    # resume_checkpoint=1,
-    # resume_run_run_ids=run_ids,
+    resume_checkpoint=1,
+    resume_run_run_ids=run_ids,
     params_to_ignore=['batch_size', 'use_mixed_precision'],
 )
 
