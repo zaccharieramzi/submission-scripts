@@ -12,17 +12,25 @@ base_params = {
 
 params = [
   dict(dcomp=[True], normalize_image=[False], **base_params),
-  dict(dcomp=[False], normalize_image=[True], **base_params),
+  # dict(dcomp=[False], normalize_image=[True], **base_params),
 ]
 
-eval_results = train_eval_grid(
+run_ids = [
+    'ncpdnet_singlecoil___radial_compound_mssim_dcomp_1610872636',
+    'ncpdnet_singlecoil___spiral_compound_mssim_dcomp_1610911070',
+]
+
+eval_results = eval_grid(
     'nc_pdnet',
-    train_fun,
+    # train_fun,
     eval_fun,
     params,
-    n_gpus_train=1,
-    timeout_train=100,
-    n_gpus_eval=1,
-    n_samples_eval=100,
+    run_ids=run_ids,
+    # n_gpus_train=1,
+    # timeout_train=100,
+    # n_gpus_eval=1,
+    # n_samples_eval=100,
+    n_samples=100,
+    n_gpus=1,
 )
 print(eval_results)
