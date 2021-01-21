@@ -19,10 +19,10 @@ params = {
 
 eval_results = train_eval_grid(
     'nc_unet_mc',
-    # train_fun,
+    train_fun,
     eval_fun,
     params,
-    run_ids=run_ids,
+    # run_ids=run_ids,
     n_gpus_train=1,
     timeout_train=100,
     n_gpus_eval=1,
