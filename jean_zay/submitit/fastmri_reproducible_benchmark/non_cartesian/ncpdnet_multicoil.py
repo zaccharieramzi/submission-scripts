@@ -23,7 +23,7 @@ params = [
 # ]
 
 eval_results = train_eval_grid(
-    'nc_pdnet',
+    'nc_pdnet_mc',
     train_fun,
     eval_fun,
     params,

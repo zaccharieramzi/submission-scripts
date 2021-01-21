@@ -18,7 +18,7 @@ params = {
 # ]
 
 eval_results = train_eval_grid(
-    'nc_unet',
+    'nc_unet_mc',
     # train_fun,
     eval_fun,
     params,
