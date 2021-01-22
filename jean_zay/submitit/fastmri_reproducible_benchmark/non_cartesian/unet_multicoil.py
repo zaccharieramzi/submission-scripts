@@ -24,9 +24,10 @@ eval_results = train_eval_grid(
     params,
     # run_ids=run_ids,
     n_gpus_train=1,
-    timeout_train=100,
+    timeout_train=25,
     n_gpus_eval=1,
     n_samples_eval=100,
+    checkpoints_train=3,
     # n_samples=100,
     # n_gpus=1,
 )
