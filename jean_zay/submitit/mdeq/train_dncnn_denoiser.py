@@ -11,4 +11,5 @@ executor.submit(
     n_val=20,
     network_size='SMALL',
     grad_clipping=100.,
+    state_residual=True,
 )
