@@ -7,7 +7,6 @@ from jean_zay.submitit.general_submissions import train_eval_grid
 job_name = 'ipdeq_denoise'
 parameters = dict(
     n_val=[20],
-    network_size=['SMALL'],
     grad_clipping=[100.],
     state_residual=[True],
     with_dc=[True, False],
