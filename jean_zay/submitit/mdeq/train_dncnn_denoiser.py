@@ -11,19 +11,19 @@ parameters = [
         grad_clipping=100.,
     )
 ]
-eval_grid(
+train_eval_grid(
     job_name,
-    # train_dncnn_denoising,
+    train_dncnn_denoising,
     eval_dncnn_denoising,
     parameters,
-    run_ids=[None],
+    # run_ids=[None],
     to_grid=False,
-    # timeout_train=20,
-    # n_gpus_train=1,
-    # timeout_eval=10,
-    # n_gpus_eval=1,
-    timeout=10,
-    n_gpus=1,
+    timeout_train=20,
+    n_gpus_train=1,
+    timeout_eval=10,
+    n_gpus_eval=1,
+    # timeout=10,
+    # n_gpus=1,
     project='mdeq',
     params_to_ignore=['grad_clipping', 'n_val'],
     val_noise_powers=[15, 25, 50],
