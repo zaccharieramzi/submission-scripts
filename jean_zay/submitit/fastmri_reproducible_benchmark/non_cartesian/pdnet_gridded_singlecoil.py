@@ -19,7 +19,7 @@ eval_results = train_eval_grid(
     'grid_pdnet',
     train_fun,
     eval_fun,
-    params,
+    base_params,
     run_ids=run_ids,
     n_gpus_train=1,
     timeout_train=100,
