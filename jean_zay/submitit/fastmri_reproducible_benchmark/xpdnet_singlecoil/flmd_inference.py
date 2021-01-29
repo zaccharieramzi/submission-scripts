@@ -4,7 +4,7 @@ from fastmri_recon.models.subclassed_models.feature_level_multi_domain_learning.
 from jean_zay.submitit.general_submissions import infer_grid
 
 
-job_name = 'xpdnet_flmd_inference'
+job_name = 'xpdnet_flmd'
 n_samples = None
 n_epochs = 300
 n_primal = 5
@@ -30,7 +30,6 @@ parameter_grid = [
     dict(
         model_fun=model_fun,
         model_kwargs=kwargs,
-        exp_id='xpdnet_flmd',
         multicoil=False,
         n_scales=n_scales,
         res=res,
@@ -51,7 +50,6 @@ parameter_grid = [
     dict(
         model_fun=model_fun,
         model_kwargs=kwargs,
-        exp_id='xpdnet_flmd',
         multicoil=False,
         n_scales=n_scales,
         res=res,
