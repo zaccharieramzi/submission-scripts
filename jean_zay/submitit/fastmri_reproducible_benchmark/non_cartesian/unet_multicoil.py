@@ -12,23 +12,23 @@ params = {
     'multicoil': [True],
 }
 
-# run_ids = [
-    # 'unet_singlecoil___radial_compound_mssim_dcomp_1610911070',
-    # 'unet_singlecoil___spiral_compound_mssim_dcomp_1610911070',
-# ]
+run_ids = [
+    'unet_mc___radial_compound_mssim_dcomp_1611915508',
+    'unet_mc___spiral_compound_mssim_dcomp_1611915508',
+]
 
-eval_results = train_eval_grid(
+eval_results = eval_grid(
     'nc_unet_mc',
-    train_fun,
+    # train_fun,
     eval_fun,
     params,
-    # run_ids=run_ids,
-    n_gpus_train=1,
-    timeout_train=25,
-    n_gpus_eval=1,
-    n_samples_eval=100,
-    checkpoints_train=3,
-    # n_samples=100,
-    # n_gpus=1,
+    run_ids=run_ids,
+    # n_gpus_train=1,
+    # timeout_train=25,
+    # n_gpus_eval=1,
+    # n_samples_eval=100,
+    # checkpoints_train=3,
+    n_samples=100,
+    n_gpus=3,
 )
 print(eval_results)

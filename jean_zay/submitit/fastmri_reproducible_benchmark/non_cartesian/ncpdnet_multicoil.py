@@ -17,23 +17,23 @@ params = [
   # dict(dcomp=[False], normalize_image=[True], **base_params),
 ]
 
-# run_ids = [
-#     'ncpdnet_singlecoil___radial_compound_mssim_dcomp_1610872636',
-#     'ncpdnet_singlecoil___spiral_compound_mssim_dcomp_1610911070',
-# ]
+run_ids = [
+    'ncpdnet_sense___rfs_radial_compound_mssim_dcomp_1611913984',
+    'ncpdnet_sense___rfs_spiral_compound_mssim_dcomp_1611913984',
+]
 
-eval_results = train_eval_grid(
+eval_results = eval_grid(
     'nc_pdnet_mc',
-    train_fun,
+    # train_fun,
     eval_fun,
     params,
-    # run_ids=run_ids,
-    n_gpus_train=1,
-    timeout_train=25,
-    n_gpus_eval=1,
-    n_samples_eval=100,
-    checkpoints_train=3,
-    # n_samples=100,
-    # n_gpus=1,
+    run_ids=run_ids,
+    # n_gpus_train=1,
+    # timeout_train=25,
+    # n_gpus_eval=1,
+    # n_samples_eval=100,
+    # checkpoints_train=3,
+    n_samples=100,
+    n_gpus=3,
 )
 print(eval_results)
