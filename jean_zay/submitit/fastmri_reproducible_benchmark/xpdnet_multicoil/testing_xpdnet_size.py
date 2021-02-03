@@ -28,6 +28,9 @@ with executor.batch():
                         n_scales=n_scales,
                         res=res,
                         n_iter=n_iter,
+                        multicoil=True,
+                        use_mixed_precision=True,
+                        data_consistency_learning=data_consistency_learning,
                     )
                     res_id = (model_name, model_size, data_consistency_learning)
                     results[] = results.get(res_id, [])
