@@ -1,4 +1,5 @@
 import tensorflow as tf
+from tensorflow.keras import mixed_precision
 
 from fastmri_recon.models.subclassed_models.xpdnet import XPDNet
 from fastmri_recon.models.training.compile import default_model_compile
@@ -6,7 +7,14 @@ from fastmri_recon.models.training.compile import default_model_compile
 
 n_primal = 5
 
-def test_works_in_xpdnet_train(model_fun, model_kwargs, n_scales, res, n_iter=10, multicoil=False):
+def test_works_in_xpdnet_train(model_fun, model_kwargs, n_scales, res, n_iter=10, multicoil=False, use_mixed_precision=False, data_consistency_learning=False):
+    # trying mixed precision
+    if use_mixed_precision:
+        policy_type = 'mixed_float16'
+    else:
+        policy_type = 'float32'
+    policy = mixed_precision.Policy(policy_type)
+    mixed_precision.set_policy(policy)
     run_params = {
         'n_primal': n_primal,
         'multicoil': multicoil,
@@ -14,6 +22,7 @@ def test_works_in_xpdnet_train(model_fun, model_kwargs, n_scales, res, n_iter=10
         'n_iter': n_iter,
         'refine_smaps': multicoil,
         'res': res,
+        'primal_only': not data_consistency_learning,
     }
     model = XPDNet(model_fun, model_kwargs, **run_params)
     default_model_compile(model, lr=1e-3, loss='mae')
