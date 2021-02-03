@@ -33,7 +33,7 @@ with executor.batch():
                         data_consistency_learning=data_consistency_learning,
                     )
                     res_id = (model_name, model_size, data_consistency_learning)
-                    results[] = results.get(res_id, [])
+                    results[res_id] = results.get(res_id, [])
                     results[res_id].append(job)
 
 
