@@ -29,13 +29,13 @@ def test_works_in_xpdnet_train(model_fun, model_kwargs, n_scales, res, n_iter=10
     n_coils = 15
     k_shape = (base_shape,)*2
     if multicoil:
-        k_shape += (n_coils,)
+        k_shape = (n_coils, *k_shape)
     inputs = [
         tf.ones([1, *k_shape, 1], dtype=tf.complex64),
         tf.ones([1, *k_shape], dtype=tf.complex64),
     ]
     if multicoil:
-        inputs += tf.ones([1, *k_shape], dtype=tf.complex64),
+        inputs += [tf.ones([1, *k_shape], dtype=tf.complex64),]
     try:
         model.fit(
             x=inputs,
