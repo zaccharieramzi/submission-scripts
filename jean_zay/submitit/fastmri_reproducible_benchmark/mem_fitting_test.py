@@ -13,8 +13,7 @@ def test_works_in_xpdnet_train(model_fun, model_kwargs, n_scales, res, n_iter=10
         policy_type = 'mixed_float16'
     else:
         policy_type = 'float32'
-    policy = mixed_precision.Policy(policy_type)
-    mixed_precision.set_policy(policy)
+    mixed_precision.set_global_policy(policy_type)
     run_params = {
         'n_primal': n_primal,
         'multicoil': multicoil,
