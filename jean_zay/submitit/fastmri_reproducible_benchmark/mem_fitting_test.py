@@ -39,7 +39,7 @@ def test_works_in_xpdnet_train(model_fun, model_kwargs, n_scales, res, n_iter=10
         inputs += tf.ones([1, *k_shape], dtype=tf.complex64),
     try:
         model.fit(
-            x=,
+            x=inputs,
             y=tf.ones([1, 320, 320, 1]),
             epochs=1,
         )
