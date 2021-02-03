@@ -10,7 +10,7 @@ n_primal = 5
 
 
 job_name = 'xpdnet_tryouts'
-executor = get_executor(job_name, timeout_hour=6, n_gpus=1, project='fastmri')
+executor = get_executor(job_name, timeout_hour=6, n_gpus=1, project='fastmri4')
 
 results = {}
 
