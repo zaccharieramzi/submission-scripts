@@ -6,12 +6,12 @@ from fastmri_recon.training_scripts.xpdnet_train import train_xpdnet
 from jean_zay.submitit.general_submissions import train_eval_grid, eval_grid, infer_grid
 
 
-job_name = 'short_mp_xpdnet'
+job_name = 'distributed_mp_xpdnet'
 model_name = 'MWCNN'
 model_size = 'big'
 loss = 'compound_mssim'
-lr = 1e-4
-batch_size = None
+batch_size = 8
+lr = 1e-4 if batch_size is None else batch_size * 1e-4
 n_samples = None
 n_epochs = 100
 n_primal = 5
