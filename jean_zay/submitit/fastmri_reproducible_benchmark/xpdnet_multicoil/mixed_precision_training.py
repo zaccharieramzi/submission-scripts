@@ -6,14 +6,14 @@ from fastmri_recon.training_scripts.xpdnet_train import train_xpdnet
 from jean_zay.submitit.general_submissions import train_eval_grid, eval_grid, infer_grid
 
 
-job_name = 'mp_xpdnet'
+job_name = 'short_mp_xpdnet'
 model_name = 'MWCNN'
 model_size = 'big'
 loss = 'compound_mssim'
 lr = 1e-4
 batch_size = None
 n_samples = None
-n_epochs = 700
+n_epochs = 100
 n_primal = 5
 contrast = None
 refine_smaps = True
@@ -105,7 +105,7 @@ eval_results, run_ids = train_eval_grid(
     # n_gpus=1,
     to_grid=False,
     return_run_ids=True,
-    checkpoints_train=13,
+    checkpoints_train=3,
     # resume_checkpoint=4,
     # resume_run_run_ids=run_ids,
     params_to_ignore=['batch_size', 'use_mixed_precision'],
