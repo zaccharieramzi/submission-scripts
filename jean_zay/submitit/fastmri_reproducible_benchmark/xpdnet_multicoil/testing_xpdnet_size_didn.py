@@ -15,10 +15,10 @@ executor = get_executor(job_name, timeout_hour=6, n_gpus=1, project='fastmri4')
 results = {}
 
 with executor.batch():
-    for data_consistency_learning in [True, False]:
+    for data_consistency_learning in [False]:
         for model_size_spec, n_iter_to_try in n_iter_to_try_for_size.items():
             for model_name, model_size, model_fun, model_kwargs, n_inputs, n_scales, res in get_model_specs(n_primal):
-                if model_size != model_size_spec or not (model_name in ['DIDN, FocNet']):
+                if model_size != model_size_spec or not (model_name in ['DIDN', 'FocNet']):
                     continue
                 for n_iter in n_iter_to_try:
                     job = executor.submit(
