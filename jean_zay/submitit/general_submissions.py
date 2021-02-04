@@ -10,24 +10,32 @@ def get_executor(job_name, timeout_hour=60, n_gpus=1, project='fastmri'):
         qos = 't3'
     else:
         qos = 'dev'
+    cpu_per_gpu = 3 if n_gpus > 4 else 10
+    slurm_params = {
+        'ntasks': 1,
+        'cpus-per-task':  cpu_per_gpu * n_gpus,
+        'account': 'hih@gpu',
+        'qos': f'qos_gpu-{qos}',
+        'distribution': 'block:block',
+        'hint': 'nomultithread',
+    }
+    slurm_setup = [
+        '#SBATCH -C v100-32g',
+        'cd $WORK/submission-scripts/jean_zay/env_configs',
+        f'. {project}.sh',
+    ]
+    if n_gpus > 4:
+        slurm_params.update({
+            'partition': 'gpu_p2'
+        })
+        slurm_setup = slurm_setup[1:]
     executor.update_parameters(
         timeout_min=60,
         slurm_job_name=job_name,
         slurm_time=f'{timeout_hour}:00:00',
         slurm_gres=f'gpu:{n_gpus}',
-        slurm_additional_parameters={
-            'ntasks': 1,
-            'cpus-per-task':  10 * n_gpus,
-            'account': 'hih@gpu',
-            'qos': f'qos_gpu-{qos}',
-            'distribution': 'block:block',
-            'hint': 'nomultithread',
-        },
-        slurm_setup=[
-            '#SBATCH -C v100-32g',
-            'cd $WORK/submission-scripts/jean_zay/env_configs',
-            f'. {project}.sh',
-        ],
+        slurm_additional_parameters=slurm_params,
+        slurm_setup=slurm_setup,
     )
     return executor
 
