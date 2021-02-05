@@ -4,7 +4,7 @@ from jean_zay.submitit.general_submissions import get_executor
 from jean_zay.submitit.fastmri_reproducible_benchmark.mem_fitting_test import test_works_in_xpdnet_train
 
 n_iter_to_try_for_size = {
-    'medium': range(20, 30),
+    'medium': range(30, 40),
 }
 n_primal = 5
 
