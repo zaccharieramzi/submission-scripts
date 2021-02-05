@@ -10,15 +10,15 @@ n_primal = 5
 
 
 job_name = 'xpdnet_tryouts'
-executor = get_executor(job_name, timeout_hour=6, n_gpus=1, project='fastmri4')
+executor = get_executor(job_name, timeout_hour=1, n_gpus=1, project='fastmri4')
 
 results = {}
 
 with executor.batch():
-    for data_consistency_learning in [True, False]:
+    for data_consistency_learning in [False]:
         for model_size_spec, n_iter_to_try in n_iter_to_try_for_size.items():
             for model_name, model_size, model_fun, model_kwargs, n_inputs, n_scales, res in get_model_specs(n_primal):
-                if model_size != model_size_spec:
+                if model_size != model_size_spec or model_name != 'MWCNN':
                     continue
                 for n_iter in n_iter_to_try:
                     job = executor.submit(
@@ -38,4 +38,10 @@ with executor.batch():
 
 
 for k, jobs in results.items():
-    print(k, [j.result() for j in jobs])
+    list_res = []
+    for j in jobs:
+        try:
+            list_res.append(j.result())
+        except:
+            list_res.append(False)
+    print(k, list_res)
