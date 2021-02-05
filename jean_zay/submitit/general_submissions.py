@@ -38,7 +38,7 @@ def get_executor(job_name, timeout_hour=60, n_gpus=1, project='fastmri'):
         slurm_setup = slurm_setup[1:]
     if multi_node:
         slurm_params.update({
-            'node': n_nodes,
+            'nodes': n_nodes,
         })
         slurm_setup.append('unset http_proxy https_proxy HTTP_PROXY HTTPS_PROXY')
     executor.update_parameters(
