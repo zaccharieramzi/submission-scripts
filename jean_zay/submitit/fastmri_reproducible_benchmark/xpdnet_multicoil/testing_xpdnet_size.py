@@ -4,7 +4,7 @@ from jean_zay.submitit.general_submissions import get_executor
 from jean_zay.submitit.fastmri_reproducible_benchmark.mem_fitting_test import test_works_in_xpdnet_train
 
 n_iter_to_try_for_size = {
-    'big': range(20, 30),
+    'medium': range(20, 30),
 }
 n_primal = 5
 
@@ -15,7 +15,7 @@ executor = get_executor(job_name, timeout_hour=1, n_gpus=1, project='fastmri4')
 results = {}
 
 with executor.batch():
-    for data_consistency_learning in [False]:
+    for data_consistency_learning in [True, False]:
         for model_size_spec, n_iter_to_try in n_iter_to_try_for_size.items():
             for model_name, model_size, model_fun, model_kwargs, n_inputs, n_scales, res in get_model_specs(n_primal):
                 if model_size != model_size_spec or model_name != 'MWCNN':
