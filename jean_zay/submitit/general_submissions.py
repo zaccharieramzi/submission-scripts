@@ -10,9 +10,16 @@ def get_executor(job_name, timeout_hour=60, n_gpus=1, project='fastmri'):
         qos = 't3'
     else:
         qos = 'dev'
+    multi_node = n_gpus > 8
+    if multi_node:
+        assert n_gpus % 8 == 0, 'Use multiple of 8 GPUs for multi node training'
+        assert timeout_hour == 20, 'Use t3 qos for multi node training'
+        multi_node = True
+        n_nodes = n_gpus // 8
+        n_gpus = n_gpus // n_nodes
     cpu_per_gpu = 3 if n_gpus > 4 else 10
     slurm_params = {
-        'ntasks': 1,
+        'ntasks-per-node': 1,
         'cpus-per-task':  cpu_per_gpu * n_gpus,
         'account': 'hih@gpu',
         'qos': f'qos_gpu-{qos}',
@@ -29,6 +36,11 @@ def get_executor(job_name, timeout_hour=60, n_gpus=1, project='fastmri'):
             'partition': 'gpu_p2'
         })
         slurm_setup = slurm_setup[1:]
+    if multi_node:
+        slurm_params.update({
+            'node': n_nodes,
+        })
+        slurm_setup.append('unset http_proxy https_proxy HTTP_PROXY HTTPS_PROXY')
     executor.update_parameters(
         timeout_min=60,
         slurm_job_name=job_name,
