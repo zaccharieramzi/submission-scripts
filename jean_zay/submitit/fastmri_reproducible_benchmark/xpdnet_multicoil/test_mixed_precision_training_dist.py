@@ -57,33 +57,6 @@ parameter_grid = [
         use_mixed_precision=use_mixed_precision,
         distributed=batch_size is not None,
     ) for _, model_size, model_fun, kwargs, _, n_scales, res in model_specs
-] + [
-    dict(
-        model_fun=model_fun,
-        model_kwargs=kwargs,
-        model_size=model_size,
-        multicoil=True,
-        n_scales=n_scales,
-        res=res,
-        n_primal=n_primal,
-        contrast=contrast,
-        batch_size=batch_size,
-        n_epochs=n_epochs,
-        n_samples=n_samples,
-        refine_smaps=refine_smaps,
-        refine_big=refine_big,
-        af=4,
-        loss=loss,
-        lr=lr,
-        mask_type='random',
-        n_dual=n_dual,
-        n_iter=n_iter,
-        primal_only=primal_only,
-        n_dual_filters=n_dual_filters,
-        multiscale_kspace_learning=multiscale_kspace_learning,
-        use_mixed_precision=use_mixed_precision,
-        distributed=batch_size is not None,
-    ) for _, model_size, model_fun, kwargs, _, n_scales, res in model_specs
 ]
 
 # run_ids = [
