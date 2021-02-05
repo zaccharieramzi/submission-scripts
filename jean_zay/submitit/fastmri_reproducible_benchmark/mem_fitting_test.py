@@ -25,9 +25,8 @@ def test_works_in_xpdnet_train(model_fun, model_kwargs, n_scales, res, n_iter=10
     }
     model = XPDNet(model_fun, model_kwargs, **run_params)
     default_model_compile(model, lr=1e-3, loss='mae')
-    base_shape = 640
     n_coils = 15
-    k_shape = (base_shape,)*2
+    k_shape = (640, 400)
     if multicoil:
         k_shape = (n_coils, *k_shape)
     inputs = [

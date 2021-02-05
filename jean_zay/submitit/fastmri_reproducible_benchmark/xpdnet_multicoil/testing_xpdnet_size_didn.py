@@ -10,7 +10,7 @@ n_primal = 5
 
 
 job_name = 'xpdnet_tryouts'
-executor = get_executor(job_name, timeout_hour=6, n_gpus=1, project='fastmri4')
+executor = get_executor(job_name, timeout_hour=1, n_gpus=1, project='fastmri4')
 
 results = {}
 
@@ -38,4 +38,10 @@ with executor.batch():
 
 
 for k, jobs in results.items():
-    print(k, [j.result() for j in jobs])
+    list_res = []
+    for j in jobs:
+        try:
+            list_res.append(j.result())
+        except:
+            list_res.append(False)
+    print(k, list_res)
