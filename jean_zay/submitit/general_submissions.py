@@ -13,7 +13,7 @@ def get_executor(job_name, timeout_hour=60, n_gpus=1, project='fastmri'):
     multi_node = n_gpus > 8
     if multi_node:
         assert n_gpus % 8 == 0, 'Use multiple of 8 GPUs for multi node training'
-        assert timeout_hour == 20, 'Use t3 qos for multi node training'
+        assert timeout_hour <= 20, 'Use t3 qos for multi node training'
         multi_node = True
         n_nodes = n_gpus // 8
         n_gpus = n_gpus // n_nodes
