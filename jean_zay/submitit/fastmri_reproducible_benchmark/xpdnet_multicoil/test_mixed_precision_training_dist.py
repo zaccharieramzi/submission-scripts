@@ -71,7 +71,7 @@ eval_results, run_ids = train_eval_grid(
     parameter_grid,
     # run_ids=run_ids,
     n_samples_eval=5,
-    timeout_train=20,
+    timeout_train=1,
     n_gpus_train=batch_size if batch_size else 1,
     timeout_eval=20,
     n_gpus_eval=1,
@@ -89,14 +89,14 @@ eval_results, run_ids = train_eval_grid(
 
 print(eval_results)
 
-infer_grid(
-    job_name,
-    xpdnet_inference,
-    parameter_grid,
-    run_ids=run_ids,
-    timeout=10,
-    n_gpus=4,
-    to_grid=False,
-    params_to_ignore=['mask_type', 'batch_size', 'use_mixed_precision'],
-    project='fastmri4',
-)
+# infer_grid(
+#     job_name,
+#     xpdnet_inference,
+#     parameter_grid,
+#     run_ids=run_ids,
+#     timeout=10,
+#     n_gpus=4,
+#     to_grid=False,
+#     params_to_ignore=['mask_type', 'batch_size', 'use_mixed_precision'],
+#     project='fastmri4',
+# )
