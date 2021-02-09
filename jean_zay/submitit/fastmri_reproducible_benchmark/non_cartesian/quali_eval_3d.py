@@ -22,7 +22,7 @@ model_2_run_ids = {
 executor = get_executor('3dnc_quali', timeout_hour=20, n_gpus=1, project='fastmri4')
 with executor.batch():
     for model, run_ids in model_2_run_ids.items():
-        for acq_type in ['radial', 'spiral']:
+        for acq_type in ['radial_stacks', 'spiral_stacks']:
             executor.submit(
                 nc_multinet_qualitative_validation,
                 acq_type=acq_type,
