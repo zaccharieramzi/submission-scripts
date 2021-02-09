@@ -8,7 +8,7 @@ job_name = 'dncnn_denoise'
 parameters = [
     dict(
         n_val=20,
-        grad_clipping=100.,
+        grad_clipping=None,
         fixed_lr=True,
     )
 ]
