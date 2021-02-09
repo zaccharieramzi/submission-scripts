@@ -29,6 +29,7 @@ with executor.batch():
                 af=4,
                 model=model,
                 run_id=run_ids[acq_type],
+                multicoil=True,
                 refine_smaps=True,
                 dcomp=True,
                 normalize_image=False,
