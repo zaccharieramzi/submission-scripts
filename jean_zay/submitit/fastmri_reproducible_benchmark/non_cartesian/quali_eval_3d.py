@@ -5,16 +5,16 @@ from jean_zay.submitit.general_submissions import get_executor
 
 model_2_run_ids = {
     'pdnet': {
-        'radial': 'ncpdnet_3d___i6_radial_stacks_mse_dcomp_1612291359',
-        'spiral': 'ncpdnet_3d___i6_spiral_stacks_mse_dcomp_161229135911913984',
+        'radial_stacks': 'ncpdnet_3d___i6_radial_stacks_mse_dcomp_1612291359',
+        'spiral_stacks': 'ncpdnet_3d___i6_spiral_stacks_mse_dcomp_161229135911913984',
     },
     'unet': {
-        'radial': 'vnet_3d___radial_stacks_mse_dcomp_1612291357',
-        'spiral': 'vnet_3d___spiral_stacks_mse_dcomp_1612291357',
+        'radial_stacks': 'vnet_3d___radial_stacks_mse_dcomp_1612291357',
+        'spiral_stacks': 'vnet_3d___spiral_stacks_mse_dcomp_1612291357',
     },
     'adj-dcomp': {
-        'radial': None,
-        'spiral': None,
+        'radial_stacks': None,
+        'spiral_stacks': None,
     },
 }
 
