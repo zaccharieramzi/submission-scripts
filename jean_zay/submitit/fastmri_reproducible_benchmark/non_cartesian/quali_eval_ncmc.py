@@ -1,4 +1,4 @@
-from fastmri_recon.data.scripts.qualitative_validation import nc_multinet_qualitative_validation
+from fastmri_recon.evaluate.scripts.qualitative_validation import nc_multinet_qualitative_validation
 
 from jean_zay.submitit.general_submissions import get_executor
 
