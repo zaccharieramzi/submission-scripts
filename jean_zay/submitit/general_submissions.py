@@ -2,7 +2,7 @@ from sklearn.model_selection import ParameterGrid
 import submitit
 
 
-def get_executor(job_name, timeout_hour=60, n_gpus=1, project='fastmri'):
+def get_executor(job_name, timeout_hour=60, n_gpus=1, project='fastmri', no_force_32=False):
     executor = submitit.AutoExecutor(folder=job_name)
     if timeout_hour > 20:
         qos = 't4'
@@ -35,6 +35,7 @@ def get_executor(job_name, timeout_hour=60, n_gpus=1, project='fastmri'):
         slurm_params.update({
             'partition': 'gpu_p2'
         })
+    if n_gpus > 4 or no_force_32:
         slurm_setup = slurm_setup[1:]
     if multi_node:
         slurm_params.update({
@@ -68,6 +69,7 @@ def train_eval_grid(
         checkpoints_train=0,
         resume_checkpoint=None,
         resume_run_run_ids=None,
+        no_force_32=False,
         **specific_eval_params,
     ):
     if to_grid:
@@ -79,6 +81,7 @@ def train_eval_grid(
         timeout_hour=timeout_train,
         n_gpus=n_gpus_train,
         project=project,
+        no_force_32=no_force_32,
     )
     jobs = []
     if resume_checkpoint is None:
@@ -136,6 +139,7 @@ def train_eval_grid(
             n_gpus=n_gpus_eval,
             project=project,
             params_to_ignore=params_to_ignore,
+            no_force_32=no_force_32,
             **specific_eval_params,
         )
 
@@ -150,6 +154,7 @@ def eval_grid(
         n_gpus=4,
         project='fastmri',
         params_to_ignore=None,
+        no_force_32=False,
         **specific_eval_params,
     ):
     if to_grid:
@@ -161,6 +166,7 @@ def eval_grid(
         timeout_hour=timeout,
         n_gpus=n_gpus,
         project=project,
+        no_force_32=no_force_32,
     )
     original_parameters = []
     if params_to_ignore is None:
