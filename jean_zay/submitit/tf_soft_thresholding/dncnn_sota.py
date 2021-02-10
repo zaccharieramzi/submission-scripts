@@ -67,6 +67,7 @@ eval_results, run_ids = train_eval_grid(
     mode='bsd68',  # just for eval
     project='soft_thresholding',
     return_run_ids=True,
+    no_force_32=True,
 )
 
 print(eval_results)

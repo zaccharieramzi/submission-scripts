@@ -29,4 +29,5 @@ train_eval_grid(
     project='mdeq',
     params_to_ignore=['grad_clipping', 'n_val'],
     val_noise_powers=[15, 25, 50],
+    no_force_32=True,
 )
