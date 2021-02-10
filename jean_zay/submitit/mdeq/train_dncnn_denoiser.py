@@ -10,6 +10,7 @@ parameters = [
         n_val=20,
         grad_clipping=None,
         fixed_lr=True,
+        loss='mae',
     )
 ]
 train_eval_grid(
