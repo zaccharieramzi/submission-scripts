@@ -10,6 +10,9 @@ parameters = dict(
     grad_clipping=[100.],
     state_residual=[True],
     with_dc=[True, False],
+    loss=['mae'],
+    n_epochs=2000,
+    fixed_lr=True,
 )
 
 train_eval_grid(
