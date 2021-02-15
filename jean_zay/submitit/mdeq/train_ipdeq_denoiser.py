@@ -11,8 +11,8 @@ parameters = dict(
     state_residual=[True],
     with_dc=[True, False],
     loss=['mae'],
-    n_epochs=2000,
-    fixed_lr=True,
+    n_epochs=[2000],
+    fixed_lr=[True],
 )
 
 train_eval_grid(
