@@ -8,9 +8,10 @@ job_name = 'dncnn_denoise'
 parameters = [
     dict(
         n_val=20,
-        grad_clipping=None,
+        grad_clipping=100,
         fixed_lr=True,
         loss='mae',
+        n_epochs=2500,
     )
 ]
 train_eval_grid(
