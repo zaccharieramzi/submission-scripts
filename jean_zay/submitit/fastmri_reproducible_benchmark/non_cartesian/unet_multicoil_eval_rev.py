@@ -18,7 +18,7 @@ run_ids = [
 ]
 
 eval_results = eval_grid(
-    'nc_unet_mc',
+    'nc_unet_mc_rev',
     eval_fun,
     params,
     run_ids=run_ids,
