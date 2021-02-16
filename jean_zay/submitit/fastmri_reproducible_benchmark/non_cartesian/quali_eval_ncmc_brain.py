@@ -33,7 +33,7 @@ with executor.batch():
                 refine_smaps=True,
                 dcomp=True,
                 normalize_image=False,
-                contrast='AXT2',
+                contrast=None,
                 n_epochs=100,
                 brain=True,
             )
