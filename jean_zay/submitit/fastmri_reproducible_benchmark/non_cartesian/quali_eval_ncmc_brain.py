@@ -36,4 +36,5 @@ with executor.batch():
                 contrast=None,
                 n_epochs=100,
                 brain=True,
+                slice_index=5,
             )
