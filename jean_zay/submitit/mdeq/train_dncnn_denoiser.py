@@ -11,7 +11,7 @@ parameters = [
         grad_clipping=100,
         fixed_lr=True,
         loss='mae',
-        n_epochs=2500,
+        n_epochs=5000,
     )
 ]
 train_eval_grid(
@@ -21,7 +21,7 @@ train_eval_grid(
     parameters,
     # run_ids=[None],
     to_grid=False,
-    timeout_train=5,
+    timeout_train=20,
     n_gpus_train=1,
     timeout_eval=2,
     n_gpus_eval=1,
