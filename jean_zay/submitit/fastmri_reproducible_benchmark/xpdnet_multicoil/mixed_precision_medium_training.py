@@ -56,6 +56,7 @@ parameter_grid = [
         multiscale_kspace_learning=multiscale_kspace_learning,
         use_mixed_precision=use_mixed_precision,
         distributed=batch_size is not None,
+        manual_saving=True,
     ) for _, model_size, model_fun, kwargs, _, n_scales, res in model_specs
 ] + [
     dict(
@@ -83,6 +84,7 @@ parameter_grid = [
         multiscale_kspace_learning=multiscale_kspace_learning,
         use_mixed_precision=use_mixed_precision,
         distributed=batch_size is not None,
+        manual_saving=True,
     ) for _, model_size, model_fun, kwargs, _, n_scales, res in model_specs
 ]
 
