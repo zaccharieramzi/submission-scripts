@@ -5,7 +5,7 @@ from jean_zay.submitit.general_submissions import train_eval_grid
 
 
 job_name = 'mdeq_denoise'
-parameters = dict(
+parameters = [dict(
     n_val=20,
     grad_clipping=100.,
     loss='mae',
@@ -13,7 +13,7 @@ parameters = dict(
     fixed_lr=True,
     use_res=True,
     use_bn=True,
-)
+)]
 
 train_eval_grid(
     job_name,
