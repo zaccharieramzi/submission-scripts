@@ -21,7 +21,7 @@ train_eval_grid(
     eval_mdeq_denoising,
     parameters,
     to_grid=False,
-    timeout_train=20,
+    timeout_train=80,
     n_gpus_train=1,
     timeout_eval=10,
     n_gpus_eval=1,
