@@ -13,6 +13,7 @@ parameters = dict(
     loss=['mae'],
     n_epochs=[2000],
     fixed_lr=[True],
+    unrolled_supp_validation=[True],
 )
 
 train_eval_grid(
