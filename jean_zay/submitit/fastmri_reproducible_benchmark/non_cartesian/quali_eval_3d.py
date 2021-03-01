@@ -6,7 +6,7 @@ from jean_zay.submitit.general_submissions import get_executor
 model_2_run_ids = {
     'pdnet': {
         'radial_stacks': 'ncpdnet_3d___i6_radial_stacks_mse_dcomp_1612291359',
-        'spiral_stacks': 'ncpdnet_3d___i6_spiral_stacks_mse_dcomp_161229135911913984',
+        'spiral_stacks': 'ncpdnet_3d___i6_spiral_stacks_mse_dcomp_1612291359',
     },
     'unet': {
         'radial_stacks': 'vnet_3d___radial_stacks_mse_dcomp_1612291357',
