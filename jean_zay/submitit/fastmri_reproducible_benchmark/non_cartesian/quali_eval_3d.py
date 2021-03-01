@@ -37,5 +37,4 @@ with executor.batch():
                 n_filters=16,
                 n_iter=6,
                 n_primal=2,
-                scale_factor=1e-2,
             )
