@@ -34,4 +34,8 @@ with executor.batch():
                 dcomp=True,
                 normalize_image=False,
                 n_epochs=8,
+                n_filters=16,
+                n_iter=6,
+                n_primal=2,
+                scale_factor=1e-2,
             )
