@@ -30,19 +30,23 @@ run_ids = [
     'vnet_3d___spiral_stacks_mse_dcomp_1612291357',
 ]
 
-eval_results = train_eval_grid(
-    '3d_nc',
-    train_ncnet_multinet,
+# eval_results = train_eval_grid(
+eval_results = eval_grid(
+    '3d_nc_eval',
+    # train_ncnet_multinet,
     evaluate_nc_multinet,
     params,
-    n_gpus_train=1,
-    timeout_train=40,
-    n_gpus_eval=1,
-    n_samples_eval=100,
+    run_ids=run_ids,
+    # n_gpus_train=1,
+    # timeout_train=40,
+    # n_gpus_eval=1,
+    # n_samples_eval=100,
+    timeout=20,
+    n_gpus=1,
     params_to_ignore=['use_mixed_precision'],
-    checkpoints_train=7,
-    resume_checkpoint=4,
-    resume_run_run_ids=run_ids,
+    # checkpoints_train=7,
+    # resume_checkpoint=4,
+    # resume_run_run_ids=run_ids,
     project='fastmri4',
 )
 print(eval_results)
