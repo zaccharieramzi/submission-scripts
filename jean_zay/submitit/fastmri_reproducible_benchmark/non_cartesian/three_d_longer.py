@@ -27,7 +27,7 @@ eval_results = train_eval_grid(
 # eval_results = eval_grid(
     '3d_nc',
     train_ncnet_multinet,
-    # evaluate_nc_multinet,
+    evaluate_nc_multinet,
     params,
     # run_ids=run_ids,
     n_gpus_train=1,
