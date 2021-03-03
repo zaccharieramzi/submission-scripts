@@ -16,6 +16,7 @@ parameters = dict(
     fixed_lr=[True],
     unrolled_supp_validation=[True],
     debug_deq=[True],
+    lr_dc=['trainable'],
 )
 
 train_eval_grid(
