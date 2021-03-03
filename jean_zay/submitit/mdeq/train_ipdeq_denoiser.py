@@ -14,6 +14,7 @@ parameters = dict(
     n_epochs=[5000],
     fixed_lr=[True],
     unrolled_supp_validation=[True],
+    debug_deq=[True],
 )
 
 train_eval_grid(
@@ -27,6 +28,6 @@ train_eval_grid(
     timeout_eval=10,
     n_gpus_eval=1,
     project='mdeq',
-    params_to_ignore=['grad_clipping', 'n_val'],
+    params_to_ignore=['grad_clipping', 'n_val', 'debug_deq'],
     val_noise_powers=[15, 25, 50],
 )
