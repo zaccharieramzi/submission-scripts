@@ -12,10 +12,10 @@ def get_executor(job_name, timeout_hour=60, n_gpus=1, project='fastmri', no_forc
         qos = 'dev'
     multi_node = n_gpus > 8
     if multi_node:
-        assert n_gpus % 8 == 0, 'Use multiple of 8 GPUs for multi node training'
+        assert n_gpus % 4 == 0, 'Use multiple of 4 GPUs for multi node training'
         assert timeout_hour <= 20, 'Use t3 qos for multi node training'
         multi_node = True
-        n_nodes = n_gpus // 8
+        n_nodes = n_gpus // 4
         n_gpus = n_gpus // n_nodes
     cpu_per_gpu = 3 if n_gpus > 4 else 10
     slurm_params = {
@@ -31,11 +31,11 @@ def get_executor(job_name, timeout_hour=60, n_gpus=1, project='fastmri', no_forc
         'cd $WORK/submission-scripts/jean_zay/env_configs',
         f'. {project}.sh',
     ]
-    if n_gpus > 4:
+    if n_gpus > 4 and n_gpus < 8:
         slurm_params.update({
             'partition': 'gpu_p2'
         })
-    if n_gpus > 4 or no_force_32:
+    if (n_gpus > 4 or no_force_32) and n_gpus < 8:
         slurm_setup = slurm_setup[1:]
     if multi_node:
         slurm_params.update({
