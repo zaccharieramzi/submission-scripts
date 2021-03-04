@@ -8,7 +8,6 @@ job_name = 'noise_estimation'
 parameters = dict(
     n_val=[20],
     grad_clipping=[100],
-    loss=['mae'],
     n_epochs=[5000],
     num_blocks=[3, 5, 10],
 )
