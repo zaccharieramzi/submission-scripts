@@ -31,33 +31,33 @@ if model_size is not None:
     model_specs = [ms for ms in model_specs if ms[1] == model_size]
 
 parameter_grid = [
-    dict(
-        model_fun=model_fun,
-        model_kwargs=kwargs,
-        model_size=model_size,
-        multicoil=True,
-        n_scales=n_scales,
-        res=res,
-        n_primal=n_primal,
-        contrast=contrast,
-        batch_size=batch_size,
-        n_epochs=n_epochs,
-        n_samples=n_samples,
-        refine_smaps=refine_smaps,
-        refine_big=refine_big,
-        af=8,
-        loss=loss,
-        lr=lr,
-        mask_type='random',
-        n_dual=n_dual,
-        n_iter=n_iter,
-        primal_only=primal_only,
-        n_dual_filters=n_dual_filters,
-        multiscale_kspace_learning=multiscale_kspace_learning,
-        use_mixed_precision=use_mixed_precision,
-        distributed=batch_size is not None,
-        manual_saving=True,
-    ) for _, model_size, model_fun, kwargs, _, n_scales, res in model_specs
+    # dict(
+    #     model_fun=model_fun,
+    #     model_kwargs=kwargs,
+    #     model_size=model_size,
+    #     multicoil=True,
+    #     n_scales=n_scales,
+    #     res=res,
+    #     n_primal=n_primal,
+    #     contrast=contrast,
+    #     batch_size=batch_size,
+    #     n_epochs=n_epochs,
+    #     n_samples=n_samples,
+    #     refine_smaps=refine_smaps,
+    #     refine_big=refine_big,
+    #     af=8,
+    #     loss=loss,
+    #     lr=lr,
+    #     mask_type='random',
+    #     n_dual=n_dual,
+    #     n_iter=n_iter,
+    #     primal_only=primal_only,
+    #     n_dual_filters=n_dual_filters,
+    #     multiscale_kspace_learning=multiscale_kspace_learning,
+    #     use_mixed_precision=use_mixed_precision,
+    #     distributed=batch_size is not None,
+    #     manual_saving=True,
+    # ) for _, model_size, model_fun, kwargs, _, n_scales, res in model_specs
 ] + [
     dict(
         model_fun=model_fun,
@@ -89,7 +89,7 @@ parameter_grid = [
 ]
 
 run_ids = [
-    'xpdnet_sense__af8_i35_compound_mssim_rf_sm_MWCNNmedium_1614935428',
+    # 'xpdnet_sense__af8_i35_compound_mssim_rf_sm_MWCNNmedium_1614935428',
     'xpdnet_sense__af4_i35_compound_mssim_rf_sm_MWCNNmedium_1614937049',
 ]
 eval_results, run_ids = train_eval_grid(
@@ -110,7 +110,7 @@ eval_results, run_ids = train_eval_grid(
     to_grid=False,
     return_run_ids=True,
     checkpoints_train=9,
-    resume_checkpoint=2,
+    resume_checkpoint=1,
     resume_run_run_ids=run_ids,
     params_to_ignore=['batch_size', 'use_mixed_precision'],
     project='fastmri4',
