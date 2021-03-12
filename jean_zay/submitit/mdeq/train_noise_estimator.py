@@ -9,7 +9,7 @@ parameters = dict(
     n_val=[20],
     grad_clipping=[100],
     n_epochs=[5000],
-    num_blocks=[3, 5, 10],
+    num_blocks=[0, 1, 3, 5],
 )
 
 train_eval_grid(
