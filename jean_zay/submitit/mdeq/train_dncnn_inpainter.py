@@ -4,7 +4,7 @@ from mdeq_lib.evaluate.scripts.denoise_eval import eval_dncnn_denoising
 from jean_zay.submitit.general_submissions import train_eval_grid, eval_grid
 
 
-job_name = 'dncnn_denoise'
+job_name = 'dncnn_inpaint'
 parameters = [
     dict(
         n_val=20,
