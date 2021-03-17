@@ -30,7 +30,7 @@ train_eval_grid(
     eval_ipdeq_denoising,
     parameters,
     to_grid=True,
-    timeout_train=1,
+    timeout_train=100,
     n_gpus_train=1,
     timeout_eval=2,
     n_gpus_eval=1,
