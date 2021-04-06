@@ -3,7 +3,7 @@ module purge
 module load pytorch-gpu/py3/1.7.1
 
 export FASTMRI_DATA_DIR=$SCRATCH/
-export IMAGENET_DIR=$DSDIR/imagenet/RawImages/
+export IMAGENET_DIR=$SCRATCH/imagenet/
 export TMP_DIR=$JOBSCRATCH/
 export SHINE_LOGS=$SCRATCH/logs
 export SHINE_CHECKPOINTS=$SCRATCH/checkpoints
