@@ -2,7 +2,7 @@ from sklearn.model_selection import ParameterGrid
 import submitit
 
 
-def get_executor(job_name, timeout_hour=60, n_gpus=1, project='fastmri', no_force_32=False):
+def get_executor(job_name, timeout_hour=60, n_gpus=1, project='fastmri', no_force_32=False, torch=False):
     executor = submitit.AutoExecutor(folder=job_name)
     if timeout_hour > 20:
         qos = 't4'
@@ -19,7 +19,7 @@ def get_executor(job_name, timeout_hour=60, n_gpus=1, project='fastmri', no_forc
         n_gpus = n_gpus // n_nodes
     cpu_per_gpu = 3 if n_gpus > 4 else 10
     slurm_params = {
-        'ntasks-per-node': 1,
+        'ntasks-per-node': n_gpus if torch else 1,
         'cpus-per-task':  cpu_per_gpu * n_gpus,
         'account': 'hih@gpu',
         'qos': f'qos_gpu-{qos}',
@@ -70,6 +70,7 @@ def train_eval_grid(
         resume_checkpoint=None,
         resume_run_run_ids=None,
         no_force_32=False,
+        torch=False,
         **specific_eval_params,
     ):
     if to_grid:
@@ -82,6 +83,7 @@ def train_eval_grid(
         n_gpus=n_gpus_train,
         project=project,
         no_force_32=no_force_32,
+        torch=torch,
     )
     jobs = []
     if resume_checkpoint is None:
