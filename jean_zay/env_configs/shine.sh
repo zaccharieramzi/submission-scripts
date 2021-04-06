@@ -9,3 +9,4 @@ export SHINE_LOGS=$SCRATCH/logs
 export SHINE_CHECKPOINTS=$SCRATCH/checkpoints
 export SHINE_DATA=$SCRATCH/
 export SHINE_CONFIG=$WORK/shine/experiments/
+export WORK_DIR=$WORK/shine/
