@@ -8,4 +8,4 @@ export TMP_DIR=$JOBSCRATCH/
 export SHINE_LOGS=$SCRATCH/logs
 export SHINE_CHECKPOINTS=$SCRATCH/checkpoints
 export SHINE_DATA=$SCRATCH/
-export SHINE_CONFIG=$WORK/mdeq/experiments/
+export SHINE_CONFIG=$WORK/shine/experiments/
