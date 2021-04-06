@@ -1,6 +1,6 @@
 #!/bin/bash
 module purge
-module load pytorch-gpu/py3/1.7.1
+module load pytorch-gpu/py3/1.6.0
 
 export FASTMRI_DATA_DIR=$SCRATCH/
 export IMAGENET_DIR=$SCRATCH/imagenet/
