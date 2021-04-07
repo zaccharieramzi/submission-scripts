@@ -10,12 +10,13 @@ base_params = dict(
     model_size='LARGE',
     dataset='cifar',
     n_gpus=n_gpus,
-    n_epochs=220,
+    n_epochs=60,
+    save_at=50,
 )
 parameters = [
     base_params,
-    dict(shine=True, **base_params),
-    dict(fpn=True, **base_params),
+    # dict(shine=True, **base_params),
+    # dict(fpn=True, **base_params),
 ]
 
 train_eval_grid(
@@ -29,6 +30,6 @@ train_eval_grid(
     timeout_eval=2,
     n_gpus_eval=n_gpus,
     project='shine',
-    params_to_ignore=['n_epochs'],
+    params_to_ignore=['n_epochs', 'save_at'],
     torch=True,
 )
