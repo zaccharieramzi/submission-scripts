@@ -11,7 +11,7 @@ executor = get_executor(
     n_gpus=n_gpus,
     project='shine',
     torch=True,
-    no_force32=True,
+    no_force_32=True,
 )
 
 executor.submit(
@@ -22,5 +22,4 @@ executor.submit(
     shine=False,
     fpn=True,
     n_epochs=25,
-
 )
