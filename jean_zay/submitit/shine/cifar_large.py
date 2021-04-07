@@ -10,7 +10,7 @@ base_params = dict(
     model_size='LARGE',
     dataset='cifar',
     n_gpus=n_gpus,
-    n_epochs=60,
+    n_epochs=220,
     save_at=50,
 )
 parameters = [
