@@ -178,7 +178,6 @@ def eval_grid(
         'n_samples',
         'run_id',
         'n_steps_per_epoch',
-        'model_size',
         'model_name',
         'lr',
     ]
