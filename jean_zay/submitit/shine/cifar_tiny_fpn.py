@@ -15,4 +15,6 @@ executor.submit(
     shine=False,
     fpn=True,
     n_epochs=25,
+    torch=True,
+    no_force32=True,
 )
