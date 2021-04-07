@@ -127,6 +127,8 @@ def train_eval_grid(
             n_gpus=n_gpus_eval,
             project=project,
             params_to_ignore=params_to_ignore,
+            no_force_32=no_force_32,
+            torch=torch,
             **specific_eval_params,
         ), run_ids
     else:
@@ -142,6 +144,7 @@ def train_eval_grid(
             project=project,
             params_to_ignore=params_to_ignore,
             no_force_32=no_force_32,
+            torch=torch,
             **specific_eval_params,
         )
 
@@ -157,6 +160,7 @@ def eval_grid(
         project='fastmri',
         params_to_ignore=None,
         no_force_32=False,
+        torch=False,
         **specific_eval_params,
     ):
     if to_grid:
@@ -169,6 +173,7 @@ def eval_grid(
         n_gpus=n_gpus,
         project=project,
         no_force_32=no_force_32,
+        torch=torch,
     )
     original_parameters = []
     if params_to_ignore is None:
