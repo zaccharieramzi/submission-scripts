@@ -79,6 +79,7 @@ eval_results = train_eval_grid(
     # timeout=10,
     # n_gpus=1,
     to_grid=False,
+    params_to_ignore=['model_size']
 )
 
 print(eval_results)

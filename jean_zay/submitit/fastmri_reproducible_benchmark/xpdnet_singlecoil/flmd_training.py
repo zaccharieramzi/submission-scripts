@@ -113,7 +113,7 @@ eval_results, run_ids = train_eval_grid(
     checkpoints_train=2,
     resume_checkpoint=2,
     resume_run_run_ids=run_ids,
-    params_to_ignore=['batch_size', 'use_mixed_precision'],
+    params_to_ignore=['batch_size', 'use_mixed_precision', 'model_size'],
 )
 
 print(eval_results)

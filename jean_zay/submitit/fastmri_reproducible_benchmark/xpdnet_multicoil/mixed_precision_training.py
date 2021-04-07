@@ -110,7 +110,7 @@ eval_results, run_ids = train_eval_grid(
     checkpoints_train=19,
     # resume_checkpoint=4,
     # resume_run_run_ids=run_ids,
-    params_to_ignore=['batch_size', 'use_mixed_precision'],
+    params_to_ignore=['batch_size', 'use_mixed_precision', 'model_size'],
     project='fastmri4',
 )
 
@@ -124,6 +124,6 @@ infer_grid(
     timeout=10,
     n_gpus=4,
     to_grid=False,
-    params_to_ignore=['mask_type', 'batch_size', 'use_mixed_precision'],
+    params_to_ignore=['mask_type', 'batch_size', 'use_mixed_precision', 'model_size'],
     project='fastmri4',
 )
