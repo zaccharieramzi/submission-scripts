@@ -14,9 +14,9 @@ base_params = dict(
     save_at=50,
 )
 parameters = [
-    base_params,
-    # dict(shine=True, **base_params),
-    # dict(fpn=True, **base_params),
+    # base_params,
+    dict(shine=True, **base_params),
+    dict(fpn=True, **base_params),
 ]
 
 train_eval_grid(
