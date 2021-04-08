@@ -14,17 +14,18 @@ base_params = dict(
     n_gpus=n_gpus,
     n_epochs=80,
 )
-parameters = [
-    base_params,
-    dict(shine=True, **base_params),
-    dict(fpn=True, **base_params),
-]
-
 
 perf_orig = []
 perf_shine = []
 perf_fpn = []
 for i_run in range(n_runs):
+    base_params.update(seed=i_run)
+    parameters = [
+        base_params,
+        dict(shine=True, **base_params),
+        dict(fpn=True, **base_params),
+    ]
+
     res_orig, res_shine, res_fpn = train_eval_grid(
         job_name,
         train_classifier,
