@@ -30,6 +30,6 @@ train_eval_grid(
     timeout_eval=2,
     n_gpus_eval=n_gpus,
     project='shine',
-    params_to_ignore=['n_epochs', 'save_at'],
+    params_to_ignore=['n_epochs', 'save_at', 'restart_from'],
     torch=True,
 )
