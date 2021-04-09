@@ -15,36 +15,35 @@ base_params = dict(
     n_gpus=n_gpus,
     n_epochs=80,
 )
-
-perf_orig = []
-perf_shine = []
-perf_fpn = []
+parameters = []
 for i_run in range(n_runs):
     base_params.update(seed=i_run)
-    parameters = [
+    parameters += [
         base_params,
         dict(shine=True, **base_params),
         dict(fpn=True, **base_params),
     ]
 
-    res_orig, res_shine, res_fpn = train_eval_grid(
-        job_name,
-        train_classifier,
-        evaluate_classifier,
-        parameters,
-        to_grid=False,
-        timeout_train=2,
-        n_gpus_train=n_gpus,
-        timeout_eval=1,
-        n_gpus_eval=n_gpus,
-        project='shine',
-        params_to_ignore=['n_epochs'],
-        torch=True,
-        no_force_32=True,
-    )
-    perf_orig.append(res_orig)
-    perf_shine.append(res_shine)
-    perf_fpn.append(res_fpn)
+res_all = train_eval_grid(
+    job_name,
+    train_classifier,
+    evaluate_classifier,
+    parameters,
+    to_grid=False,
+    timeout_train=2,
+    n_gpus_train=n_gpus,
+    timeout_eval=1,
+    n_gpus_eval=n_gpus,
+    project='shine',
+    params_to_ignore=['n_epochs'],
+    torch=True,
+    no_force_32=True,
+)
+
+perf_orig = [res for (res, params) in zip(res_all, parameters) if not params['shine'] and not params['fpn']]
+perf_shine = [res for (res, params) in zip(res_all, parameters) if params['shine']]
+perf_fpn = [res for (res, params) in zip(res_all, parameters) if params['fpn']]
+
 
 print('Perf orig', perf_orig)
 print('Perf shine', perf_shine)
