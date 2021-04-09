@@ -6,6 +6,7 @@ from jean_zay.submitit.general_submissions import train_eval_grid
 
 job_name = 'shine_classifier_cifar_large'
 n_gpus = 4
+n_runs = 5
 base_params = dict(
     model_size='LARGE',
     dataset='cifar',
@@ -13,11 +14,12 @@ base_params = dict(
     n_epochs=220,
     save_at=50,
 )
-parameters = [
-    # base_params,
-    dict(shine=True, **base_params),
-    dict(fpn=True, **base_params),
-]
+for i_run in range(n_runs):
+    parameters += [
+        dict(seed=i_run, **base_params),
+        dict(seed=i_run, shine=True, **base_params),
+        dict(seed=i_run, fpn=True, **base_params),
+    ]
 
 train_eval_grid(
     job_name,
