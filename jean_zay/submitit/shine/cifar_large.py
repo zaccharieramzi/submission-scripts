@@ -16,6 +16,7 @@ base_params = dict(
     n_epochs=220,
     save_at=50,
 )
+parameters = []
 for i_run in range(n_runs):
     parameters += [
         dict(seed=i_run, **base_params),
