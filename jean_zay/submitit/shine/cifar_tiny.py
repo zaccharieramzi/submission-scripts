@@ -40,9 +40,9 @@ res_all = train_eval_grid(
     no_force_32=True,
 )
 
-perf_orig = [res for (res, params) in zip(res_all, parameters) if not params['shine'] and not params['fpn']]
-perf_shine = [res for (res, params) in zip(res_all, parameters) if params['shine']]
-perf_fpn = [res for (res, params) in zip(res_all, parameters) if params['fpn']]
+perf_orig = [res for (res, params) in zip(res_all, parameters) if not params.get('shine', False) and not params.get('fpn', False)]
+perf_shine = [res for (res, params) in zip(res_all, parameters) if params.get('shine', False)]
+perf_fpn = [res for (res, params) in zip(res_all, parameters) if params.get('fpn', False)]
 
 
 print('Perf orig', perf_orig)
