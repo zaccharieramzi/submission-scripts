@@ -16,7 +16,7 @@ base_params = dict(
 )
 parameters = []
 for i_run in range(n_runs):
-    base_params.update(seed=i_run)
+    base_params.update(seed=5+i_run)
     parameters += [
         dict(shine=True, **base_params),
         dict(fpn=True, **base_params),
