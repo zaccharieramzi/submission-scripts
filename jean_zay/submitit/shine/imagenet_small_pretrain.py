@@ -8,7 +8,7 @@ from jean_zay.submitit.general_submissions import train_eval_grid
 
 job_name = 'shine_classifier_imagenet_small'
 n_gpus = 4
-n_runs = 3
+n_runs = 1
 base_params = dict(
     model_size='SMALL',
     dataset='imagenet',
