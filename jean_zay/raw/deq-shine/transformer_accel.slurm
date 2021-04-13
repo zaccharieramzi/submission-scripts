@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=transformer     # nom du job
+#SBATCH --job-name=transformer_accel     # nom du job
 #SBATCH --ntasks=4                # nombre de tâche MPI
 #SBATCH --ntasks-per-node=4          # nombre de tâche MPI par noeud
 #SBATCH --cpus-per-task=10           # nombre de coeurs à réserver par tâche
