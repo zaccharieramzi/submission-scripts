@@ -26,5 +26,5 @@ opt[1]="--fpn --name fpn"
 ./run_wt103_deq_transformer.sh train\
   --data $WIKITEXT_DIR \
   --work_dir $SHINE_CHECKPOINTS\
-  --restart_dir $SHINE_CHECKPOINTS/deq\
+  # --restart_dir $SHINE_CHECKPOINTS/deq\
   ${opt[$SLURM_ARRAY_TASK_ID]}
