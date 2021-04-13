@@ -19,4 +19,7 @@ cd $WORK/submission-scripts/jean_zay/env_configs/
 
 cd $WORK/deq-shine/DEQModel
 
-./run_wt103_deq_transformer.sh train
+./run_wt103_deq_transformer.sh train\
+  --data $WIKITEXT_DIR\
+  --work_dir $SHINE_CHECKPOINTS\
+  --restart_dir $SHINE_CHECKPOINTS/deq
