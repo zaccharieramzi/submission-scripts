@@ -4,7 +4,7 @@ from jean_zay.submitit.general_submissions import eval_grid
 
 
 job_name = 'shine_classifier_cifar_large_contract'
-n_gpus = 4
+n_gpus = 1
 base_params = dict(
     model_size='LARGE',
     dataset='cifar',
