@@ -3,10 +3,10 @@ from mdeq_lib.evaluate.cls_valid import evaluate_classifier
 from jean_zay.submitit.general_submissions import eval_grid
 
 
-job_name = 'shine_classifier_cifar_small_contract'
+job_name = 'shine_classifier_cifar_large_contract'
 n_gpus = 4
 base_params = dict(
-    model_size='TINY',
+    model_size='LARGE',
     dataset='cifar',
     n_gpus=n_gpus,
     check_contract=True,
