@@ -11,6 +11,7 @@ base_params = dict(
     dataset='imagenet',
     n_gpus=n_gpus,
     n_epochs=100,
+    seed=0,
 )
 parameters = [
     base_params,
