@@ -22,7 +22,7 @@ cd $WORK/deq-shine/DEQModel
 ./run_wt103_deq_transformer.sh train \
   --data $WIKITEXT_DIR \
   --work_dir $SHINE_CHECKPOINTS \
-  --shine --name shine
+  --shine --name shine \
   --restart \
   --restart_dir $SHINE_CHECKPOINTS/deq-wt103/20210413-172744 \
   --eval \
