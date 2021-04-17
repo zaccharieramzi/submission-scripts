@@ -23,10 +23,9 @@ cd $WORK/deq-shine/DEQModel
   --data $WIKITEXT_DIR \
   --work_dir $SHINE_CHECKPOINTS \
   --shine --name shine
-  --restart\
-  --restart_dir $SHINE_CHECKPOINTS/deq-wt103/20210413-172744\
-  --start_train_steps 60\
-  --eval\
-  --mem_len 300\
-  --f_thres 30\
+  --restart \
+  --restart_dir $SHINE_CHECKPOINTS/deq-wt103/20210413-172744 \
+  --eval \
+  --mem_len 300 \
+  --f_thres 30 \
   --pretrain_steps 0
