@@ -22,5 +22,8 @@ cd $WORK/deq-shine/DEQModel
 ./run_wt103_deq_transformer.sh train\
   --data $WIKITEXT_DIR\
   --work_dir $SHINE_CHECKPOINTS\
-  --b_thres 35
-  # --restart_dir $SHINE_CHECKPOINTS/deq
+  --b_thres 35\
+  --restart \
+  --restart_dir $SHINE_CHECKPOINTS/deq-wt103/20210413-150921 \
+  --start_train_steps xxx\
+  --pretrain_steps 0
