@@ -18,9 +18,11 @@ def get_executor(job_name, timeout_hour=60, n_gpus=1, project='fastmri', no_forc
         n_nodes = n_gpus // 4
         n_gpus = n_gpus // n_nodes
     cpu_per_gpu = 3 if n_gpus > 4 else 10
+    tasks_per_node = n_gpus if torch else 1
+    cpus_per_task = cpu_per_gpu if torch else cpu_per_gpu * n_gpus
     slurm_params = {
-        'ntasks-per-node': n_gpus if torch else 1,
-        'cpus-per-task':  cpu_per_gpu * n_gpus,
+        'ntasks-per-node': tasks_per_node,
+        'cpus-per-task':  cpus_per_task,
         'account': 'hih@gpu',
         'qos': f'qos_gpu-{qos}',
         'distribution': 'block:block',
@@ -44,6 +46,8 @@ def get_executor(job_name, timeout_hour=60, n_gpus=1, project='fastmri', no_forc
         slurm_setup.append('unset http_proxy https_proxy HTTP_PROXY HTTPS_PROXY')
     executor.update_parameters(
         timeout_min=60,
+        tasks_per_node=tasks_per_node,
+        cpus_per_task=cpus_per_task,
         slurm_job_name=job_name,
         slurm_time=f'{timeout_hour}:00:00',
         slurm_gres=f'gpu:{n_gpus}',

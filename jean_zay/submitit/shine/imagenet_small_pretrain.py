@@ -19,7 +19,7 @@ base_params = dict(
 parameters = []
 for i_run in range(n_runs):
     parameters += [
-        dict(seed=i_run, **base_params),
+        dict(seed=i_run+1, **base_params),
         # dict(seed=i_run, shine=True, **base_params),
         # dict(seed=i_run, fpn=True, **base_params),
     ]
