@@ -19,7 +19,7 @@ base_params = dict(
 parameters = []
 for i_run in range(n_runs):
     parameters += [
-        dict(seed=i_run+1, **base_params),
+        dict(seed=i_run, **base_params),
         # dict(seed=i_run, shine=True, **base_params),
         # dict(seed=i_run, fpn=True, **base_params),
     ]
@@ -30,7 +30,7 @@ res_all = train_eval_grid(
     evaluate_classifier,
     parameters,
     to_grid=False,
-    timeout_train=3*24,
+    timeout_train=10,
     n_gpus_train=n_gpus,
     timeout_eval=2,
     n_gpus_eval=n_gpus,
