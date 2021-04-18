@@ -25,5 +25,5 @@ cd $WORK/deq-shine/DEQModel
   --b_thres 35\
   --restart \
   --restart_dir $SHINE_CHECKPOINTS/deq-wt103/20210413-150921 \
-  --start_train_steps xxx\
+  --start_train_steps 128400\
   --pretrain_steps 0
