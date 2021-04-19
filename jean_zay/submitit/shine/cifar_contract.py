@@ -10,7 +10,7 @@ base_params = dict(
     dataset='cifar',
     n_gpus=n_gpus,
     check_contract=True,
-    n_iter=20,
+    n_iter=500,
     seed=0,
 )
 parameters = []
@@ -25,7 +25,7 @@ res_all = eval_grid(
     evaluate_classifier,
     parameters,
     to_grid=False,
-    timeout=1,
+    timeout=20,
     n_gpus=n_gpus,
     project='shine',
     params_to_ignore=['n_epochs'],
