@@ -11,11 +11,11 @@ base_params = dict(
     dataset='imagenet',
     n_gpus=n_gpus,
     n_epochs=100,
-    seed=0,
+    seed=1,
     restart_from=48,
 )
 parameters = [
-    base_params,
+    # base_params,
     dict(shine=True, **base_params),
     dict(fpn=True, **base_params),
 ]
