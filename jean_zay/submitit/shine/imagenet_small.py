@@ -12,6 +12,7 @@ base_params = dict(
     n_gpus=n_gpus,
     n_epochs=100,
     seed=0,
+    restart_from=48,
 )
 parameters = [
     base_params,
@@ -30,6 +31,6 @@ train_eval_grid(
     timeout_eval=20,
     n_gpus_eval=n_gpus,
     project='shine',
-    params_to_ignore=['n_epochs'],
+    params_to_ignore=['n_epochs', 'restart_from'],
     torch=True,
 )
