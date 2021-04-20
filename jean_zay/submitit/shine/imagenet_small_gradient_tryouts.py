@@ -14,7 +14,7 @@ base_params = dict(
 )
 parameters = [
     dict(shine=True, model_size='SMALL_clip', restart_from=48, **base_params),
-    dict(shine=True, model_size='SMALL_adam', **base_params),
+    # dict(shine=True, model_size='SMALL_adam', **base_params),
 ]
 
 train_eval_grid(
