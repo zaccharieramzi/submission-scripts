@@ -24,4 +24,8 @@ cd $WORK/deq-shine/DEQModel
   --work_dir $SHINE_CHECKPOINTS \
   --shine --name shine_debug \
   --b_thres 35\
-  --correl --ratio
+  --correl --ratio\
+  --restart \
+  --restart_dir $SHINE_CHECKPOINTS/deq-wt103/20210419-223727 \
+  --start_train_steps 16000\
+  --pretrain_steps 0
