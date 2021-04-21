@@ -16,7 +16,7 @@ base_params = dict(
     n_epochs=100,
     use_group_norm=True,
     save_at=48,
-    restart_at=48,
+    restart_from=48,
 )
 parameters = []
 for i_run in range(n_runs):
@@ -36,7 +36,7 @@ res_all = train_eval_grid(
     timeout_eval=2,
     n_gpus_eval=n_gpus,
     project='shine',
-    params_to_ignore=['n_epochs', 'save_at', 'restart_at'],
+    params_to_ignore=['n_epochs', 'save_at', 'restart_from'],
     torch=True,
 )
 
