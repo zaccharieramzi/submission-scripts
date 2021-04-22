@@ -14,7 +14,8 @@ base_params = dict(
     dataset='imagenet',
     n_gpus=n_gpus,
     n_epochs=100,
-    save_at=48,
+    save_at=50,
+    restart_from=48,
 )
 parameters = []
 for i_run in range(n_runs):
