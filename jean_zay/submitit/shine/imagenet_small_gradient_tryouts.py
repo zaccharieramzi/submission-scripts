@@ -11,10 +11,11 @@ base_params = dict(
     n_gpus=n_gpus,
     n_epochs=100,
     seed=0,
+    save_at=48,
 )
 parameters = [
-    dict(shine=True, model_size='SMALL_clip', restart_from=48, **base_params),
-    # dict(shine=True, model_size='SMALL_adam', **base_params),
+    # dict(shine=True, model_size='SMALL_clip', restart_from=48, **base_params),
+    dict(shine=True, model_size='SMALL_adam', **base_params),
 ]
 
 train_eval_grid(
