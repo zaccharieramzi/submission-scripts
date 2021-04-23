@@ -12,11 +12,12 @@ base_params = dict(
     n_gpus=n_gpus,
     n_epochs=100,
     seed=0,
+    save_at=48,
 )
 parameters = [
     base_params,
-    dict(shine=True, **base_params),
-    dict(fpn=True, **base_params),
+    # dict(shine=True, **base_params),
+    # dict(fpn=True, **base_params),
 ]
 
 train_eval_grid(
@@ -25,11 +26,11 @@ train_eval_grid(
     evaluate_classifier,
     parameters,
     to_grid=False,
-    timeout_train=100,
+    timeout_train=40,
     n_gpus_train=n_gpus,
     timeout_eval=20,
     n_gpus_eval=n_gpus,
     project='shine',
-    params_to_ignore=['n_epochs', 'restart_from'],
+    params_to_ignore=['n_epochs', 'restart_from', 'save_at'],
     torch=True,
 )
