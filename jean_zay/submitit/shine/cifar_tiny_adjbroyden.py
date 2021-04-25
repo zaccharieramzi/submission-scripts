@@ -16,7 +16,7 @@ base_params = dict(
     n_epochs=80,
     adjoint_broyden=True,
     save_at=14,
-    restart_from=14,
+    # restart_from=14,
 )
 parameters = []
 for i_run in range(n_runs):
