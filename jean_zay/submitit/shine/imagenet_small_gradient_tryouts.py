@@ -4,7 +4,7 @@ from mdeq_lib.training.cls_train import train_classifier
 from jean_zay.submitit.general_submissions import train_eval_grid
 
 
-job_name = 'shine_classifier_imagenet_small'
+job_name = 'shine_classifier_imagenet_small_adam'
 n_gpus = 4
 base_params = dict(
     dataset='imagenet',
@@ -15,7 +15,8 @@ base_params = dict(
 )
 parameters = [
     # dict(shine=True, model_size='SMALL_clip', restart_from=48, **base_params),
-    dict(shine=True, model_size='SMALL_adam', **base_params),
+    # dict(shine=True, model_size='SMALL_adam', **base_params),
+    dict(model_size='SMALL_adam', restart_from=48, **base_params),
 ]
 
 train_eval_grid(
@@ -29,6 +30,6 @@ train_eval_grid(
     timeout_eval=20,
     n_gpus_eval=n_gpus,
     project='shine',
-    params_to_ignore=['n_epochs', 'restart_from'],
+    params_to_ignore=['n_epochs', 'restart_from', 'save_at'],
     torch=True,
 )
