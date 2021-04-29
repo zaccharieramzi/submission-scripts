@@ -17,8 +17,8 @@ base_params = dict(
     n_iter=200,
 )
 parameters = [
-    # base_params,
-    dict(shine=True, **base_params),
+    base_params,
+    # dict(shine=True, **base_params),
     # dict(fpn=True, **base_params),
 ]
 
