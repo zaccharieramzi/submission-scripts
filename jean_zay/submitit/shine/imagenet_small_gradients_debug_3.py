@@ -14,7 +14,7 @@ base_params = dict(
     restart_from=48,
     gradient_correl=True,
     gradient_ratio=True,
-    n_iter=200,
+    n_iter=1000,
 )
 parameters = [
     # base_params,
