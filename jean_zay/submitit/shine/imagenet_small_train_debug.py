@@ -4,7 +4,7 @@ from jean_zay.submitit.general_submissions import get_executor
 
 
 job_name = 'debug_shine'
-n_gpus = 4
+n_gpus = 1
 base_params = dict(
     model_size='SMALL',
     dataset='imagenet',
@@ -14,10 +14,10 @@ base_params = dict(
     restart_from=48,
     gradient_correl=False,
     gradient_ratio=False,
-    n_iter=200,
+    n_iter=1000,
 )
 parameters = [
-    # base_params,
+    base_params,
     dict(shine=True, **base_params),
     # dict(fpn=True, **base_params),
 ]
