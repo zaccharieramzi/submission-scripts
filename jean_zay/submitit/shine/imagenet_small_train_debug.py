@@ -17,9 +17,9 @@ base_params = dict(
     n_iter=1000,
 )
 parameters = [
-    base_params,
-    dict(shine=True, **base_params),
-    # dict(fpn=True, **base_params),
+    # base_params,
+    # dict(shine=True, **base_params),
+    dict(fpn=True, **base_params),
 ]
 
 executor = get_executor(job_name, timeout_hour=2, n_gpus=n_gpus, project='shine')
