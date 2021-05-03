@@ -11,17 +11,17 @@ base_params = dict(
     n_gpus=n_gpus,
     n_epochs=100,
     seed=42,
-    restart_from=48,
+    restart_from='many',
     gradient_correl=True,
     gradient_ratio=True,
     compute_partial=True,
-    f_thres_range=range(26,27),
-    n_samples=200,
+    f_thres_range=range(2, 200),
+    n_samples=1,
 )
 parameters = [
     # base_params,
-    # dict(shine=True, **base_params),
-    dict(fpn=True, **base_params),
+    dict(shine=True, **base_params),
+    # dict(fpn=True, **base_params),
 ]
 
 executor = get_executor(job_name, timeout_hour=2, n_gpus=n_gpus, project='shine')
