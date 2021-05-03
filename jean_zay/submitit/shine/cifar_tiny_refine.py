@@ -35,7 +35,7 @@ res_all = train_eval_grid(
     timeout_eval=1,
     n_gpus_eval=n_gpus,
     project='shine',
-    params_to_ignore=['n_epochs', 'refine'],
+    params_to_ignore=['n_epochs'],
     torch=True,
     no_force_32=True,
 )
