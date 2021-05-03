@@ -7,7 +7,7 @@ from jean_zay.submitit.general_submissions import train_eval_grid
 
 
 job_name = 'shine_classifier_cifar_small'
-n_runs = 1
+n_runs = 5
 n_gpus = 4
 base_params = dict(
     model_size='TINY_refine',
@@ -19,9 +19,9 @@ parameters = []
 for i_run in range(n_runs):
     base_params.update(seed=i_run)
     parameters += [
-        # base_params,
+        base_params,
         dict(shine=True, refine=True, **base_params),
-        # dict(fpn=True, refine=True, **base_params),
+        dict(fpn=True, refine=True, **base_params),
     ]
 
 res_all = train_eval_grid(
