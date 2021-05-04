@@ -15,8 +15,8 @@ base_params = dict(
     gradient_correl=True,
     gradient_ratio=True,
     compute_partial=True,
-    f_thres_range=range(2, 200),
-    n_samples=1,
+    f_thres_range=range(26, 27),
+    n_samples=300,
 )
 parameters = [
     # base_params,
