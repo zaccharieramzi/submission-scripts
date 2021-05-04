@@ -18,9 +18,9 @@ base_params = dict(
     n_samples=300,
 )
 parameters = [
-    dict(model_size='SMALL', shine=True, **base_params),
-    dict(model_size='SMALL', fpn=True, **base_params),
-    dict(model_size='SMALL', shine=True, fallback=True, **base_params),
+    # dict(model_size='SMALL', shine=True, **base_params),
+    # dict(model_size='SMALL', fpn=True, **base_params),
+    # dict(model_size='SMALL', shine=True, fallback=True, **base_params),
     dict(model_size='SMALL_refine', refine=True, shine=True, fallback=True, **base_params),
     dict(model_size='SMALL_refine', refine=True, fpn=True, **base_params),
 ]
