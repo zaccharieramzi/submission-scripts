@@ -21,10 +21,10 @@ parameters = [
     dict(model_size='SMALL', **base_params),
     dict(model_size='SMALL', shine=True, **base_params),
     dict(model_size='SMALL', fpn=True, **base_params),
-    dict(model_size='SMALL', shine=True, fallback=True, **base_params)
-    dict(model_size='SMALL_refine', refine=True, shine=True, fallback=True, **base_params)
-    dict(model_size='SMALL_refine', refine=True, fpn=True, **base_params)
-    dict(model_size='SMALL_refine', **base_params)
+    dict(model_size='SMALL', shine=True, fallback=True, **base_params),
+    dict(model_size='SMALL_refine', refine=True, shine=True, fallback=True, **base_params),
+    dict(model_size='SMALL_refine', refine=True, fpn=True, **base_params),
+    dict(model_size='SMALL_refine', **base_params),
 ]
 
 executor = get_executor(job_name, timeout_hour=2, n_gpus=n_gpus, project='shine')
