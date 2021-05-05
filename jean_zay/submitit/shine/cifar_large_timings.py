@@ -19,7 +19,6 @@ base_params = dict(
 parameters = [
     dict(model_size='LARGE', shine=True, **base_params),
     dict(model_size='LARGE', fpn=True, **base_params),
-    dict(model_size='LARGE', shine=True, fallback=True, **base_params),
     dict(model_size='LARGE_refine', refine=True, shine=True, fallback=True, **base_params),
     dict(model_size='LARGE_refine', refine=True, fpn=True, **base_params),
 ]
