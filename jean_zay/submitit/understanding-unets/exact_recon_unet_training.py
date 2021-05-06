@@ -36,7 +36,6 @@ res_all = train_eval_grid(
     timeout_eval=1,
     n_gpus_eval=n_gpus,
     project='exact_recon_unet',
-    params_to_ignore=['n_epochs'],
     noise_std_test=possible_std_dev, 
 )
 
