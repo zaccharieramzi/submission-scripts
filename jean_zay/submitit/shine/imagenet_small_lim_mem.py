@@ -15,8 +15,8 @@ base_params = dict(
     restart_from=50,
 )
 parameters = [
-    dict(shine=True, fback=True, **base_params),
-    dict(shine=True, refine=True, fback=True, **base_params),
+    dict(shine=True, fallback=True, **base_params),
+    dict(shine=True, refine=True, fallback=True, **base_params),
 ]
 
 train_eval_grid(
