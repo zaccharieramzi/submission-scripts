@@ -16,14 +16,17 @@ non_linearity = 'relu'
 n_gpus = 1
 possible_std_dev = [0.0001, 5, 15, 20, 25, 30, 50, 55, 60, 75]
 
-parameters = {
-    'n_epochs': n_epochs,
-    'batch_size': batch_size,
-    'base_n_filters': base_n_filters,
-    'n_layers': n_layers,
-    'non_linearity': non_linearity 
-}
+base_parameters = dict(
+    n_epochs=n_epochs,
+    batch_size=batch_size,
+    base_n_filters=base_n_filters,
+    n_layers=n_layers,
+    non_linearity=non_linearity,
+)
 
+parameters = [
+        dict(**base_parameters)
+]
 
 res_all = train_eval_grid(
     job_name,
