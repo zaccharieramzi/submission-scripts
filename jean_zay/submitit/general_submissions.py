@@ -23,7 +23,7 @@ def get_executor(job_name, timeout_hour=60, n_gpus=1, project='fastmri', no_forc
     slurm_params = {
         'ntasks-per-node': tasks_per_node,
         'cpus-per-task':  cpus_per_task,
-        'account': 'hih@gpu',
+        'account': 'udr46qx@gpu',
         'qos': f'qos_gpu-{qos}',
         'distribution': 'block:block',
         'hint': 'nomultithread',
