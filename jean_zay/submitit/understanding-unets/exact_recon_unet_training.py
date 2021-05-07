@@ -38,7 +38,7 @@ res_all = train_eval_grid(
     n_gpus_train=n_gpus,
     timeout_eval=1,
     n_gpus_eval=n_gpus,
-    project='exact_recon_unet',
+    project='learnlets',
     noise_std_test=possible_std_dev, 
 )
 
