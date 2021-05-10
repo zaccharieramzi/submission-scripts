@@ -12,7 +12,7 @@ base_params = dict(
     n_gpus=n_gpus,
     n_epochs=100,
     seed=0,
-    restart_from=50,
+    # restart_from=50,
 )
 parameters = [
     # base_params,

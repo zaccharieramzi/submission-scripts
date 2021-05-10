@@ -12,12 +12,12 @@ base_params = dict(
     n_gpus=n_gpus,
     n_epochs=100,
     seed=0,
-    restart_from=50,
+    # restart_from=50,
 )
 parameters = [
-    # base_params,
+    base_params,
     dict(shine=True, refine=True, fallback=True, **base_params),
-    # dict(fpn=True, refine=True, **base_params),
+    dict(fpn=True, refine=True, **base_params),
 ]
 
 train_eval_grid(
