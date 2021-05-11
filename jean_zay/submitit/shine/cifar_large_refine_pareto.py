@@ -15,7 +15,6 @@ base_params = dict(
     dataset='cifar',
     n_gpus=n_gpus,
     n_epochs=220,
-    refine=True,
 )
 parameters = []
 for i_run in range(n_runs):
@@ -24,8 +23,8 @@ for i_run in range(n_runs):
         base_params.update(n_refine=n_refine)
         parameters += [
             dict(**base_params),
-            dict(shine=True, **base_params),
-            dict(fpn=True, **base_params),
+            dict(shine=True, refine=True, **base_params),
+            dict(fpn=True, refine=True, **base_params),
         ]
 
 res_all = train_eval_grid(
@@ -59,7 +58,7 @@ for n_refine in n_refines:
     ]
 
 
-    print('Descriptive stats')
+    print(f'Descriptive stats for {n_refine}')
     print('Perf orig', np.mean(perf_orig), np.std(perf_orig))
     print('Perf shine', np.mean(perf_shine), np.std(perf_shine))
     print('Perf fpn', np.mean(perf_fpn), np.std(perf_fpn))
