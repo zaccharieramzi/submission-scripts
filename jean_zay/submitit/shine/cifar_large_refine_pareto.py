@@ -9,7 +9,7 @@ from jean_zay.submitit.general_submissions import train_eval_grid
 job_name = 'pareto'
 n_runs = 5
 n_gpus = 4
-n_refines = [1, 2, 7, 10]
+n_refines = [0, 1, 2, 7, 10, None]
 base_params = dict(
     model_size='LARGE_refine',
     dataset='cifar',
@@ -21,8 +21,11 @@ for i_run in range(n_runs):
     base_params.update(seed=i_run)
     for n_refine in n_refines:
         base_params.update(n_refine=n_refine)
+        if n_refine != 0:
+            parameters += [
+                dict(**base_params),
+            ]
         parameters += [
-            dict(**base_params),
             dict(shine=True, refine=True, **base_params),
             dict(fpn=True, refine=True, **base_params),
         ]
