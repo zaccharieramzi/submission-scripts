@@ -50,4 +50,4 @@ for param, res in zip(parameters, results):
         name_method = 'fpn'
     else:
         name_method = 'original'
-    print(name_method, param['n_refine'], res)
+    print(name_method, param.get('n_refine', 0), res)
