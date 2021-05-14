@@ -38,4 +38,13 @@ with executor.batch():
     for param in parameters:
         job = executor.submit(train_classifier, **param)
         jobs.append(job)
-[job.result() for job in jobs]
+results = [job.result() for job in jobs]
+
+for param, res in zip(parameters, results):
+    if parameters.get('shine', False):
+        name_method = 'shine'
+    elif parameters.get('fpn', False):
+        name_method = 'fpn'
+    else:
+        name_method = 'original'
+    print(name_method, parameters['n_refine'], res)
