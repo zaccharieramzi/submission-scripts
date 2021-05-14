@@ -6,22 +6,31 @@ from jean_zay.submitit.general_submissions import get_executor
 job_name = 'debug_shine'
 n_gpus = 1
 base_params = dict(
+    model_size='LARGE',
     dataset='cifar',
     n_gpus=n_gpus,
     n_epochs=220,
-    seed=42,
+    seed=0,
     gradient_correl=False,
     gradient_ratio=False,
     compute_partial=True,
-    f_thres_range=range(26, 27),
+    f_thres_range=range(18, 19),
     n_samples=300,
 )
-parameters = [
-    dict(model_size='LARGE', shine=True, **base_params),
-    dict(model_size='LARGE', fpn=True, **base_params),
-    dict(model_size='LARGE_refine', refine=True, shine=True, fallback=True, **base_params),
-    dict(model_size='LARGE_refine', refine=True, fpn=True, **base_params),
-]
+n_refines = [0, 1, 2, 7, 10, None]
+
+parameters = []
+for n_refine in n_refines:
+    base_params.update(n_refine=n_refine)
+    if n_refine != 0:
+        parameters += [
+            dict(**base_params),
+        ]
+    parameters += [
+        dict(shine=True, refine=True, **base_params),
+        dict(fpn=True, refine=True, **base_params),
+    ]
+
 
 executor = get_executor(job_name, timeout_hour=2, n_gpus=n_gpus, project='shine')
 jobs = []
