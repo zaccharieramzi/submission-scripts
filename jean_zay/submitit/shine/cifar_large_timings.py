@@ -17,18 +17,21 @@ base_params = dict(
     f_thres_range=range(18, 19),
     n_samples=300,
 )
-n_refines = [0, 1, 2, 5, 7, 10, None]
+# n_refines = [0, 1, 2, 5, 7, 10, None]
+n_refines = [0]
 
 parameters = []
 for n_refine in n_refines:
-    base_params.update(n_refine=n_refine)
+    refine_active = n_refine > 0 or n_refine is None
+    if refine_active:
+        base_params.update(n_refine=n_refine)
     if n_refine != 0:
         parameters += [
             dict(**base_params),
         ]
     parameters += [
-        dict(shine=True, refine=True, **base_params),
-        dict(fpn=True, refine=True, **base_params),
+        dict(shine=True, refine=refine_active, **base_params),
+        dict(fpn=True, refine=refine_active, **base_params),
     ]
 
 
