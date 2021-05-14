@@ -17,7 +17,8 @@ base_params = dict(
     f_thres_range=range(18, 19),
     n_samples=300,
 )
-n_refines = [0, 1, 2, 7, 10, None]
+# n_refines = [0, 1, 2, 7, 10, None]
+n_refines = [5]
 
 parameters = []
 for n_refine in n_refines:

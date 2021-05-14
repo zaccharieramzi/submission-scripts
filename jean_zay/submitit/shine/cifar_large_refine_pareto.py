@@ -9,7 +9,8 @@ from jean_zay.submitit.general_submissions import train_eval_grid
 job_name = 'pareto'
 n_runs = 5
 n_gpus = 4
-n_refines = [0, 1, 2, 7, 10, None]
+# n_refines = [0, 1, 2, 7, 10, None]
+n_refines = [5]
 base_params = dict(
     model_size='LARGE',
     dataset='cifar',
