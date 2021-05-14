@@ -41,10 +41,10 @@ with executor.batch():
 results = [job.result() for job in jobs]
 
 for param, res in zip(parameters, results):
-    if parameters.get('shine', False):
+    if param.get('shine', False):
         name_method = 'shine'
-    elif parameters.get('fpn', False):
+    elif param.get('fpn', False):
         name_method = 'fpn'
     else:
         name_method = 'original'
-    print(name_method, parameters['n_refine'], res)
+    print(name_method, param['n_refine'], res)
