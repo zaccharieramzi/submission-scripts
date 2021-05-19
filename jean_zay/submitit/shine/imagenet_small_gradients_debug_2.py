@@ -16,11 +16,12 @@ base_params = dict(
     gradient_ratio=True,
     compute_partial=True,
     f_thres_range=range(26, 27),
-    n_samples=300,
+    n_samples=100,
 )
 parameters = [
     # base_params,
-    dict(shine=True, **base_params),
+    dict(shine=True, adjoint_broyden=True, **base_params),
+    dict(shine=True, adjoint_broyden=True, opa=True, **base_params),
     # dict(fpn=True, **base_params),
 ]
 
