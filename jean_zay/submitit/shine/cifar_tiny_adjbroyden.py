@@ -34,7 +34,7 @@ res_all = train_eval_grid(
     evaluate_classifier,
     parameters,
     to_grid=False,
-    timeout_train=20,
+    timeout_train=2,
     n_gpus_train=n_gpus,
     timeout_eval=1,
     n_gpus_eval=n_gpus,
