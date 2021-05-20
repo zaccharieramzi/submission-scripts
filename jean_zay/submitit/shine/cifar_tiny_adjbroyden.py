@@ -24,7 +24,7 @@ for i_run in range(n_runs):
     parameters += [
         # base_params,
         dict(shine=True, **base_params),
-        dict(shine=True, opa=True, **base_params),
+        # dict(shine=True, opa=True, **base_params),
         # dict(fpn=True, **base_params),
     ]
 
