@@ -14,6 +14,8 @@ base_params = dict(
     dataset='cifar',
     n_gpus=n_gpus,
     n_epochs=80,
+    save_at=14,
+    restart_from=14,
 )
 parameters = []
 for i_run in range(n_runs):
@@ -35,7 +37,7 @@ res_all = train_eval_grid(
     timeout_eval=1,
     n_gpus_eval=n_gpus,
     project='shine',
-    params_to_ignore=['n_epochs'],
+    params_to_ignore=['n_epochs', 'save_at', 'restart_from'],
     torch=True,
     no_force_32=True,
 )
