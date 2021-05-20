@@ -8,7 +8,7 @@ from jean_zay.submitit.general_submissions import train_eval_grid
 
 job_name = 'shine_classifier_cifar_small_adjbroyden'
 n_runs = 1
-n_gpus = 2
+n_gpus = 4
 base_params = dict(
     model_size='TINY',
     dataset='cifar',
