@@ -45,5 +45,5 @@ perf_shine_adj_br = [res for (res, params) in zip(res_all, parameters) if not pa
 perf_shine_opa = [res for (res, params) in zip(res_all, parameters) if params.get('opa', False)]
 
 print('Descriptive stats')
-print('Perf shine', np.mean(perf_shine_adj_br), np.std(perf_shine_adj_br))
-print('Perf shine', np.mean(perf_shine_opa), np.std(perf_shine_opa))
+print('Perf shine adj broyden', np.mean(perf_shine_adj_br), np.std(perf_shine_adj_br))
+print('Perf shine opa', np.mean(perf_shine_opa), np.std(perf_shine_opa))
