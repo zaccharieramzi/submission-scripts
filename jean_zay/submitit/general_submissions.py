@@ -20,9 +20,6 @@ def get_executor(job_name, timeout_hour=60, n_gpus=1, project='fastmri', no_forc
     cpu_per_gpu = 3 if n_gpus > 4 else 10
     tasks_per_node = 1
     cpus_per_task = cpu_per_gpu * n_gpus
-    if torch:
-        tasks_per_node = n_gpus
-        cpus_per_task = 10
     slurm_params = {
         'ntasks-per-node': tasks_per_node,
         'cpus-per-task':  cpus_per_task,
