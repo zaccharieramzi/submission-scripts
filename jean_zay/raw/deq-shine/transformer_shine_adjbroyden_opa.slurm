@@ -22,4 +22,8 @@ cd $WORK/deq-shine/DEQModel
 ./run_wt103_deq_transformer.sh train \
   --data $WIKITEXT_DIR \
   --work_dir $SHINE_CHECKPOINTS \
-  --shine --name shine_adjbroyden_opa --solver adj_broyden --opa
+  --shine --name shine_adjbroyden_opa --solver adj_broyden --opa \
+  --restart \
+  --restart_dir $SHINE_CHECKPOINTS/deq-wt103/20210521-234557 \
+  --start_train_steps 16000\
+  --pretrain_steps 0
