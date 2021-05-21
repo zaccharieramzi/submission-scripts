@@ -26,7 +26,7 @@ train_eval_grid(
     evaluate_classifier,
     parameters,
     to_grid=False,
-    timeout_train=100,
+    timeout_train=30,
     n_gpus_train=n_gpus,
     timeout_eval=20,
     n_gpus_eval=n_gpus,
