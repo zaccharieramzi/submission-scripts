@@ -7,7 +7,7 @@ from jean_zay.submitit.general_submissions import train_eval_grid
 
 
 job_name = 'shine_classifier_cifar_small_adjbroyden'
-n_runs = 1
+n_runs = 5
 n_gpus = 4
 base_params = dict(
     model_size='TINY',
@@ -24,7 +24,7 @@ for i_run in range(n_runs):
     parameters += [
         # base_params,
         dict(shine=True, **base_params),
-        # dict(shine=True, opa=True, **base_params),
+        dict(shine=True, opa=True, **base_params),
         # dict(fpn=True, **base_params),
     ]
 
@@ -44,19 +44,9 @@ res_all = train_eval_grid(
     no_force_32=True,
 )
 
-# perf_orig = [res for (res, params) in zip(res_all, parameters) if not params.get('shine', False) and not params.get('fpn', False)]
-# perf_shine = [res for (res, params) in zip(res_all, parameters) if params.get('shine', False)]
-# perf_fpn = [res for (res, params) in zip(res_all, parameters) if params.get('fpn', False)]
-#
-#
-# print('Perf orig', perf_orig)
-# print('Perf shine', perf_shine)
-# print('Perf fpn', perf_fpn)
-#
-# print('Stats test orig vs shine', ttest_ind(perf_orig, perf_shine))
-# print('Stats test orig vs fpn', ttest_ind(perf_orig, perf_fpn))
-#
-# print('Descriptive stats')
-# print('Perf orig', np.mean(perf_orig), np.std(perf_orig))
-# print('Perf shine', np.mean(perf_shine), np.std(perf_shine))
-# print('Perf fpn', np.mean(perf_fpn), np.std(perf_fpn))
+perf_shine_adj_br = [res for (res, params) in zip(res_all, parameters) if not params.get('opa', False)]
+perf_shine_opa = [res for (res, params) in zip(res_all, parameters) if params.get('opa', False)]
+
+print('Descriptive stats')
+print('Perf shine', np.mean(perf_shine_adj_br), np.std(perf_shine_adj_br))
+print('Perf shine', np.mean(perf_shine_opa), np.std(perf_shine_opa))
