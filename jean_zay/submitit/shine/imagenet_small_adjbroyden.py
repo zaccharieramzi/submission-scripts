@@ -33,4 +33,5 @@ train_eval_grid(
     project='shine',
     params_to_ignore=['n_epochs', 'restart_from'],
     torch=True,
+    no_force_32=True,
 )
