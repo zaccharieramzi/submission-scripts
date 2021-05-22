@@ -17,6 +17,7 @@ base_params = dict(
     save_at=50,
     restart_from=50,
     adjoint_broyden=True,
+    shine=True,
 )
 parameters = []
 for i_run in range(n_runs):
