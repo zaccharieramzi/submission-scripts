@@ -11,7 +11,7 @@ base_params = dict(
     n_epochs=100,
     seed=42,
     restart_from=50,
-    n_samples=200,
+    n_samples=20,
 )
 parameters = [
     dict(dataset='cifar', model_size='LARGE', **base_params),
