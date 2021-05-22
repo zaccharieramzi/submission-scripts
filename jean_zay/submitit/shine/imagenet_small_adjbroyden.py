@@ -14,6 +14,7 @@ base_params = dict(
     seed=0,
     restart_from=48,
     shine=True,
+    adjoint_broyden=True,
 )
 parameters = [
     dict(**base_params),
