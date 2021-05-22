@@ -22,7 +22,7 @@ executor = get_executor(job_name, timeout_hour=2, n_gpus=n_gpus, project='shine'
 jobs = []
 with executor.batch():
     for param in parameters:
-        job = executor.submit(train_classifier, **param)
+        job = executor.submit(eval_ratio_fb_classifier, **param)
         jobs.append(job)
 results = [job.result() for job in jobs]
 res_cifar = results[0]
