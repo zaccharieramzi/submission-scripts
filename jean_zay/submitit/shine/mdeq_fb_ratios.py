@@ -32,5 +32,5 @@ print('detail cifar', res_cifar)
 print('detail imagenet', res_imagenet)
 
 
-print('Res CIFAR', np.median(res_cifar[1:), np.std(res_cifar[1:))
-print('Res ImageNet', np.median(res_imagenet[1:), np.std(res_imagenet[1:))
+print('Res CIFAR', np.median(res_cifar[1:]), np.std(res_cifar[1:]))
+print('Res ImageNet', np.median(res_imagenet[1:]), np.std(res_imagenet[1:]))
