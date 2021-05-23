@@ -15,9 +15,10 @@ base_params = dict(
     n_gpus=n_gpus,
     n_epochs=220,
     save_at=50,
-    # restart_from=50,
+    restart_from=50,
     adjoint_broyden=True,
     shine=True,
+    fallback=True,
 )
 parameters = []
 for i_run in range(n_runs):
