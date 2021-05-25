@@ -40,6 +40,7 @@ res_all = train_eval_grid(
     project='shine',
     params_to_ignore=['n_epochs', 'save_at', 'restart_from'],
     torch=True,
+    no_force_32=True,
 )
 
 
