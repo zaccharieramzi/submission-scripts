@@ -23,7 +23,7 @@ base_params = dict(
 parameters = []
 for i_run in range(n_runs):
     parameters += [
-        dict(seed=i_run, **base_params),
+        # dict(seed=i_run, **base_params),
         dict(seed=i_run, opa=True, **base_params),
     ]
 
@@ -44,9 +44,9 @@ res_all = train_eval_grid(
 )
 
 
-perf_shine_adj_br = [res for (res, params) in zip(res_all, parameters) if not params.get('opa', False)]
+# perf_shine_adj_br = [res for (res, params) in zip(res_all, parameters) if not params.get('opa', False)]
 perf_shine_opa = [res for (res, params) in zip(res_all, parameters) if params.get('opa', False)]
 
 print('Descriptive stats')
-print('Perf shine adj broyden', np.mean(perf_shine_adj_br), np.std(perf_shine_adj_br))
+# print('Perf shine adj broyden', np.mean(perf_shine_adj_br), np.std(perf_shine_adj_br))
 print('Perf shine opa', np.mean(perf_shine_opa), np.std(perf_shine_opa))
