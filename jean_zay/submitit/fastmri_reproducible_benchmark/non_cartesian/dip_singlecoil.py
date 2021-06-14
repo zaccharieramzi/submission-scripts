@@ -4,7 +4,8 @@ from jean_zay.submitit.general_submissions import eval_grid
 
 base_params = {
     'af': [4],
-    'acq_type': ['radial', 'spiral'],
+    # 'acq_type': ['radial', 'spiral'],
+    'acq_type': ['radial'],
     'model_kwargs': [{}],
 }
 
@@ -14,7 +15,7 @@ eval_results = eval_grid(
     eval_fun,
     base_params,
     run_ids=None,
-    n_samples=100,
+    n_samples=10,
     n_gpus=1,
 )
 print(eval_results)
