@@ -11,7 +11,7 @@ base_params = {
 
 
 eval_results = eval_grid(
-    'nc_pdnet',
+    'dip_sc',
     eval_fun,
     base_params,
     run_ids=None,
