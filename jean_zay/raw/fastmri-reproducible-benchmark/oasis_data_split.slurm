@@ -16,7 +16,7 @@
 set -x
 cd $WORK/submission-scripts/jean_zay/env_configs/
 
-. fastmri.sh
+. fastmri4.sh
 
 cd $WORK/fastmri-reproducible-benchmark
 
