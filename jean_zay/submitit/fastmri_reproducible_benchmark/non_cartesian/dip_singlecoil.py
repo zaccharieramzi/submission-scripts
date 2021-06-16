@@ -17,5 +17,6 @@ eval_results = eval_grid(
     run_ids=None,
     n_samples=10,
     n_gpus=1,
+    project='fastmri4',
 )
 print(eval_results)
