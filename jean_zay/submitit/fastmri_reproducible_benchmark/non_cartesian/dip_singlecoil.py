@@ -6,7 +6,7 @@ base_params = {
     'af': [4],
     # 'acq_type': ['radial', 'spiral'],
     'acq_type': ['radial'],
-    'model_kwargs': [{}],
+    'model_kwargs': [{'bn': True}],
 }
 
 
