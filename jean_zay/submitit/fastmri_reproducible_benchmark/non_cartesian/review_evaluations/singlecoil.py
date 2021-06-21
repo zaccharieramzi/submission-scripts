@@ -21,6 +21,10 @@ common_base_params = dict(
     n_epochs=[100],
 )
 
+def duplicate_run_ids(base_run_ids):
+    new_run_ids = [run_id for pair in zip(base_run_ids, base_run_ids) for run_id in pair]
+    return new_run_ids
+
 #### PDNet
 pdnet_params = dict(
     model=['pdnet'],
@@ -31,7 +35,6 @@ pdnet_params = [
   dict(dcomp=[True], normalize_image=[False], **pdnet_params),
   dict(dcomp=[False], normalize_image=[True], **pdnet_params),
 ]
-
 run_ids = [
     'ncpdnet_singlecoil___radial_compound_mssim_dcomp_1610872636',
     'ncpdnet_singlecoil___spiral_compound_mssim_dcomp_1610911070',
@@ -43,7 +46,7 @@ pdnet_jobs = eval_grid(
     base_job_name + '_pdnet',
     eval_fun,
     pdnet_params,
-    run_ids=run_ids,
+    run_ids=duplicate_run_ids(run_ids),
     **grid_params,
 )
 
@@ -62,7 +65,7 @@ pdnet_gridded_jobs = eval_grid(
     base_job_name + '_pdnet_gridded',
     eval_fun,
     pdnet_gridded_params,
-    run_ids=run_ids,
+    run_ids=duplicate_run_ids(run_ids),
     **grid_params,
 )
 
@@ -83,7 +86,7 @@ unet_jobs = eval_grid(
     base_job_name + '_unet',
     eval_fun,
     unet_params,
-    run_ids=run_ids,
+    run_ids=duplicate_run_ids(run_ids),
     **grid_params,
 )
 
