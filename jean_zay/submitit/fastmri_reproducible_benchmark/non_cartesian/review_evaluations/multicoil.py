@@ -108,6 +108,7 @@ unet_jobs = eval_grid(
 
 #### Adj + DC
 executor = get_executor(base_job_name + 'adjoint_dc', timeout_hour=10, n_gpus=1, project='fastmri4')
+adj_dc_jobs = []
 with executor.batch():
     for acq_type in common_base_params['acq_type']:
         for contrast in common_base_params['contrast']:
@@ -119,9 +120,14 @@ with executor.batch():
                 contrast=contrast,
                 multicoil=True,
             )
-            metrics_names, eval_res = job.result()
-            print('Parameters for Adj+DC', acq_type, contrast)
-            print(eval_res)
+            adj_dc_jobs.append(job)
+job_counter = 0
+for acq_type in common_base_params['acq_type']:
+    for contrast in common_base_params['contrast']:
+        metrics_names, eval_res = adj_dc_jobs[job_counter].result()
+        print('Parameters for Adj+DC', acq_type, contrast)
+        print(eval_res)
+        job_counter += 1
 
 ### Results presentation
 ### Nets
