@@ -30,9 +30,17 @@ def from_base_params_to_multiple_params(base_params):
         # reversed eval
         dict(contrast=contrasts_knee, **base_params),
         # brain eval
-        dict(contrast=contrasts_brain, brain=True, **base_params)
+        dict(contrast=contrasts_brain, brain=[True], **base_params)
     ]
     return multiple_params
+
+def duplicate_run_ids(base_run_ids):
+    new_run_ids = [run_id for pair in zip(base_run_ids, base_run_ids) for run_id in pair]
+    return new_run_ids
+
+def deduplicate_run_ids(base_run_ids):
+    new_run_ids = [run_id for quintuple in zip(*([base_run_ids]*5)) for run_id in quintuple]
+    return new_run_ids
 
 #### PDNet
 pdnet_params = dict(
@@ -46,8 +54,7 @@ base_run_ids = [
     'ncpdnet_sense___rfs_radial_compound_mssim_dcomp_1611913984',
     'ncpdnet_sense___rfs_spiral_compound_mssim_dcomp_1611913984',
 ]
-# XXX: solve this run id problem with contrasts
-run_ids = base_run_ids + base_run_ids[::-1] + base_run_ids
+run_ids = duplicate_run_ids(base_run_ids) + duplicate_run_ids(base_run_ids[::-1]) + deduplicate_run_ids(base_run_ids)
 
 pdnet_jobs = eval_grid(
     base_job_name + '_pdnet',
@@ -68,7 +75,7 @@ base_run_ids = [
     'unet_mc___radial_compound_mssim_dcomp_1611915508',
     'unet_mc___spiral_compound_mssim_dcomp_1611915508',
 ]
-run_ids = base_run_ids + base_run_ids[::-1] + base_run_ids
+run_ids = duplicate_run_ids(base_run_ids) + duplicate_run_ids(base_run_ids[::-1]) + deduplicate_run_ids(base_run_ids)
 
 
 unet_jobs = eval_grid(
