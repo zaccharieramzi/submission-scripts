@@ -15,7 +15,6 @@ base_job_name = 'ncmc_eval'
 contrasts_knee = ['CORPD_FBK', 'CORPDFS_FBK']
 contrasts_brain = ['AXT1', 'AXT2', 'AXT1POST', 'AXT1PRE', 'AXFLAIR']
 common_base_params = dict(
-    af=[4],
     acq_type=['radial', 'spiral'],
     n_epochs=[100],
     multicoil=[True],
@@ -26,11 +25,13 @@ common_base_params = dict(
 def from_base_params_to_multiple_params(base_params):
     multiple_params = [
         # classical eval
-        dict(contrast=contrasts_knee, **base_params),
+        dict(contrast=contrasts_knee, af=[4], **base_params),
+        # af 8 eval
+        dict(contrast=contrasts_knee, af=[8], **base_params),
         # reversed eval
-        dict(contrast=contrasts_knee, **base_params),
+        dict(contrast=contrasts_knee, af=[4], **base_params),
         # brain eval
-        dict(contrast=contrasts_brain, brain=[True], **base_params)
+        dict(contrast=contrasts_brain, af=[4], brain=[True], **base_params)
     ]
     return multiple_params
 
@@ -54,7 +55,16 @@ base_run_ids = [
     'ncpdnet_sense___rfs_radial_compound_mssim_dcomp_1611913984',
     'ncpdnet_sense___rfs_spiral_compound_mssim_dcomp_1611913984',
 ]
-run_ids = duplicate_run_ids(base_run_ids) + duplicate_run_ids(base_run_ids[::-1]) + deduplicate_run_ids(base_run_ids)
+run_ids = (
+    # classical eval
+    duplicate_run_ids(base_run_ids) +
+    # af 8 eval
+    duplicate_run_ids(base_run_ids) +
+    # reverse eval
+    duplicate_run_ids(base_run_ids[::-1]) +
+    # brain eval
+    deduplicate_run_ids(base_run_ids)
+)
 
 pdnet_jobs = eval_grid(
     base_job_name + '_pdnet',
@@ -75,7 +85,16 @@ base_run_ids = [
     'unet_mc___radial_compound_mssim_dcomp_1611915508',
     'unet_mc___spiral_compound_mssim_dcomp_1611915508',
 ]
-run_ids = duplicate_run_ids(base_run_ids) + duplicate_run_ids(base_run_ids[::-1]) + deduplicate_run_ids(base_run_ids)
+run_ids = (
+    # classical eval
+    duplicate_run_ids(base_run_ids) +
+    # af 8 eval
+    duplicate_run_ids(base_run_ids) +
+    # reverse eval
+    duplicate_run_ids(base_run_ids[::-1]) +
+    # brain eval
+    deduplicate_run_ids(base_run_ids)
+)
 
 
 unet_jobs = eval_grid(
