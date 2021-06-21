@@ -6,6 +6,7 @@ base_params = {
     'af': [4],
     # 'acq_type': ['radial', 'spiral'],
     'acq_type': ['radial'],
+    'contrast': ['CORPD_FBK', 'CORPDFS_FBK'],
     'model_kwargs': [{'bn': True}],
 }
 
