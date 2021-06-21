@@ -44,6 +44,10 @@ def deduplicate_run_ids(base_run_ids):
     new_run_ids = [run_id for quintuple in zip(*([base_run_ids]*5)) for run_id in quintuple]
     return new_run_ids
 
+def extend_params(params):
+    extended_params = list(ParameterGrid(params))
+    return extended_params
+
 #### PDNet
 pdnet_params = dict(
     model=['pdnet'],
@@ -132,7 +136,7 @@ for acq_type in common_base_params['acq_type']:
 ### Results presentation
 ### Nets
 jobs = pdnet_jobs + unet_jobs
-params = pdnet_params + unet_params
+params = extend_params(pdnet_params) + extend_params(unet_params)
 for param, job in zip(params, jobs):
     metrics_names, eval_res = job.result()
     print('Parameters', param)

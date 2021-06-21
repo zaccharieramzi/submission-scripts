@@ -1,7 +1,7 @@
 from fastmri_recon.evaluate.scripts.nc_eval import evaluate_dcomp
 from fastmri_recon.evaluate.scripts.nc_eval import evaluate_nc_multinet as eval_fun
 
-from jean_zay.submitit.general_submissions import get_executor, eval_grid
+from jean_zay.submitit.general_submissions import get_executor, eval_grid, ParameterGrid
 
 
 n_samples = 100
@@ -25,6 +25,10 @@ common_base_params = dict(
 def duplicate_run_ids(base_run_ids):
     new_run_ids = [run_id for pair in zip(base_run_ids, base_run_ids) for run_id in pair]
     return new_run_ids
+
+def extend_params(params):
+    extended_params = list(ParameterGrid(params))
+    return extended_params
 
 #### PDNet
 pdnet_params = dict(
@@ -117,7 +121,7 @@ for acq_type in common_base_params['acq_type']:
 ### Results presentation
 ### Nets
 jobs = pdnet_jobs + pdnet_gridded_jobs + unet_jobs
-params = pdnet_params + pdnet_gridded_params + unet_params
+params = extend_params(pdnet_params) + extend_params(pdnet_gridded_params) + extend_params(unet_params)
 for param, job in zip(params, jobs):
     metrics_names, eval_res = job.result()
     print('Parameters', param)
