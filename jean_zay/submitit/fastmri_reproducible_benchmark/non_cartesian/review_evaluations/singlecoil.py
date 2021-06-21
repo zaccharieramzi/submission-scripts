@@ -4,8 +4,9 @@ from fastmri_recon.evaluate.scripts.nc_eval import evaluate_nc_multinet as eval_
 from jean_zay.submitit.general_submissions import get_executor, eval_grid
 
 
+n_samples = 100
 grid_params = dict(
-    n_samples=100,
+    n_samples=n_samples,
     n_gpus=1,
     wait=False,
     no_force_32=True,
@@ -100,7 +101,7 @@ with executor.batch():
                 evaluate_dcomp,
                 acq_type=acq_type,
                 af=common_base_params['af'][0],
-                n_samples=common_base_params['n_samples'][0],
+                n_samples=n_samples,
                 contrast=contrast,
             )
             metrics_names, eval_res = job.result()
