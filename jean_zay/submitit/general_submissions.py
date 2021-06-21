@@ -165,6 +165,7 @@ def eval_grid(
         params_to_ignore=None,
         no_force_32=False,
         torch=False,
+        wait=True,
         **specific_eval_params,
     ):
     if to_grid:
@@ -208,15 +209,18 @@ def eval_grid(
                 kwargs.update(run_id=run_id)
             job = executor.submit(eval_function, n_samples=n_samples, **kwargs)
             jobs.append(job)
-    eval_results = []
-    for param, original_param, job in zip(parameters, original_parameters, jobs):
-        metrics_names, eval_res = job.result()
-        param.update(original_param)
-        print('Parameters', param)
-        print(metrics_names)
-        print(eval_res)
-        eval_results.append(eval_res)
-    return eval_results
+    if wait:
+        eval_results = []
+        for param, original_param, job in zip(parameters, original_parameters, jobs):
+            metrics_names, eval_res = job.result()
+            param.update(original_param)
+            print('Parameters', param)
+            print(metrics_names)
+            print(eval_res)
+            eval_results.append(eval_res)
+        return eval_results
+    else:
+        return jobs
 
 def infer_grid(
         job_name,
