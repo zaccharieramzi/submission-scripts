@@ -115,28 +115,26 @@ unet_jobs = eval_grid(
 executor = get_executor(base_job_name + 'adjoint_dc', timeout_hour=10, n_gpus=1, project='fastmri4')
 adj_dc_jobs = []
 with executor.batch():
-    for brain in [True, False]:
+    for brain, af in [(True, 4), (False, 4), (False, 8)]:
         for acq_type in common_base_params['acq_type']:
             contrasts = contrasts_brain if brain else contrasts_knee
             for contrast in contrasts:
-                for af in [4, 8]:
-                    job = executor.submit(
-                        evaluate_dcomp,
-                        acq_type=acq_type,
-                        af=af,
-                        n_samples=n_samples,
-                        contrast=contrast,
-                        multicoil=True,
-                        brain=brain,
-                    )
-                    adj_dc_jobs.append(job)
+                job = executor.submit(
+                    evaluate_dcomp,
+                    acq_type=acq_type,
+                    af=af,
+                    n_samples=n_samples,
+                    contrast=contrast,
+                    multicoil=True,
+                    brain=brain,
+                )
+                adj_dc_jobs.append(job)
 job_counter = 0
-for brain in [True, False]:
+for brain, af in [(True, 4), (False, 4), (False, 8)]:
     is_brain = 'brain' if brain else 'knee'
     for acq_type in common_base_params['acq_type']:
         contrasts = contrasts_brain if brain else contrasts_knee
         for contrast in contrasts:
-            for af in [4, 8]:
                 metrics_names, eval_res = adj_dc_jobs[job_counter].result()
                 print('Parameters for Adj+DC', is_brain, acq_type, contrast, af)
                 print(eval_res)
