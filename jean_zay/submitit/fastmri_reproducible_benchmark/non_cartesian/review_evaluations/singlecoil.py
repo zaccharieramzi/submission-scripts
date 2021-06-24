@@ -17,13 +17,13 @@ base_job_name = 'ncsc_eval'
 
 common_base_params = dict(
     contrast=['CORPD_FBK', 'CORPDFS_FBK'],
-    af=[4],
+    af=[4, 8],
     acq_type=['radial', 'spiral'],
     n_epochs=[100],
 )
 
-def duplicate_run_ids(base_run_ids):
-    new_run_ids = [run_id for pair in zip(base_run_ids, base_run_ids) for run_id in pair]
+def deduplicate_run_ids(base_run_ids):
+    new_run_ids = [run_id for quadruple in zip(*([base_run_ids]*5)) for run_id in quadruple]
     return new_run_ids
 
 def extend_params(params):
@@ -51,7 +51,7 @@ pdnet_jobs = eval_grid(
     base_job_name + '_pdnet',
     eval_fun,
     pdnet_params,
-    run_ids=duplicate_run_ids(run_ids),
+    run_ids=deduplicate_run_ids(run_ids),
     **grid_params,
 )
 
@@ -70,7 +70,7 @@ pdnet_gridded_jobs = eval_grid(
     base_job_name + '_pdnet_gridded',
     eval_fun,
     pdnet_gridded_params,
-    run_ids=duplicate_run_ids(run_ids),
+    run_ids=deduplicate_run_ids(run_ids),
     **grid_params,
 )
 
@@ -91,7 +91,7 @@ unet_jobs = eval_grid(
     base_job_name + '_unet',
     eval_fun,
     unet_params,
-    run_ids=duplicate_run_ids(run_ids),
+    run_ids=deduplicate_run_ids(run_ids),
     **grid_params,
 )
 
