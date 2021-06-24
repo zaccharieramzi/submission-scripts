@@ -1,7 +1,7 @@
 from fastmri_recon.evaluate.scripts.nc_eval import evaluate_dcomp
 from fastmri_recon.evaluate.scripts.nc_eval import evaluate_nc_multinet as eval_fun
 
-from jean_zay.submitit.general_submissions import get_executor, eval_grid
+from jean_zay.submitit.general_submissions import get_executor, eval_grid, ParameterGrid
 
 n_samples = 100
 grid_params = dict(
