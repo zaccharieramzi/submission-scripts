@@ -118,25 +118,27 @@ with executor.batch():
         for acq_type in common_base_params['acq_type']:
             contrasts = contrasts_brain if brain else contrasts_knee
             for contrast in contrasts:
-                job = executor.submit(
-                    evaluate_dcomp,
-                    acq_type=acq_type,
-                    af=common_base_params['af'][0],
-                    n_samples=n_samples,
-                    contrast=contrast,
-                    multicoil=True,
-                )
-                adj_dc_jobs.append(job)
+                for af in [4, 8]:
+                    job = executor.submit(
+                        evaluate_dcomp,
+                        acq_type=acq_type,
+                        af=af,
+                        n_samples=n_samples,
+                        contrast=contrast,
+                        multicoil=True,
+                    )
+                    adj_dc_jobs.append(job)
 job_counter = 0
 for brain in [True, False]:
     is_brain = 'brain' if brain else 'knee'
     for acq_type in common_base_params['acq_type']:
         contrasts = contrasts_brain if brain else contrasts_knee
         for contrast in contrasts:
-            metrics_names, eval_res = adj_dc_jobs[job_counter].result()
-            print('Parameters for Adj+DC', is_brain, acq_type, contrast)
-            print(eval_res)
-            job_counter += 1
+            for af in [4, 8]:
+                metrics_names, eval_res = adj_dc_jobs[job_counter].result()
+                print('Parameters for Adj+DC', is_brain, acq_type, contrast, af)
+                print(eval_res)
+                job_counter += 1
 
 ### Results presentation
 ### Nets
