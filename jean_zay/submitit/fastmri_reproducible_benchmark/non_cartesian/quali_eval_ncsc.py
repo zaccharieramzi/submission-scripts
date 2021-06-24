@@ -32,9 +32,11 @@ with executor.batch():
     for model, run_ids in model_2_run_ids.items():
         if 'ncpdnet' in model:
             dcomp = 'dcomp' in model
+            normalize_image = not dcomp
             model = 'pdnet'
         else:
             dcomp = True
+            normalize_image = False
         for acq_type in ['radial', 'spiral']:
             executor.submit(
                 nc_multinet_qualitative_validation,
@@ -42,10 +44,10 @@ with executor.batch():
                 af=4,
                 model=model,
                 run_id=run_ids[acq_type],
-                multicoil=True,
-                refine_smaps=True,
+                multicoil=False,
+                refine_smaps=False,
                 dcomp=dcomp,
-                normalize_image=False,
+                normalize_image=normalize_image,
                 contrast='CORPD_FBK',
                 n_epochs=100,
             )
