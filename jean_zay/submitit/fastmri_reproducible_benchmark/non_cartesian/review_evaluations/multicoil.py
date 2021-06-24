@@ -81,7 +81,8 @@ pdnet_jobs = eval_grid(
 
 #### Unet
 unet_params = dict(
-    model=['unet']
+    model=['unet'],
+    **common_base_params,
 )
 
 unet_params = from_base_params_to_multiple_params(unet_params)
