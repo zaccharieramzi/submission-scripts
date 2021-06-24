@@ -126,6 +126,7 @@ with executor.batch():
                         n_samples=n_samples,
                         contrast=contrast,
                         multicoil=True,
+                        brain=brain,
                     )
                     adj_dc_jobs.append(job)
 job_counter = 0
