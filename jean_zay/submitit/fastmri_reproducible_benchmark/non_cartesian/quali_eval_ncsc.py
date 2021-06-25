@@ -50,4 +50,6 @@ with executor.batch():
                 normalize_image=normalize_image,
                 contrast='CORPD_FBK',
                 n_epochs=100,
+                # zoom=[(200, 300), (100, 200)],
+                draw_zoom=[(200, 300), (100, 200)],
             )
