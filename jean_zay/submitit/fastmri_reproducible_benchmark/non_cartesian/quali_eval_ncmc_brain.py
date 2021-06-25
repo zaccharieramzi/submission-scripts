@@ -37,4 +37,6 @@ with executor.batch():
                 n_epochs=100,
                 brain=True,
                 slice_index=5,
+                # zoom=[(200, 300), (100, 200)],
+                draw_zoom=[(200, 300), (100, 200)],
             )
