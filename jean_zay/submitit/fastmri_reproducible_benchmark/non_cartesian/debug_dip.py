@@ -14,6 +14,5 @@ job = executor.submit(
     n_iter=10,
 )
 
-save_path, history = job.result()
+save_path = job.result()
 print(save_path)
-pd.DataFrame(model.fit(...).history).to_csv("history.csv")
