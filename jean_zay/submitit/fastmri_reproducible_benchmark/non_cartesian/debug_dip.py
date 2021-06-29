@@ -1,4 +1,3 @@
-import pandas as pd
 from fastmri_recon.evaluate.scripts.debug_nc_dip_eval import debug_dip_nc
 
 from jean_zay.submitit.general_submissions import get_executor
