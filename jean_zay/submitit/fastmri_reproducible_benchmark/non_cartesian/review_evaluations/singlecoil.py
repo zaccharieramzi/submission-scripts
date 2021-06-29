@@ -23,7 +23,7 @@ common_base_params = dict(
 )
 
 def deduplicate_run_ids(base_run_ids):
-    new_run_ids = [run_id for quadruple in zip(*([base_run_ids]*5)) for run_id in quadruple]
+    new_run_ids = [run_id for quadruple in zip(*([base_run_ids]*4)) for run_id in quadruple]
     return new_run_ids
 
 def extend_params(params):
