@@ -27,7 +27,7 @@ params = [
 ]
 
 eval_results = train_eval_grid(
-    '3d_nc_eval',
+    '3d_nc_stacked',
     train_ncnet_multinet,
     evaluate_nc_multinet,
     params,
