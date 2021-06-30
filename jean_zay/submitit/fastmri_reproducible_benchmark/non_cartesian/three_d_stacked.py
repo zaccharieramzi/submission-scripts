@@ -6,22 +6,24 @@ from jean_zay.submitit.general_submissions import train_eval_grid
 
 base_params = {
     'three_d': [True],
-    'n_epochs': [8],
     'af': [4],
     'n_filters': [32],
     'n_iter': [10],
     'n_primal': [5],
-    'acq_type': ['radial_stacks', 'spiral_stacks'],
+    'acq_type': ['radial'],
     'loss': ['mse'],
     'dcomp': [True],
     'normalize_image': [False],
     'scale_factor': [1e-2],
     'block_size': [4],
-    'block_overlap': [0, 2],
+    'use_mixed_precision': [True],
+    'model': ['pdnet'],
+    'epochs_per_block_step': [8],
 }
 
 params = [
-  dict(use_mixed_precision=[True], model=['pdnet'], **base_params),
+  dict(block_overlap=[0], n_epochs=[3*8], **base_params),
+  dict(block_overlap=[2], n_epochs=[4*8], **base_params),
 ]
 
 eval_results = train_eval_grid(
@@ -34,8 +36,6 @@ eval_results = train_eval_grid(
     timeout_train=100,
     n_gpus_eval=1,
     n_samples_eval=100,
-    # timeout=20,
-    # n_gpus=1,
     params_to_ignore=['use_mixed_precision', 'scale_factor'],
     checkpoints_train=7,
     # resume_checkpoint=4,
