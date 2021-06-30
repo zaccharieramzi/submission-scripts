@@ -9,7 +9,6 @@ job = executor.submit(
     acq_type='radial',
     af=4,
     multicoil=False,
-    refine_smaps=False,
     contrast='CORPD_FBK',
     n_iter=1000,
     timing=True,
