@@ -28,10 +28,10 @@ params = [
 
 eval_results = train_eval_grid(
     '3d_nc_stacked',
-    train_ncnet_multinet,
+    train_ncpdnet,
     evaluate_nc_multinet,
     params,
-    run_ids=run_ids,
+    # run_ids=run_ids,
     n_gpus_train=1,
     timeout_train=100,
     n_gpus_eval=1,
