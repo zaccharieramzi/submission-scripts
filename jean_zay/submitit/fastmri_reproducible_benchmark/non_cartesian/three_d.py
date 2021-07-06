@@ -29,7 +29,7 @@ eval_results = train_eval_grid(
     train_ncnet_multinet,
     evaluate_nc_multinet,
     params,
-    run_ids=run_ids,
+    # run_ids=run_ids,
     n_gpus_train=1,
     timeout_train=40,
     n_gpus_eval=1,
