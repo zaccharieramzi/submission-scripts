@@ -17,7 +17,6 @@ base_params = {
     'scale_factor': [1e-2],
     'block_size': [4],
     'use_mixed_precision': [True],
-    'model': ['pdnet'],
     'epochs_per_block_step': [8],
 }
 
