@@ -25,6 +25,11 @@ params = [
   dict(block_overlap=[2], n_epochs=[4*8], **base_params),
 ]
 
+run_ids = [
+    'ncpdnet_3d___bbb_radial_mse_dcomp_1626776798',
+    'ncpdnet_3d___bbb_radial_mse_dcomp_blkov2_1626776798',
+]
+
 eval_results = train_eval_grid(
     '3d_nc_stacked',
     train_ncpdnet,
@@ -37,8 +42,8 @@ eval_results = train_eval_grid(
     n_samples_eval=100,
     params_to_ignore=['use_mixed_precision', 'scale_factor', 'epochs_per_block_step', 'block_size', 'block_overlap'],
     checkpoints_train=7,
-    # resume_checkpoint=4,
-    # resume_run_run_ids=run_ids,
+    resume_checkpoint=0,
+    resume_run_run_ids=run_ids,
     project='fastmri4',
 )
 print(eval_results)
