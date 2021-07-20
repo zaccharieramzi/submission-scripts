@@ -23,6 +23,11 @@ params = [
   dict(use_mixed_precision=[False], model=['unet'], **base_params),
 ]
 
+run_ids = [
+    'ncpdnet_3d___i6_radial_mse_dcomp_1626776798',
+    'vnet_3d___radial_mse_dcomp_1626776798',
+]
+
 
 eval_results = train_eval_grid(
     '3d_nc',
@@ -36,8 +41,8 @@ eval_results = train_eval_grid(
     n_samples_eval=100,
     params_to_ignore=['use_mixed_precision', 'scale_factor'],
     checkpoints_train=7,
-    # resume_checkpoint=4,
-    # resume_run_run_ids=run_ids,
+    resume_checkpoint=1,
+    resume_run_run_ids=run_ids,
     project='fastmri4',
 )
 print(eval_results)
