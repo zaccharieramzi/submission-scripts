@@ -18,7 +18,7 @@ primal_only = True
 model_name = 'DnCNN'
 model_size = 'small'
 model_specs = list(get_model_specs(n_primal=n_primal))
-model_specs = [(model_name, model_size, *x) for (model_name, model_size, *x) in model_specs if model_name == model_name and model_size == model_size]
+model_specs = [(m_name, m_size, *x) for (m_name, m_size, *x) in model_specs if m_name == model_name and m_size == model_size]
 model_name, model_size, model_fun, kwargs, _, n_scales, res = model_specs[0]
 
 base_parameters = dict(
