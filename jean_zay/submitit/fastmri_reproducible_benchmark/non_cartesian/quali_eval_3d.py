@@ -4,25 +4,21 @@ from jean_zay.submitit.general_submissions import get_executor
 
 
 model_2_run_ids = {
-    'pdnet': {
-        'radial_stacks': 'ncpdnet_3d___i6_radial_stacks_mse_dcomp_1612291359',
-        'spiral_stacks': 'ncpdnet_3d___i6_spiral_stacks_mse_dcomp_1612291359',
-    },
-    'unet': {
-        'radial_stacks': 'vnet_3d___radial_stacks_mse_dcomp_1612291357',
-        'spiral_stacks': 'vnet_3d___spiral_stacks_mse_dcomp_1612291357',
-    },
+    # 'pdnet': {
+    # },
+    # 'unet': {
+    # },
     'adj-dcomp': {
-        'radial_stacks': None,
-        'spiral_stacks': None,
+        'radial': None,
     },
 }
 
+zoom_box = [(150, 200), (100, 200)]
 
 executor = get_executor('3dnc_quali', timeout_hour=2, n_gpus=1, project='fastmri4')
 with executor.batch():
     for model, run_ids in model_2_run_ids.items():
-        for acq_type in ['radial_stacks', 'spiral_stacks']:
+        for acq_type in ['radial']:
             executor.submit(
                 nc_multinet_qualitative_validation,
                 acq_type=acq_type,
@@ -38,4 +34,6 @@ with executor.batch():
                 n_iter=6,
                 n_primal=2,
                 slice_index=100,
+                # zoom=zoom_box,
+                draw_zoom=zoom_box,
             )
