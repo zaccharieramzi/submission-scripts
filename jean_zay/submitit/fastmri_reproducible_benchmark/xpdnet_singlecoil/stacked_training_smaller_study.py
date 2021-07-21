@@ -38,11 +38,11 @@ base_parameters = dict(
 
 parameters = [
     # classical training
-    dict(n_iter=[10], n_epochs=[n_epochs], **base_parameters),
+    dict(n_iter=[6], n_epochs=[n_epochs], **base_parameters),
     # stacked training
-    dict(n_iter=[20], n_epochs=[2*n_epochs], **base_parameters),
+    dict(n_iter=[12], n_epochs=[2*n_epochs], **base_parameters),
     # stacked training with overlap
-    dict(n_iter=[20], block_overlap=[5], n_epochs=[3*n_epochs], **base_parameters),
+    dict(n_iter=[12], block_overlap=[6], n_epochs=[3*n_epochs], **base_parameters),
 ]
 
 eval_results = train_eval_grid(
