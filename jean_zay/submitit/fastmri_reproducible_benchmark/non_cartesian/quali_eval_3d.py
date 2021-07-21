@@ -13,7 +13,7 @@ model_2_run_ids = {
     },
 }
 
-zoom_box = [(150, 200), (100, 200)]
+zoom_box = [(50, 100), (120, 170)]
 
 executor = get_executor('3dnc_quali', timeout_hour=2, n_gpus=1, project='fastmri4')
 with executor.batch():
