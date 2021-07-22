@@ -42,7 +42,7 @@ parameters = [
     # stacked training
     dict(n_iter=[12], block_size=[6], n_epochs=[2*n_epochs], **base_parameters),
     # stacked training with overlap
-    dict(n_iter=[12], block_size=[6], block_overlap=[6], n_epochs=[3*n_epochs], **base_parameters),
+    dict(n_iter=[12], block_size=[6], block_overlap=[4], n_epochs=[3*n_epochs], **base_parameters),
 ]
 
 eval_results = train_eval_grid(
