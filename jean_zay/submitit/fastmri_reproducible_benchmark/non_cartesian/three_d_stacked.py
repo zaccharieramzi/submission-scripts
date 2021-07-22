@@ -26,8 +26,8 @@ params = [
 ]
 
 run_ids = [
-    'ncpdnet_3d___bbb_radial_mse_dcomp_1626776798',
-    'ncpdnet_3d___bbb_radial_mse_dcomp_blkov2_1626776798',
+    '',
+    '',
 ]
 
 eval_results = train_eval_grid(
@@ -37,12 +37,12 @@ eval_results = train_eval_grid(
     params,
     # run_ids=run_ids,
     n_gpus_train=1,
-    timeout_train=100,
+    timeout_train=70,
     n_gpus_eval=1,
     n_samples_eval=100,
     params_to_ignore=['use_mixed_precision', 'scale_factor', 'epochs_per_block_step', 'block_size', 'block_overlap'],
     checkpoints_train=7,
-    resume_checkpoint=0,
+    # resume_checkpoint=0,
     resume_run_run_ids=run_ids,
     project='fastmri4',
 )
