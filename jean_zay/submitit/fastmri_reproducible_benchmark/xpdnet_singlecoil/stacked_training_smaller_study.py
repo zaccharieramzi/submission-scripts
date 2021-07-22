@@ -38,11 +38,11 @@ base_parameters = dict(
 
 parameters = [
     # classical training
-    dict(n_iter=[6], n_epochs=[n_epochs], **base_parameters),
+    dict(n_iter=[6], block_size=[6], n_epochs=[n_epochs], **base_parameters),
     # stacked training
-    dict(n_iter=[12], n_epochs=[2*n_epochs], **base_parameters),
+    dict(n_iter=[12], block_size=[6], n_epochs=[2*n_epochs], **base_parameters),
     # stacked training with overlap
-    dict(n_iter=[12], block_overlap=[6], n_epochs=[3*n_epochs], **base_parameters),
+    dict(n_iter=[12], block_size=[6], block_overlap=[6], n_epochs=[3*n_epochs], **base_parameters),
 ]
 
 eval_results = train_eval_grid(
@@ -56,6 +56,7 @@ eval_results = train_eval_grid(
     timeout_eval=10,
     n_gpus_eval=1,
     params_to_ignore=['batch_size', 'block_overlap', 'model_size', 'epochs_per_block_step', 'block_size'],
+    project='fastmri4',
 )
 
 print(eval_results)
