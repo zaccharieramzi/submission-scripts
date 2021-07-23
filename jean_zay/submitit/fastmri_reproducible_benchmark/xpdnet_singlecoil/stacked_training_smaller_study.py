@@ -10,7 +10,7 @@ loss = 'compound_mssim'
 lr = 1e-4
 batch_size = None
 n_samples = None
-n_epochs = 300
+n_epochs = 3*400
 n_primal = 5
 contrast = None
 primal_only = True
@@ -26,7 +26,7 @@ base_parameters = dict(
     lr=[lr],
     batch_size=[batch_size],
     n_samples=[n_samples],
-    epochs_per_block_step=[n_epochs],
+    n_epochs=[n_epochs],
     n_primal=[n_primal],
     contrast=[contrast],
     primal_only=[primal_only],
@@ -38,11 +38,11 @@ base_parameters = dict(
 
 parameters = [
     # classical training
-    dict(n_iter=[6], block_size=[6], n_epochs=[n_epochs], **base_parameters),
+    dict(n_iter=[6], block_size=[6], epochs_per_block_step=[n_epochs], **base_parameters),
     # stacked training
-    dict(n_iter=[12], block_size=[6], n_epochs=[2*n_epochs], **base_parameters),
+    dict(n_iter=[12], block_size=[6], epochs_per_block_step=[n_epochs//2], **base_parameters),
     # stacked training with overlap
-    dict(n_iter=[12], block_size=[6], block_overlap=[4], n_epochs=[3*n_epochs], **base_parameters),
+    dict(n_iter=[12], block_size=[6], block_overlap=[3], epochs_per_block_step=[n_epochs//3], **base_parameters),
 ]
 
 eval_results = train_eval_grid(
