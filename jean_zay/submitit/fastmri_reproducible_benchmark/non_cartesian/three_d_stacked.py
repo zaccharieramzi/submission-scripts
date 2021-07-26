@@ -22,12 +22,12 @@ base_params = {
 
 params = [
   dict(block_overlap=[0], n_epochs=[3*8], **base_params),
-  dict(block_overlap=[2], n_epochs=[4*8], **base_params),
+#   dict(block_overlap=[2], n_epochs=[4*8], **base_params),
 ]
 
 run_ids = [
     '',
-    '',
+    # '',
 ]
 
 eval_results = train_eval_grid(
@@ -37,7 +37,7 @@ eval_results = train_eval_grid(
     params,
     # run_ids=run_ids,
     n_gpus_train=1,
-    timeout_train=70,
+    timeout_train=100,
     n_gpus_eval=1,
     n_samples_eval=100,
     params_to_ignore=['use_mixed_precision', 'scale_factor', 'epochs_per_block_step', 'block_size', 'block_overlap'],
