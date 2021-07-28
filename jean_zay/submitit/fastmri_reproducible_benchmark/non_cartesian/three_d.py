@@ -41,7 +41,7 @@ eval_results = train_eval_grid(
     n_samples_eval=100,
     params_to_ignore=['use_mixed_precision', 'scale_factor'],
     checkpoints_train=7,
-    resume_checkpoint=1,
+    resume_checkpoint=6,
     resume_run_run_ids=run_ids,
     project='fastmri4',
 )
