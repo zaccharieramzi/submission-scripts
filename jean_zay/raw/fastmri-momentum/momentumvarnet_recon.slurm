@@ -26,7 +26,7 @@ opt[1]='--use_momentum'
 opt[2]='--use_momentum --use_backprop'
 
 
-python fastmri_momentum/knee_training.py 
+python fastmri_momentum/knee_training.py \
     --num_cascades 6 \
     --pools 3 \ 
     --chans 8 \ 
