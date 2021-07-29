@@ -34,5 +34,5 @@ python fastmri_momentum/knee_training.py \
     --data_path $ROOT_DIR \ 
     --gpus 8 \ 
     --max_epochs 10 \
-    --default_root_dir $ROOT_DIR
+    --default_root_dir $ROOT_DIR \
     ${opt[$SLURM_ARRAY_TASK_ID]}
