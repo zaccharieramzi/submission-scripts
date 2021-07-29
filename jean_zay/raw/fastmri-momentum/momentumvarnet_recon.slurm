@@ -28,11 +28,11 @@ opt[2]='--use_momentum --use_backprop'
 
 python fastmri_momentum/knee_training.py \
     --num_cascades 6 \
-    --pools 3 \ 
-    --chans 8 \ 
+    --pools 3 \
+    --chans 8 \
     --sens_pools 2 \
-    --data_path $ROOT_DIR \ 
-    --gpus 8 \ 
+    --data_path $ROOT_DIR \
+    --gpus 8 \
     --max_epochs 20 \
     --default_root_dir $ROOT_DIR \
     ${opt[$SLURM_ARRAY_TASK_ID]}
