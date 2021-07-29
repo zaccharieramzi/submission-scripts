@@ -9,7 +9,7 @@
 #SBATCH --hint=nomultithread         # on réserve des coeurs physiques et non logiques
 #SBATCH --qos=qos_gpu-t4        # le calcul va etre long
 #SBATCH --distribution=block:block   # on épingle les tâches sur des coeurs contigus
-#SBATCH --time=100:00:00              # temps d’exécution maximum demande (HH:MM:SS)
+#SBATCH --time=20:00:00              # temps d’exécution maximum demande (HH:MM:SS)
 #SBATCH --output=%x_%j.out # nom du fichier de sortie
 #SBATCH --error=%x_%j.err  # nom du fichier d'erreur (ici commun avec la sortie)
 #SBATCH --partition=gpu_p2
@@ -33,6 +33,6 @@ python fastmri_momentum/knee_training.py \
     --sens_pools 2 \
     --data_path $ROOT_DIR \ 
     --gpus 8 \ 
-    --max_epochs 10 \
+    --max_epochs 20 \
     --default_root_dir $ROOT_DIR \
     ${opt[$SLURM_ARRAY_TASK_ID]}
