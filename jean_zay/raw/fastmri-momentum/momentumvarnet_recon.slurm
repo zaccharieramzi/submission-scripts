@@ -13,7 +13,7 @@
 #SBATCH --output=%x_%j.out # nom du fichier de sortie
 #SBATCH --error=%x_%j.err  # nom du fichier d'erreur (ici commun avec la sortie)
 #SBATCH --partition=gpu_p2
-#SBATCH --array=0-2
+
 set -x
 cd $WORK/submission-scripts/jean_zay/env_configs/
 
@@ -35,4 +35,4 @@ python fastmri_momentum/knee_training.py \
     --gpus 8 \
     --max_epochs 20 \
     --default_root_dir $ROOT_DIR \
-    ${opt[$SLURM_ARRAY_TASK_ID]}
+    ${opt[0]}
