@@ -21,7 +21,7 @@ cd $WORK/submission-scripts/jean_zay/env_configs/
 
 cd $WORK/fastmri-momentum/
 
-opt[0]='--use-momentum --gamma 0.2'
+opt[0]='--use_momentum --gamma 0.2'
 # opt[1]='--use_momentum'
 # opt[2]='--use_momentum --use_backprop'
 
