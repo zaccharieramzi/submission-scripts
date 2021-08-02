@@ -4,10 +4,12 @@ from jean_zay.submitit.general_submissions import get_executor
 
 
 model_2_run_ids = {
-    # 'pdnet': {
-    # },
-    # 'unet': {
-    # },
+    'pdnet': {
+        'radial': 'ncpdnet_3d___i6_radial_mse_dcomp_1626776798',
+    },
+    'unet': {
+        'radial': 'vnet_3d___radial_mse_dcomp_1626776798',
+    },
     'adj-dcomp': {
         'radial': None,
     },
