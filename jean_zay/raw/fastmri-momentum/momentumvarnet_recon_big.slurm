@@ -22,7 +22,7 @@ cd $WORK/submission-scripts/jean_zay/env_configs/
 cd $WORK/fastmri-momentum/
 
 opt[0]='--use_momentum --gamma 0.2'
-opt[1]='--use_momentum --gamma 0.2 --num_cascades 50'
+opt[1]='--use_momentum --gamma 0.2 --num_cascades 24'
 
 
 python fastmri_momentum/knee_training.py \
