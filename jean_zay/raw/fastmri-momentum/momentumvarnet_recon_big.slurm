@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=momentum_varnet     # nom du job
+#SBATCH --job-name=momentum_varnet_big     # nom du job
 #SBATCH --ntasks=1                # nombre de tâche MPI
 #SBATCH --ntasks-per-node=1          # nombre de tâche MPI par noeud
 #SBATCH --cpus-per-task=24           # nombre de coeurs à réserver par tâche
