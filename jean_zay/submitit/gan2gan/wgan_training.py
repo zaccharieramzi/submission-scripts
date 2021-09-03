@@ -9,5 +9,7 @@ job = executor.submit(
     wgan_training,
     run_id='test',
     epochs=1,
-    N=1,   
+    N=1,
+    patch_size=64,
+    batch_size=4,
 )
