@@ -8,7 +8,7 @@ executor = get_executor('noisy_patches', timeout_hour=2, n_gpus=1, project='gan2
 
 job = executor.submit(
     gen_noisy_patches,
-    run_id=CKPT_PATH / 'test-30',
+    ckpt_path=CKPT_PATH / 'test-30',
     name='test',
     n_patches=100,
 )
