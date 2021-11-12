@@ -9,4 +9,5 @@ with executor.batch():
     for mode in ['val']:
         for acq_type in ['radial', 'spiral']:
             for af in [4, 8]:
-                executor.submit(generate_multicoil_nc_tf_records, acq_type=acq_type, af=af, mode=mode, brain=False)
+                for brain in [True, False]:
+                    executor.submit(generate_multicoil_nc_tf_records, acq_type=acq_type, af=af, mode=mode, brain=brain)
