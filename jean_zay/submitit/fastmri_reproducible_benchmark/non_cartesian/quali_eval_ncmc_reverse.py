@@ -4,10 +4,10 @@ from jean_zay.submitit.general_submissions import get_executor
 
 
 model_2_run_ids = {
-    'pdnet': {
-        'spiral': 'ncpdnet_sense___rfs_radial_compound_mssim_dcomp_1611913984',
-        'radial': 'ncpdnet_sense___rfs_spiral_compound_mssim_dcomp_1611913984',
-    },
+    # 'pdnet': {
+    #     'spiral': 'ncpdnet_sense___rfs_radial_compound_mssim_dcomp_1611913984',
+    #     'radial': 'ncpdnet_sense___rfs_spiral_compound_mssim_dcomp_1611913984',
+    # },
     'unet': {
         'spiral': 'unet_mc___radial_compound_mssim_dcomp_1611915508',
         'radial': 'unet_mc___spiral_compound_mssim_dcomp_1611915508',

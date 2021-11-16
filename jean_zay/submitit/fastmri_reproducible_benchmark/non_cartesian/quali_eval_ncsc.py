@@ -4,26 +4,26 @@ from jean_zay.submitit.general_submissions import get_executor
 
 
 model_2_run_ids = {
-    'ncpdnet-dcomp': {
-        'radial': 'ncpdnet_singlecoil___radial_compound_mssim_dcomp_1610872636',
-        'spiral': 'ncpdnet_singlecoil___spiral_compound_mssim_dcomp_1610911070',
-    },
-    'ncpdnet': {
-        'radial': 'ncpdnet_singlecoil___radial_compound_mssim_1610720754',
-        'spiral': 'ncpdnet_singlecoil___spiral_compound_mssim_1610720754',
-    },
-    'pdnet-gridded': {
-        'radial': 'pdnet_gridded_singlecoil___radial_compound_mssim_1611913690',
-        'spiral': 'pdnet_gridded_singlecoil___spiral_compound_mssim_1611913692',
-    },
+    # 'ncpdnet-dcomp': {
+    #     'radial': 'ncpdnet_singlecoil___radial_compound_mssim_dcomp_1610872636',
+    #     'spiral': 'ncpdnet_singlecoil___spiral_compound_mssim_dcomp_1610911070',
+    # },
+    # 'ncpdnet': {
+    #     'radial': 'ncpdnet_singlecoil___radial_compound_mssim_1610720754',
+    #     'spiral': 'ncpdnet_singlecoil___spiral_compound_mssim_1610720754',
+    # },
+    # 'pdnet-gridded': {
+    #     'radial': 'pdnet_gridded_singlecoil___radial_compound_mssim_1611913690',
+    #     'spiral': 'pdnet_gridded_singlecoil___spiral_compound_mssim_1611913692',
+    # },
     'unet': {
         'radial': 'unet_singlecoil___radial_compound_mssim_dcomp_1610911070',
         'spiral': 'unet_singlecoil___spiral_compound_mssim_dcomp_1610911070',
     },
-    'adj-dcomp': {
-        'radial': None,
-        'spiral': None,
-    },
+    # 'adj-dcomp': {
+    #     'radial': None,
+    #     'spiral': None,
+    # },
 }
 
 
