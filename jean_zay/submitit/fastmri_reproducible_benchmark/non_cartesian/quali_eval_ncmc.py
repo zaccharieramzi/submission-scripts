@@ -4,18 +4,18 @@ from jean_zay.submitit.general_submissions import get_executor
 
 
 model_2_run_ids = {
-    # 'pdnet': {
-    #     'radial': 'ncpdnet_sense___rfs_radial_compound_mssim_dcomp_1611913984',
-    #     'spiral': 'ncpdnet_sense___rfs_spiral_compound_mssim_dcomp_1611913984',
-    # },
+    'pdnet': {
+        'radial': 'ncpdnet_sense___rfs_radial_compound_mssim_dcomp_1611913984',
+        'spiral': 'ncpdnet_sense___rfs_spiral_compound_mssim_dcomp_1611913984',
+    },
     'unet': {
         'radial': 'unet_mc___radial_compound_mssim_dcomp_1611915508',
         'spiral': 'unet_mc___spiral_compound_mssim_dcomp_1611915508',
     },
-    # 'adj-dcomp': {
-    #     'radial': None,
-    #     'spiral': None,
-    # },
+    'adj-dcomp': {
+        'radial': None,
+        'spiral': None,
+    },
 }
 
 zoom_box = [(180, 280), (100, 200)]
@@ -27,7 +27,7 @@ with executor.batch():
             executor.submit(
                 nc_multinet_qualitative_validation,
                 acq_type=acq_type,
-                af=4,
+                af=8,
                 model=model,
                 run_id=run_ids[acq_type],
                 multicoil=True,
