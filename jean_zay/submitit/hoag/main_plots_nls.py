@@ -1,4 +1,4 @@
-from hoag.main_plots_nls import run_scheme
+from hoag.scripts.main_plots_nls import run_scheme
 import numpy as np
 
 from jean_zay.submitit.general_submissions import get_cpu_executor
