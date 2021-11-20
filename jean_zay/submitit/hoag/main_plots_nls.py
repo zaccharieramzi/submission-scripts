@@ -4,7 +4,7 @@ import numpy as np
 from jean_zay.submitit.general_submissions import get_cpu_executor
 
 
-executor = get_cpu_executor('main_plots_nls_indep', timeout_hour=2, n_gpus=1, project='hoag')
+executor = get_cpu_executor('main_plots_nls_indep', timeout_hour=2, n_cpus=3, project='hoag')
 scheme_labels = ['shine-big-rank', 'fpn', 'original']
 
 
