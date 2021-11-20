@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=grid_search_nls     # nom du job
+#SBATCH --job-name=main_plots_nls     # nom du job
 #SBATCH --ntasks=1                # nombre de tâche MPI
 #SBATCH --ntasks-per-node=1          # nombre de tâche MPI par noeud
 #SBATCH --cpus-per-task=3           # nombre de coeurs à réserver par tâche
