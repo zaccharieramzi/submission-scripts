@@ -18,7 +18,7 @@ cd $WORK/submission-scripts/jean_zay/env_configs/
 
 . hoag.sh
 
-cd $WORK/hoag/scripts
+cd $WORK/hoag/hoag/scripts
 
 
 python grid_search_nls.py
