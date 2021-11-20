@@ -2,6 +2,50 @@ from sklearn.model_selection import ParameterGrid
 import submitit
 
 
+def get_cpu_executor(job_name, timeout_hour=60, n_cpus=1, project='hoag'):
+    executor = submitit.AutoExecutor(folder=job_name)
+    if timeout_hour > 20:
+        qos = 't4'
+    elif timeout_hour > 2:
+        qos = 't3'
+    else:
+        qos = 'dev'
+    multi_node = n_cpus > 24
+    if multi_node:
+        assert n_cpus % 24 == 0, 'Use multiple of 4 GPUs for multi node training'
+        assert timeout_hour <= 20, 'Use t3 qos for multi node training'
+        multi_node = True
+        n_nodes = n_cpus // 24
+        n_cpus = 24
+    tasks_per_node = 1
+    slurm_params = {
+        'ntasks-per-node': tasks_per_node,
+        'cpus-per-task':  n_cpus,
+        'account': 'hih@cpu',
+        'qos': f'qos_cpu-{qos}',
+        'distribution': 'block:block',
+        'hint': 'nomultithread',
+    }
+    slurm_setup = [
+        'cd $WORK/submission-scripts/jean_zay/env_configs',
+        f'. {project}.sh',
+    ]
+    if multi_node:
+        slurm_params.update({
+            'nodes': n_nodes,
+        })
+        slurm_setup.append('unset http_proxy https_proxy HTTP_PROXY HTTPS_PROXY')
+    executor.update_parameters(
+        timeout_min=60,
+        tasks_per_node=tasks_per_node,
+        cpus_per_task=n_cpus,
+        slurm_job_name=job_name,
+        slurm_time=f'{timeout_hour}:00:00',
+        slurm_additional_parameters=slurm_params,
+        slurm_setup=slurm_setup,
+    )
+    return executor    
+
 def get_executor(job_name, timeout_hour=60, n_gpus=1, project='fastmri', no_force_32=False, torch=False):
     executor = submitit.AutoExecutor(folder=job_name)
     if timeout_hour > 20:
