@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=transformer_fpn    # nom du job
+#SBATCH --job-name=ifip_cifar_xxl    # nom du job
 #SBATCH --ntasks=1                # nombre de tâche MPI
 #SBATCH --ntasks-per-node=1          # nombre de tâche MPI par noeud
 #SBATCH --cpus-per-task=40           # nombre de coeurs à réserver par tâche
@@ -8,6 +8,7 @@
 # de Slurm "multithread" fait bien référence à l'hyperthreading.
 #SBATCH --hint=nomultithread         # on réserve des coeurs physiques et non logiques
 #SBATCH --qos=qos_gpu-t4        # le calcul va etre long
+#SBATCH -C v100-32g
 #SBATCH --distribution=block:block   # on épingle les tâches sur des coeurs contigus
 #SBATCH --time=100:00:00              # temps d’exécution maximum demande (HH:MM:SS)
 #SBATCH --output=%x_%j.out # nom du fichier de sortie
