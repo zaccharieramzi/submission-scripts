@@ -20,4 +20,4 @@ cd $WORK/submission-scripts/jean_zay/env_configs/
 
 cd $WORK/implicit-fields-inverse-problems
 
-python ifip/training/train_cifar.py +model=xxl
+python ifip/training/train_cifar.py +model=xxl training.fit.epochs=1000
