@@ -1,2 +1,13 @@
+#!/bin/bash
+
+IFS=''
+params=(
+    '{lr_latent:5e-4,lr_mlp:1e-5},'
+    '{lr_latent:1e-5,lr_mlp:5e-6}'
+)
+
 cd $WORK/implicit-fields-inverse-problems
-python ifip/training/train_cifar.py --multirun hydra/launcher=4gpus_dev 'hydra.searchpath=[pkg://jean_zay/hydra_config]' +model=xxl training.fit.epochs=20 +compile.lr_mlp=[5e-4, 1e-5, 5e-5, 1e-6] +compile.lr_latent=[1e-3, 5e-4, 1e-5, 5e-5]
+python ifip/training/train_cifar.py -m hydra/launcher=4gpus_dev\
+    'hydra.searchpath=[pkg://jean_zay/hydra_config]'\
+    +model=xxl training.fit.epochs=20\
+    "+compile=${params[*]}"
