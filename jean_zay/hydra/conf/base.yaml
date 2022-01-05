@@ -1,3 +1,6 @@
+defaults:
+  - submitit_slurm
+
 project: ifip
 timeout_min: 120
 gpus_per_node: 1
