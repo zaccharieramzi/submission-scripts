@@ -4,3 +4,4 @@ click
 submitit
 scikit-learn
 pandas
+hydra-core
