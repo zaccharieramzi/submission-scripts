@@ -7,10 +7,8 @@ tasks_per_node: 1
 cpus_per_task: 10
 gres: "gpu:${hydra.launcher.gpus_per_node}"
 qos: qos_gpu-dev
-mem_gb: 40
 cpus_per_gpu: 10
 gpus_per_task: ${hydra.launcher.gpus_per_node}
-mem_per_gpu: 40
 mem_per_cpu: 4
 additional_parameters:
   ntasks-per-node: ${hydra.launcher.tasks_per_node}
