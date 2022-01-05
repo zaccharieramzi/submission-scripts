@@ -5,11 +5,11 @@ timeout_min: 60
 gpus_per_node: 1
 tasks_per_node: 1
 cpus_per_task: 10
-gres: "gpu:${gpus}"
+gres: "gpu:${hydra.launcher.gpus_per_node}"
 qos: qos_gpu-dev
 additional_parameters:
-  ntasks-per-node: 1
-  cpus-per-task: 10
+  ntasks-per-node: ${hydra.launcher.tasks_per_node}
+  cpus-per-task: ${hydra.launcher.cpus_per_task}
   account: hih@gpu
   distribution: "block:block"
   hint: nomultithread

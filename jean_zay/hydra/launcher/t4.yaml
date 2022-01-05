@@ -2,6 +2,5 @@ defaults:
   - base
 
 qos: qos_gpu-t4
-gres: "gpu:1"
 additional_parameters:
   time: "100:00:00"
