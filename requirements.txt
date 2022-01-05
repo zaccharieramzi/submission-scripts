@@ -5,3 +5,4 @@ submitit
 scikit-learn
 pandas
 hydra-core
+hydra-submitit-launcher
