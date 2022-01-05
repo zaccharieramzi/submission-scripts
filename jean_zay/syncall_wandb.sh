@@ -1,6 +1,6 @@
 #!/bin/bash
 
-offline_runs = "$1/offline-run*"
+offline_runs="$1/offline-run*"
 while :
 do
     for ofrun in $offline_runs
