@@ -2,5 +2,6 @@ defaults:
   - base
 
 additional_parameters:
-  qos: qos_gpu-t4
   time: "100:00:00"
+setup:
+  - "#SBATCH --qos=qos_gpu-t3"
