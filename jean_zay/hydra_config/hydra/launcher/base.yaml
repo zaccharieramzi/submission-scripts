@@ -5,8 +5,6 @@ timeout_min: 60
 gpus_per_node: 1
 tasks_per_node: 1
 cpus_per_task: 10
-gres: "gpu:${hydra.launcher.gpus_per_node}"
-qos: qos_gpu-dev
 mem_gb: 40
 cpus_per_gpu: 10
 gpus_per_task: ${hydra.launcher.gpus_per_node}
@@ -19,6 +17,8 @@ additional_parameters:
   distribution: "block:block"
   hint: nomultithread
   time: "${hours}:00:00"
+  qos: qos_gpu-dev
+  gres: "gpu:${hydra.launcher.gpus_per_node}"
 setup:
   - "#SBATCH -C v100-32g"
   - "cd $WORK/submission-scripts/jean_zay/env_configs"

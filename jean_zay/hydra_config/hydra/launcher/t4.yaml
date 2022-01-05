@@ -1,6 +1,6 @@
 defaults:
   - base
 
-qos: qos_gpu-t4
 additional_parameters:
+  qos: qos_gpu-t4
   time: "100:00:00"
