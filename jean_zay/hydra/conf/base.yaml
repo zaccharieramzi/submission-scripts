@@ -1,0 +1,17 @@
+project: ifip
+timeout_min: 120
+gpus_per_node: 1
+tasks_per_node: 1
+cpus_per_task: 10
+additional_parameters:
+  - ntasks-per-node: 1
+  - cpus-per-task: ${cpus_per_task}
+  - account: hih@gpu
+  - qos: qos_gpu-dev
+  - distribution: "block:block"
+  - hint: nomultithread
+  - gres: "gpu:1"
+setup:
+  - "#SBATCH -C v100-32g"
+  - "cd $WORK/submission-scripts/jean_zay/env_configs"
+  - . ${project}.sh
