@@ -5,6 +5,7 @@ while :
 do
     for ofrun in $offline_runs
     do
-        sleep 5m && wandb sync $ofrun;
+        wandb sync $ofrun;
     done
+    sleep 5m
 done
