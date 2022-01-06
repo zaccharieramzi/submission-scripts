@@ -3,7 +3,9 @@
 IFS=''
 params=(
     '{lr_latent:1e-3,lr_mlp:1e-5},'
+    '{lr_latent:5e-4,lr_mlp:5e-4},'
     '{lr_latent:5e-4,lr_mlp:1e-5},'
+    '{lr_latent:1e-5,lr_mlp:1e-5},'
     '{lr_latent:5e-4,lr_mlp:5e-6},'
     '{lr_latent:1e-5,lr_mlp:5e-6}'
 )
