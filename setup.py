@@ -22,7 +22,7 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    scripts=['jean_zay/hydra_config/bin/submitit-hydra-launch', 'jean_zay/sync_wandb.sh', 'jean_zay/syncall_wandb.sh'],
+    scripts=['jean_zay/hydra_config/bin/submitit-hydra-launch', 'jean_zay/sync-wandb', 'jean_zay/syncall-wandb'],
     install_requires=install_requires,
     python_requires='>=3.6',
     include_package_data=True,
