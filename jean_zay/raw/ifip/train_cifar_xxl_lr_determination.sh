@@ -15,5 +15,5 @@ python ifip/training/train_cifar.py -m hydra/launcher=4gpus_dev\
     'hydra.searchpath=[pkg://jean_zay/hydra_config]'\
     +model=xxl training.fit.epochs=5\
     hydra.job.name='lr_grid_search'\
-    'callbacks.model.name=ifip_xxl_lrl${compile.lr_latent}_lrm${compile.lr_mlp}'\
+    'callbacks.model_name=ifip_xxl_lrl${compile.lr_latent}_lrm${compile.lr_mlp}'\
     "+compile=${params[*]}"
