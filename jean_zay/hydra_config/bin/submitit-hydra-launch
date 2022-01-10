@@ -11,4 +11,4 @@ if [ "$1" == "--help" ]; then
   exit 0
 fi
 
-python $1 -m hydra/launcher=$2 'hydra.searchpath=[pkg://jean_zay/hydra_config]' ${@:3}
+python $1 -m hydra/launcher=$2 'hydra.searchpath=[pkg://jean_zay/hydra_config]' "${@:3}"
