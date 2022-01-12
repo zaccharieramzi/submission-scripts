@@ -11,9 +11,9 @@ params=(
 )
 
 cd $WORK/implicit-fields-inverse-problems
-python ifip/training/train_cifar.py -m hydra/launcher=4gpus_dev\
-    'hydra.searchpath=[pkg://jean_zay/hydra_config]'\
+submitit-hydra-launch ifip/training/train_cifar.py 4gpus_dev\
     +model=xxl training.fit.epochs=5\
-    hydra.job.name='lr_grid_search'\
-    'callbacks.model_name=ifip_xxl_lrl${compile.lr_latent}_lrm${compile.lr_mlp}'\
+    +model.mlp.skip_buffer=true\
+    hydra.job.name='lr_buf_grid_search'\
+    'callbacks.model_name=ifip_xxl_buf_lrl${compile.lr_latent}_lrm${compile.lr_mlp}'\
     "+compile=${params[*]}"
