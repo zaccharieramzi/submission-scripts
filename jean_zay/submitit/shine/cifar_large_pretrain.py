@@ -10,7 +10,7 @@ params = dict(
     dataset='cifar',
     n_gpus=n_gpus,
     n_epochs=220,
-    save_at=50,
+    save_at=[50, 100, 150, 200],
     seed=0,
 )
 
@@ -23,7 +23,7 @@ train_eval_grid(
     _dummy_eval,
     [params],
     to_grid=False,
-    timeout_train=4,
+    timeout_train=20,
     n_gpus_train=n_gpus,
     timeout_eval=0,
     n_gpus_eval=0,
