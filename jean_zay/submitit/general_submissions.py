@@ -1,3 +1,5 @@
+import os
+
 from sklearn.model_selection import ParameterGrid
 import submitit
 
@@ -21,7 +23,7 @@ def get_cpu_executor(job_name, timeout_hour=60, n_cpus=1, project='hoag'):
     slurm_params = {
         'ntasks-per-node': tasks_per_node,
         'cpus-per-task':  n_cpus,
-        'account': 'hih@cpu',
+        'account': f"{os.environ['IDRPROJ']}@cpu",
         'qos': f'qos_cpu-{qos}',
         'distribution': 'block:block',
         'hint': 'nomultithread',
@@ -44,7 +46,7 @@ def get_cpu_executor(job_name, timeout_hour=60, n_cpus=1, project='hoag'):
         slurm_additional_parameters=slurm_params,
         slurm_setup=slurm_setup,
     )
-    return executor    
+    return executor
 
 def get_executor(job_name, timeout_hour=60, n_gpus=1, project='fastmri', no_force_32=False, torch=False):
     executor = submitit.AutoExecutor(folder=job_name)
@@ -67,7 +69,7 @@ def get_executor(job_name, timeout_hour=60, n_gpus=1, project='fastmri', no_forc
     slurm_params = {
         'ntasks-per-node': tasks_per_node,
         'cpus-per-task':  cpus_per_task,
-        'account': 'hih@gpu',
+        'account': f"{os.environ['IDRPROJ']}@v100",
         'qos': f'qos_gpu-{qos}',
         'distribution': 'block:block',
         'hint': 'nomultithread',
