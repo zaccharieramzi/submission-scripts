@@ -48,7 +48,7 @@ def get_cpu_executor(job_name, timeout_hour=60, n_cpus=1, project='hoag'):
     )
     return executor
 
-def get_executor(job_name, timeout_hour=60, n_gpus=1, project='fastmri', no_force_32=False, torch=False):
+def get_executor(job_name, timeout_hour=60, n_gpus=1, project='fastmri', no_force_32=False, torch=False, force_partition=None):
     executor = submitit.AutoExecutor(folder=job_name)
     if timeout_hour > 20:
         qos = 't4'
@@ -79,9 +79,10 @@ def get_executor(job_name, timeout_hour=60, n_gpus=1, project='fastmri', no_forc
         'cd $WORK/submission-scripts/jean_zay/env_configs',
         f'. {project}.sh',
     ]
-    if n_gpus > 4 and n_gpus < 8:
+    if (n_gpus > 4 and n_gpus < 8) or force_partition is not None:
+        partition = 'gpu_p2' if force_partition is None else force_partition
         slurm_params.update({
-            'partition': 'gpu_p2'
+            'partition': partition,
         })
     if (n_gpus > 4 or no_force_32) and n_gpus < 8:
         slurm_setup = slurm_setup[1:]
@@ -121,6 +122,7 @@ def train_eval_grid(
         resume_run_run_ids=None,
         no_force_32=False,
         torch=False,
+        force_partition=None,
         **specific_eval_params,
     ):
     if to_grid:
@@ -134,6 +136,7 @@ def train_eval_grid(
         project=project,
         no_force_32=no_force_32,
         torch=torch,
+        force_partition=force_partition,
     )
     jobs = []
     if resume_checkpoint is None:
