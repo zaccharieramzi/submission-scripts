@@ -1,5 +1,5 @@
 from learning_wavelets.training_scripts.exact_recon_unet_training import train_unet as train
-from learning_wavelets.evaluate_scripts.exact_recon_unet_evaluate import evaluate_unet as evaluate
+from learning_wavelets.evaluation_scripts.exact_recon_unet_evaluate import evaluate_unet as evaluate
 
 from jean_zay.submitit.general_submissions import train_eval_grid, eval_grid
 
