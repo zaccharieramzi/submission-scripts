@@ -8,7 +8,7 @@ job_name = 'exact_recon_unet'
 parameter_grid = {
     'use_bias': [True, False],
     'n_epochs': [500],
-    'exact_reconstruction': [True, False],
+    'exact_recon': [True, False],
     'base_n_filters': [64],
 }
 
