@@ -6,7 +6,7 @@ from jean_zay.submitit.general_submissions import get_executor, ParameterGrid
 job_name = 'shine_eq_analy_cifar_tiny'
 n_gpus = 2
 
-exec = get_executor(job_name, n_gpus, timeout_hour=2, project='shine', no_force_32=True)
+executor = get_executor(job_name, n_gpus, timeout_hour=2, project='shine', no_force_32=True)
 
 params = dict(
     model_size='TINY',
@@ -20,8 +20,8 @@ params = dict(
 params = list(ParameterGrid(params))
 
 jobs = []
-with exec.batch():
+with executor.batch():
     for param in params:
-        job = exec.submit(analyze_equilibrium_initialization, **param)
+        job = executor.submit(analyze_equilibrium_initialization, **param)
         jobs.append(job)
 df_res_list = [job.result() for job in jobs]
