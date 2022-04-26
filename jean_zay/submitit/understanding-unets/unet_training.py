@@ -26,6 +26,7 @@ eval_results = train_eval_grid(
     noise_stds=[0.00001, 5, 15, 20, 25, 30, 50, 55, 60, 75],
     params_to_ignore=[],
     project='learnlets',
+    force_partition='gpu_p2',
 )
 
 print(eval_results)

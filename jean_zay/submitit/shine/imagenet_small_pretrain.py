@@ -39,6 +39,7 @@ res_all = train_eval_grid(
     project='shine',
     params_to_ignore=['n_epochs', 'save_at'],
     torch=True,
+    force_partition='gpu_p2',
 )
 
 print(res_all)
