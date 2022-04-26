@@ -63,7 +63,7 @@ def get_executor(job_name, timeout_hour=60, n_gpus=1, project='fastmri', no_forc
         multi_node = True
         n_nodes = n_gpus // 4
         n_gpus = n_gpus // n_nodes
-    cpu_per_gpu = 3 if n_gpus > 4 else 10
+    cpu_per_gpu = 3 if (n_gpus > 4 or force_partition is not None)  else 10
     tasks_per_node = 1
     cpus_per_task = cpu_per_gpu * n_gpus
     slurm_params = {
