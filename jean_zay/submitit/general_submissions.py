@@ -84,7 +84,7 @@ def get_executor(job_name, timeout_hour=60, n_gpus=1, project='fastmri', no_forc
         slurm_params.update({
             'partition': partition,
         })
-    if (n_gpus > 4 or no_force_32) and n_gpus < 8:
+    if (n_gpus > 4 or no_force_32 or force_partition is not None) and n_gpus < 8:
         slurm_setup = slurm_setup[1:]
     if multi_node:
         slurm_params.update({
