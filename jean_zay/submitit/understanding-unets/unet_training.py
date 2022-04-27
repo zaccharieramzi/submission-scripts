@@ -12,21 +12,33 @@ parameter_grid = {
     'base_n_filters': [64],
 }
 
-eval_results = train_eval_grid(
+run_ids = [
+    'ExactReconUnet_64_bsd500_0_55_None_1651009828',
+    'ExactReconUnet_64_bsd500_0_55_None_nobias_1651009828',
+    'ExactReconUnet_64_bsd500_0_55_None_noexact_1651010180',
+    'ExactReconUnet_64_bsd500_0_55_None_nobias_noexact_1651010180',
+]
+
+# eval_results = train_eval_grid(
+eval_results = eval_grid(
     job_name,
-    train,
+    # train,
     evaluate,
     parameter_grid,
-    n_samples_eval=None,
-    timeout_train=40,
-    n_gpus_train=4,
-    timeout_eval=4,
-    n_gpus_eval=1,
+    run_ids=run_ids,
+    # n_samples_eval=None,
+    n_samples=None,
+    # timeout_train=40,
+    # n_gpus_train=4,
+    # timeout_eval=4,
+    timeout=4,
+    # n_gpus_eval=1,
+    n_gpus=1,
     to_grid=True,
-    noise_stds=[0.00001, 5, 15, 20, 25, 30, 50, 55, 60, 75],
+    noise_std_test=[0.00001, 5, 15, 20, 25, 30, 50, 55, 60, 75],
     params_to_ignore=[],
     project='learnlets',
-    force_partition='gpu_p2',
+    # force_partition='gpu_p2',
 )
 
 print(eval_results)
