@@ -13,7 +13,8 @@ params = dict(
     dataset=['imagenet'],
     n_samples_train=[32*n_gpus*500, 32*n_gpus*1000, 1_281_167],
     n_images=[100],
-    checkpoint=[50, 100, 150, 200],
+    # checkpoint=[50, 60, 70, 80],
+    checkpoint=[60],
     on_cpu=[False],
     n_gpus=[n_gpus],
 )
