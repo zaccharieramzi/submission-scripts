@@ -1,4 +1,5 @@
 from mdeq_lib.debug.eq_init_analysis import analyze_equilibrium_initialization
+from torch import dropout
 
 from jean_zay.submitit.general_submissions import get_executor, ParameterGrid
 
@@ -16,6 +17,7 @@ params = dict(
     checkpoint=[14, 40, 60, 70],
     on_cpu=[False],
     n_gpus=[n_gpus],
+    dropout_eval=[True],
 )
 params = list(ParameterGrid(params))
 

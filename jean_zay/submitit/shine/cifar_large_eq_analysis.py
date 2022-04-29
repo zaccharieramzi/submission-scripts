@@ -16,6 +16,7 @@ params = dict(
     checkpoint=[50, 100, 150, 200],
     on_cpu=[False],
     n_gpus=[n_gpus],
+    dropout_eval=[True],
 )
 params = list(ParameterGrid(params))
 
