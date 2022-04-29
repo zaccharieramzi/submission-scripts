@@ -30,4 +30,5 @@ train_eval_grid(
     project='shine',
     params_to_ignore=['n_epochs', 'save_at', 'restart_from'],
     torch=True,
+    force_partition='gpu_p2',
 )
