@@ -1,5 +1,5 @@
 #!/bin/bash
-SBATCH="sbatch -A xpa@v100 --time 03:00:00 --gres gpu:1 --cpu-per-task 10 --qos qos_gpu-t3"
+SBATCH="sbatch -A xpa@v100 --time 03:00:00 --gres gpu:1 --cpus-per-task 10 --qos qos_gpu-t3"
 BASIC_CMD="$SBATCH benchopt run benchmark_resnet_classif"
 BASIC_CMD="$BASIC_CMD -o *18 -d cifar -r 1 -n 200"
 
