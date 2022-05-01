@@ -4,7 +4,7 @@
 #SBATCH --ntasks-per-node=1
 #SBATCH --gres=gpu:1
 #SBATCH --cpus-per-task=10
-#SBATCH --time=03:00:00
+#SBATCH --time=04:00:00
 #SBATCH --output=%x_%A_%a.out
 #SBATCH --error=%x_%A_%a.out
 #SBATCH --qos=qos_gpu-t3
@@ -17,7 +17,7 @@ module purge
 cd $WORK/benchmark_resnet_classif
 
 BASIC_CMD="benchopt run ."
-BASIC_CMD="$BASIC_CMD -o *18 -d cifar -r 1 -n 200 --timeout 7200 -s"
+BASIC_CMD="$BASIC_CMD -o *18 -d cifar -r 1 -n 200 --timeout 10800 -s"
 
 
 
