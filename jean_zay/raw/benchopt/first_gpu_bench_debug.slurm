@@ -35,13 +35,13 @@ for model in {'tf','torch'}; do
                 if [ "$i" == "$SLURM_ARRAY_TASK_ID" ]; then
                     if [ "$framework" == "tf" ]; then
                         echo "activating tensorflow"
-                        module load tensorflow-gpu/py3/2.7.0
                         export PYTHONUSERBASE=$WORK/.local_tf
+                        module load tensorflow-gpu/py3/2.7.0
                         export PATH=$WORK/.local_tf/bin:$PATH
                     else
                         echo "activating torch"
-                        module load pytorch-gpu/py3/1.10.1
                         export PYTHONUSERBASE=$WORK/.local_torch
+                        module load pytorch-gpu/py3/1.10.1
                         export PATH=$WORK/.local_torch/bin:$PATH
                     fi
                 fi
@@ -63,13 +63,13 @@ for model in {'tf','torch'}; do
                     if [ "$i" == "$SLURM_ARRAY_TASK_ID" ]; then
                         if [ "$framework" == "tf" ]; then
                             echo "activating tensorflow"
-                            module load tensorflow-gpu/py3/2.7.0
                             export PYTHONUSERBASE=$WORK/.local_tf
+                            module load tensorflow-gpu/py3/2.7.0
                             export PATH=$WORK/.local_tf/bin:$PATH
                         else
                             echo "activating torch"
-                            module load pytorch-gpu/py3/1.10.1
                             export PYTHONUSERBASE=$WORK/.local_torch
+                            module load pytorch-gpu/py3/1.10.1
                             export PATH=$WORK/.local_torch/bin:$PATH
                         fi
                     fi
