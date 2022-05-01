@@ -63,4 +63,4 @@ for model in {'tf','torch'}; do
     done
 done
 
-$BASIC_CMD ${opt[0]}
+$BASIC_CMD ${opt[1]}
