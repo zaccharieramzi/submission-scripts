@@ -25,7 +25,7 @@ BASIC_CMD="$BASIC_CMD -o *18 -d cifar -r 1 -n 200 --timeout 10800 -s"
 i=0
 for model in {'tf','torch'}; do
     framework="${model}"
-    model="adam-${model}[batch_size=64"
+    model="adam-${model}[batch_size=128"
     for data_aug in {'False','True'}; do
         for wd in {'0.0','0.02'}; do
             for lr in {'None','step','cosine'}; do
