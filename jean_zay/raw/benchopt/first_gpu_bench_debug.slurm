@@ -15,7 +15,7 @@
 cd $WORK/benchmark_resnet_classif
 
 BASIC_CMD="benchopt run ."
-BASIC_CMD="$BASIC_CMD -o *18 -d cifar -r 1 -n 200 --timeout 200 -s"
+BASIC_CMD="$BASIC_CMD -o *18 -d cifar -r 1 -n 2 --timeout 200 -s"
 
 
 
