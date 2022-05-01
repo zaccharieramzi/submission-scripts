@@ -13,9 +13,9 @@
 #SBATCH --array=0-48
 
 . $WORK/submission-scripts/jean_zay/env_configs/benchopt.sh
-cd $WORK
+cd $WORK/benchmark_resnet_classif
 
-BASIC_CMD="benchopt run benchmark_resnet_classif"
+BASIC_CMD="benchopt run ."
 BASIC_CMD="$BASIC_CMD -o *18 -d cifar -r 1 -n 200 --timeout 7200 -s"
 
 
