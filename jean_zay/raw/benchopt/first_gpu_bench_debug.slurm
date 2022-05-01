@@ -55,10 +55,10 @@ done
 # SGD
 for model in {'tf','torch'}; do
     framework="${model}"
-    model="sgd-${model}[batch_size=64"
+    model="sgd-${model}[batch_size=128"
     for data_aug in {'False','True'}; do
         for nesterov in {'False','True'}; do
-            for wd in {'0.0','0.0001'}; do
+            for wd in {'0.0','0.0005'}; do
                 for lr in {'None','step','cosine'}; do
                     opt[$i]="${model},data_aug=${data_aug},*,lr_schedule=${lr},*,nesterov=${nesterov},weight_decay=${wd}]"
                     if [ "$i" == "$SLURM_ARRAY_TASK_ID" ]; then
