@@ -27,7 +27,7 @@ for model in {'tf','torch'}; do
     for data_aug in {'False','True'}; do
         for wd in {'0.0','0.02'}; do
             for lr in {'None','step','cosine'}; do
-                opt[$i]="${model},coupled_weight_decay=0.0,data_aug=${data_aug},decoupled_weight_decay=${wd},lr_schedule=${lr}]"
+                opt[$i]="${model},coupled_weight_decay=0.0,data_aug=${data_aug},decoupled_weight_decay=${wd},*,lr_schedule=${lr}]"
                 i=$((i+1))
             done
         done
@@ -42,7 +42,7 @@ for model in {'tf','torch'}; do
         for nesterov in {'False','True'}; do
             for wd in {'0.0','0.0001'}; do
                 for lr in {'None','step','cosine'}; do
-                    opt[$i]="${model},data_aug=${data_aug},*,lr_schedule=${lr},nesterov=${nesterov},weight_decay=${wd}]"
+                    opt[$i]="${model},data_aug=${data_aug},*,lr_schedule=${lr},*,nesterov=${nesterov},weight_decay=${wd}]"
                     i=$((i+1))
                 done
             done
