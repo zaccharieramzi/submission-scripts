@@ -24,6 +24,7 @@ BASIC_CMD="$BASIC_CMD -o *18 -d cifar -r 1 -n 200 --timeout 7200 -s"
 # Adam
 i=0
 for model in {'tf','torch'}; do
+    framework="${model}"
     model="adam-${model}[batch_size=64"
     for data_aug in {'False','True'}; do
         for wd in {'0.0','0.02'}; do
@@ -53,6 +54,7 @@ done
 
 # SGD
 for model in {'tf','torch'}; do
+    framework="${model}"
     model="sgd-${model}[batch_size=64"
     for data_aug in {'False','True'}; do
         for nesterov in {'False','True'}; do

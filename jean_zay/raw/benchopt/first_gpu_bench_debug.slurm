@@ -54,6 +54,7 @@ done
 
 # SGD
 for model in {'tf','torch'}; do
+    framework="${model}"
     model="sgd-${model}[batch_size=64"
     for data_aug in {'False','True'}; do
         for nesterov in {'False','True'}; do
