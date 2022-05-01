@@ -36,9 +36,11 @@ for model in {'tf','torch'}; do
                     if [ "$framework" == "tf" ]; then
                         echo "activating tensorflow"
                         module load tensorflow-gpu/py3/2.7.0
+                        export PYTHONUSERBASE=$WORK/.local_tf
                     else
                         echo "activating torch"
                         module load pytorch-gpu/py3/1.10.1
+                        export PYTHONUSERBASE=$WORK/.local_torch
                     fi
                 fi
                 i=$((i+1))
@@ -60,9 +62,11 @@ for model in {'tf','torch'}; do
                         if [ "$framework" == "tf" ]; then
                             echo "activating tensorflow"
                             module load tensorflow-gpu/py3/2.7.0
+                            export PYTHONUSERBASE=$WORK/.local_tf
                         else
                             echo "activating torch"
                             module load pytorch-gpu/py3/1.10.1
+                            export PYTHONUSERBASE=$WORK/.local_torch
                         fi
                     fi
                     i=$((i+1))
