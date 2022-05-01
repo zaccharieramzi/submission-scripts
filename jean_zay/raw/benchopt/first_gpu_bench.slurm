@@ -10,7 +10,7 @@
 #SBATCH --qos=qos_gpu-t3
 #SBATCH --distribution=block:block
 #SBATCH --hint=nomultithread
-#SBATCH --array=0-72
+#SBATCH --array=0-71
 
 . $WORK/submission-scripts/jean_zay/env_configs/benchopt.sh
 cd $WORK/benchmark_resnet_classif
@@ -27,8 +27,8 @@ for model in {'tf','torch'}; do
     for data_aug in {'False','True'}; do
         for wd in {'0.0','0.02'}; do
             for lr in {'None','step','cosine'}; do
-                i=$((i+1))
                 opt[$i]="${model},coupled_weight_decay=0.0,data_aug=${data_aug},decoupled_weight_decay=${wd},*,lr_schedule=${lr}]"
+                i=$((i+1))
             done
         done
     done
@@ -42,8 +42,8 @@ for model in {'tf','torch'}; do
         for nesterov in {'False','True'}; do
             for wd in {'0.0','0.0001'}; do
                 for lr in {'None','step','cosine'}; do
-                    i=$((i+1))
                     opt[$i]="${model},data_aug=${data_aug},*,lr_schedule=${lr},*,nesterov=${nesterov},weight_decay=${wd}]"
+                    i=$((i+1))
                 done
             done
         done
