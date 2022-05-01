@@ -34,8 +34,10 @@ for model in {'tf','torch'}; do
                 # otherwise activate torch
                 if [ "$i" == "$SLURM_ARRAY_TASK_ID" ]; then
                     if [ "$framework" == "tf" ]; then
+                        echo "activating tensorflow"
                         module load tensorflow-gpu/py3/2.7.0
                     else
+                        echo "activating torch"
                         module load pytorch-gpu/py3/1.10.1
                     fi
                 fi
@@ -56,8 +58,10 @@ for model in {'tf','torch'}; do
                     opt[$i]="${model},data_aug=${data_aug},*,lr_schedule=${lr},*,nesterov=${nesterov},weight_decay=${wd}]"
                     if [ "$i" == "$SLURM_ARRAY_TASK_ID" ]; then
                         if [ "$framework" == "tf" ]; then
+                            echo "activating tensorflow"
                             module load tensorflow-gpu/py3/2.7.0
                         else
+                            echo "activating torch"
                             module load pytorch-gpu/py3/1.10.1
                         fi
                     fi
