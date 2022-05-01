@@ -33,7 +33,7 @@ for model in {'tf','torch'}; do
                 # activate tensorflow if i is the slurm array task id and the framework is tf
                 # otherwise activate torch
                 if [ "$i" = "$SLURM_ARRAY_TASK_ID" ] && [ "$framework" = "tf" ]; then
-                    module load tensorflow-gpu/py3/2.6.0
+                    module load tensorflow-gpu/py3/2.7.0
                 else
                     module load pytorch-gpu/py3/1.10.1
                 fi
