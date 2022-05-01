@@ -11,7 +11,8 @@
 #SBATCH --distribution=block:block
 #SBATCH --hint=nomultithread
 
-. $WORK/submission-scripts/jean_zay/env_configs/benchopt.sh
+module purge
+
 cd $WORK/benchmark_resnet_classif
 
 BASIC_CMD="benchopt run ."
@@ -22,11 +23,17 @@ BASIC_CMD="$BASIC_CMD -o *18 -d cifar -r 1 -n 2 --timeout 200 -s"
 # Adam
 i=0
 for model in {'tf','torch'}; do
+    framework="${model}"
     model="adam-${model}[batch_size=64"
     for data_aug in {'False','True'}; do
         for wd in {'0.0','0.02'}; do
             for lr in {'None','step','cosine'}; do
                 opt[$i]="${model},coupled_weight_decay=0.0,data_aug=${data_aug},decoupled_weight_decay=${wd},*,lr_schedule=${lr}]"
+                if $i==$SLURM_ARRAY_TASK_ID & $framework=='tf'; then
+                    module load tensorflow-gpu/py3/2.6.0
+                else
+                    module load pytorch-gpu/py3/1.10.1
+                done
                 i=$((i+1))
             done
         done
@@ -42,6 +49,11 @@ for model in {'tf','torch'}; do
             for wd in {'0.0','0.0001'}; do
                 for lr in {'None','step','cosine'}; do
                     opt[$i]="${model},data_aug=${data_aug},*,lr_schedule=${lr},*,nesterov=${nesterov},weight_decay=${wd}]"
+                    if $i==$SLURM_ARRAY_TASK_ID & $framework=='tf'; then
+                        module load tensorflow-gpu/py3/2.7.0
+                    else
+                        module load pytorch-gpu/py3/1.10.1
+                    done
                     i=$((i+1))
                 done
             done
