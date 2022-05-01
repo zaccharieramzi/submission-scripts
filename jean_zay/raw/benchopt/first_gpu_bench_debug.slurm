@@ -37,10 +37,12 @@ for model in {'tf','torch'}; do
                         echo "activating tensorflow"
                         module load tensorflow-gpu/py3/2.7.0
                         export PYTHONUSERBASE=$WORK/.local_tf
+                        export PATH=$WORK/.local_tf/bin:$PATH
                     else
                         echo "activating torch"
                         module load pytorch-gpu/py3/1.10.1
                         export PYTHONUSERBASE=$WORK/.local_torch
+                        export PATH=$WORK/.local_torch/bin:$PATH
                     fi
                 fi
                 i=$((i+1))
@@ -63,10 +65,12 @@ for model in {'tf','torch'}; do
                             echo "activating tensorflow"
                             module load tensorflow-gpu/py3/2.7.0
                             export PYTHONUSERBASE=$WORK/.local_tf
+                            export PATH=$WORK/.local_tf/bin:$PATH
                         else
                             echo "activating torch"
                             module load pytorch-gpu/py3/1.10.1
                             export PYTHONUSERBASE=$WORK/.local_torch
+                            export PATH=$WORK/.local_torch/bin:$PATH
                         fi
                     fi
                     i=$((i+1))
