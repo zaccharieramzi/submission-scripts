@@ -33,7 +33,7 @@ for model in {'tf','torch'}; do
                     module load tensorflow-gpu/py3/2.6.0
                 else
                     module load pytorch-gpu/py3/1.10.1
-                done
+                fi
                 i=$((i+1))
             done
         done
@@ -53,7 +53,7 @@ for model in {'tf','torch'}; do
                         module load tensorflow-gpu/py3/2.7.0
                     else
                         module load pytorch-gpu/py3/1.10.1
-                    done
+                    fi
                     i=$((i+1))
                 done
             done
