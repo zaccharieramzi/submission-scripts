@@ -29,7 +29,7 @@ for model in {'tf','torch'}; do
         for wd in {'0.0','0.02'}; do
             for lr in {'None','step','cosine'}; do
                 opt[$i]="${model},coupled_weight_decay=0.0,data_aug=${data_aug},decoupled_weight_decay=${wd},*,lr_schedule=${lr}]"
-                if $i==$SLURM_ARRAY_TASK_ID & $framework=='tf'; then
+                if $i = $SLURM_ARRAY_TASK_ID && $framework = 'tf'; then
                     module load tensorflow-gpu/py3/2.6.0
                 else
                     module load pytorch-gpu/py3/1.10.1
@@ -49,7 +49,7 @@ for model in {'tf','torch'}; do
             for wd in {'0.0','0.0001'}; do
                 for lr in {'None','step','cosine'}; do
                     opt[$i]="${model},data_aug=${data_aug},*,lr_schedule=${lr},*,nesterov=${nesterov},weight_decay=${wd}]"
-                    if $i==$SLURM_ARRAY_TASK_ID & $framework=='tf'; then
+                    if $i = $SLURM_ARRAY_TASK_ID && $framework = 'tf'; then
                         module load tensorflow-gpu/py3/2.7.0
                     else
                         module load pytorch-gpu/py3/1.10.1
