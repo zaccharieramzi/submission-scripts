@@ -10,6 +10,7 @@
 #SBATCH --qos=qos_gpu-dev
 #SBATCH --distribution=block:block
 #SBATCH --hint=nomultithread
+#SBATCH --array=0-0
 
 module purge
 
@@ -63,4 +64,4 @@ for model in {'tf','torch'}; do
     done
 done
 
-$BASIC_CMD ${opt[1]}
+$BASIC_CMD ${opt[0]}
