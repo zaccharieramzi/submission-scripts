@@ -12,7 +12,7 @@
 #SBATCH --hint=nomultithread
 #SBATCH --array=0-48
 
-. $WORK/submission_scripts/jean_zay/env_configs/benchopt.sh
+. $WORK/submission-scripts/jean_zay/env_configs/benchopt.sh
 cd $WORK
 
 BASIC_CMD="benchopt run benchmark_resnet_classif"
