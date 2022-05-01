@@ -31,7 +31,7 @@ for model in {'tf','torch'}; do
                 opt[$i]="${model},coupled_weight_decay=0.0,data_aug=${data_aug},decoupled_weight_decay=${wd},*,lr_schedule=${lr}]"
                 # activate tensorflow if i is the slurm array task id and the framework is tf
                 # otherwise activate torch
-                if ["$i" = "$SLURM_ARRAY_TASK_ID"] && ["$framework" = "tf"]; then
+                if [ "$i" -eq "$SLURM_ARRAY_TASK_ID" ] && [ "$framework" = "tf" ]; then
                     module load tensorflow-gpu/py3/2.6.0
                 else
                     module load pytorch-gpu/py3/1.10.1
@@ -51,7 +51,7 @@ for model in {'tf','torch'}; do
             for wd in {'0.0','0.0001'}; do
                 for lr in {'None','step','cosine'}; do
                     opt[$i]="${model},data_aug=${data_aug},*,lr_schedule=${lr},*,nesterov=${nesterov},weight_decay=${wd}]"
-                    if ["$i" = "$SLURM_ARRAY_TASK_ID"] && ["$framework" = "tf"]; then
+                    if [ "$i" -eq "$SLURM_ARRAY_TASK_ID" ] && [ "$framework" = "tf" ]; then
                         module load tensorflow-gpu/py3/2.7.0
                     else
                         module load pytorch-gpu/py3/1.10.1
