@@ -10,7 +10,7 @@
 #SBATCH --qos=qos_gpu-t3
 #SBATCH --distribution=block:block
 #SBATCH --hint=nomultithread
-#SBATCH --array=0-48
+#SBATCH --array=0-72
 
 . $WORK/submission-scripts/jean_zay/env_configs/benchopt.sh
 cd $WORK/benchmark_resnet_classif
