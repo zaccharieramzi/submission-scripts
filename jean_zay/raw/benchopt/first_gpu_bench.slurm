@@ -5,8 +5,8 @@
 #SBATCH --gres=gpu:1
 #SBATCH --cpus-per-task=10
 #SBATCH --time=03:00:00
-#SBATCH --output=%x_%j.out
-#SBATCH --error=%x_%j.out
+#SBATCH --output=%x_%A_%a.out
+#SBATCH --error=%x_%A_%a.out
 #SBATCH --qos=qos_gpu-t3
 #SBATCH --distribution=block:block
 #SBATCH --hint=nomultithread
