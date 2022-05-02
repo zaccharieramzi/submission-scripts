@@ -6,7 +6,14 @@ from jean_zay.submitit.general_submissions import get_executor, ParameterGrid
 job_name = 'shine_eq_analy_imagenet_small'
 n_gpus = 4
 
-executor = get_executor(job_name, n_gpus=n_gpus, timeout_hour=20, project='shine', no_force_32=False)
+executor = get_executor(
+    job_name,
+    n_gpus=n_gpus,
+    timeout_hour=20,
+    project='shine',
+    no_force_32=False,
+    force_partition='gpu_p2',
+)
 
 params = dict(
     model_size=['SMALL'],
