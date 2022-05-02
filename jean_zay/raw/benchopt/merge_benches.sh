@@ -11,7 +11,7 @@ args=''
 i=0
 for model in {'tf','torch'}; do
     framework="${model}"
-    model="adam-${model}[batch_size=64"
+    model="adam-${model}[batch_size=128"
     for data_aug in {'False','True'}; do
         for wd in {'0.0','0.02'}; do
             for lr in {'None','step','cosine'}; do
@@ -25,10 +25,10 @@ done
 # SGD
 for model in {'tf','torch'}; do
     framework="${model}"
-    model="sgd-${model}[batch_size=64"
+    model="sgd-${model}[batch_size=128"
     for data_aug in {'False','True'}; do
         for nesterov in {'False','True'}; do
-            for wd in {'0.0','0.0001'}; do
+            for wd in {'0.0','0.0005'}; do
                 for lr in {'None','step','cosine'}; do
                     args="${args} -s ${model},data_aug=${data_aug},*,lr_schedule=${lr},*,nesterov=${nesterov},weight_decay=${wd}]"
                 done
