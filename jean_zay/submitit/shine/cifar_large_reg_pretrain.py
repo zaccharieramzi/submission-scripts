@@ -4,7 +4,7 @@ from jean_zay.submitit.general_submissions import train_eval_grid
 
 
 job_name = 'shine_classifier_cifar_large_pretrain'
-n_gpus = 4
+n_gpus = 1
 params = dict(
     model_size='LARGE_reg',
     dataset='cifar',

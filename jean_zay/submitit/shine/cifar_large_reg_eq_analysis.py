@@ -4,7 +4,7 @@ from jean_zay.submitit.general_submissions import get_executor, ParameterGrid
 
 
 job_name = 'shine_eq_analy_cifar_large'
-n_gpus = 4
+n_gpus = 1
 
 executor = get_executor(
     job_name,
