@@ -20,6 +20,6 @@ cd $WORK/benchmark_resnet_classif
 
 BASIC_CMD="benchopt run ."
 BASIC_CMD="$BASIC_CMD -o *18 -d cifar -r 1 -n 200 --timeout 10800 -s"
-ARGS="sgd-tf[batch_size=128,data_aug=True,*,lr_schedule=0.1,*,nesterov=True,weight_decay=0.0005]
+ARGS="sgd-tf[batch_size=128,data_aug=True,*,lr_schedule=0.1,*,nesterov=True,weight_decay=0.0005]"
 
 $BASIC_CMD $ARGS
