@@ -19,7 +19,7 @@ export PATH=$WORK/.local_torch/bin:$PATH
 cd $WORK/benchmark_resnet_classif
 
 BASIC_CMD="benchopt run ."
-BASIC_CMD="$BASIC_CMD -o *18 -d cifar -r 1 -n 200 --timeout 10800 -s"
+BASIC_CMD="$BASIC_CMD -o *18 -d cifar -r 1 -n 200 --timeout 10800 -f"
 ARGS="sgd-tf[batch_size=128,data_aug=True,*,lr_schedule=cosine,*,nesterov=True,weight_decay=0.0005]"
 
 $BASIC_CMD $ARGS
