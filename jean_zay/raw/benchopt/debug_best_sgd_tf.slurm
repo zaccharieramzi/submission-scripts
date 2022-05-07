@@ -4,7 +4,7 @@
 #SBATCH --ntasks-per-node=1
 #SBATCH --gres=gpu:1
 #SBATCH --cpus-per-task=10
-#SBATCH --time=01:00:00
+#SBATCH --time=00:10:00
 #SBATCH --output=%x_%A_%a.out
 #SBATCH --error=%x_%A_%a.out
 #SBATCH --qos=qos_gpu-dev
