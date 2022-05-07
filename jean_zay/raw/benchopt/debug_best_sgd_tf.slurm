@@ -15,7 +15,7 @@ module purge
 export PYTHONUSERBASE=$WORK/.local_torch
 module load pytorch-gpu/py3/1.10.1
 export PATH=$WORK/.local_torch/bin:$PATH
-export XLA_FLAGS=--xla_gpu_cuda_data_dir=/gpfslocalsys/cuda
+export XLA_FLAGS="--xla_gpu_cuda_data_dir=/gpfslocalsys/cuda/11.2"
 
 cd $WORK/benchmark_resnet_classif
 
