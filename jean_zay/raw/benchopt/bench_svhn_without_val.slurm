@@ -53,7 +53,7 @@ for model in {'tf','torch'}; do
                 fi
                 for wd in {'0.0','0.0005'}; do
                     for lr in {'None','step','cosine'}; do
-                        opt[$i]="${model},data_aug=${data_aug},lr_schedule=${lr},nesterov=${nesterov},momentum=${momentum},weight_decay=${wd}]"
+                        opt[$i]="${model},data_aug=${data_aug},*,lr_schedule=${lr},nesterov=${nesterov},momentum=${momentum},weight_decay=${wd}]"
                         i=$((i+1))
                     done
                 done
