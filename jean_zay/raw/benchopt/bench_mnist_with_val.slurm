@@ -7,7 +7,7 @@
 #SBATCH --time=02:00:00
 #SBATCH --output=%x_%A_%a.out
 #SBATCH --error=%x_%A_%a.out
-#SBATCH --qos=qos_gpu-dev
+#SBATCH --qos=qos_gpu-t3
 #SBATCH --distribution=block:block
 #SBATCH --hint=nomultithread
 #SBATCH --array=0-47
