@@ -1,9 +1,13 @@
+#!/bin/bash
+DATASET="$1"
+WITH_VALIDATION="$2"
+
 module purge
 
 cd $WORK/benchmark_resnet_classif
 
 BASIC_CMD="benchopt run ."
-BASIC_CMD="$BASIC_CMD -o *18 -d cifar -r 1 -n 200 --timeout 10800"
+BASIC_CMD="$BASIC_CMD -o *18 -d $DATASET[*,random_state=42,with_validation=$WITH_VALIDATION] -r 1 -n 200 --timeout 10800"
 
 args=''
 
@@ -30,7 +34,7 @@ for model in {'tf','torch'}; do
         for nesterov in {'False','True'}; do
             for wd in {'0.0','0.0005'}; do
                 for lr in {'None','step','cosine'}; do
-                    args="${args} -s ${model},data_aug=${data_aug},*,lr_schedule=${lr},*,nesterov=${nesterov},weight_decay=${wd}]"
+                    args="${args} -s ${model},data_aug=${data_aug},*,lr_schedule=${lr},momentum=${momentum},nesterov=${nesterov},weight_decay=${wd}]"
                 done
             done
         done
