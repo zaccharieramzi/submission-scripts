@@ -45,7 +45,9 @@ for model in {'tf','torch'}; do
         done
     done
 done
-export PYTHONUSERBASE=$WORK/.local_tf
- module load tensorflow-gpu/py3/2.7.0
-export PATH=$WORK/.local_tf/bin:$PATH
+
+module purge
+export PYTHONUSERBASE=$WORK/.local_torch
+module load pytorch-gpu/py3/1.10.1
+export PATH=$WORK/.local_torch/bin:$PATH
 $BASIC_CMD $args
