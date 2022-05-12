@@ -27,7 +27,7 @@ BASIC_CMD="$BASIC_CMD --no-plot -s"
 
 # Adam
 i=0
-for model in {'torch'}; do
+for model in {'torch',}; do
     framework="${model}"
     model="adam-${model}[batch_size=128"
     for data_aug in {'False','True'}; do
@@ -42,7 +42,7 @@ done
 
 
 # SGD
-for model in {'torch'}; do
+for model in {'torch',}; do
     framework="${model}"
     model="sgd-${model}[batch_size=128"
     for data_aug in {'False','True'}; do
