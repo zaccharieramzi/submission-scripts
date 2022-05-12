@@ -32,6 +32,9 @@ for model in {'tf','torch'}; do
     model="sgd-${model}[batch_size=128"
     for data_aug in {'False','True'}; do
         for nesterov in {'False','True'}; do
+            if [ "$nesterov" == "True" ] && [ "$momentum" = "0" ]; then
+                continue
+            fi
             for wd in {'0.0','0.0005'}; do
                 for lr in {'None','step','cosine'}; do
                     args="${args} -s ${model},data_aug=${data_aug},*,lr_schedule=${lr},momentum=${momentum},nesterov=${nesterov},weight_decay=${wd}]"
