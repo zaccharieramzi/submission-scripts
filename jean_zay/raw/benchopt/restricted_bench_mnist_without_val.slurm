@@ -10,7 +10,7 @@
 #SBATCH --qos=qos_gpu-t3
 #SBATCH --distribution=block:block
 #SBATCH --hint=nomultithread
-#SBATCH --array=0-27
+#SBATCH --array=0-34
 
 module purge
 export PYTHONUSERBASE=$WORK/.local_torch
@@ -21,7 +21,7 @@ cd $WORK/benchmark_resnet_classif
 
 i=0
 
-for random_state in {42,43,44,45}; do
+for random_state in {42,43,44,45,46}; do
     BASIC_CMD="benchopt run ."
     BASIC_CMD="$BASIC_CMD -o *18 -d mnist[*,random_state=${random_state},with_validation=False] -r 1 -n 200 --timeout 10800"
     BASIC_CMD="$BASIC_CMD --no-plot -s"
