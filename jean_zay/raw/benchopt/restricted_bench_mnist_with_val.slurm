@@ -27,6 +27,7 @@ for random_state in {42,43,44,45,46}; do
     BASIC_CMD="$BASIC_CMD --no-plot -s"
 
 
+    model="sgd-torch[batch_size=128"
     # sgd with data aug + momentum + cosine + wd
     opt[$i]="$BASIC_CMD ${model},data_aug=True,*,lr_schedule=cosine,momentum=0.9,nesterov=False,weight_decay=0.0005]"
     i=$((i+1))
