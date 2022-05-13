@@ -38,22 +38,22 @@ for random_state in {42,43,44,45}; do
     # SGD Torch
     model="sgd-torch[batch_size=128"
     # vanilla sgd
-    opt[$i]="${model},data_aug=False,*,lr_schedule=None,momentum=0,nesterov=False,weight_decay=0.0]"
+    opt[$i]="${BASIC_CMD} ${model},data_aug=False,*,lr_schedule=None,momentum=0,nesterov=False,weight_decay=0.0]"
     i=$((i+1))
     # sgd with data aug
-    opt[$i]="${model},data_aug=True,*,lr_schedule=None,momentum=0,nesterov=False,weight_decay=0.0]"
+    opt[$i]="${BASIC_CMD} ${model},data_aug=True,*,lr_schedule=None,momentum=0,nesterov=False,weight_decay=0.0]"
     i=$((i+1))
     # sgd with data aug + momentum
-    opt[$i]="${model},data_aug=True,*,lr_schedule=None,momentum=0.9,nesterov=False,weight_decay=0.0]"
+    opt[$i]="${BASIC_CMD} ${model},data_aug=True,*,lr_schedule=None,momentum=0.9,nesterov=False,weight_decay=0.0]"
     i=$((i+1))
     # sgd with data aug + momentum + cosine
-    opt[$i]="${model},data_aug=True,*,lr_schedule=cosine,momentum=0.9,nesterov=False,weight_decay=0.0]"
+    opt[$i]="${BASIC_CMD} ${model},data_aug=True,*,lr_schedule=cosine,momentum=0.9,nesterov=False,weight_decay=0.0]"
     i=$((i+1))
     # sgd with data aug + momentum + cosine + wd
-    opt[$i]="${model},data_aug=True,*,lr_schedule=cosine,momentum=0.9,nesterov=False,weight_decay=0.0005]"
+    opt[$i]="${BASIC_CMD} ${model},data_aug=True,*,lr_schedule=cosine,momentum=0.9,nesterov=False,weight_decay=0.0005]"
     i=$((i+1))
     # sgd with data aug + momentum + step + wd
-    opt[$i]="${model},data_aug=True,*,lr_schedule=step,momentum=0.9,nesterov=False,weight_decay=0.0005]"
+    opt[$i]="${BASIC_CMD} ${model},data_aug=True,*,lr_schedule=step,momentum=0.9,nesterov=False,weight_decay=0.0005]"
     i=$((i+1))
 done
 

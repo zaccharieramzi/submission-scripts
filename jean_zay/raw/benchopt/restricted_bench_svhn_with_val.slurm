@@ -28,10 +28,10 @@ for random_state in {42,43,44,45,46}; do
 
 
     # sgd with data aug + momentum + cosine + wd
-    opt[$i]="${model},data_aug=True,*,lr_schedule=cosine,momentum=0.9,nesterov=False,weight_decay=0.0005]"
+    opt[$i]="$BASIC_CMD ${model},data_aug=True,*,lr_schedule=cosine,momentum=0.9,nesterov=False,weight_decay=0.0005]"
     i=$((i+1))
     # sgd with data aug + momentum + step + wd
-    opt[$i]="${model},data_aug=True,*,lr_schedule=step,momentum=0.9,nesterov=False,weight_decay=0.0005]"
+    opt[$i]="$BASIC_CMD ${model},data_aug=True,*,lr_schedule=step,momentum=0.9,nesterov=False,weight_decay=0.0005]"
     i=$((i+1))
 
 done
