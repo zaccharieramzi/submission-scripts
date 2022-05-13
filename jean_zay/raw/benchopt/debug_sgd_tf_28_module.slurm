@@ -21,6 +21,6 @@ cd $WORK/benchmark_resnet_classif
 
 BASIC_CMD="benchopt run ."
 BASIC_CMD="$BASIC_CMD -o *18 -d cifar[framework=tensorflow,random_state=42,with_validation=False] -r 1 -n 1 --timeout 3600 -f"
-ARGS="sgd-tf[batch_size=128,coupled_weight_decay=0.0,decoupled_weight_decay=0.0,data_aug=False,*,lr_schedule=None,momentum=0.9,nesterov=False]"
+ARGS="sgd-tf[batch_size=128,coupled_weight_decay=0.0,data_aug=False,decoupled_weight_decay=0.0,*,lr_schedule=None,momentum=0.9,nesterov=False]"
 
 $BASIC_CMD $ARGS
