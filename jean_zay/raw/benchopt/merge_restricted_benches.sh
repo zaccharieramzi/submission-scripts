@@ -6,7 +6,7 @@ export PATH=$WORK/.local_torch/bin:$PATH
 
 cd $WORK/benchmark_resnet_classif
 
-for dataset in {'cifar', 'svhn'}; do
+for dataset in {'cifar','svhn'}; do
 # for dataset in {'mnist',}; do
     for with_validation in {'True','False'}; do
         BASIC_CMD="benchopt run ."
