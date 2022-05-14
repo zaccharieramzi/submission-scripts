@@ -6,8 +6,8 @@ export PATH=$WORK/.local_torch/bin:$PATH
 
 cd $WORK/benchmark_resnet_classif
 
-# for dataset in {'cifar', 'svhn', 'mnist'}; do
-for dataset in {'mnist',}; do
+for dataset in {'cifar', 'svhn'}; do
+# for dataset in {'mnist',}; do
     for with_validation in {'True','False'}; do
         BASIC_CMD="benchopt run ."
         BASIC_CMD="$BASIC_CMD -o *18 -d ${dataset}[*,with_validation=${with_validation}] -r 1 -n 200 --timeout 10800"
