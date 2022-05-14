@@ -10,7 +10,7 @@
 #SBATCH --qos=qos_gpu-t3
 #SBATCH --distribution=block:block
 #SBATCH --hint=nomultithread
-#SBATCH --array=0-39
+#SBATCH --array=7,15,23,31,39
 
 module purge
 export PYTHONUSERBASE=$WORK/.local_torch
@@ -57,7 +57,7 @@ for random_state in {42,43,44,45,46}; do
     i=$((i+1))
 
     # SGD TF
-    model="adam-tf[batch_size=128"
+    model="sgd-tf[batch_size=128"
     # sgd with data aug + momentum + cosine + wd
     opt[$i]="${BASIC_CMD} ${model},data_aug=True,*,lr_schedule=cosine,momentum=0.9,nesterov=False,weight_decay=0.0005]"
     i=$((i+1))
