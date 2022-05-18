@@ -44,7 +44,7 @@ for random_state in {42,}; do
     # SGD TF
     model="sgd-tf[batch_size=128"
     # sgd with data aug + momentum + cosine + wd
-    opt[$i]="${BASIC_CMD} ${model},coupled_weight_decay=0.0005,data_aug=True,*,lr_schedule=cosine,momentum=0.9,nesterov=True]"
+    opt[$i]="${BASIC_CMD} ${model},coupled_weight_decay=0.0005,data_aug=True,decoupled_weight_decay=0.0*,lr_schedule=cosine,momentum=0.9,nesterov=True]"
     i=$((i+1))
 done
 
