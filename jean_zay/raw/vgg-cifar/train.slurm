@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=lookahead
+#SBATCH --job-name=vgg
 #SBATCH --ntasks=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --gres=gpu:1
