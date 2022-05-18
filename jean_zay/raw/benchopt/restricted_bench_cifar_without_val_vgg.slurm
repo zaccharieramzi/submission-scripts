@@ -33,7 +33,7 @@ for random_state in {42,}; do
     model="adam-torch[batch_size=128"
 
     # best adam
-    opt[$i]="${BASIC_CMD} ${model},coupled_weight_decay=0.0,data_aug=True,decoupled_weight_decay=0.02,*,lr_schedule=cosine]"
+    opt[$i]="${BASIC_CMD} ${model},coupled_weight_decay=0.0,data_aug=True,decoupled_weight_decay=0.02,*,lr_schedule=step]"
     i=$((i+1))
 
     # SGD Torch
