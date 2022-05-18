@@ -17,7 +17,7 @@ module load pytorch-gpu/py3/1.10.1
 export PATH=$WORK/.local_torch/bin:$PATH
 export TMPDIR=$JOBSCRATCH
 
-cd $WORK/benchmark_resnet_classif
+cd $WORK/benchmark_resnet_classif_qand
 
 BASIC_CMD="benchopt run ."
 BASIC_CMD="$BASIC_CMD -o *18 -d mnist[*,random_state=42,with_validation=False] -r 1 -n 200 --timeout 10800 -f"
