@@ -10,7 +10,7 @@
 #SBATCH --qos=qos_gpu-dev
 #SBATCH --distribution=block:block
 #SBATCH --hint=nomultithread
-#SBATCH --array=0-2
+#SBATCH --array=0-5
 
 module purge
 export PYTHONUSERBASE=$WORK/.local_torch
@@ -38,8 +38,20 @@ for random_state in {42,}; do
 
     # SGD Torch
     model="sgd-torch[batch_size=128"
+    # vanilla sgd
+    opt[$i]="${BASIC_CMD} ${model},data_aug=False,*,lr_schedule=None,momentum=0,nesterov=False,weight_decay=0.0]"
+    i=$((i+1))
+    # sgd with data aug
+    opt[$i]="${BASIC_CMD} ${model},data_aug=True,*,lr_schedule=None,momentum=0,nesterov=False,weight_decay=0.0]"
+    i=$((i+1))
+    # sgd with data aug + momentum
+    opt[$i]="${BASIC_CMD} ${model},data_aug=True,*,lr_schedule=None,momentum=0.9,nesterov=False,weight_decay=0.0]"
+    i=$((i+1))
+    # sgd with data aug + momentum + cosine
+    opt[$i]="${BASIC_CMD} ${model},data_aug=True,*,lr_schedule=step,momentum=0.9,nesterov=False,weight_decay=0.0]"
+    i=$((i+1))
     # sgd with data aug + momentum + step + wd
-    opt[$i]="${BASIC_CMD} ${model},data_aug=True,*,lr_schedule=cosine,momentum=0.9,nesterov=False,weight_decay=0.0005]"
+    opt[$i]="${BASIC_CMD} ${model},data_aug=True,*,lr_schedule=step,momentum=0.9,nesterov=False,weight_decay=0.0005]"
     i=$((i+1))
 
     # SGD TF
