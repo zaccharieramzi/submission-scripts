@@ -21,7 +21,7 @@ for random_state in {42,}; do
     args="${args} -s ${model},data_aug=True,*,lr_schedule=None,momentum=0,nesterov=False,weight_decay=0.0]"
     # sgd with data aug + momentum
     args="${args} -s ${model},data_aug=True,*,lr_schedule=None,momentum=0.9,nesterov=False,weight_decay=0.0]"
-    # sgd with data aug + momentum + cosine
+    # sgd with data aug + momentum + step
     args="${args} -s ${model},data_aug=True,*,lr_schedule=step,momentum=0.9,nesterov=False,weight_decay=0.0]"
     # sgd with data aug + momentum + step + wd
     args="${args} -s ${model},data_aug=True,*,lr_schedule=step,momentum=0.9,nesterov=False,weight_decay=0.0005]"
