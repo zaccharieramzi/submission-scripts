@@ -25,10 +25,10 @@ vision="deq/mdeq_vision"
 basic_cmd="python ${vision}/tools/cls_eq_analysis.py"
 
 i=0
-for model_size in {'LARGE_reg',} do
-for percent in {0.1,0.3,0.5,1.0} do
-for checkpoint in {10,50,100,150,200} do
-for dropout in {True,False} do
+for model_size in {'LARGE_reg',}; do
+for percent in {0.1,0.3,0.5,1.0}; do
+for checkpoint in {10,50,100,150,200}; do
+for dropout in {True,False}; do
     opt[$i]="--cfg ${vision}/experiments/cifar/cls_mdeq_${model_size}.yaml \
         --percent ${percent} \
         TRAIN.BEGIN_EPOCH ${checkpoint} \
