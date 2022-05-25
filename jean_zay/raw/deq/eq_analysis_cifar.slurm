@@ -29,14 +29,12 @@ for model_size in {'LARGE_reg',}; do
 for percent in {0.1,0.3,0.5,1.0}; do
 for checkpoint in {10,50,100,150,200}; do
 for dropout in {True,False}; do
-    opt[$i]="--cfg ${vision}/experiments/cifar/cls_mdeq_${model_size}.yaml \
-        --percent ${percent} \
-        TRAIN.BEGIN_EPOCH ${checkpoint} \
-    "
+    opt[$i]="--cfg ${vision}/experiments/cifar/cls_mdeq_${model_size}.yaml --percent ${percent}"
     # when dropout is True, add the --dropout_eval flag to opt[$i]
     if [ "$dropout" == "True" ]; then
         opt[$i]="${opt[$i]} --dropout_eval"
     fi
+    opt[$i]="${opt[$i]} TRAIN.BEGIN_EPOCH ${checkpoint}"
     i=$((i+1))
 done
 done
