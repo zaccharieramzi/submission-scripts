@@ -38,7 +38,7 @@ if [ "$model_size" == "TINY" ]; then
 else
     dropouts=("False" "True")  # 2
 fi
-for dropout in ${dropouts[@]} do
+for dropout in ${dropouts[@]}; do
     opt[$i]="--cfg ${vision}/experiments/cifar/cls_mdeq_${model_size}.yaml --percent ${percent}"
     # when dropout is True, add the --dropout_eval flag to opt[$i]
     if [ "$dropout" == "True" ]; then
