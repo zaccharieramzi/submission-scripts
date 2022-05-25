@@ -12,7 +12,7 @@
 #SBATCH --time=2:00:00              # temps d’exécution maximum demande (HH:MM:SS)
 #SBATCH --output=%x_%A_%a.out # nom du fichier de sortie
 #SBATCH --error=%x_%A_%a.err  # nom du fichier d'erreur (ici commun avec la sortie)
-#SBATCH --array=0-15
+#SBATCH --array=0-31,80-95
 
 set -x
 cd $WORK/submission-scripts/jean_zay/env_configs/
@@ -25,10 +25,24 @@ vision="deq/mdeq_vision"
 basic_cmd="python ${vision}/tools/cls_eq_analysis.py"
 
 i=0
-for model_size in {'LARGE_reg',}; do
-for checkpoint in {10,50,100,150,200}; do
-for percent in {0.1,0.3,0.5,1.0}; do
-for dropout in {True,False}; do
+for model_size in {'LARGE_reg','LARGE','TINY'}; do  # 3
+# LARGE_REG: from 0 to 5*4*2-1=39
+# LARGE from 40 to 40 + 5*4*2-1=79
+# TINY from 80 to 80 + 4*4*1 - 1=95
+if [ "$model_size" == "TINY" ]; then
+    checkpoints=(14 40 60 70)  # 4
+else
+    checkpoints=(10 50 100 150 200)  # 5
+fi
+fi
+for checkpoint in ${checkpoints[@]}; do
+for percent in {0.1,0.3,0.5,1.0}; do  # 4
+if [ "$model_size" == "TINY" ]; then
+    dropouts=("False")  # 1
+else
+    dropouts=("False" "True")  # 2
+fi
+for dropout in ${dropouts[@]} do
     opt[$i]="--cfg ${vision}/experiments/cifar/cls_mdeq_${model_size}.yaml --percent ${percent}"
     # when dropout is True, add the --dropout_eval flag to opt[$i]
     if [ "$dropout" == "True" ]; then
