@@ -31,7 +31,6 @@ if [ "$model_size" == "TINY" ]; then
 else
     checkpoints=(10 50 100 150 200)  # 5
 fi
-fi
 for checkpoint in ${checkpoints[@]}; do
 for percent in {0.1,0.3,0.5,1.0}; do  # 4
 if [ "$model_size" == "TINY" ]; then
