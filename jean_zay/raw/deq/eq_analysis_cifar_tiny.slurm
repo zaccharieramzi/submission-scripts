@@ -1,9 +1,9 @@
 #!/bin/bash
-#SBATCH --job-name=deq_eq_analysis_cifar_reg    # nom du job
+#SBATCH --job-name=deq_eq_analysis_cifar_tiny    # nom du job
 #SBATCH --ntasks=1                # nombre de tâche MPI
 #SBATCH --ntasks-per-node=1          # nombre de tâche MPI par noeud
-#SBATCH --cpus-per-task=10           # nombre de coeurs à réserver par tâche
-#SBATCH --gres=gpu:1                 # nombre de GPU à réserver par nœud
+#SBATCH --cpus-per-task=20           # nombre de coeurs à réserver par tâche
+#SBATCH --gres=gpu:2                 # nombre de GPU à réserver par nœud
 # /!\ Attention, la ligne suivante est trompeuse mais dans le vocabulaire
 # de Slurm "multithread" fait bien référence à l'hyperthreading.
 #SBATCH --hint=nomultithread         # on réserve des coeurs physiques et non logiques
@@ -25,7 +25,7 @@ vision="deq/mdeq_vision"
 basic_cmd="python ${vision}/tools/cls_eq_analysis.py"
 
 i=0
-model_size="LARGE_reg"
+model_size="TINY"
 if [ "$model_size" == "TINY" ]; then
     checkpoints=(14 40 60 70)  # 4
 else
