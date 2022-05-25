@@ -19,6 +19,8 @@ cd $WORK/submission-scripts/jean_zay/env_configs/
 
 cd $WORK/deq
 
-python deq/mdeq_vision/tools/cls_train.py \
-    --cfg experiments/cifar/cls_mdeq_LARGE_reg.yaml \
+vision="deq/mdeq_vision"
+
+python ${vision}/tools/cls_train.py \
+    --cfg ${vision}/experiments/cifar/cls_mdeq_LARGE_reg.yaml \
     --save_at=50,100,150,200
