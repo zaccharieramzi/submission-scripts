@@ -27,7 +27,7 @@ basic_cmd="python ${vision}/tools/cls_eq_analysis.py"
 i=0
 model_size="LARGE"
 if [ "$model_size" == "TINY" ]; then
-    checkpoints=(14 40 60 70)  # 4
+    checkpoints=(14 40)  # 4
 else
     checkpoints=(10 50 100 150 200)  # 5
 fi

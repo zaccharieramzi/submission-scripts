@@ -12,7 +12,7 @@
 #SBATCH --time=2:00:00              # temps d’exécution maximum demande (HH:MM:SS)
 #SBATCH --output=%x_%A_%a.out # nom du fichier de sortie
 #SBATCH --error=%x_%A_%a.err  # nom du fichier d'erreur (ici commun avec la sortie)
-#SBATCH --array=0-15
+#SBATCH --array=0-7
 
 set -x
 cd $WORK/submission-scripts/jean_zay/env_configs/
@@ -27,7 +27,7 @@ basic_cmd="python ${vision}/tools/cls_eq_analysis.py"
 i=0
 model_size="TINY"
 if [ "$model_size" == "TINY" ]; then
-    checkpoints=(14 40 60 70)  # 4
+    checkpoints=(14 40)  # 2
 else
     checkpoints=(10 50 100 150 200)  # 5
 fi
