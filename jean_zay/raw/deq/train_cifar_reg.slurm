@@ -23,4 +23,4 @@ vision="deq/mdeq_vision"
 
 python ${vision}/tools/cls_train.py \
     --cfg ${vision}/experiments/cifar/cls_mdeq_LARGE_reg.yaml \
-    --save_at=10 50 100 150 200
+    --save_at 10 50 100 150 200
