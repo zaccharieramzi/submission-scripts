@@ -22,5 +22,5 @@ cd $WORK/deq
 vision="deq/mdeq_vision"
 
 python ${vision}/tools/cls_train.py \
-    --cfg ${vision}/experiments/iamgenet/cls_mdeq_SMALL.yaml \
+    --cfg ${vision}/experiments/imagenet/cls_mdeq_SMALL.yaml \
     --save_at 50 60 70 80
