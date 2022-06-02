@@ -25,4 +25,4 @@ python ${vision}/tools/cls_train.py \
     --cfg ${vision}/experiments/cifar/cls_mdeq_LARGE_reg_warm.yaml \
     --save_at 28 \
     --restart_at 28 \
-    TRAIN.RESUME true
+    TRAIN.RESUME True

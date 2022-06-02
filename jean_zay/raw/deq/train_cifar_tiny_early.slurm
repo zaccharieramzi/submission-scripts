@@ -25,5 +25,5 @@ python ${vision}/tools/cls_train.py \
     --cfg ${vision}/experiments/cifar/cls_mdeq_TINY.yaml \
     --save_at 7 \
     --restart_at 7 \
-    TRAIN.RESUME true \
+    TRAIN.RESUME True \
     DEQ.F_THRES 10
