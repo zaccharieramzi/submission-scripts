@@ -23,4 +23,6 @@ vision="deq/mdeq_vision"
 
 python ${vision}/tools/cls_train.py \
     --cfg ${vision}/experiments/cifar/cls_mdeq_TINY.yaml \
+    --save_at 7 \
+    --restart_at 7 \
     DEQ.F_THRES 10

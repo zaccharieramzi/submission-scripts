@@ -22,4 +22,6 @@ cd $WORK/deq
 vision="deq/mdeq_vision"
 
 python ${vision}/tools/cls_train.py \
-    --cfg ${vision}/experiments/cifar/cls_mdeq_TINY_warm.yaml
+    --cfg ${vision}/experiments/cifar/cls_mdeq_TINY_warm.yaml \
+    --save_at 7 \
+    --restart_at 7
