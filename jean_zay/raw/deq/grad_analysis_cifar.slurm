@@ -33,20 +33,9 @@ else
 fi
 for checkpoint in ${checkpoints[@]}; do
 for percent in {0.1,0.3,0.5,1.0}; do  # 4
-if [ "$model_size" == "TINY" ]; then
-    dropouts=("False")  # 1
-else
-    dropouts=("False" "True")  # 2
-fi
-for dropout in ${dropouts[@]}; do
     opt[$i]="--cfg ${vision}/experiments/cifar/cls_mdeq_${model_size}.yaml --percent ${percent}"
-    # when dropout is True, add the --dropout_eval flag to opt[$i]
-    if [ "$dropout" == "True" ]; then
-        opt[$i]="${opt[$i]} --dropout_eval"
-    fi
     opt[$i]="${opt[$i]} TRAIN.BEGIN_EPOCH ${checkpoint}"
     i=$((i+1))
-done
 done
 done
 
