@@ -12,6 +12,7 @@
 #SBATCH --time=20:00:00              # temps d’exécution maximum demande (HH:MM:SS)
 #SBATCH --output=%x_%j.out # nom du fichier de sortie
 #SBATCH --error=%x_%j.err  # nom du fichier d'erreur (ici commun avec la sortie)
+#SBATCH --array=0-4
 set -x
 cd $WORK/submission-scripts/jean_zay/env_configs/
 
@@ -23,4 +24,5 @@ vision="deq/mdeq_vision"
 
 python ${vision}/tools/cls_train.py \
     --cfg ${vision}/experiments/cifar/cls_mdeq_LARGE.yaml \
-    --save_at 10 50 100 150 200
+    --save_at 10 50 100 150 200 \
+    --seed $SLURM_ARRAY_TASK_ID
