@@ -22,7 +22,7 @@ cd $WORK/submission-scripts/jean_zay/env_configs/
 cd $WORK/deq
 
 vision="deq/mdeq_vision"
-basic_cmd="python ${vision}/tools/cls_eq_analysis.py"
+basic_cmd="python ${vision}/tools/cls_fixed_point_da_invariance.py"
 
 i=0
 model_size="LARGE_reg"
@@ -39,7 +39,7 @@ else
     dropouts=("False" "True")  # 2
 fi
 for dropout in ${dropouts[@]}; do
-    opt[$i]="--cfg ${vision}/experiments/cifar/cls_mdeq_${model_size}.yaml --percent ${percent} --seed ${seed}"
+    opt[$i]="--cfg ${vision}/experiments/cifar/cls_mdeq_${model_size}.yaml --seed ${seed}"
     # when dropout is True, add the --dropout_eval flag to opt[$i]
     if [ "$dropout" == "True" ]; then
         opt[$i]="${opt[$i]} --dropout_eval"
