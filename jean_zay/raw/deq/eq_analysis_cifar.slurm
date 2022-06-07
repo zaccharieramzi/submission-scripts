@@ -39,7 +39,7 @@ else
     dropouts=("False" "True")  # 2
 fi
 for dropout in ${dropouts[@]}; do
-    opt[$i]="--cfg ${vision}/experiments/cifar/cls_mdeq_${model_size}.yaml --percent ${percent} --seed 4"
+    opt[$i]="--cfg ${vision}/experiments/cifar/cls_mdeq_${model_size}.yaml --percent ${percent} --seed 1"
     # when dropout is True, add the --dropout_eval flag to opt[$i]
     if [ "$dropout" == "True" ]; then
         opt[$i]="${opt[$i]} --dropout_eval"
