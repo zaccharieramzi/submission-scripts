@@ -24,7 +24,7 @@ i=0
 
 for random_state in {42,}; do
     BASIC_CMD="benchopt run"
-    BASIC_CMD="$BASIC_CMD -o '*[model_type=resnet,model_size=18]' -d 'cifar_100[*,random_state=${random_state},with_validation=False]' -r 1 -n 200 --timeout 10800"
+    BASIC_CMD="$BASIC_CMD -o '*[model_type=resnet,model_size=18]' -d 'cifar_100[random_state=${random_state},with_validation=False]' -r 1 -n 200 --timeout 10800"
     BASIC_CMD="$BASIC_CMD --no-plot -s"
 
 
@@ -33,31 +33,31 @@ for random_state in {42,}; do
     model="'adam-torch[batch_size=128"
 
     # best adam
-    opt[$i]="${BASIC_CMD} ${model},coupled_weight_decay=0.0,data_aug=True,decoupled_weight_decay=0.02,*,lr_schedule=step]'"
+    opt[$i]="${BASIC_CMD} ${model},coupled_weight_decay=0.0,data_aug=True,decoupled_weight_decay=0.02,lr_schedule=step]'"
     i=$((i+1))
 
     # SGD Torch
     model="sgd-torch[batch_size=128"
     # vanilla sgd
-    opt[$i]="${BASIC_CMD} ${model},data_aug=False,*,lr_schedule=None,momentum=0,nesterov=False,weight_decay=0.0]'"
+    opt[$i]="${BASIC_CMD} ${model},data_aug=False,lr_schedule=None,momentum=0,nesterov=False,weight_decay=0.0]'"
     i=$((i+1))
     # sgd with data aug
-    opt[$i]="${BASIC_CMD} ${model},data_aug=True,*,lr_schedule=None,momentum=0,nesterov=False,weight_decay=0.0]'"
+    opt[$i]="${BASIC_CMD} ${model},data_aug=True,lr_schedule=None,momentum=0,nesterov=False,weight_decay=0.0]'"
     i=$((i+1))
     # sgd with data aug + momentum
-    opt[$i]="${BASIC_CMD} ${model},data_aug=True,*,lr_schedule=None,momentum=0.9,nesterov=False,weight_decay=0.0]'"
+    opt[$i]="${BASIC_CMD} ${model},data_aug=True,lr_schedule=None,momentum=0.9,nesterov=False,weight_decay=0.0]'"
     i=$((i+1))
     # sgd with data aug + momentum + cosine
-    opt[$i]="${BASIC_CMD} ${model},data_aug=True,*,lr_schedule=cosine,momentum=0.9,nesterov=False,weight_decay=0.0]'"
+    opt[$i]="${BASIC_CMD} ${model},data_aug=True,lr_schedule=cosine,momentum=0.9,nesterov=False,weight_decay=0.0]'"
     i=$((i+1))
     # sgd with data aug + momentum + cosine + wd
-    opt[$i]="${BASIC_CMD} ${model},data_aug=True,*,lr_schedule=cosine,momentum=0.9,nesterov=False,weight_decay=0.0005]'"
+    opt[$i]="${BASIC_CMD} ${model},data_aug=True,lr_schedule=cosine,momentum=0.9,nesterov=False,weight_decay=0.0005]'"
     i=$((i+1))
 
     # SGD TF
     model="sgd-tf[batch_size=128"
     # sgd with data aug + momentum + cosine + wd
-    opt[$i]="${BASIC_CMD} ${model},coupled_weight_decay=0.0005,data_aug=True,decoupled_weight_decay=0.0*,lr_schedule=cosine,momentum=0.9,nesterov=True]'"
+    opt[$i]="${BASIC_CMD} ${model},coupled_weight_decay=0.0005,data_aug=True,decoupled_weight_decay=0.0lr_schedule=cosine,momentum=0.9,nesterov=True]'"
     i=$((i+1))
 done
 
