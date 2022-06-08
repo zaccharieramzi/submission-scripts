@@ -12,7 +12,7 @@
 #SBATCH --time=2:00:00              # temps d’exécution maximum demande (HH:MM:SS)
 #SBATCH --output=%x_%A_%a.out # nom du fichier de sortie
 #SBATCH --error=%x_%A_%a.err  # nom du fichier d'erreur (ici commun avec la sortie)
-#SBATCH --array=0-49
+#SBATCH --array=50-199
 
 set -x
 cd $WORK/submission-scripts/jean_zay/env_configs/
@@ -32,7 +32,7 @@ else
     checkpoints=(10 50 100 150 200)  # 5
 fi
 for checkpoint in ${checkpoints[@]}; do
-for seed in {0,1,2,3,4}; do  # 5
+for seed in {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19}; do  # 20
 if [ "$model_size" == "TINY" ]; then
     dropouts=("False")  # 1
 else
