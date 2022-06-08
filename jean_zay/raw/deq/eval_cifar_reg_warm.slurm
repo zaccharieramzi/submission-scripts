@@ -12,6 +12,7 @@
 #SBATCH --time=00:30:00              # temps d’exécution maximum demande (HH:MM:SS)
 #SBATCH --output=%x_%j.out # nom du fichier de sortie
 #SBATCH --error=%x_%j.err  # nom du fichier d'erreur (ici commun avec la sortie)
+#SBATCH --array=0-19
 set -x
 cd $WORK/submission-scripts/jean_zay/env_configs/
 
@@ -23,4 +24,5 @@ vision="deq/mdeq_vision"
 
 python ${vision}/tools/cls_valid.py \
     --cfg ${vision}/experiments/cifar/cls_mdeq_LARGE_reg.yaml \
-    TEST.MODEL_FILE output/cifar10/cls_mdeq_LARGE_reg_warm/final_state.pth.tar
+    --seed $SLURM_ARRAY_TASK_ID \
+    TEST.MODEL_FILE output/cifar10/cls_mdeq_LARGE_reg_warm/final_state_${SLURM_ARRAY_TASK_ID}.pth.tar
