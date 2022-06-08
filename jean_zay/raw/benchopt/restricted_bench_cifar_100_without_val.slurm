@@ -37,7 +37,7 @@ for random_state in {42,}; do
     i=$((i+1))
 
     # SGD Torch
-    model="sgd-torch[batch_size=128"
+    model="'sgd-torch[batch_size=128"
     # vanilla sgd
     opt[$i]="${BASIC_CMD} ${model},data_aug=False,lr_schedule=None,momentum=0,nesterov=False,weight_decay=0.0]'"
     i=$((i+1))
