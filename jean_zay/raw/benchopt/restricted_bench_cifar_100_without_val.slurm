@@ -24,7 +24,7 @@ i=0
 
 for random_state in {42,}; do
     BASIC_CMD="benchopt run"
-    BASIC_CMD="$BASIC_CMD -o '*[model_type=resnet,model_size=18]' -d 'cifar_100[random_state=${random_state},with_validation=False]' -r 1 -n 200 --timeout 10800"
+    BASIC_CMD="$BASIC_CMD -o '*[model_type=resnet,model_size=18]' -d 'cifar-100[random_state=${random_state},with_validation=False]' -r 1 -n 200 --timeout 10800"
     BASIC_CMD="$BASIC_CMD --no-plot -s"
 
 
