@@ -23,7 +23,7 @@ vision="deq/mdeq_vision"
 
 python ${vision}/tools/cls_train.py \
     --cfg ${vision}/experiments/cifar/cls_mdeq_LARGE_reg.yaml \
-    --restart_at 50 \
+    --restart_at 28 \
     --DEQ.SHINE True \
     --DEQ.B_THRES 0
 
