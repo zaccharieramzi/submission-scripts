@@ -12,6 +12,7 @@
 #SBATCH --time=2:00:00              # temps d’exécution maximum demande (HH:MM:SS)
 #SBATCH --output=%x_%j.out # nom du fichier de sortie
 #SBATCH --error=%x_%j.err  # nom du fichier d'erreur (ici commun avec la sortie)
+#SBATCH --array=0-9
 set -x
 cd $WORK/submission-scripts/jean_zay/env_configs/
 
@@ -24,4 +25,6 @@ vision="deq/mdeq_vision"
 python ${vision}/tools/cls_train.py \
     --cfg ${vision}/experiments/cifar/cls_mdeq_TINY_warm.yaml \
     --save_at 7 \
-    --restart_at 7
+    --restart_at 7 \
+    --seed $SLURM_ARRAY_TASK_ID \
+    TRAIN.RESUME True
