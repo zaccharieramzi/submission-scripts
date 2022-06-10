@@ -26,4 +26,4 @@ python ${vision}/tools/cls_valid.py \
     --cfg ${vision}/experiments/cifar/cls_mdeq_LARGE_reg.yaml \
     --seed 0 \
     DEQ.F_THRES $SLURM_ARRAY_TASK_ID \
-    TEST.MODEL_FILE output/cifar10/cls_mdeq_LARGE_reg_early_xtreme/final_state_seed${SLURM_ARRAY_TASK_ID}.pth.tar
+    TEST.MODEL_FILE output/cifar10/cls_mdeq_LARGE_reg_early_xtreme/final_state_seed0.pth.tar
