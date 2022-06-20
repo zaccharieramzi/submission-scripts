@@ -24,7 +24,7 @@ vision="deq/mdeq_vision"
 
 python ${vision}/tools/cls_valid.py \
     --cfg ${vision}/experiments/cifar/cls_mdeq_LARGE_reg.yaml \
-    --seed 10 \
-    TEST.MODEL_FILE output/cifar10/cls_mdeq_LARGE_reg_warm/final_state_seed10.pth.tar \
+    --seed 0 \
+    TEST.MODEL_FILE output/cifar10/cls_mdeq_LARGE_reg_warm/final_state_seed0.pth.tar \
     DEQ.F_THRES $SLURM_ARRAY_TASK_ID
 
