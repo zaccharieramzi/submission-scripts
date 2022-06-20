@@ -37,6 +37,7 @@ for dropout in ${dropouts[@]}; do
     if [ "$dropout" == "True" ]; then
         opt[$i]="${opt[$i]} --dropout_eval"
     fi
+    opt[$i]="${opt[$i]} TRAIN.BEGIN_EPOCH 200"
     i=$((i+1))
 done
 
