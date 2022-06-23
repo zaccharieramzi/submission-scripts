@@ -25,7 +25,6 @@ vision="deq/mdeq_vision"
 python ${vision}/tools/cls_train.py \
     --cfg ${vision}/experiments/cifar/cls_mdeq_TINY.yaml \
     --save_at 7 14 40 60 70 \
-    # --restart_at 7 \
     --seed $SLURM_ARRAY_TASK_ID \
     TRAIN.RESUME True
 
