@@ -9,7 +9,7 @@
 #SBATCH --hint=nomultithread         # on réserve des coeurs physiques et non logiques
 #SBATCH --qos=qos_gpu-dev      # le calcul va etre long
 #SBATCH --distribution=block:block   # on épingle les tâches sur des coeurs contigus
-#SBATCH --time=00:10:00              # temps d’exécution maximum demande (HH:MM:SS)
+#SBATCH --time=00:30:00              # temps d’exécution maximum demande (HH:MM:SS)
 #SBATCH --output=%x_%j.out # nom du fichier de sortie
 #SBATCH --error=%x_%j.err  # nom du fichier d'erreur (ici commun avec la sortie)
 #SBATCH --array=42
