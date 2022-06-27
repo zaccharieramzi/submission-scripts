@@ -25,7 +25,9 @@ vision="deq/mdeq_vision"
 python ${vision}/tools/cls_train.py \
     --cfg ${vision}/experiments/cifar/cls_mdeq_LARGE_reg.yaml \
     --seed $SLURM_ARRAY_TASK_ID \
-    --restart_at 28 \
+    TRAIN.RESUME False \
+    CUDNN.BENCHMARK False \
+    CUDNN.DETERMINISTIC True \
     DEQ.SHINE True \
     DEQ.B_THRES 0 \
     OUTPUT_DIR shine_output
