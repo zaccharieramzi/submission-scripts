@@ -30,5 +30,5 @@ python ${vision}/tools/cls_train.py \
     CUDNN.BENCHMARK False \
     CUDNN.DETERMINISTIC True \
     OUTPUT_DIR da_inv_xp_output \
-    JAC_LOSS_WEIGHT 0.2
+    LOSS.JAC_LOSS_WEIGHT 0.2
 
