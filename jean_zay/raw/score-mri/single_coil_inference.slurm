@@ -18,7 +18,7 @@ cd $WORK/submission-scripts/jean_zay/env_configs/
 
 . score_mri.sh
 
-cd $WORK/score-mri
+cd $WORK/score-MRI
 
 
 python score_mri/inference_single_coil_fastmri.py \
