@@ -30,6 +30,7 @@ f_thres=f_thres=${f_thres_arr[$((SLURM_ARRAY_TASK_ID / 10))-1]}
 
 python ${vision}/tools/cls_train.py \
     --cfg ${vision}/experiments/cifar/cls_mdeq_TINY.yaml \
+    --results_name results.csv \
     --seed $seed \
     TRAIN.RESUME False \
     CUDNN.BENCHMARK False \
