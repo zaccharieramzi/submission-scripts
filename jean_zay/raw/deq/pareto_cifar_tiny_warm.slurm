@@ -39,7 +39,7 @@ python ${vision}/tools/cls_train.py \
     DEQ.F_THRES $f_thres \
     OUTPUT_DIR $output_dir
 
-for eval_f_thres in ${f_thres_arr[@]}
+for eval_f_thres in ${f_thres_arr[@]}; do
     python ${vision}/tools/cls_valid.py \
         --cfg ${vision}/experiments/cifar/cls_mdeq_TINY_warm.yaml \
         --results_name results.csv \
