@@ -26,6 +26,6 @@ center_fractions=(0.08 0.04 0.02 0.01)
 python score_mri/diversity_single_coil.py \
     --data 001 \
     --N 500 \
-    --acceleration ${accelerations[$SLURM_ARRAY_TASK_ID]} \
+    --acc_factor ${accelerations[$SLURM_ARRAY_TASK_ID]} \
     --center_fraction ${center_fractions[$SLURM_ARRAY_TASK_ID]} \
     --n_images 10

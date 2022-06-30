@@ -29,5 +29,5 @@ python score_mri/inference_single_coil_fastmri.py \
     --sample_rate 0.1 \
     --batch_size 1 \
     --contrast CORPD_FBK \
-    --acceleration ${accelerations[$SLURM_ARRAY_TASK_ID]} \
+    --acc_factor ${accelerations[$SLURM_ARRAY_TASK_ID]} \
     --center_fraction ${center_fractions[$SLURM_ARRAY_TASK_ID]}
