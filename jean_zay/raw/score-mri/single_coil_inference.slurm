@@ -12,7 +12,7 @@
 #SBATCH --time=35:00:00              # temps d’exécution maximum demande (HH:MM:SS)
 #SBATCH --output=%x_%A_%a.out # nom du fichier de sortie
 #SBATCH --error=%x_%A_%a.err  # nom du fichier d'erreur (ici commun avec la sortie)
-#SBATCH --array=0
+#SBATCH --array=2-4
 set -x
 cd $WORK/submission-scripts/jean_zay/env_configs/
 
@@ -20,10 +20,14 @@ cd $WORK/submission-scripts/jean_zay/env_configs/
 
 cd $WORK/score-MRI
 
+accelerations=(4 8 16 32)
+center_fractions=(0.08 0.04 0.02 0.01)
 
 python score_mri/inference_single_coil_fastmri.py \
     --data $SCRATCH \
     --N 500 \
     --sample_rate 0.1 \
     --batch_size 1 \
-    --contrast CORPD_FBK
+    --contrast CORPD_FBK \
+    --acceleration ${accelerations[$SLURM_ARRAY_TASK_ID]} \
+    --center_fraction ${center_fractions[$SLURM_ARRAY_TASK_ID]}
