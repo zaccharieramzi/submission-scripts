@@ -23,9 +23,13 @@ cd $WORK/score-MRI
 accelerations=(4 8 16 32)
 center_fractions=(0.08 0.04 0.02 0.01)
 
+acc=${accelerations[$SLURM_ARRAY_TASK_ID]}
+cf=${center_fractions[$SLURM_ARRAY_TASK_ID]}
+
 python score_mri/diversity_single_coil.py \
     --data 001 \
     --N 500 \
-    --acc_factor ${accelerations[$SLURM_ARRAY_TASK_ID]} \
-    --center_fraction ${center_fractions[$SLURM_ARRAY_TASK_ID]} \
+    --acc_factor $acc \
+    --center_fraction $cf \
+    --save_dir "results/diversity_${acc}_${cf}/" \
     --n_images 10
