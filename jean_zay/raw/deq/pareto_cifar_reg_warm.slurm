@@ -12,7 +12,7 @@
 #SBATCH --time=20:00:00              # temps d’exécution maximum demande (HH:MM:SS)
 #SBATCH --output=%x_%A_%a.out # nom du fichier de sortie
 #SBATCH --error=%x_%A_%a.err  # nom du fichier d'erreur (ici commun avec la sortie)
-#SBATCH --array=0-59
+#SBATCH --array=40-59
 set -x
 cd $WORK/submission-scripts/jean_zay/env_configs/
 
@@ -33,7 +33,7 @@ python ${vision}/tools/cls_train.py \
     --cfg ${vision}/experiments/cifar/cls_mdeq_LARGE_reg_warm.yaml \
     --results_name results.csv \
     --seed $seed \
-    TRAIN.RESUME False \
+    TRAIN.RESUME True \
     CUDNN.BENCHMARK False \
     CUDNN.DETERMINISTIC True \
     DEQ.F_THRES $f_thres \
