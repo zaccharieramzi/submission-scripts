@@ -43,7 +43,7 @@ for eval_f_thres in ${f_thres_arr[@]}; do
     python ${vision}/tools/cls_valid.py \
         --cfg ${vision}/experiments/cifar/cls_mdeq_TINY.yaml \
         --results_name results.csv \
-        --seed $SLURM_ARRAY_TASK_ID \
+        --seed $seed \
         TEST.MODEL_FILE ${output_dir}/cifar10/cls_mdeq_TINY/final_state_seed$seed.pth.tar \
         DEQ.F_THRES $eval_f_thres
 done
@@ -54,7 +54,7 @@ for eval_f_thres in ${extra_f_thres[@]}; do
     python ${vision}/tools/cls_valid.py \
         --cfg ${vision}/experiments/cifar/cls_mdeq_TINY.yaml \
         --results_name results.csv \
-        --seed $SLURM_ARRAY_TASK_ID \
+        --seed $seed \
         TEST.MODEL_FILE ${output_dir}/cifar10/cls_mdeq_TINY/final_state_seed$seed.pth.tar \
         DEQ.F_THRES $eval_f_thres
 done
