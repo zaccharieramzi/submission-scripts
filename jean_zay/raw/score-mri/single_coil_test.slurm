@@ -26,4 +26,5 @@ python score_mri/inference_single_coil_fastmri.py \
     --data $SCRATCH \
     --N 500 \
     --batch_size 1 \
+    --mode test \
     --acceleration ${accelerations[$SLURM_ARRAY_TASK_ID]}
