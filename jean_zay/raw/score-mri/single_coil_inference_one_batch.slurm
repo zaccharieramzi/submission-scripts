@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=single_coil_inference_one_vol    # nom du job
+#SBATCH --job-name=single_coil_inference_one_batch    # nom du job
 #SBATCH --ntasks=1                # nombre de tâche MPI
 #SBATCH --ntasks-per-node=1          # nombre de tâche MPI par noeud
 #SBATCH --cpus-per-task=10           # nombre de coeurs à réserver par tâche
