@@ -7,9 +7,9 @@
 # /!\ Attention, la ligne suivante est trompeuse mais dans le vocabulaire
 # de Slurm "multithread" fait bien référence à l'hyperthreading.
 #SBATCH --hint=nomultithread         # on réserve des coeurs physiques et non logiques
-#SBATCH --qos=qos_gpu-t3        # le calcul va etre long
+#SBATCH --qos=qos_gpu-dev        # le calcul va etre long
 #SBATCH --distribution=block:block   # on épingle les tâches sur des coeurs contigus
-#SBATCH --time=03:00:00              # temps d’exécution maximum demande (HH:MM:SS)
+#SBATCH --time=00:50:00              # temps d’exécution maximum demande (HH:MM:SS)
 #SBATCH --output=%x_%A_%a.out # nom du fichier de sortie
 #SBATCH --error=%x_%A_%a.err  # nom du fichier d'erreur (ici commun avec la sortie)
 #SBATCH --array=0-3
@@ -25,7 +25,7 @@ center_fractions=(0.08 0.04 0.02 0.01)
 
 python score_mri/inference_single_coil_fastmri.py \
     --data $SCRATCH \
-    --N 500 \
+    --N 100 \
     --sample_rate 0.01 \
     --batch_size 1 \
     --contrast CORPD_FBK \
