@@ -24,4 +24,5 @@ cd $WORK/deq
 vision="deq/mdeq_vision"
 
 python ${vision}/tools/cls_train.py \
-    --cfg ${vision}/experiments/imagenet/cls_mdeq_SMALL_reg_da_inv.yaml
+    --cfg ${vision}/experiments/imagenet/cls_mdeq_SMALL_reg_da_inv.yaml \
+    PRINT_FREQ 10
