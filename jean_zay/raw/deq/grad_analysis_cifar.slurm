@@ -33,7 +33,7 @@ else
 fi
 for checkpoint in ${checkpoints[@]}; do
 for percent in {0.1,0.3,0.5,1.0}; do  # 4
-    opt[$i]="--cfg ${vision}/experiments/cifar/cls_mdeq_${model_size}.yaml --percent ${percent}"
+    opt[$i]="--cfg ${vision}/experiments/cifar/cls_mdeq_${model_size}.yaml --percent ${percent} --dropout_eval"
     opt[$i]="${opt[$i]} TRAIN.BEGIN_EPOCH ${checkpoint} TRAIN.WARM_INIT_DIR ${JOBSCRATCH}"
     i=$((i+1))
 done
