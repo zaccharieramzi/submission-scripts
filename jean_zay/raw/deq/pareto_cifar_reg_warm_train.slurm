@@ -32,6 +32,7 @@ for train_f_thres in ${f_thres_arr[@]}; do
     python ${vision}/tools/cls_valid.py \
         --cfg ${vision}/experiments/cifar/cls_mdeq_LARGE_reg_warm.yaml \
         --results_name train_results.csv \
+        --valid_on_train \
         --seed $seed \
         TEST.MODEL_FILE pareto_output_f$train_f_thres/cifar10/cls_mdeq_LARGE_reg_warm/final_state_seed$seed.pth.tar \
         DEQ.F_THRES $eval_f_thres
