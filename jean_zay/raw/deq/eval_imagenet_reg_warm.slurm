@@ -23,4 +23,4 @@ vision="deq/mdeq_vision"
 
 python ${vision}/tools/cls_valid.py \
     --cfg ${vision}/experiments/imagenet/cls_mdeq_SMALL_reg.yaml \
-    TEST.MODEL_FILE output/imagenet/cls_mdeq_SMALL_reg_warm/final_state_seed${SLURM_ARRAY_TASK_ID}.pth.tar
+    TEST.MODEL_FILE output/imagenet/cls_mdeq_SMALL_reg_warm/final_state.pth.tar
