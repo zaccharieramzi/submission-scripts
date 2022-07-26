@@ -26,16 +26,12 @@ basic_cmd="python ${vision}/tools/cls_init_analysis.py --n_images 100"
 
 i=0
 model_size="LARGE_reg"
-if [ "$model_size" == "TINY" ]; then
-    dropouts=("False")  # 1
-else
-    dropouts=("False" "True")  # 2
-fi
-for dropout in ${dropouts[@]}; do
+lss=("False" "True")  # 2
+for ls in ${lss[@]}; do
     opt[$i]="--cfg ${vision}/experiments/cifar/cls_mdeq_${model_size}.yaml --seed 4"
-    # when dropout is True, add the --dropout_eval flag to opt[$i]
-    if [ "$dropout" == "True" ]; then
-        opt[$i]="${opt[$i]} --dropout_eval"
+    # when ls is True, add the --ls flag to opt[$i]
+    if [ "$ls" == "True" ]; then
+        opt[$i]="${opt[$i]} --ls"
     fi
     opt[$i]="${opt[$i]} TRAIN.BEGIN_EPOCH 200"
     i=$((i+1))
