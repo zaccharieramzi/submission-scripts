@@ -35,5 +35,6 @@ for train_f_thres in ${f_thres_arr[@]}; do
         --valid_on_train \
         --seed $seed \
         TEST.MODEL_FILE pareto_cifar/pareto_output_f$train_f_thres/cifar10/cls_mdeq_LARGE_reg/final_state_seed$seed.pth.tar \
-        DEQ.F_THRES $eval_f_thres
+        DEQ.F_THRES $eval_f_thres \
+        DEQ.F_EPS 0.00001
 done
