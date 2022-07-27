@@ -27,7 +27,7 @@ vision="deq/mdeq_vision"
 f_thres_arr=(1 2 4 6 8 10)
 seed=$((SLURM_ARRAY_TASK_ID % 10))
 f_thres=${f_thres_arr[$((SLURM_ARRAY_TASK_ID / 10))]}
-output_dir=pareto_output_f$f_thres
+output_dir=pareto_cifar/pareto_output_f$f_thres
 
 for eval_f_thres in ${f_thres_arr[@]}; do
     python ${vision}/tools/cls_valid.py \
