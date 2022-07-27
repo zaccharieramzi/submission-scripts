@@ -26,8 +26,9 @@ vision="deq/mdeq_vision"
 # f_thres is going to be the division of SLURM_ARRAY_TASK_ID by 10 indexing the f_thres_arr
 f_thres_arr=(1 2 4 6 8 10)
 seed=$((SLURM_ARRAY_TASK_ID % 10))
-eval_f_thres=10
+eval_f_thres_arr=(10 20 40)
 
+for eval_f_thres in ${eval_f_thres_arr[@]}; do
 for train_f_thres in ${f_thres_arr[@]}; do
     python ${vision}/tools/cls_valid.py \
         --cfg ${vision}/experiments/cifar/cls_mdeq_LARGE_reg.yaml \
@@ -37,4 +38,5 @@ for train_f_thres in ${f_thres_arr[@]}; do
         TEST.MODEL_FILE pareto_cifar/pareto_output_f$train_f_thres/cifar10/cls_mdeq_LARGE_reg/final_state_seed$seed.pth.tar \
         DEQ.F_THRES $eval_f_thres \
         DEQ.F_EPS 0.00001
+done
 done
