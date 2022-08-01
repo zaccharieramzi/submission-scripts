@@ -23,5 +23,5 @@ vision="deq/mdeq_vision"
 
 python ${vision}/tools/cls_train.py \
     --cfg ${vision}/experiments/imagenet/cls_mdeq_SMALL_reg_warm.yaml \
-    TRAIN.WARM_INIT_DIR $JOBSCRATCH \
+    TRAIN.WARM_INIT_DIR $JOBSCRATCH \ # maybe also add f thres if run in parallel
     TRAIN.RESUME True

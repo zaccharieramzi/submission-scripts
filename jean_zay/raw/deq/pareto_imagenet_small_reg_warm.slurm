@@ -34,6 +34,8 @@ python ${vision}/tools/cls_train.py \
     DEQ.F_THRES $f_thres \
     OUTPUT_DIR $output_dir
 
+# change warm init dir and maybe also add f thres to it if run in parallel
+
 for eval_f_thres in ${f_thres_arr[@]}; do
     python ${vision}/tools/cls_valid.py \
         --cfg ${vision}/experiments/imagenet/cls_mdeq_SMALL_reg_warm.yaml \
