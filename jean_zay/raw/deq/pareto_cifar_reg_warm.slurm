@@ -12,7 +12,7 @@
 #SBATCH --time=20:00:00              # temps d’exécution maximum demande (HH:MM:SS)
 #SBATCH --output=%x_%A_%a.out # nom du fichier de sortie
 #SBATCH --error=%x_%A_%a.err  # nom du fichier d'erreur (ici commun avec la sortie)
-#SBATCH --array=40-59
+#SBATCH --array=40-49
 set -x
 cd $WORK/submission-scripts/jean_zay/env_configs/
 
@@ -29,26 +29,27 @@ seed=$((SLURM_ARRAY_TASK_ID % 10))
 f_thres=${f_thres_arr[$((SLURM_ARRAY_TASK_ID / 10))]}
 output_dir=pareto_cifar/pareto_output_f$f_thres
 
-python ${vision}/tools/cls_train.py \
-    --cfg ${vision}/experiments/cifar/cls_mdeq_LARGE_reg_warm.yaml \
-    --results_name results.csv \
-    --seed $seed \
-    TRAIN.RESUME True \
-    CUDNN.BENCHMARK False \
-    CUDNN.DETERMINISTIC True \
-    DEQ.F_THRES $f_thres \
-    OUTPUT_DIR $output_dir
+# python ${vision}/tools/cls_train.py \
+#     --cfg ${vision}/experiments/cifar/cls_mdeq_LARGE_reg_warm.yaml \
+#     --results_name results.csv \
+#     --seed $seed \
+#     TRAIN.RESUME True \
+#     CUDNN.BENCHMARK False \
+#     CUDNN.DETERMINISTIC True \
+#     DEQ.F_THRES $f_thres \
+#     OUTPUT_DIR $output_dir
 
-for eval_f_thres in ${f_thres_arr[@]}; do
-    python ${vision}/tools/cls_valid.py \
-        --cfg ${vision}/experiments/cifar/cls_mdeq_LARGE_reg_warm.yaml \
-        --results_name results.csv \
-        --seed $seed \
-        TEST.MODEL_FILE ${output_dir}/cifar10/cls_mdeq_LARGE_reg_warm/final_state_seed$seed.pth.tar \
-        DEQ.F_THRES $eval_f_thres
-done
+# for eval_f_thres in ${f_thres_arr[@]}; do
+#     python ${vision}/tools/cls_valid.py \
+#         --cfg ${vision}/experiments/cifar/cls_mdeq_LARGE_reg_warm.yaml \
+#         --results_name results.csv \
+#         --seed $seed \
+#         TEST.MODEL_FILE ${output_dir}/cifar10/cls_mdeq_LARGE_reg_warm/final_state_seed$seed.pth.tar \
+#         DEQ.F_THRES $eval_f_thres
+# done
 
-extra_f_thres=(12 15)
+# extra_f_thres=(12 15)
+extra_f_thres=(20 40)
 
 for eval_f_thres in ${extra_f_thres[@]}; do
     python ${vision}/tools/cls_valid.py \
@@ -56,5 +57,6 @@ for eval_f_thres in ${extra_f_thres[@]}; do
         --results_name results.csv \
         --seed $seed \
         TEST.MODEL_FILE ${output_dir}/cifar10/cls_mdeq_LARGE_reg_warm/final_state_seed$seed.pth.tar \
-        DEQ.F_THRES $eval_f_thres
+        DEQ.F_THRES $eval_f_thres \
+        DEQ.F_EPS 0.00001
 done
