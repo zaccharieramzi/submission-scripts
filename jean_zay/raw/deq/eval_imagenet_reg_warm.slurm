@@ -23,4 +23,6 @@ vision="deq/mdeq_vision"
 
 python ${vision}/tools/cls_valid.py \
     --cfg ${vision}/experiments/imagenet/cls_mdeq_SMALL_reg.yaml \
-    TEST.MODEL_FILE output/imagenet/cls_mdeq_SMALL_reg_warm/final_state.pth.tar
+    TEST.MODEL_FILE output/imagenet/cls_mdeq_SMALL_reg_warm/final_state.pth.tar \
+    DEQ.F_THRES 40 \
+    DEQ.F_EPS 0.00001
