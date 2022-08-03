@@ -49,7 +49,7 @@ output_dir=pareto_cifar/pareto_output_f$f_thres
 # done
 
 # extra_f_thres=(12 15)
-extra_f_thres=(20 40)
+extra_f_thres=(60 80)
 
 for eval_f_thres in ${extra_f_thres[@]}; do
     python ${vision}/tools/cls_valid.py \
