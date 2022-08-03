@@ -25,6 +25,6 @@ vision="deq/mdeq_vision"
 python ${vision}/tools/cls_train.py \
     --cfg ${vision}/experiments/cifar/cls_mdeq_LARGE_reg_warm_full_iteration.yaml \
     --seed $SLURM_ARRAY_TASK_ID \
-    TRAIN.RESUME False \
+    TRAIN.RESUME True \
     CUDNN.BENCHMARK False \
     CUDNN.DETERMINISTIC True
