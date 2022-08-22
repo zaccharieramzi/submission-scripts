@@ -31,4 +31,5 @@ python ${vision}/tools/cls_train.py \
     TRAIN.RESUME False \
     CUDNN.BENCHMARK False \
     CUDNN.DETERMINISTIC True \
+    TRAIN.HEAD_ONLY True \
     OUTPUT_DIR $output_dir
