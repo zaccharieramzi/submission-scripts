@@ -23,7 +23,7 @@ cd $WORK/deq
 
 vision="deq/mdeq_vision"
 basic_cmd="python ${vision}/tools/cls_eq_analysis.py"
-output_dir=pareto_output_f8
+output_dir=pareto_cifar/pareto_output_f8
 
 i=0
 model_sizes=("LARGE_reg" "LARGE_reg_warm")  # 4
