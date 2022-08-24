@@ -22,7 +22,7 @@ cd $WORK/submission-scripts/jean_zay/env_configs/
 cd $WORK/deq
 
 vision="deq/mdeq_vision"
-basic_cmd="python ${vision}/tools/cls_eq_analysis.py"
+basic_cmd="python ${vision}/tools/cls_fixed_point_description.py"
 output_dir=pareto_cifar/pareto_output_f8
 
 i=0
@@ -30,7 +30,7 @@ model_sizes=("LARGE_reg" "LARGE_reg_warm")  # 4
 for model_size in ${model_sizes[@]}; do
     opt[$i]="--cfg ${vision}/experiments/cifar/cls_mdeq_${model_size}.yaml --seed 4"
     opt[$i]="${opt[$i]} TRAIN.BEGIN_EPOCH 200 DEQ.F_THRES 40 DEQ.F_EPS 0.00001"
-    opt[$i]="${opt[$i]} TEST.MODEL_FILE ${output_dir}/cifar10/cls_mdeq_LARGE_reg/final_state_seed4.pth.tar"
+    opt[$i]="${opt[$i]} TEST.MODEL_FILE ${output_dir}/cifar10/cls_mdeq_${model_size}/final_state_seed4.pth.tar OUTPUT_DIR ${output_dir}"
     i=$((i+1))
 done
 
