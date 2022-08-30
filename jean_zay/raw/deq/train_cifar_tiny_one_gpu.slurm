@@ -26,6 +26,6 @@ python ${vision}/tools/cls_train.py \
     --seed 0 \
     TRAIN.RESUME False \
     TRAIN.BATCH_SIZE_PER_GPU 128 \
-    GPUS 0 \
+    GPUS "(0,)" \
     WORKERS 10
 
