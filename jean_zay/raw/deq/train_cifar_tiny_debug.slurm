@@ -24,6 +24,7 @@ vision="deq/mdeq_vision"
 python ${vision}/tools/cls_train.py \
     --cfg ${vision}/experiments/cifar/cls_mdeq_TINY.yaml \
     --seed 0 \
+    --save_at 14 \ # --restart_at 14 \
     TRAIN.BATCH_SIZE_PER_GPU 128 \
     GPUS "(0,)" \
     TRAIN.RESUME True \
@@ -32,7 +33,5 @@ python ${vision}/tools/cls_train.py \
     DEQ.B_THRES 8 \
     TRAIN.WARM_INIT_BACK True \
     TRAIN.WARM_INIT_DIR $JOBSCRATCH \
-    --save_at 14 \
-    # --restart_at 14 \
     OUTPUT_DIR debug
 
