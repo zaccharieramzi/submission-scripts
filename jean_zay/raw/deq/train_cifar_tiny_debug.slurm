@@ -32,5 +32,7 @@ python ${vision}/tools/cls_train.py \
     DEQ.B_THRES 8 \
     TRAIN.WARM_INIT_BACK True \
     TRAIN.WARM_INIT_DIR $JOBSCRATCH \
+    --save_at 14 \
+    # --restart_at 14 \
     OUTPUT_DIR debug
 
