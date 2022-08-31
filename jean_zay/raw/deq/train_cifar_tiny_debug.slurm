@@ -24,8 +24,13 @@ vision="deq/mdeq_vision"
 python ${vision}/tools/cls_train.py \
     --cfg ${vision}/experiments/cifar/cls_mdeq_TINY.yaml \
     --seed 0 \
-    TRAIN.RESUME False \
     TRAIN.BATCH_SIZE_PER_GPU 128 \
     GPUS "(0,)" \
+    TRAIN.RESUME True \
+    CUDNN.BENCHMARK False \
+    CUDNN.DETERMINISTIC True \
+    DEQ.B_THRES 8 \
+    TRAIN.WARM_INIT_BACK True \
+    TRAIN.WARM_INIT_DIR $JOBSCRATCH \
     OUTPUT_DIR debug
 
