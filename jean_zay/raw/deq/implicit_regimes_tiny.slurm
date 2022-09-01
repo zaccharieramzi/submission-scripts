@@ -26,7 +26,7 @@ seed=$((SLURM_ARRAY_TASK_ID % 10))
 checkpoints_arr=(14 40)
 checkpoint=${checkpoints_arr[$((SLURM_ARRAY_TASK_ID / 10))]}
 
-python ${vision}/tools/cls_train.py \
+python ${vision}/tools/cls_implicit_regime_identification.py \
     --cfg ${vision}/experiments/cifar/cls_mdeq_TINY.yaml \
     --b_thres_range 5 50 5 \
     --f_thres_range 5 50 5 \
