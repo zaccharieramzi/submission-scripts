@@ -30,6 +30,7 @@ python ${vision}/tools/cls_implicit_regime_identification.py \
     --cfg ${vision}/experiments/cifar/cls_mdeq_TINY.yaml \
     --b_thres_range 5 50 5 \
     --f_thres_range 5 50 5 \
+    --n_batches 1 \
     --seed $seed \
     TRAIN.BEGIN_EPOCH $checkpoint \
     TRAIN.WARM_INIT_DIR $JOBSCRATCH \
