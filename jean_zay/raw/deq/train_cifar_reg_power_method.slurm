@@ -31,5 +31,5 @@ python ${vision}/tools/cls_train.py \
     CUDNN.BENCHMARK False \
     CUDNN.DETERMINISTIC True \
     OUTPUT_DIR power_method \
-    DEQ.F_SOLVER power_method \
-    DEQ.B_SOLVER power_method
+    DEQ.F_SOLVER fixed_point_iteration \
+    DEQ.B_SOLVER fixed_point_iteration
