@@ -25,7 +25,7 @@ vision="deq/mdeq_vision"
 python ${vision}/tools/cls_train.py \
     --cfg ${vision}/experiments/cifar/cls_mdeq_LARGE_reg.yaml \
     --save_at 10 50 100 150 200 \
-    --results_name "reg_power_method" \
+    --results_name "reg_power_method.csv" \
     --seed $SLURM_ARRAY_TASK_ID \
     TRAIN.RESUME False \
     CUDNN.BENCHMARK False \
