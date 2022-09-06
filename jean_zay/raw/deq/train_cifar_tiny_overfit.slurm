@@ -27,7 +27,7 @@ python ${vision}/tools/cls_train.py \
     --cfg ${vision}/experiments/cifar/cls_mdeq_TINY.yaml \
     --save_at 7 14 40 \
     --seed $SLURM_ARRAY_TASK_ID \
-    TRAIN.WD 0 \
+    TRAIN.WD 0. \
     OUTPUT_DIR $output_dir \
     MODEL.DROPOUT 0
 
