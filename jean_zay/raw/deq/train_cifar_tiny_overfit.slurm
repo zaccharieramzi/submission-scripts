@@ -21,6 +21,7 @@ cd $WORK/submission-scripts/jean_zay/env_configs/
 cd $WORK/deq
 
 vision="deq/mdeq_vision"
+output_dir="overfit_output/"
 
 python ${vision}/tools/cls_train.py \
     --cfg ${vision}/experiments/cifar/cls_mdeq_TINY.yaml \
@@ -28,5 +29,6 @@ python ${vision}/tools/cls_train.py \
     --seed $SLURM_ARRAY_TASK_ID \
     TRAIN.RESUME True \
     TRAIN.WD 0 \
+    OUTPUT_DIR $output_dir \
     MODEL.DROPOUT 0
 
