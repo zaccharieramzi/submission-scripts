@@ -29,5 +29,5 @@ python ${vision}/tools/cls_train.py \
     --seed $SLURM_ARRAY_TASK_ID \
     TRAIN.WD 0. \
     OUTPUT_DIR $output_dir \
-    MODEL.DROPOUT 0
+    MODEL.DROPOUT 0.
 
