@@ -1,9 +1,9 @@
 #!/bin/bash
 #SBATCH --job-name=deq_cifar_tiny_power    # nom du job
 #SBATCH --ntasks=1                # nombre de tâche MPI
-#SBATCH --ntasks-per-node=2          # nombre de tâche MPI par noeud
+#SBATCH --ntasks-per-node=1          # nombre de tâche MPI par noeud
 #SBATCH --cpus-per-task=20           # nombre de coeurs à réserver par tâche
-#SBATCH --gres=gpu:1                 # nombre de GPU à réserver par nœud
+#SBATCH --gres=gpu:2                 # nombre de GPU à réserver par nœud
 # /!\ Attention, la ligne suivante est trompeuse mais dans le vocabulaire
 # de Slurm "multithread" fait bien référence à l'hyperthreading.
 #SBATCH --hint=nomultithread         # on réserve des coeurs physiques et non logiques
