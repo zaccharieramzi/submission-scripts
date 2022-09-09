@@ -28,12 +28,13 @@ checkpoint=${checkpoints_arr[$((SLURM_ARRAY_TASK_ID / 10))]}
 
 python ${vision}/tools/cls_implicit_regime_identification.py \
     --cfg ${vision}/experiments/cifar/cls_mdeq_TINY.yaml \
-    --b_thres_range 5 50 5 \
+    --b_thres_range 1 50 2 \
     --f_thres_range 5 50 5 \
     --n_batches 1 \
     --seed $seed \
     TRAIN.BEGIN_EPOCH $checkpoint \
     TRAIN.WARM_INIT_DIR $JOBSCRATCH \
-    TRAIN.BATCH_SIZE_PER_GPU 2
+    TRAIN.BATCH_SIZE_PER_GPU 2 \
+    DEQ.B_SOLVER fixed_point_iteration
 
 
