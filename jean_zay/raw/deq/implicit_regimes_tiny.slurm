@@ -34,7 +34,5 @@ python ${vision}/tools/cls_implicit_regime_identification.py \
     --seed $seed \
     TRAIN.BEGIN_EPOCH $checkpoint \
     TRAIN.WARM_INIT_DIR $JOBSCRATCH \
-    TRAIN.BATCH_SIZE_PER_GPU 2 \
-    DEQ.B_SOLVER fixed_point_iteration
-
+    TRAIN.BATCH_SIZE_PER_GPU 2
 
