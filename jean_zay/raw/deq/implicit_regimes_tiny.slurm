@@ -36,5 +36,7 @@ python ${vision}/tools/cls_implicit_regime_identification.py \
     TRAIN.WARM_INIT_DIR $JOBSCRATCH \
     DEQ.F_EPS 0.00001 \
     DEQ.B_EPS 0.00001 \
+    DEQ.F_SOLVER fixed_point_iteration \
+    DEQ.B_SOLVER fixed_point_iteration \
     TRAIN.BATCH_SIZE_PER_GPU 2
 
