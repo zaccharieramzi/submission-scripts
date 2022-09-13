@@ -34,5 +34,8 @@ python ${vision}/tools/cls_implicit_regime_identification.py \
     --seed $seed \
     TRAIN.BEGIN_EPOCH $checkpoint \
     TRAIN.WARM_INIT_DIR $JOBSCRATCH \
+    DEQ.F_EPS 0.00001 \
+    DEQ.B_EPS 0.00001 \
     TRAIN.BATCH_SIZE_PER_GPU 2
+
 
