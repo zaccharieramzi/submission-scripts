@@ -24,7 +24,9 @@ vision="deq/mdeq_vision"
 
 seed=$((SLURM_ARRAY_TASK_ID % 10))
 checkpoints_arr=(50 200)
+step_sizes_arr=(1.0 0.1)
 checkpoint=${checkpoints_arr[$((SLURM_ARRAY_TASK_ID / 10))]}
+step_size=${step_sizes_arr[$((SLURM_ARRAY_TASK_ID / 10))]}
 
 python ${vision}/tools/cls_implicit_regime_identification.py \
     --cfg ${vision}/experiments/cifar/cls_mdeq_LARGE_reg.yaml \
@@ -36,6 +38,8 @@ python ${vision}/tools/cls_implicit_regime_identification.py \
     TRAIN.WARM_INIT_DIR $JOBSCRATCH \
     DEQ.F_EPS 0.00001 \
     DEQ.B_EPS 0.00001 \
+    DEQ.F_STEP_SIZE $step_size \
+    DEQ.B_STEP_SIZE $step_size \
     DEQ.F_SOLVER fixed_point_iteration \
     DEQ.B_SOLVER fixed_point_iteration \
     TRAIN.BATCH_SIZE_PER_GPU 2
