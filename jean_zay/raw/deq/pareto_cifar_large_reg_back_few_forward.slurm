@@ -27,22 +27,27 @@ vision="deq/mdeq_vision"
 b_thres_arr=(1 3 6 9 15 20)
 seed=$((SLURM_ARRAY_TASK_ID % 10))
 b_thres=${b_thres_arr[$((SLURM_ARRAY_TASK_ID / 10))]}
-output_dir=pareto_output_b${b_thres}
+output_dir=pareto_output_b${b_thres}_f3
 
-# python ${vision}/tools/cls_train.py \
-#     --cfg ${vision}/experiments/cifar/cls_mdeq_LARGE_reg.yaml \
-#     --results_name back_results.csv \
-#     --seed $seed \
-#     TRAIN.RESUME False \
-#     CUDNN.BENCHMARK False \
-#     CUDNN.DETERMINISTIC True \
-#     DEQ.B_THRES $b_thres \
-#     OUTPUT_DIR $output_dir
+python ${vision}/tools/cls_train.py \
+    --cfg ${vision}/experiments/cifar/cls_mdeq_LARGE_reg.yaml \
+    --results_name back_results.csv \
+    --seed $seed \
+    TRAIN.RESUME False \
+    CUDNN.BENCHMARK False \
+    CUDNN.DETERMINISTIC True \
+    DEQ.B_THRES $b_thres \
+    DEQ.F_THRES 3 \
+    OUTPUT_DIR $output_dir
 
-python ${vision}/tools/cls_valid.py \
+f_thres_arr=(3 8 30)
+for f_thres in "${f_thres_arr[@]}"; do
+    python ${vision}/tools/cls_valid.py \
     --cfg ${vision}/experiments/cifar/cls_mdeq_LARGE_reg.yaml \
     --results_name back_results_at_conv.csv \
     --seed $seed \
     TEST.MODEL_FILE ${output_dir}/cifar10/cls_mdeq_LARGE_reg/final_state_seed$seed.pth.tar \
-    DEQ.F_THRES 8 \
+    DEQ.F_THRES $f_thres \
     DEQ.F_EPS 0.00001
+done
+
