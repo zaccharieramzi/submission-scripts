@@ -20,7 +20,7 @@ cd $WORK/submission-scripts/jean_zay/env_configs/
 
 cd $WORK/diffusion-function-measures
 
-accelerate launch train_unconditional.py \
+accelerate launch main.py \
   --dataset_name="huggan/pokemon" \
   --resolution=64 \
   --output_dir="ddpm-ema-pokemon-64" \
