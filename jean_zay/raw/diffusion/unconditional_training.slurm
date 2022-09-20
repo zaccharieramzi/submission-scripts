@@ -20,7 +20,7 @@ cd $WORK/submission-scripts/jean_zay/env_configs/
 
 cd $WORK/diffusion-function-measures
 
-accelerate launch diffusion_function_measures/main.py \
+accelerate launch \
   --dataset_name="huggan/pokemon" \
   --resolution=64 \
   --output_dir="ddpm-ema-pokemon-64" \
@@ -30,3 +30,4 @@ accelerate launch diffusion_function_measures/main.py \
   --learning_rate=1e-4 \
   --lr_warmup_steps=500 \
   --mixed_precision=no
+  diffusion_function_measures/main.py \
