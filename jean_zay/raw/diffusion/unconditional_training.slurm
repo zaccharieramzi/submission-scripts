@@ -28,4 +28,5 @@ accelerate launch --mixed_precision=no diffusion_function_measures/main.py\
   --num_epochs=1 \
   --gradient_accumulation_steps=1 \
   --learning_rate=1e-4 \
-  --lr_warmup_steps=500
+  --lr_warmup_steps=500 \
+  --cache_dir=$SCRATCH
