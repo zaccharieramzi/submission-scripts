@@ -22,6 +22,7 @@ cd $WORK/diffusion-function-measures
 
 accelerate launch --mixed_precision=no diffusion_function_measures/main.py\
   --dataset_name="huggan/pokemon" \
+  --dataset_path=$SCRATCH/pokemon \
   --resolution=64 \
   --output_dir="ddpm-ema-pokemon-64" \
   --train_batch_size=16 \
