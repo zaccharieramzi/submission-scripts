@@ -20,7 +20,7 @@ cd $WORK/submission-scripts/jean_zay/env_configs/
 
 cd $WORK/diffusion-function-measures
 
-accelerate launch --mixed_precision=no diffusion_function_measures/main.py\
+accelerate launch --mixed_precision=no --multi_gpu diffusion_function_measures/main.py\
   --dataset_name="huggan/pokemon" \
   --dataset_path=$SCRATCH/pokemon \
   --resolution=64 \
