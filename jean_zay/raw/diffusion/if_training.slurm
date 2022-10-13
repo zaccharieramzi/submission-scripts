@@ -21,7 +21,7 @@ cd $WORK/submission-scripts/jean_zay/env_configs/
 cd $WORK/diffusion-function-measures
 
 accelerate launch --mixed_precision=no diffusion_function_measures/if_stress_test.py\
-  --dataset_name=huggan/pokemon \
+  --dataset_name="huggan/pokemon" \
   --dataset_path=$SCRATCH/pokemon \
   --resolution=64 \
   --output_dir=if_stress_testing \
