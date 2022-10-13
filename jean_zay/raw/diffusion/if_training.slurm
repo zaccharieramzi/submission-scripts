@@ -25,7 +25,6 @@ accelerate launch --mixed_precision=no diffusion_function_measures/if_stress_tes
   --dataset_path=$SCRATCH/pokemon \
   --resolution=64 \
   --output_dir=if_stress_testing \
-  --dataset_path=pokemon \
   --num_epochs=100 \
   --cache_dir=$SCRATCH \
   --hidden_dim=4096 \
