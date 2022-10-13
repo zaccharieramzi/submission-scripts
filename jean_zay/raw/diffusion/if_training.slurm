@@ -24,7 +24,6 @@ accelerate launch --mixed_precision=no diffusion_function_measures/if_stress_tes
   --dataset_name=huggan/pokemon \
   --resolution=64 \
   --output_dir=if_stress_testing \
-  --mixed_precision=no \
   --dataset_path=pokemon \
   --num_epochs=100 \
   --cache_dir=$SCRATCH \
