@@ -31,12 +31,30 @@ python ${vision}/tools/cls_implicit_regime_identification.py \
     --b_thres_range 1 50 1 \
     --f_thres_range 1 50 1 \
     --n_batches 10 \
+    --results_name valley.csv \
     --seed $seed \
     TRAIN.BEGIN_EPOCH $checkpoint \
     TRAIN.WARM_INIT_DIR $JOBSCRATCH \
     DEQ.F_EPS 0.00001 \
+    DEQ.RAND_F_THRES_DELTA 0 \
     DEQ.B_EPS 0.00001 \
     DEQ.F_SOLVER fixed_point_iteration \
     DEQ.B_SOLVER fixed_point_iteration \
+    TRAIN.BATCH_SIZE_PER_GPU 2
+
+python ${vision}/tools/cls_implicit_regime_identification.py \
+    --cfg ${vision}/experiments/cifar/cls_mdeq_TINY.yaml \
+    --b_thres_range 1 50 1 \
+    --f_thres_range 1 50 1 \
+    --n_batches 10 \
+    --results_name valley.csv \
+    --seed $seed \
+    TRAIN.BEGIN_EPOCH $checkpoint \
+    TRAIN.WARM_INIT_DIR $JOBSCRATCH \
+    DEQ.F_EPS 0.00001 \
+    DEQ.RAND_F_THRES_DELTA 0 \
+    DEQ.B_EPS 0.00001 \
+    DEQ.F_SOLVER broyden \
+    DEQ.B_SOLVER broyden \
     TRAIN.BATCH_SIZE_PER_GPU 2
 
