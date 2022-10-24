@@ -39,6 +39,7 @@ python ${vision}/tools/cls_train.py \
     CUDNN.BENCHMARK False \
     CUDNN.DETERMINISTIC True \
     DEQ.F_THRES $f_thres \
+    DEQ.B_THRES $b_thres \
     DEQ.RAND_F_THRES_DELTA 0 \
     OUTPUT_DIR $output_dir
 
