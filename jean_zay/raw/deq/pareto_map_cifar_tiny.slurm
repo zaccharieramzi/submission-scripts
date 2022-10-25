@@ -31,36 +31,37 @@ f_thres=${f_thres_arr[$((SLURM_ARRAY_TASK_ID / 40))]}
 b_thres=${b_thres_arr[$((SLURM_ARRAY_TASK_ID % 40))]}
 output_dir=pareto_map/f${f_thres}_b${b_thres}
 
-python ${vision}/tools/cls_train.py \
-    --cfg ${vision}/experiments/cifar/cls_mdeq_TINY.yaml \
-    --results_name pareto_map_big.csv \
-    --seed $seed \
-    TRAIN.RESUME False \
-    CUDNN.BENCHMARK False \
-    CUDNN.DETERMINISTIC True \
-    DEQ.F_THRES $f_thres \
-    DEQ.B_THRES $b_thres \
-    DEQ.F_EPS 1e-5 \
-    DEQ.B_EPS 1e-5 \
-    DEQ.RAND_F_THRES_DELTA 0 \
-    OUTPUT_DIR $output_dir
+# python ${vision}/tools/cls_train.py \
+#     --cfg ${vision}/experiments/cifar/cls_mdeq_TINY.yaml \
+#     --results_name pareto_map_big.csv \
+#     --seed $seed \
+#     TRAIN.RESUME False \
+#     CUDNN.BENCHMARK False \
+#     CUDNN.DETERMINISTIC True \
+#     DEQ.F_THRES $f_thres \
+#     DEQ.B_THRES $b_thres \
+#     DEQ.F_EPS 1e-5 \
+#     DEQ.B_EPS 1e-5 \
+#     DEQ.RAND_F_THRES_DELTA 0 \
+#     OUTPUT_DIR $output_dir
 
 for eval_f_thres in ${f_thres_arr[@]}; do
     python ${vision}/tools/cls_valid.py \
         --cfg ${vision}/experiments/cifar/cls_mdeq_TINY.yaml \
-        --results_name pareto_map_big.csv \
+        --results_name pareto_map_big_train.csv \
+        --valid_on_train \
         --seed $seed \
         TEST.MODEL_FILE ${output_dir}/cifar10/cls_mdeq_TINY/final_state_seed$seed.pth.tar \
         DEQ.F_THRES $eval_f_thres \
         DEQ.F_EPS 1e-5
 done
 
-extra_f_thres=(25)
+extra_f_thres=(45)
 
 for eval_f_thres in ${extra_f_thres[@]}; do
     python ${vision}/tools/cls_valid.py \
         --cfg ${vision}/experiments/cifar/cls_mdeq_TINY.yaml \
-        --results_name pareto_map_big.csv \
+        --results_name pareto_map_big_train.csv \
         --seed $seed \
         TEST.MODEL_FILE ${output_dir}/cifar10/cls_mdeq_TINY/final_state_seed$seed.pth.tar \
         DEQ.F_THRES $eval_f_thres \
