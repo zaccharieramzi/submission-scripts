@@ -48,8 +48,9 @@ output_dir=pareto_map/f${f_thres}_b${b_thres}
 for eval_f_thres in ${f_thres_arr[@]}; do
     python ${vision}/tools/cls_valid.py \
         --cfg ${vision}/experiments/cifar/cls_mdeq_TINY.yaml \
-        --results_name pareto_map_big_train.csv \
+        --results_name pareto_map_big_train_loss.csv \
         --valid_on_train \
+        --use_loss_as_perf \
         --seed $seed \
         TEST.MODEL_FILE ${output_dir}/cifar10/cls_mdeq_TINY/final_state_seed$seed.pth.tar \
         DEQ.F_THRES $eval_f_thres \
@@ -61,7 +62,9 @@ extra_f_thres=(45)
 for eval_f_thres in ${extra_f_thres[@]}; do
     python ${vision}/tools/cls_valid.py \
         --cfg ${vision}/experiments/cifar/cls_mdeq_TINY.yaml \
-        --results_name pareto_map_big_train.csv \
+        --results_name pareto_map_big_train_loss.csv \
+        --valid_on_train \
+        --use_loss_as_perf \
         --seed $seed \
         TEST.MODEL_FILE ${output_dir}/cifar10/cls_mdeq_TINY/final_state_seed$seed.pth.tar \
         DEQ.F_THRES $eval_f_thres \
