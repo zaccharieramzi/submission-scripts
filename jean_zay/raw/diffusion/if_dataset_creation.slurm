@@ -29,6 +29,6 @@ python diffusion_function_measures/data/if_dataset_creation.py\
     --mixed_precision=no \
     --sample=1 \
     --num_epochs=10000 \
-    --hidden_dim=32 \
+    --hidden_dim=256 \
     --learning_rate=1e-4 \
     --grayscale
