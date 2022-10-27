@@ -24,8 +24,8 @@ python diffusion_function_measures/data/if_dataset_creation.py\
     --mixed_precision=no \
     --resolution=32 \
     --dataset_name=huggan/flowers-102-categories \
-    --dataset_path=${SCRATCH}/flowers-102-categories \
-    --output_dir=${SCRATCH}/if_representations_debug_grayscale \
+    --dataset_path="${SCRATCH}/flowers-102-categories" \
+    --output_dir="${SCRATCH}/if_representations_debug_grayscale" \
     --mixed_precision=no \
     --dataset_path=flowers-102-categories \
     --sample=1 \
