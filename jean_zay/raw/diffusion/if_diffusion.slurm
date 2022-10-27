@@ -29,4 +29,4 @@ accelerate launch diffusion_function_measures/training/main_if.py\
     training.n_epochs=1000 \
     training.log_every=100 \
     training.save_every=1000 \
-    optimizer.lr=1e-4 \
+    optimizer.lr=1e-4
