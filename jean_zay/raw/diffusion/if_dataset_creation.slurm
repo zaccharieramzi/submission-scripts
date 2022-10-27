@@ -20,7 +20,8 @@ cd $WORK/submission-scripts/jean_zay/env_configs/
 
 cd $WORK/diffusion-function-measures
 
-accelerate launch --mixed_precision=no diffusion_function_measures/data/if_dataset_creation.py\
+python diffusion_function_measures/data/if_dataset_creation.py\
+    --mixed_precision=no \
     --resolution=32 \
     --dataset_name=huggan/flowers-102-categories \
     --dataset_path=${SCRATCH}/flowers-102-categories \
