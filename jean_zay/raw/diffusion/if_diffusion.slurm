@@ -21,12 +21,10 @@ cd $WORK/submission-scripts/jean_zay/env_configs/
 cd $WORK/diffusion-function-measures
 
 accelerate launch diffusion_function_measures/training/main_if.py\
-    data.dataloader.batch_size=1 \
     data.dataloader.num_workers=0 \
     +data.image_dataset.sample=1 \
     data.if_dataset.if_representations_path="${SCRATCH}/if_representations_debug_grayscale" \
     data.image_dataset.dataset_path="${SCRATCH}/flowers-102-categories" \
     training.n_epochs=1000 \
     training.log_every=100 \
-    training.save_every=1000 \
-    optimizer.lr=1e-4
+    training.save_every=1000
