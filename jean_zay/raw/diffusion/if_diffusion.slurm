@@ -25,6 +25,6 @@ accelerate launch diffusion_function_measures/training/main_if.py\
     +data.image_dataset.sample=1 \
     data.if_dataset.if_representations_path="${SCRATCH}/if_representations_debug_grayscale" \
     data.image_dataset.dataset_path="${SCRATCH}/flowers-102-categories" \
-    training.n_epochs=1000 \
+    training.n_epochs=10000 \
     training.log_every=100 \
     training.save_every=1000
