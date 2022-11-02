@@ -23,12 +23,12 @@ cd $WORK/diffusion-function-measures
 python diffusion_function_measures/data/if_dataset_creation.py\
     --mixed_precision=no \
     --resolution=32 \
-    --dataset_name="huggan/flowers-102-categories" \
-    --dataset_path="${SCRATCH}/flowers-102-categories" \
+    --dataset_name="huggan/pokemon" \
+    --dataset_path="${SCRATCH}/pokemon" \
     --output_dir="${SCRATCH}/if_representations_debug_grayscale" \
     --mixed_precision=no \
     --sample=1 \
     --num_epochs=10000 \
-    --hidden_dim=256 \
+    --hidden_dim=64 \
     --learning_rate=1e-4 \
     --grayscale
