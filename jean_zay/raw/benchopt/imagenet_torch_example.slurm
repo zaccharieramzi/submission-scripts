@@ -13,7 +13,7 @@
 
 cd $WORK/submission-scripts/jean_zay/env_configs
 
-. benchopt.sh
+. benchopt_2.sh
 
 cd $WORK/submission-scripts/jean_zay/raw/benchopt
 
