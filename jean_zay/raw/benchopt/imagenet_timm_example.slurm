@@ -19,8 +19,7 @@ cd $WORK/submission-scripts/jean_zay/raw/benchopt
 
 python imagenet_timm.py \
     $SCRATCH/RawImages \
-    --model resent18 \
+    --model resnet18 \
     -j 10 \
     -b 128 \
-    -p 1 \
     --pin-mem
