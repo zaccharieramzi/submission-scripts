@@ -14,7 +14,7 @@
 cd $WORK/submission-scripts/jean_zay/env_configs
 
 module purge
-module load pytorch-gpu/py3/1.12.0
+module load pytorch-gpu/py3/1.12.1
 
 cd $WORK/submission-scripts/jean_zay/raw/benchopt
 
