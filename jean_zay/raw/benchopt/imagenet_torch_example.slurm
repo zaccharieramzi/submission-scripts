@@ -13,7 +13,8 @@
 
 cd $WORK/submission-scripts/jean_zay/env_configs
 
-. benchopt_2.sh
+module purge
+module load pytorch-gpu/py3/1.7.1
 
 cd $WORK/submission-scripts/jean_zay/raw/benchopt
 
