@@ -22,4 +22,4 @@ python imagenet_apex.py \
     -j 10 \
     -b 128 \
     -p 1 \
-    --opt-level 00
+    --opt-level O0
