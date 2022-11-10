@@ -18,7 +18,8 @@ cd $WORK/submission-scripts/jean_zay/env_configs
 cd $WORK/submission-scripts/jean_zay/raw/benchopt
 
 python imagenet_timm.py \
-    $SCRATCH/RawImages \
+    $SCRATCH/TFRecords \
+    --dataset tfds/imagenet2012 \
     --model resnet18 \
     -j 10 \
     -b 128 \
