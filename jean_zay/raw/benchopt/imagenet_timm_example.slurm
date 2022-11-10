@@ -17,8 +17,10 @@ cd $WORK/submission-scripts/jean_zay/env_configs
 
 cd $WORK/submission-scripts/jean_zay/raw/benchopt
 
+export NO_GCE_CHECK=True
+
 python imagenet_timm.py \
-    $SCRATCH/TFRecords \
+    $DSDIR/tensorflow_datasets \
     --dataset tfds/imagenet2012 \
     --model resnet18 \
     -j 10 \
