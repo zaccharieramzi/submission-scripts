@@ -22,7 +22,7 @@ cd $WORK/submission-scripts/jean_zay/raw/benchopt
 python imagenet_ffcv.py \
     --data.train_dataset=$SCRATCH/FFCVImageNet/train_500_0.50_90.ffcv \
     --data.val_dataset=$SCRATCH/FFCVImageNet/val_500_0.50_90.ffcv \
-    --data.num_workers=10 --data.in_memory=1 \
+    --data.num_workers=10 --data.in_memory=0 \
     --logging.folder=$WORK/benchopt/ffcv_logs/ \
     --training.batch_size=128 --training.epochs=1 \
     --training.label_smoothing=0. \
