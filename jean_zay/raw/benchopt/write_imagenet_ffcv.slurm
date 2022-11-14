@@ -14,6 +14,7 @@ set -x
 # Required environmental variables for the script:
 export IMAGENET_DIR=$SCRATCH/RawImages
 export WRITE_DIR=$SCRATCH/FFCVImageNet
+mkdir -p $WRITE_DIR
 
 cd $WORK/submission-scripts/jean_zay/env_configs;
 . benchopt.sh
