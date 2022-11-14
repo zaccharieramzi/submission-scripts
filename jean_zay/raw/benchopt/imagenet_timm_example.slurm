@@ -25,4 +25,5 @@ python imagenet_timm.py \
     --model resnet18 \
     -j 10 \
     -b 128 \
+    --channels-last \
     --pin-mem
