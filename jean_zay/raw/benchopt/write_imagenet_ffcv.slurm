@@ -17,6 +17,7 @@ export WRITE_DIR=$SCRATCH/FFCVImageNet
 
 cd $WORK/submission-scripts/jean_zay/env_configs;
 . benchopt.sh
+module load libjpeg-turbo/2.1.3
 
 # Starting in the root of the Git repo:
 cd $WORK/ffcv-imagenet;
