@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=imagenet_timm_example
+#SBATCH --job-name=simple_timm_loop
 #SBATCH --ntasks=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --gres=gpu:1
