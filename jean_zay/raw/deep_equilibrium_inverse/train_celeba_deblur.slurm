@@ -22,4 +22,5 @@ cd $WORK/deep_equilibrium_inverse
 
 python deep_equilibrium_inverse/scripts/fixedpoint/deblur_proxgrad_fixedeta_pre.py \
     --data_path $DSDIR/CelebA/Img/img_align_celeba/ \
-    --savepath celeba_equilibriumgrad_blur_save_inf.ckpt
+    --savepath celeba_equilibriumgrad_blur_save_inf.ckpt \
+    --and_maxiters 50
