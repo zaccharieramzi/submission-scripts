@@ -12,7 +12,8 @@
 #SBATCH --time=20:00:00              # temps d’exécution maximum demande (HH:MM:SS)
 #SBATCH --output=%x_%A_%a.out # nom du fichier de sortie
 #SBATCH --error=%x_%A_%a.err  # nom du fichier d'erreur (ici commun avec la sortie)
-#SBATCH --array=0-59
+# only use five seeds so arrays are 0-5,10-15,20-25,30-35,40-45,50-55
+#SBATCH --array=0-5,10-15,20-25,30-35,40-45,50-55
 set -x
 cd $WORK/submission-scripts/jean_zay/env_configs/
 
@@ -49,7 +50,7 @@ for eval_f_thres in ${f_thres_arr[@]}; do
         DEQ.F_THRES $eval_f_thres
 done
 
-extra_f_thres=(14 16 18 20)
+extra_f_thres=(14 16 18 20 22)
 
 for eval_f_thres in ${extra_f_thres[@]}; do
     python ${vision}/tools/cls_valid.py \
