@@ -23,7 +23,7 @@ sequence="deq/deq_sequence"
 cd $WORK/deq/$sequence
 
 
-F_THRES=$(($SLURM_ARRAY_TASK_ID * 10))
+F_THRES=$(($SLURM_ARRAY_TASK_ID * 3))
 
 . wt103_deq_transformer.sh train \
   --data $WIKITEXT_DIR \
