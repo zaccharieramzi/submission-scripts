@@ -2,8 +2,8 @@
 #SBATCH --job-name=pareto_transformer     # nom du job
 #SBATCH --ntasks=1                # nombre de tâche MPI
 #SBATCH --ntasks-per-node=1          # nombre de tâche MPI par noeud
-#SBATCH --cpus-per-task=10           # nombre de coeurs à réserver par tâche
-#SBATCH --gres=gpu:1                 # nombre de GPU à réserver par nœud
+#SBATCH --cpus-per-task=40           # nombre de coeurs à réserver par tâche
+#SBATCH --gres=gpu:4                 # nombre de GPU à réserver par nœud
 # /!\ Attention, la ligne suivante est trompeuse mais dans le vocabulaire
 # de Slurm "multithread" fait bien référence à l'hyperthreading.
 #SBATCH --hint=nomultithread         # on réserve des coeurs physiques et non logiques
@@ -32,5 +32,6 @@ F_THRES=$(($SLURM_ARRAY_TASK_ID * 3))
   --eval \
   --mem_len 300 \
   --f_thres $F_THRES \
+  --f_eps 0.0000001 \
   --pretrain_step 0 \
   --results_file transformer_results.csv
