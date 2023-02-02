@@ -17,16 +17,17 @@ set -x
 cd $WORK/submission-scripts/jean_zay/env_configs/
 
 . deq.sh
-
-cd $WORK/deq
-
 sequence="deq/deq_sequence"
+
+
+cd $WORK/deq/$sequence
+
 
 F_THRES=$(($SLURM_ARRAY_TASK_ID * 10))
 
-./run_wt103_deq_transformer.sh train \
+. wt103_deq_transformer.sh train \
   --data $WIKITEXT_DIR \
-  --load $sequence/pretrained_wt103_deqtrans_v3.pkl
+  --load pretrained_wt103_deqtrans_v3.pkl \
   --name eval_$SLURM_ARRAY_TASK_ID \
   --eval \
   --mem_len 300 \
