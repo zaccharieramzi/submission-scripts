@@ -32,4 +32,5 @@ F_THRES=$(($SLURM_ARRAY_TASK_ID * 10))
   --eval \
   --mem_len 300 \
   --f_thres $F_THRES \
-  --pretrain_step 0
+  --pretrain_step 0 \
+  --results_file transformer_results.csv
