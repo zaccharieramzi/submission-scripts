@@ -23,7 +23,7 @@ cd $WORK/deep_equilibrium_inverse
 
 MAXITER=$((SLURM_ARRAY_TASK_ID*10))
 
-python deep_equilibrium_inverse/scripts/fixedpoint/deblur_proxgrad_fixedeta_pre_eval.py \
+python deep_equilibrium_inverse/scripts/fixedpoint/deblur_proxgrad_fixedeta_eval.py \
     --data_path $DSDIR/CelebA/Img/img_align_celeba/ \
     --savepath celeba_equilibriumgrad_blur_save_inf.ckpt \
     --and_maxiters $MAXITER
