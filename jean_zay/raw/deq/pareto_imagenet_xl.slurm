@@ -28,5 +28,8 @@ python ${vision}/tools/cls_valid.py \
     --cfg ${vision}/experiments/imagenet/cls_mdeq_XL.yaml \
     --results_name imagenet_n_iter_results.csv \
     TEST.MODEL_FILE ${vision}/mdeq_XL_cls_new.pkl \
+    DATASET.ROOT data/imagenet \
+    GPUS 0,1,2,3 \
     DEQ.F_EPS 0.0000001 \
+    WORKERS 10 \
     DEQ.F_THRES $f_thres
