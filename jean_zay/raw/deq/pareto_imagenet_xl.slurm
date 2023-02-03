@@ -24,9 +24,9 @@ vision="deq/mdeq_vision"
 
 f_thres=$($SLURM_ARRAY_TASK_ID * 2)
 
-
 python ${vision}/tools/cls_valid.py \
     --cfg ${vision}/experiments/imagenet/cls_mdeq_XL.yaml \
     --results_name imagenet_n_iter_results.csv \
-    TEST.MODEL_FILE ${output_dir}/cifar10/cls_mdeq_LARGE_reg/final_state_seed$seed.pth.tar \
+    TEST.MODEL_FILE ${vision}/mdeq_XL_cls_new.pkl \
+    DEQ.F_EPS 0.0000001 \
     DEQ.F_THRES $eval_f_thres
