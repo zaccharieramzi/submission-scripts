@@ -29,4 +29,4 @@ python ${vision}/tools/seg_test.py \
     --results_name cityscapes_n_iter_results.csv \
     TEST.MODEL_FILE ${vision}/MDEQ_XL_Seg.pkl \
     DEQ.F_EPS 0.0000001 \
-    DEQ.F_THRES $eval_f_thres
+    DEQ.F_THRES $f_thres
