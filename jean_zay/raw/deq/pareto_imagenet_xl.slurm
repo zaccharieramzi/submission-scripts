@@ -22,7 +22,7 @@ cd $WORK/deq
 
 vision="deq/mdeq_vision"
 
-f_thres=$($SLURM_ARRAY_TASK_ID * 2)
+f_thres=$(($SLURM_ARRAY_TASK_ID * 2))
 
 python ${vision}/tools/cls_valid.py \
     --cfg ${vision}/experiments/imagenet/cls_mdeq_XL.yaml \
