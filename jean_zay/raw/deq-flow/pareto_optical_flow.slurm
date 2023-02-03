@@ -26,4 +26,4 @@ f_thres=$(($SLURM_ARRAY_TASK_ID * 15))
 python deq_flow/main.py --eval --name deq-flow-H-all-grad --stage things \
     --validation kitti sintel --restore_ckpt checkpoints/deq-flow-H-things-test-3.pth --gpus 0,1,2,3 \
     --wnorm --eval_f_thres $f_thres --f_solver naive_solver  \
-    --huge
+    --huge --results_name optical_flow_results.csv
