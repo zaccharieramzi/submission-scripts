@@ -48,6 +48,7 @@ for eval_f_thres in ${f_thres_arr[@]}; do
         --results_name clean_no_delta_results.csv \
         --seed $seed \
         TEST.MODEL_FILE ${output_dir}/cifar10/cls_mdeq_LARGE_reg/final_state_seed$seed.pth.tar \
+        DEQ.F_EPS 0.0000001 \
         DEQ.F_THRES $eval_f_thres
 done
 
