@@ -2,8 +2,8 @@
 #SBATCH --job-name=pareto_optical_flow    # nom du job
 #SBATCH --ntasks=1                # nombre de tâche MPI
 #SBATCH --ntasks-per-node=1          # nombre de tâche MPI par noeud
-#SBATCH --cpus-per-task=40           # nombre de coeurs à réserver par tâche
-#SBATCH --gres=gpu:4                 # nombre de GPU à réserver par nœud
+#SBATCH --cpus-per-task=10           # nombre de coeurs à réserver par tâche
+#SBATCH --gres=gpu:1                 # nombre de GPU à réserver par nœud
 # /!\ Attention, la ligne suivante est trompeuse mais dans le vocabulaire
 # de Slurm "multithread" fait bien référence à l'hyperthreading.
 #SBATCH --hint=nomultithread         # on réserve des coeurs physiques et non logiques
@@ -24,6 +24,6 @@ cd $WORK/deq-flow
 f_thres=$(($SLURM_ARRAY_TASK_ID * 15))
 
 python deq_flow/main.py --eval --name deq-flow-H-all-grad --stage things \
-    --validation kitti sintel --restore_ckpt checkpoints/deq-flow-H-things-test-3.pth --gpus 0,1,2,3 \
+    --validation kitti sintel --restore_ckpt checkpoints/deq-flow-H-things-test-3x.pth --gpus 0 \
     --wnorm --eval_f_thres $f_thres --f_solver naive_solver  \
     --huge --results_name optical_flow_results.csv
