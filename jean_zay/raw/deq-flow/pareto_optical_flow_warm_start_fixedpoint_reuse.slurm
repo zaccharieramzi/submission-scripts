@@ -21,7 +21,7 @@ cd $WORK/submission-scripts/jean_zay/env_configs/
 cd $WORK/deq-flow
 
 
-f_thres=$((($SLURM_ARRAY_TASK_ID+1) % 10 * 15))
+f_thres=$((($SLURM_ARRAY_TASK_ID+1) % 10 * 9))
 options=$(($SLURM_ARRAY_TASK_ID % 10))
 # if options is 0, then fixed_point = "True" and warm_start = "True"
 # if options is 1, then fixed_point = "True" and warm_start = "False"
