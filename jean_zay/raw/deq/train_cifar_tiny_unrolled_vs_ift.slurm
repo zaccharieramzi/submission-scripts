@@ -23,11 +23,12 @@ cd $WORK/deq
 vision="deq/mdeq_vision"
 
 seed=$((SLURM_ARRAY_TASK_ID % 10))
-# unrolled is a binary worth True if SLURM_ARRAY_TASK_ID is greater than 9 and False otherwise
+# unrolled is a binary worth "True" if SLURM_ARRAY_TASK_ID is greater than 9 and "False" otherwise
 unrolled=$((SLURM_ARRAY_TASK_ID > 9))
 # dir is ift if unrolled is False and unrolled if unrolled is True
 dir=$(if [ $unrolled = 1 ]; then echo "unrolled"; else echo "ift"; fi)
 output_dir=stability/${dir}
+unrolled=$(if [ $unrolled = 1 ]; then echo "True"; else echo "False"; fi)
 
 python ${vision}/tools/cls_train.py \
     --cfg ${vision}/experiments/cifar/cls_mdeq_TINY.yaml \
