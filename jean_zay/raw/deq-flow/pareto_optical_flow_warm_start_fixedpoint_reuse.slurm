@@ -43,3 +43,4 @@ then
     script="$script --warm_start"
 fi
 
+eval $script
