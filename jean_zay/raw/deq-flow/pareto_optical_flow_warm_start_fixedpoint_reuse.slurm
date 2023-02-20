@@ -23,29 +23,23 @@ cd $WORK/deq-flow
 
 f_thres=$((($SLURM_ARRAY_TASK_ID+1) % 10 * 9))
 options=$(($SLURM_ARRAY_TASK_ID % 10))
-# if options is 0, then fixed_point = "True" and warm_start = "True"
-# if options is 1, then fixed_point = "True" and warm_start = "False"
-# if options is 2, then fixed_point = "False" and warm_start = "True"
+# if options is 0, then call the script with both the --fixed_point and the --warm_start options
+# if options is 1, then call the script with only the --fixed_point option
+# if options is 2, then call the script with only the --warm_start option
+
+script="python deq_flow/main.py --eval --name deq-flow-H-all-grad --stage things \
+    --validation sintel --restore_ckpt checkpoints/deq-flow-H-things-test-3x.pth --gpus 0 \
+    --wnorm --eval_f_thres $f_thres --f_eps 0.00001 --f_solver broyden  \
+    --huge --results_name optical_flow_results_w_options.csv"
 
 if [ $options -eq 0 ]
 then
-    fixed_point="True"
-    warm_start="True"
+    script="$script --fixed_point --warm_start"
 elif [ $options -eq 1 ]
 then
-    fixed_point="True"
-    warm_start="False"
+    script="$script --fixed_point"
 elif [ $options -eq 2 ]
 then
-    fixed_point="False"
-    warm_start="True"
-else
-    fixed_point="False"
-    warm_start="False"
+    script="$script --warm_start"
 fi
 
-python deq_flow/main.py --eval --name deq-flow-H-all-grad --stage things \
-    --validation sintel --restore_ckpt checkpoints/deq-flow-H-things-test-3x.pth --gpus 0 \
-    --wnorm --eval_f_thres $f_thres --f_eps 0.00001 --f_solver broyden  \
-    --fixed_point $fixed_point --warm_start $warm_start \
-    --huge --results_name optical_flow_results_w_options.csv
