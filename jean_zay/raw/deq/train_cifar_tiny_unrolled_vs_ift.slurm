@@ -39,10 +39,10 @@ python ${vision}/tools/cls_train.py \
     OUTPUT_DIR $output_dir
 
 f_thres_eval=(3 6 9 15 18 20 25 30 35)
-for eval_f_thres in ${extra_f_thres[@]}; do
+for eval_f_thres in ${f_thres_eval[@]}; do
     python ${vision}/tools/cls_valid.py \
         --cfg ${vision}/experiments/cifar/cls_mdeq_TINY.yaml \
-        --results_name results.csv \
+        --results_name stability_results.csv \
         --seed $seed \
         TEST.MODEL_FILE ${output_dir}/cifar10/cls_mdeq_TINY/final_state_seed$seed.pth.tar \
         DEQ.F_THRES $eval_f_thres
