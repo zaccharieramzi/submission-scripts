@@ -24,4 +24,5 @@ n_steps=$SLURM_ARRAY_TASK_ID
 
 python train_maml_system.py --name_of_args_json_file experiment_config/omniglot_maml-omniglot_1_8_0.1_64_5_1.json\
     --number_of_evaluation_steps_per_iter $n_steps\
-    --cli_args name_of_args_json_file number_of_evaluation_steps_per_iter
+    --evaluate_on_test_set_only true\
+    --cli_args name_of_args_json_file number_of_evaluation_steps_per_iter evaluate_on_test_set_only
