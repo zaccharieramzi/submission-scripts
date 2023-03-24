@@ -12,6 +12,7 @@
 #SBATCH --time=30:00:00              # temps d’exécution maximum demande (HH:MM:SS)
 #SBATCH --output=%x_%A_%a.out # nom du fichier de sortie
 #SBATCH --error=%x_%A_%a.err  # nom du fichier d'erreur (ici commun avec la sortie)
+#SBATCH --array=1-5
 
 cd $WORK/submission-scripts/jean_zay/env_configs/
 
@@ -19,4 +20,7 @@ cd $WORK/submission-scripts/jean_zay/env_configs/
 
 cd $WORK/imaml_dev/examples
 
-python omniglot_implicit_maml.py --save_dir 5_way_1_shot_exp1 --N_way 5 --K_shot 1 --inner_lr 1e-1 --outer_lr 1e-3 --n_steps 16 --meta_steps 20000 --num_tasks 200000 --task_mb_size 32 --lam 2.0 --cg_steps 5 --cg_damping 1.0 --load_tasks ./task_defs/Omniglot_5_way_1_shot.pickle --data_dir $SCRATCH/omniglot-py
+learning_rates=(5e-2 1e-1 4e-1 8e-1)
+lr=${learning[$SLURM_ARRAY_TASK_ID]}
+python omniglot_implicit_maml.py --save_dir 5_way_1_shot_exp1 --N_way 5 --K_shot 1 --inner_lr $lr --outer_lr 1e-3 --n_steps 16 --meta_steps 20000 --num_tasks 200000 --task_mb_size 32 --lam 2.0 --cg_steps 5 --cg_damping 1.0 --load_tasks ./task_defs/Omniglot_5_way_1_shot.pickle --data_dir $SCRATCH/omniglot-py
+python measure_accuracy.py --load_agent 5_way_1_shot_exp1/final_model.pickle --N_way 5 --K_shot 1 --num_tasks 200000 --n_steps 16 --lam 2.0 --inner_lr $lr --task Omniglot --data_dir $SCRATCH/omniglot-py --output_csv info_${lr}.csv
