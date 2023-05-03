@@ -35,6 +35,7 @@ python ${vision}/tools/cls_train.py \
     --cfg ${vision}/experiments/cifar/cls_mdeq_TINY.yaml \
     --seed $seed \
     TRAIN.ALL_UNROLLED $unrolled \
+    MODEL.NUM_LAYERS 5 \
     DEQ.F_THRES $f_thres \
     CUDNN.BENCHMARK False \
     CUDNN.DETERMINISTIC True \
