@@ -37,6 +37,7 @@ python ${vision}/tools/cls_train.py \
     TRAIN.ALL_UNROLLED $unrolled \
     MODEL.NUM_LAYERS 5 \
     DEQ.F_THRES $f_thres \
+    DEQ.RAND_F_THRES_DELTA 0 \
     CUDNN.BENCHMARK False \
     CUDNN.DETERMINISTIC True \
     OUTPUT_DIR $output_dir
@@ -48,5 +49,6 @@ for eval_f_thres in ${f_thres_eval[@]}; do
         --results_name stability_results.csv \
         --seed $seed \
         TEST.MODEL_FILE ${output_dir}/cifar10/cls_mdeq_TINY/final_state_seed$seed.pth.tar \
+        DEQ.RAND_F_THRES_DELTA 0 \
         DEQ.F_THRES $eval_f_thres
 done
