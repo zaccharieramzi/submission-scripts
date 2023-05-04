@@ -22,7 +22,7 @@ cd $WORK/deq
 
 vision="deq/mdeq_vision"
 
-f_thres=9
+f_thres=3
 seed=$((SLURM_ARRAY_TASK_ID % 10))
 # unrolled is a binary worth "True" if SLURM_ARRAY_TASK_ID is greater than 9 and "False" otherwise
 unrolled=$((SLURM_ARRAY_TASK_ID > 9))
@@ -35,7 +35,8 @@ python ${vision}/tools/cls_train.py \
     --cfg ${vision}/experiments/cifar/cls_mdeq_TINY.yaml \
     --seed $seed \
     TRAIN.ALL_UNROLLED $unrolled \
-    MODEL.NUM_LAYERS 5 \
+    MODEL.NUM_LAYERS 2 \
+    DEQ.F_EPS 0.0000001 \
     DEQ.F_THRES $f_thres \
     DEQ.RAND_F_THRES_DELTA 0 \
     CUDNN.BENCHMARK False \
@@ -50,5 +51,6 @@ for eval_f_thres in ${f_thres_eval[@]}; do
         --seed $seed \
         TEST.MODEL_FILE ${output_dir}/cifar10/cls_mdeq_TINY/final_state_seed$seed.pth.tar \
         DEQ.RAND_F_THRES_DELTA 0 \
+        DEQ.F_EPS 0.0000001 \
         DEQ.F_THRES $eval_f_thres
 done
