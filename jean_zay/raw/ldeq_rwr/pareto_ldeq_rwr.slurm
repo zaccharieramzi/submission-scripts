@@ -18,7 +18,7 @@ cd $WORK/submission-scripts/jean_zay/env_configs/
 
 . ldeq_rwr.sh
 
-cd $WORK/LDEQ_RWR
+cd $WORK/LDEQ_RwR
 
 
 f_thres=$SLURM_ARRAY_TASK_ID
