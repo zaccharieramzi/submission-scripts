@@ -24,4 +24,4 @@ cd $WORK/LDEQ_RwR
 f_thres=$SLURM_ARRAY_TASK_ID
 
 python test_LDEQ_WFLW.py --landmark_model_weights final.pth.tar --dataset_path $SCRATCH/WFLW --workers 4 --batch_size 32 \
-    --debug-largepose --n-forward $f_thres --output-csv pareto_ldeq.csv
+    --n-forward $f_thres --output-csv pareto_ldeq.csv
