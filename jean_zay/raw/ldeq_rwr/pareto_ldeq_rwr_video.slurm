@@ -24,4 +24,4 @@ cd $WORK/LDEQ_RwR
 f_thres=$SLURM_ARRAY_TASK_ID
 
 python test_LDEQ_WFLW_V.py --landmark_model_weights final_video.pth.tar --WFLW_V_dataset_path $SCRATCH/WFLW_V_release --WFLW_V_workers 8 --WFLW_V_batch_size 5 \
-    --n-forward $f_thres --output-csv pareto_ldeq_video.csv --WFLW_V_split easy
+    --n-forward $f_thres --output-csv pareto_ldeq_video.csv --WFLW_V_split easy --rwr False
